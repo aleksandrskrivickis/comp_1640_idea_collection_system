@@ -1,8 +1,10 @@
-# Table of Contents  
-[Architecture](#architecture)  
-[Meeting log](#meetinglog)  
+:toc: macro
+:toc-title:
+:toclevels: 99
 
-<a name="architecture"/>
+# Table of Contents  
+toc::[]
+
 # Architecture
 ## Core
     * Log-in and navigation
@@ -15,7 +17,6 @@
     * Administrator panel - is needed to maintain any system data, e.g. closure dates for each academic year, staff details.
     * Analytics page (Statistical analysis)
 
-<a name="meetinglog"/>
 # Meeting log
 ## 24/01/2020 2-4 PM
   Initial planning where we have discussed and agreed on:
