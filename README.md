@@ -1,9 +1,6 @@
-:toc: macro
-:toc-title:
-:toclevels: 99
-
 # Table of Contents  
-toc::[]
+- [Architecture](#architecture)
+- [Meeting log](#meeting log)
 
 # Architecture
 ## Core
