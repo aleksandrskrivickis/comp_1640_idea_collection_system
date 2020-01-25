@@ -1,7 +1,6 @@
 # Architecture
 ## Core
-    Main page and navigation - clarify if we need index.php page
-    Log-in
+    Log-in and navigation
     View, comment, thumbsup ideas, pagination
     Idea submission (for academic and support roles)
     Idea Category Administration (for QA Manager)
