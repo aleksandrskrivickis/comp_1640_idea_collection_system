@@ -1,5 +1,6 @@
 # Table of Contents  
 - [Kanban Board](https://trello.com/b/xC7CBjBU/coursework-board)
+- [Data Architecture (ERD)](https://www.lucidchart.com/documents/edit/e21ec631-0069-4916-8132-37b8631b7e27/tuArPCv54ECH)
 - [Architecture](#architecture)
 - [Meetings](#meetings)
 
