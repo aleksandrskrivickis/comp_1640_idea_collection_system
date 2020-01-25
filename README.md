@@ -26,12 +26,19 @@ academic year, staff details.
       * Web Designer - everyone
       * Tester - everyone
 ### 3. Core Architecture depicted in one of the chapters above
-### 4. VCS - GIt: https://github.com/aleksandrskrivickis/comp_1640_idea_collection_system/
-### 5. Kanban - Trello: https://trello.com/b/xC7CBjBU/coursework-board
-### 6. Communication lines: Whatsapp group, Emails
+### 4. VCS - GIt
+  https://github.com/aleksandrskrivickis/comp_1640_idea_collection_system/
+### 5. Kanban
+  Trello https://trello.com/b/xC7CBjBU/coursework-board
+### 6. Communication lines 
+  Whatsapp group
+  Emails
 ### 7. Product specification items were collectively voted by MOSCOW principle (see attachments)
 ### 8. Product specification was split into backlog items with further voting using Scrum Poker technique (see trello board)
 ### 9. List of uncertainties was created to be further clarified between Prodcut Owner and the customer
-### 10. 
-   
+### 10. Next sprint deliverables disucssed and their owners identified
+  * Database design
+  * System architecture design
+  * Website design sketch
+  * Implement scrum methods
   
