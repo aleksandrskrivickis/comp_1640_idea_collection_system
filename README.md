@@ -1,4 +1,5 @@
 # Table of Contents  
+- [Kanban Board](https://trello.com/b/xC7CBjBU/coursework-board)
 - [Architecture](#architecture)
 - [Meetings](#meetings)
 
