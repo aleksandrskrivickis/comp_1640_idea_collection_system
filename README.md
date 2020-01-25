@@ -1,6 +1,6 @@
 # Table of Contents  
 - [Architecture](#architecture)
-- [Meeting log](#meeting log)
+- [Meetings](#meetings)
 
 # Architecture
 ## Core
@@ -14,7 +14,7 @@
     * Administrator panel - is needed to maintain any system data, e.g. closure dates for each academic year, staff details.
     * Analytics page (Statistical analysis)
 
-# Meeting log
+# Meetings
 ## 24/01/2020 2-4 PM
   Initial planning where we have discussed and agreed on:
 ### 1. Technology stack
