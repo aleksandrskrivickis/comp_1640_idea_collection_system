@@ -15,8 +15,9 @@ academic year, staff details.
 # Meeting log
 ## 24/01/2020 2-4 PM
   Initial planning where we have discussed and agreed on:
-   1. Technology stack - PHP, MySQL, Bootstrap
-   2. Roles within the team:
+### 1. Technology stack
+    PHP, MySQL, Bootstrap
+### 2. Roles within the team:
       * Database Designer - James Dodd, Sam Town
       * Information Architecture Lead - Nathalie Findall
       * Product Owner - Jake Merchant
@@ -24,13 +25,13 @@ academic year, staff details.
       * Programmer - everyone
       * Web Designer - everyone
       * Tester - everyone
-    3. Core Architecture depicted in one of the chapters above
-    4. VCS - GIt: https://github.com/aleksandrskrivickis/comp_1640_idea_collection_system/
-    5. Kanban - Trello: https://trello.com/b/xC7CBjBU/coursework-board
-    6. Communication lines: Whatsapp group, Emails
-    7. Product specification items were collectively voted by MOSCOW principle (see attachments)
-    8. Product specification was split into backlog items with further voting using Scrum Poker technique (see trello board)
-    9. List of uncertainties was created to be further clarified between Prodcut Owner and the customer
-    10. 
+### 3. Core Architecture depicted in one of the chapters above
+### 4. VCS - GIt: https://github.com/aleksandrskrivickis/comp_1640_idea_collection_system/
+### 5. Kanban - Trello: https://trello.com/b/xC7CBjBU/coursework-board
+### 6. Communication lines: Whatsapp group, Emails
+### 7. Product specification items were collectively voted by MOSCOW principle (see attachments)
+### 8. Product specification was split into backlog items with further voting using Scrum Poker technique (see trello board)
+### 9. List of uncertainties was created to be further clarified between Prodcut Owner and the customer
+### 10. 
    
   
