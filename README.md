@@ -47,4 +47,5 @@
   * System architecture design
   * Website design sketch
   * Implement scrum methods
-  
+### 11. Team name
+   CTRL ALT DELETE (CAD)
