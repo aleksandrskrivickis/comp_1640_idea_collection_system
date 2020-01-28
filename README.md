@@ -7,7 +7,7 @@
 - [Meetings](#meetings)
 
 # Architecture
-## Core
+## Core components
     * Log-in and navigation
     * View, comment, thumbsup ideas, pagination
     * Idea submission (for academic and support roles)
