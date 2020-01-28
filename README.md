@@ -17,6 +17,9 @@
     * CSV file export, uploaded document export in zip file for QA manager
     * Administrator panel - is needed to maintain any system data, e.g. closure dates for each academic year, staff details.
     * Analytics page (Statistical analysis)
+## Architecture diagram
+![Architecture diagram](https://github.com/aleksandrskrivickis/comp_1640_idea_collection_system/blob/master/documentation/Architecture.jpeg)
+
 
 # Meetings
 ## 24/01/2020 2-4 PM
