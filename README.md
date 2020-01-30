@@ -6,6 +6,14 @@
 - [Architecture](#architecture)
 - [Meetings](#meetings)
 
+# Project credentials
+## HTTP
+http://enterprisecw.co.uk
+## FTP Access
+      host: ftp.voltafy.co.uk
+      user: ftphost@enterprisecw.co.uk
+      password: 64754742
+      port: 21
 # Architecture
 ## Core components
     * Log-in and navigation
@@ -45,6 +53,10 @@
 ### 7. Product specification items were collectively voted by MOSCOW principle (see attachments)
 ### 8. Product specification was split into backlog items with further voting using Scrum Poker technique (see trello board)
 ### 9. List of uncertainties was created to be further clarified between Prodcut Owner and the customer
+      - quality assurance manager - what is their role, what do they do
+      - admin features - posts, comments, users - able to add, edit, delete
+      - Test plan - we're planning to do TDD so should our test plan discuss TDD and how we plan
+      on testing the system
 ### 10. Next sprint deliverables disucssed and their owners identified
   * Database design
   * System architecture design
