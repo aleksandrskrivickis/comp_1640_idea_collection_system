@@ -100,7 +100,14 @@ All attended
 ### Assumptions 
       - We store customer's email, whilst in real system we have it readily available
 
+### Questions answered by a customer
+      - Quality assurance manager 
+      - admin features - 
+      - Test plan - 
+      - Multiple roles - 
+      - 
 ### Design sketch demonstration to the customer
+      We have proposed two design prototypes (By Niana and Nathalie), Nathalie's design was selected by the team as the most suitable one for demonstration to the custimer:
       
       
       
