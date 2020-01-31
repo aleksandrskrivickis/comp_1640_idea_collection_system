@@ -64,3 +64,7 @@ http://enterprisecw.co.uk
   * Implement scrum methods
 ### 11. Team name
    CTRL ALT DELETE (CAD)
+   
+### 12. Must have / Can have
+![MHCH-P1](https://github.com/aleksandrskrivickis/comp_1640_idea_collection_system/blob/master/documentation/WhatsApp%20Image%202020-01-24%20at%203.22.36%20PM.jpeg)
+![MHCH-P1](https://github.com/aleksandrskrivickis/comp_1640_idea_collection_system/blob/master/documentation/WhatsApp%20Image%202020-01-24%20at%203.22.36%20PM%20(1).jpeg)
