@@ -68,3 +68,39 @@ http://enterprisecw.co.uk
 ### 12. Must have / Can have
 ![MHCH-P1](https://github.com/aleksandrskrivickis/comp_1640_idea_collection_system/blob/master/documentation/WhatsApp%20Image%202020-01-24%20at%203.22.36%20PM.jpeg)
 ![MHCH-P1](https://github.com/aleksandrskrivickis/comp_1640_idea_collection_system/blob/master/documentation/WhatsApp%20Image%202020-01-24%20at%203.22.36%20PM%20(1).jpeg)
+
+## 31/01/2020 2-4 PM
+### Attendance 
+All attended
+
+### Retrospective
+      Database Design Bit - James and Sam
+      Website design sketch - Nathalie Findall, Nyneka Ninan
+      System Architecture Design - Aleksandrs Krivickis
+      Implement Agile Scrum - Aleksandrs Krivickis
+      Create Github Repository - Aleksandrs Krivickis
+      Create Hosting, SQL, FTP - Jake Merchant
+      Logo design - Jake Mercchant
+### Mew members onboarding
+      Johan Rodriguez Garcia - back-end developer
+      Anirudhan Anbuchezhian - back-end developer / 
+
+### Work breakdown for next sprint
+      
+      Start front end design of all views and design sketch for mobile - Nathalie, Naina
+      Establish database connection and create a CRUD class - Sam Town, James Dodd
+      Establish database connection - Jake Merchant
+      Log-in and registration page -  Johan Rodriguez Garcia and Nina
+      Test plan for login and registration - Nina
+      Idea submission - Anirudhan Anbuchezhian, Aleksandrs Krivickis
+      Burndown chart - Aleksandrs
+      Organise Scrum board and charts - Aleksandrs
+      Go through example report and create additional cards - Jake
+      
+### Assumptions 
+      - We store customer's email, whilst in real system we have it readily available
+
+### Design sketch demonstration to the customer
+      
+      
+      
