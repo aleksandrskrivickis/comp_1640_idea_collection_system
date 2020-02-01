@@ -89,6 +89,7 @@ All attended
       
       Start front end design of all views and design sketch for mobile - Nathalie, Naina
       Establish database connection and create a CRUD class - Sam Town, James Dodd
+      Legal, ethical research into database design - Sam Town, James Dodd
       Establish database connection - Jake Merchant
       Log-in and registration page -  Johan Rodriguez Garcia and Nina
       Test plan for login and registration - Nina
