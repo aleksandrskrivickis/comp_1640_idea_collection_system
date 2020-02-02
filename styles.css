@@ -1,0 +1,36 @@
+
+body{
+
+background-color: #f5f5f5;
+}
+
+.login-box{
+
+max-width: 1000px;
+float: none;
+margin: 50px auto;
+
+}
+
+.login-left{
+  border-style: solid;
+  border-width: 0.2px;
+  background: #fff;
+ padding: 20px
+}
+
+.login-right{
+  border-style: solid;
+  border-width: 0.2px;
+  background: #fff;
+  padding: 20px;
+}
+
+.form-group{
+
+  font-size: 20px;
+}
+
+p {
+  font-size: 12px;
+}
