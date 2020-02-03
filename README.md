@@ -17,14 +17,15 @@
 | git diff | Show file differences that haven't been staged |
 
 ## Participants 
-|Natalia	Flindall    |	nf7797t@gre.ac.uk
-|Aleksandrs	Krivickis	|     ak7993g@gre.ac.uk
-|Jake	Marchant	|     jm1727g@gre.ac.uk
-|Nisheeka	Nynan |     nn1459j@gre.ac.uk
-|Sam	Town	|     st2645h@gre.ac.uk
-|James	Dodd  |	jd9865y@gre.ac.uk
-|Anirudhan	Anbuchezhian      |	aa0854y@gre.ac.uk
-|Johan	Rodriguez Garcia	|     jr3007p@gre.ac.uk
+
+|     Natalia	Flindall    |	nf7797t@gre.ac.uk |
+|     Aleksandrs	Krivickis	|     ak7993g@gre.ac.uk |
+|     Jake	Marchant	|     jm1727g@gre.ac.uk |
+|     Nisheeka	Nynan |     nn1459j@gre.ac.uk |
+|     Sam	Town	|     st2645h@gre.ac.uk |
+|     James	Dodd  |	jd9865y@gre.ac.uk |
+|     Anirudhan	Anbuchezhian      |	aa0854y@gre.ac.uk |
+|     Johan	Rodriguez Garcia	|     jr3007p@gre.ac.uk |
 
 # Project credentials
 ## HTTP
