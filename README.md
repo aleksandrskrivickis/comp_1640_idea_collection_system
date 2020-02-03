@@ -121,8 +121,28 @@ All attended
 ### Assumptions 
       - We store customer's email, whilst in real system we have it readily available
 
-### Questions answered by a customer
-      To be filled in by Jake
+### Questions asked from / answered by a customer
+      quality assurance manager/quality assurance coordinator - what is their role, what do they do: 
+      QAM controls the forums, QAC controls the forums for their specific department, only QAM can set closure dates for forums and only QAM can view reports
+
+      admin features: 
+      Admins can basically manage the database through a UI without having access to the actual DB, so they can edit and remove ideas, comments etc. matt also suggested being able to suspend and ban users.
+
+      are the roles unique, so can you be a qam and a qac as well as an admin, or can you only be one:
+      You can only be one of those roles.
+
+      what are academic and support roles, and what are the differences (if any):
+      What he means by this is that all staff in a university can use this forum, not just lecturers, so you need to consider IT Support, Security etc.
+
+      Test plan: 
+      as we're doing TDD, just log evidence of your testing, maybe we can also implement peer review into this too? that could form the definition of done for us.
+
+      is the closure date for a forum always set the same, or can it be set manually:
+      He said make a reasonable assumption here, so my suggestion is having the QAM set the closure date for new ideas when they set the forum (which they can extend if needed) and then the QAM does final closure manually.
+
+      is it okay to store emails in registration in order to get the email notifications working:
+      Yes, as long as we justify why we have done this in our report.      
+      
 ### Design sketch demonstration to the customer
       We have proposed two design prototypes (By Niana and Nathalie), Nathalie's design was selected by the team as the most suitable one for demonstration to the custimer. - accepted
       
