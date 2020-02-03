@@ -13,16 +13,16 @@
       CAD (Control Alt Delete)
       
 ## Participants 
-| Name | Email |
-| --- | --- |
-|     Natalia	Flindall    |	nf7797t@gre.ac.uk |
-|     Aleksandrs	Krivickis	|     ak7993g@gre.ac.uk |
-|     Jake	Marchant	|     jm1727g@gre.ac.uk |
-|     Nisheeka	Nynan |     nn1459j@gre.ac.uk |
-|     Sam	Town	|     st2645h@gre.ac.uk |
-|     James	Dodd  |	jd9865y@gre.ac.uk |
-|     Anirudhan	Anbuchezhian      |	aa0854y@gre.ac.uk |
-|     Johan	Rodriguez Garcia	|     jr3007p@gre.ac.uk |
+| Name | Email | Role(s)
+| --- | --- | --- |
+|     Natalia	Flindall    |	nf7797t@gre.ac.uk |     Information Architecture Lead / Engineer
+|     Aleksandrs	Krivickis	|     ak7993g@gre.ac.uk |     Scrum Master / Engineer
+|     Jake	Marchant	|     jm1727g@gre.ac.uk |     Product Owner / Engineer / Designer
+|     Nisheeka	Nynan |     nn1459j@gre.ac.uk |     Test Lead / Engineer / Front-end
+|     Sam	Town	|     st2645h@gre.ac.uk |     Data Architect / Engineer
+|     James	Dodd  |	jd9865y@gre.ac.uk |     Data Architect / Engineer
+|     Anirudhan	Anbuchezhian      |	aa0854y@gre.ac.uk |     Engineer / Front-end
+|     Johan	Rodriguez Garcia	|     jr3007p@gre.ac.uk |     Engineer / Front-end
 
 # Project credentials
 ## HTTP
@@ -113,7 +113,7 @@ All attended
       Logo design - Jake Mercchant
 ### Mew members onboarding
       Johan Rodriguez Garcia - back-end developer
-      Anirudhan Anbuchezhian - back-end developer / 
+      Anirudhan Anbuchezhian - back-end developer
 
 ### Work breakdown for next sprint
       
