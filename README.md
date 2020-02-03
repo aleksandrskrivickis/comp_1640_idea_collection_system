@@ -49,6 +49,7 @@ http://enterprisecw.co.uk
 
 ## Data Archirtecture (ERD)
       https://www.lucidchart.com/documents/edit/e21ec631-0069-4916-8132-37b8631b7e27/CmEtv3hlvse.
+![ERD](https://github.com/aleksandrskrivickis/comp_1640_idea_collection_system/blob/master/documentation/Database%20-%20ERD5.jpeg)
 
 ## Information Architecture Sketch
       https://k23tr4.axshare.com/#id=6kr2iu&p=login_register
