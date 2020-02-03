@@ -47,14 +47,15 @@ http://enterprisecw.co.uk
     * Analytics page (Statistical analysis)
   
 ## Project Architecture Diagram
+https://www.lucidchart.com/invitations/accept/9385d2e1-63b3-4135-a64c-ac0a94b906e0
 ![Architecture diagram](https://github.com/aleksandrskrivickis/comp_1640_idea_collection_system/blob/master/documentation/Architecture.jpeg)
 
 ## Data Archirtecture (ERD)
-      https://www.lucidchart.com/documents/edit/e21ec631-0069-4916-8132-37b8631b7e27/CmEtv3hlvse.
+https://www.lucidchart.com/documents/edit/e21ec631-0069-4916-8132-37b8631b7e27/CmEtv3hlvse.
 ![ERD](https://github.com/aleksandrskrivickis/comp_1640_idea_collection_system/blob/master/documentation/Database%20-%20ERD5.jpeg)
 
 ## Information Architecture Sketch
-      https://k23tr4.axshare.com/#id=6kr2iu&p=login_register
+https://k23tr4.axshare.com/#id=6kr2iu&p=login_register
 ![Information Architecture](https://github.com/aleksandrskrivickis/comp_1640_idea_collection_system/blob/master/documentation/information%20architecture.jpg)
 
 
