@@ -3,7 +3,6 @@
 - [Specifications document](https://moodlecurrent.gre.ac.uk/pluginfile.php/1462970/mod_resource/content/11/CW_COMP1640_1920.pdf)
 - [Google Drive](https://drive.google.com/drive/u/0/folders/1GQoqBhNVXk_yFTkNl_QnNDmkUuhcpDkE)
 - [Kanban Board](https://trello.com/b/xC7CBjBU/coursework-board)
-- [Data Architecture (ERD)](https://www.lucidchart.com/documents/edit/e21ec631-0069-4916-8132-37b8631b7e27/tuArPCv54ECH)
 - [Architecture](#architecture)
 - [Meetings](#meetings)
 
@@ -45,8 +44,14 @@ http://enterprisecw.co.uk
     * Administrator panel - is needed to maintain any system data, e.g. closure dates for each academic year, staff details.
     * Analytics page (Statistical analysis)
     
-## Architecture diagram
+## Project Architecture Diagram
 ![Architecture diagram](https://github.com/aleksandrskrivickis/comp_1640_idea_collection_system/blob/master/documentation/Architecture.jpeg)
+
+## Data Archirtecture (ERD)
+      https://www.lucidchart.com/documents/edit/e21ec631-0069-4916-8132-37b8631b7e27/CmEtv3hlvse.
+
+## Information Architecture Sketch
+      https://k23tr4.axshare.com/#id=6kr2iu&p=login_register
 
 
 # Meetings
