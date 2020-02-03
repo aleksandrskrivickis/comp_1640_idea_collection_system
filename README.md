@@ -1,5 +1,5 @@
 # Table of Contents  
-- [Participants](#participants)
+- [Group](#group)
 - [Specifications document](https://moodlecurrent.gre.ac.uk/pluginfile.php/1462970/mod_resource/content/11/CW_COMP1640_1920.pdf)
 - [Google Drive](https://drive.google.com/drive/u/0/folders/1GQoqBhNVXk_yFTkNl_QnNDmkUuhcpDkE)
 - [Kanban Board](https://trello.com/b/xC7CBjBU/coursework-board)
@@ -7,15 +7,18 @@
 - [Architecture](#architecture)
 - [Meetings](#meetings)
 
-# Participants
-      Natalia	Flindall	nf7797t@gre.ac.uk
-      Aleksandrs	Krivickis	ak7993g@gre.ac.uk
-      Jake	Marchant	jm1727g@gre.ac.uk
-      Nisheeka	Nynan	nn1459j@gre.ac.uk
-      Sam	Town	st2645h@gre.ac.uk
-      James	Dodd	jd9865y@gre.ac.uk
-      Anirudhan	Anbuchezhian	aa0854y@gre.ac.uk
-      Johan	Rodriguez Garcia	jr3007p@gre.ac.uk
+# Group
+## Group Name 
+      CAD (Control Alt Delete)
+## Participants 
+      |Natalia	Flindall    |	nf7797t@gre.ac.uk
+      |Aleksandrs	Krivickis	|     ak7993g@gre.ac.uk
+      |Jake	Marchant	|     jm1727g@gre.ac.uk
+      |Nisheeka	Nynan |     nn1459j@gre.ac.uk
+      |Sam	Town	|     st2645h@gre.ac.uk
+      |James	Dodd  |	jd9865y@gre.ac.uk
+      |Anirudhan	Anbuchezhian      |	aa0854y@gre.ac.uk
+      |Johan	Rodriguez Garcia	|     jr3007p@gre.ac.uk
 # Project credentials
 ## HTTP
 http://enterprisecw.co.uk
