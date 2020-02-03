@@ -1,3 +1,5 @@
+![Brand Logo](https://github.com/aleksandrskrivickis/comp_1640_idea_collection_system/blob/master/public_html/images/logo.jpg)
+
 # Table of Contents  
 - [Group](#group)
 - [Specifications document](https://moodlecurrent.gre.ac.uk/pluginfile.php/1462970/mod_resource/content/11/CW_COMP1640_1920.pdf)
@@ -43,10 +45,7 @@ http://enterprisecw.co.uk
     * CSV file export, uploaded document export in zip file for QA manager
     * Administrator panel - is needed to maintain any system data, e.g. closure dates for each academic year, staff details.
     * Analytics page (Statistical analysis)
-    
-# Brand
-![Brand Logo](https://github.com/aleksandrskrivickis/comp_1640_idea_collection_system/blob/master/public_html/images/logo.jpg)
-
+  
 ## Project Architecture Diagram
 ![Architecture diagram](https://github.com/aleksandrskrivickis/comp_1640_idea_collection_system/blob/master/documentation/Architecture.jpeg)
 
