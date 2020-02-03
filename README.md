@@ -10,7 +10,12 @@
 # Group
 ## Group Name 
       CAD (Control Alt Delete)
-      
+
+| Command | Description |
+| --- | --- |
+| git status | List all new or modified files |
+| git diff | Show file differences that haven't been staged |
+
 ## Participants 
 |Natalia	Flindall    |	nf7797t@gre.ac.uk
 |Aleksandrs	Krivickis	|     ak7993g@gre.ac.uk
