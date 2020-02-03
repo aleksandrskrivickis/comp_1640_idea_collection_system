@@ -17,7 +17,8 @@
 | git diff | Show file differences that haven't been staged |
 
 ## Participants 
-
+| Name | Email |
+| --- | --- |
 |     Natalia	Flindall    |	nf7797t@gre.ac.uk |
 |     Aleksandrs	Krivickis	|     ak7993g@gre.ac.uk |
 |     Jake	Marchant	|     jm1727g@gre.ac.uk |
