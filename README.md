@@ -44,6 +44,9 @@ http://enterprisecw.co.uk
     * Administrator panel - is needed to maintain any system data, e.g. closure dates for each academic year, staff details.
     * Analytics page (Statistical analysis)
     
+# Brand
+![Brand Logo](https://github.com/aleksandrskrivickis/comp_1640_idea_collection_system/blob/master/public_html/images/logo.jpg)
+
 ## Project Architecture Diagram
 ![Architecture diagram](https://github.com/aleksandrskrivickis/comp_1640_idea_collection_system/blob/master/documentation/Architecture.jpeg)
 
@@ -53,6 +56,7 @@ http://enterprisecw.co.uk
 
 ## Information Architecture Sketch
       https://k23tr4.axshare.com/#id=6kr2iu&p=login_register
+![Information Architecture](https://github.com/aleksandrskrivickis/comp_1640_idea_collection_system/blob/master/documentation/information%20architecture.jpg)
 
 
 # Meetings
