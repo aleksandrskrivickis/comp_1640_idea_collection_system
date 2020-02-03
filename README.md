@@ -10,12 +10,7 @@
 # Group
 ## Group Name 
       CAD (Control Alt Delete)
-
-| Command | Description |
-| --- | --- |
-| git status | List all new or modified files |
-| git diff | Show file differences that haven't been staged |
-
+      
 ## Participants 
 | Name | Email |
 | --- | --- |
@@ -31,11 +26,13 @@
 # Project credentials
 ## HTTP
 http://enterprisecw.co.uk
+
 ## FTP Access
       host: ftp.voltafy.co.uk
       user: ftphost@enterprisecw.co.uk
       password: 64754742
       port: 21
+      
 # Architecture
 ## Core components
     * Log-in and navigation
@@ -47,6 +44,7 @@ http://enterprisecw.co.uk
     * CSV file export, uploaded document export in zip file for QA manager
     * Administrator panel - is needed to maintain any system data, e.g. closure dates for each academic year, staff details.
     * Analytics page (Statistical analysis)
+    
 ## Architecture diagram
 ![Architecture diagram](https://github.com/aleksandrskrivickis/comp_1640_idea_collection_system/blob/master/documentation/Architecture.jpeg)
 
