@@ -117,12 +117,12 @@ All attended
 
 ### Work breakdown for next sprint
       
-      Start front end design of all views and design sketch for mobile - Nathalie, Naina
+      Start front end design of all views and design sketch for mobile - Nathalie, Nisheeka Nynan
       Establish database connection and create a CRUD class - Sam Town, James Dodd
       Legal, ethical research into database design - Sam Town, James Dodd
       Establish database connection - Jake Merchant
-      Log-in and registration page -  Johan Rodriguez Garcia and Nina
-      Test plan for login and registration - Nina
+      Log-in and registration page -  Johan Rodriguez Garcia and Nisheeka Nynan
+      Test plan for login and registration - Nisheeka Nynan
       Idea submission - Anirudhan Anbuchezhian, Aleksandrs Krivickis
       Burndown chart - Aleksandrs
       Organise Scrum board and charts - Aleksandrs
@@ -154,6 +154,6 @@ All attended
       Yes, as long as we justify why we have done this in our report.      
       
 ### Design sketch demonstration to the customer
-      We have proposed two design prototypes (By Niana and Nathalie), Nathalie's design was selected by the team as the most suitable one for demonstration to the custimer. - accepted
+      We have proposed two design prototypes (By Nisheeka Nynan and Nathalie), Nathalie's design was selected by the team as the most suitable one for demonstration to the custimer. - accepted
       
       
