@@ -104,14 +104,14 @@ https://k23tr4.axshare.com/#id=6kr2iu&p=login_register
 All attended
 
 ### Retrospective
-      Database Design Bit - James and Sam
+      Database Design - James and Sam
       Website design sketch - Nathalie Findall, Nyneka Ninan
       System Architecture Design - Aleksandrs Krivickis
       Implement Agile Scrum - Aleksandrs Krivickis
       Create Github Repository - Aleksandrs Krivickis
       Create Hosting, SQL, FTP - Jake Merchant
       Logo design - Jake Mercchant
-### Mew members onboarding
+### New members onboarding
       Johan Rodriguez Garcia - back-end developer
       Anirudhan Anbuchezhian - back-end developer
 
