@@ -31,7 +31,7 @@
         <div class="col-md-6 login-left">
             <h2 align="center"> Login </h2>
           <br>
-          <form action="Loginreg.php" method="post">
+          <form action="loginreg.php" method="post">
               <!-- errors -->
               <?php 
                 include('logerrors.php');
@@ -56,7 +56,7 @@
         <div class="col-md-6 login-right">
             <h2 align="center"> Register </h2>
             <br>
-            <form action="Loginreg.php" method="post">
+            <form action="loginreg.php" method="post">
                 
                  <!-- errors -->
               <?php 
