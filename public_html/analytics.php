@@ -2,6 +2,7 @@
 #Include Decision function that checks if user is still logged in and dericts him to log in form, registration or main
 ?>
 
+#Adding some rtest changes
 
 <html>
 <head>
