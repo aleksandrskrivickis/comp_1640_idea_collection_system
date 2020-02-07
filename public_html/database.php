@@ -77,7 +77,7 @@
         /**
          * Retrieves information for every department
          * 
-         * @return array[][]|null Array of all *Departments* retrieved - each *Department* array within the array holds: [ **Name**, **Description** ]
+         * @return array[object]|null Array of all *Departments* retrieved - each *Department* object contains: [ **Name**, **Description** ]
          */
         public function getAllDepartments(): ?array 
         {
@@ -90,9 +90,9 @@
          * 
          * @param string $username Name of the user
          * 
-         * @return string|null If found, returns the department name, else null
+         * @return object|null If found, returns the Department, else null
          */
-        public function getDepartment(string $username): ?string 
+        public function getDepartment(string $username): ?object 
         {
             return null;
         }
@@ -101,7 +101,7 @@
         /**
          * Retrieves information for every role 
          * 
-         * @return array[][]|null Array of all *Roles* retrieved - each *Role* array within the array holds: [ **Name**, **Type** ]
+         * @return array[object]|null Array of all *Roles* retrieved - each *Role* object contains: [ **Name**, **Type** ]
          */
         public function getAllRoles(): ?array
         {
@@ -114,11 +114,11 @@
          * 
          * @param string $username Name of the user
          * 
-         * @return string|null If found, returns the role name, else null
+         * @return object|null If found, returns the Role, else null
          * 
          * **All users are assoiciated to a department, except for QA Managers who not associated to any department**
          */
-        public function getRole(string $username): ?string 
+        public function getRole(string $username): ?object 
         {
             return null;
         }
@@ -131,7 +131,7 @@
         /**
          * Retrieves all forums
          * 
-         * @return array[][]|null Array of all *Forums* retrieved - each *Forum* array within the array holds: [ **Name**, **Description**, **Closure**, **FinalClosure** ]
+         * @return array[object]|null Array of all *Forums* retrieved - each *Forum* object contains: [ **Name**, **Description**, **Closure**, **FinalClosure** ]
          */
         public function getAllForums(): ?array 
         {
@@ -144,7 +144,7 @@
          * 
          * @param string $name Name of the forum
          * @param string $description Description of the forum
-         * @param string $closureDate Date the forum stops allow new ideas, *display in datetime format e.g. 'hh:mm:ss DD-MM-YYYY' or 'YYYY-MM-DD hh:mm:ss'*
+         * @param string $closureDate Date the forum stops allow new ideas, *display in datetime format e.g. 'YYYY-MM-DD HH:MM:SS'*
          * 
          * @return void
          * 
@@ -165,9 +165,9 @@
          * 
          * @param string $forum Name of the forum
          * 
-         * @return array[]|null *Forum* array holds: [ **Name**, **Description**, **Closure**, **FinalClosure** ]
+         * @return object|null *Forum* object holds: [ **Name**, **Description**, **Closure**, **FinalClosure** ]
          */
-        public function getForum(string $forum): ?array
+        public function getForum(string $forum): ?object
         {
             return null;
         }
@@ -180,7 +180,7 @@
          * @param int $page Page number selected
          * @param int $retrieve Amount of ideas that are retrieved
          * 
-         * @return array[][]|null Array of all *Ideas* retrieved - each *Idea* array within the array holds: [ **UserName**, **Title**, **IdeaText**, **DatePosted**, **Likes**, **Dislikes** ]
+         * @return array[object]|null Array of all *Ideas* retrieved - each *Idea* object contains: [ **UserName**, **Title**, **IdeaText**, **DatePosted**, **Likes**, **Dislikes** ]
          * 
          * If the idea is posted anonymously, then the returning UserName is set to '**Anonymous**'
          * 
@@ -200,6 +200,8 @@
          * @param string $title Title of the idea
          * @param string $username Name of the user
          * @param bool $anonymous Allows users to post anonymously. If true the user's information will NOT be shown, else false
+         * 
+         * @return void
          */
         public function createIdea(string $idea, string $title, string $forum, string $username, bool $anonymous): void 
         {
@@ -224,7 +226,7 @@
          * Increases the view counter by one 
          * 
          * @param string $ideaTitle Title of the idea 
-         * @param string $datePosted Date the idea was posted, *display in datetime format e.g. 'hh:mm:ss DD-MM-YYYY' or 'YYYY-MM-DD hh:mm:ss'*
+         * @param string $datePosted Date the idea was posted, *display in datetime format e.g. ''YYYY-MM-DD HH:MM:SS'*
          * 
          * @return void
          */
@@ -242,11 +244,11 @@
          * Retrieve an idea 
          * 
          * @param string $title Title for the idea
-         * @param string $datePosted Date the idea was posted, *display in datetime format e.g. 'hh:mm:ss DD-MM-YYYY' or 'YYYY-MM-DD hh:mm:ss'*
+         * @param string $datePosted Date the idea was posted, *display in datetime format e.g. 'YYYY-MM-DD HH:MM:SS'*
          * 
-         * @return array[]|null *Idea* array holds: [ **UserName**, **Title**, **IdeaText**, **DatePosted**, **Likes**, **Dislikes** ]
+         * @return object|null *Idea* object holds: [ **UserName**, **Title**, **IdeaText**, **DatePosted**, **Likes**, **Dislikes** ]
          */
-        public function getIdea(string $title, string $datePosted): ?array
+        public function getIdea(string $title, string $datePosted): ?object
         {
             return null;
         }
@@ -256,9 +258,9 @@
          * Retrieves all comments for an idea
          * 
          * @param string $ideaTitle Title of the idea 
-         * @param string $datePosted Date the idea was posted, *display in datetime format e.g. 'hh:mm:ss DD-MM-YYYY' or 'YYYY-MM-DD hh:mm:ss'*
+         * @param string $datePosted Date the idea was posted, *display in datetime format e.g. 'YYYY-MM-DD HH:MM:SS'*
          * 
-         * @return array[][]|null Array of all *Comments* retrieved - each *Comment* array within the array holds: [ **UserName**, **CommentText**, **DatePosted** ]
+         * @return array[object]|null Array of all *Comments* retrieved - each *Comment* object contains: [ **UserName**, **CommentText**, **DatePosted** ]
          */
         public function getComments(string $ideaTitle, string $datePosted): ?array 
         {
@@ -271,9 +273,11 @@
          * 
          * @param string $comment Comment being posted
          * @param string $ideaTitle Title of the idea 
-         * @param string $datePosted Date the idea was posted, *display in datetime format e.g. 'hh:mm:ss DD-MM-YYYY' or 'YYYY-MM-DD hh:mm:ss'*
+         * @param string $datePosted Date the idea was posted, *display in datetime format e.g. 'YYYY-MM-DD HH:MM:SS'*
          * @param string $username Name of the user
          * @param bool $anonymous Allows users to post anonymously, if true the user's information will NOT be shown, else false
+         * 
+         * @return void
          */
         public function createComment(string $comment, string $ideaTitle, string $datePosted, string $username, bool $anonymous): void 
         {
@@ -287,7 +291,7 @@
          * @param string $ideaTitle Title of the idea 
          * @param string $datePosted Date the idea was posted, *display in datetime format e.g. 'hh:mm:ss DD-MM-YYYY' or 'YYYY-MM-DD hh:mm:ss'*
          * 
-         * @return array[][]|null Array of all *Documents* retrieved - each *Document* array within the array holds: [  ]
+         * @return array[object]|null Array of all *Documents* retrieved - each *Document* object contains: [  ]
          */
         public function getDocument(string $ideaTitle, string $datePosted): ?array 
         {
@@ -330,7 +334,7 @@
          * 
          * @param string $username Name of the user
          * @param string $ideaTitle Title of the idea 
-         * @param string $datePosted Date the idea was posted, *display in datetime format e.g. 'hh:mm:ss DD-MM-YYYY' or 'YYYY-MM-DD hh:mm:ss'*
+         * @param string $datePosted Date the idea was posted, *display in datetime format e.g. 'YYYY-MM-DD HH:MM:SS'*
          * 
          * @return bool true if user has liked this idea, else false
          */
@@ -345,7 +349,7 @@
          * 
          * @param string $username Name of the user
          * @param string $ideaTitle Title of the idea 
-         * @param string $datePosted Date the idea was posted, *display in datetime format e.g. 'hh:mm:ss DD-MM-YYYY' or 'YYYY-MM-DD hh:mm:ss'*
+         * @param string $datePosted Date the idea was posted, *display in datetime format e.g. 'YYYY-MM-DD HH:MM:SS'*
          * 
          * @return bool true if user has disliked this idea, else false
          */
@@ -359,7 +363,7 @@
          * Retrieves the amount of likes for an idea
          * 
          * @param string $ideaTitle Title of the idea 
-         * @param string $datePosted Date the idea was posted, *display in datetime format e.g. 'hh:mm:ss DD-MM-YYYY' or 'YYYY-MM-DD hh:mm:ss'*
+         * @param string $datePosted Date the idea was posted, *display in datetime format e.g. 'YYYY-MM-DD HH:MM:SS'*
          * 
          * @return int Count of the number of likes for an idea
          */
@@ -373,7 +377,7 @@
          * Retrieves the amount of dislikes for an idea
          * 
          * @param string $ideaTitle Title of the idea 
-         * @param string $datePosted Date the idea was posted, *display in datetime format e.g. 'hh:mm:ss DD-MM-YYYY' or 'YYYY-MM-DD hh:mm:ss'*
+         * @param string $datePosted Date the idea was posted, *display in datetime format e.g. 'YYYY-MM-DD HH:MM:SS'*
          * 
          * @return int Count of the number of dislikes for an idea
          */
@@ -420,7 +424,7 @@
         /**
          * Retrieve all catagory tags
          * 
-         * @return array[][]|null Array of all *Categories* retrieved - each *Category* array within the array holds: [ **Name**, **Description** ]
+         * @return array[object]|null Array of all *Categories* retrieved - each *Category* object contains: [ **Name**, **Description** ]
          */
         public function getAllCategories(): ?array
         {
@@ -433,9 +437,9 @@
          * 
          * @param string $category Name of the category
          * 
-         * @return array[]|null *Category* array holds: [ **Name**, **Description** ]
+         * @return object|null *Category* object holds: [ **Name**, **Description** ]
          */
-        public function getCategory(string $category): ?array 
+        public function getCategory(string $category): ?object 
         {
             return null;
         }
@@ -445,6 +449,8 @@
          * Create a new category
          * 
          * @param $category Name of category
+         * 
+         * @return void
          */
         public function createCategory(string $category): void 
         {
@@ -488,7 +494,7 @@
          * 
          * @param int $amount Number of ideas to retrieve
          * 
-         * @return array[][]|null Array of all *Ideas* retrieved - each *Idea* array within the array holds: [  ]
+         * @return array[object]|null Array of all *Ideas* retrieved - each *Idea* object contains: [  ]
          */
         public function highestRatedIdeas(int $amount): ?array 
         {
@@ -501,7 +507,7 @@
          * 
          * @param int $amount Number of ideas to retrieve
          * 
-         * @return array[][]|null Array of all *Ideas* retrieved - each *Idea* array within the array holds: [  ]
+         * @return array[object]|null Array of all *Ideas* retrieved - each *Idea* object contains: [  ]
          */
         public function mostViewedIdeas(int $amount): ?array 
         {
@@ -514,7 +520,7 @@
          * 
          * @param int $amount Number of ideas to retrieve
          * 
-         * @return array[][]|null Array of all *Ideas* retrieved - each *Idea* array within the array holds: [  ]
+         * @return array[object]|null Array of all *Ideas* retrieved - each *Idea* object contains: [  ]
          */
         public function latestIdeas(int $amount): ?array 
         {
@@ -527,7 +533,7 @@
          * 
          * @param int $amount Number of ideas to retrieve
          * 
-         * @return array[][]|null Array of all *Comments* retrieved - each *Comment* array within the array holds: [  ]
+         * @return array[object]|null Array of all *Comments* retrieved - each *Comment* object contains: [  ]
          */
         public function latestComments(int $amount): ?array 
         {
@@ -542,7 +548,7 @@
         /**
          * Counts the number of ideas posted by each department
          * 
-         * @return array[][]|null Array of all *Department's Ideas* retrieved - each *Department Idea* array within the array holds: [ **Name**, **IdeaCount** ]
+         * @return array[object]|null Array of all *Ideas* retrieved - each *Idea* object contains: [ **Name**, **IdeaCount** ]
          */
         public function departmentIdeas(): ?array 
         {
@@ -553,7 +559,7 @@
         /**
          * Counts the number of contributors of ideas posted by each department
          * 
-         * @return array[][]|null Array of all *Department Contributors* retrieved - each *Department Contributor* array within the array holds: [  ]
+         * @return array[object]|null Array of all *Contributors* retrieved - each *Contributor* object contains: [  ]
          */
         public function departmentIdeaContributors(): ?array 
         {
@@ -583,7 +589,7 @@
          */
         public function isAdmin(string $username) 
         {
-            return null;
+            return false;
         }
 
 
@@ -636,7 +642,7 @@
          * Edit the closure date for a forum
          * 
          * @param $forum Name of the forum
-         * @param $closure Date when no more ideas can be posted to the forum, *display in datetime format e.g. 'hh:mm:ss DD-MM-YYYY' or 'YYYY-MM-DD hh:mm:ss'*
+         * @param $closure Date when no more ideas can be posted to the forum, *display in datetime format e.g. 'YYYY-MM-DD HH:MM:SS'*
          * 
          * @return void
          */
@@ -650,7 +656,7 @@
          * Edit the final closure date for a forum
          * 
          * @param $forum Name of the forum
-         * @param $closure Date when no more comments can be posted to the forum, *display in datetime format e.g. 'hh:mm:ss DD-MM-YYYY' or 'YYYY-MM-DD hh:mm:ss'*
+         * @param $closure Date when no more comments can be posted to the forum, *display in datetime format e.g. 'YYYY-MM-DD HH:MM:SS'*
          * 
          * @return void
          */
@@ -669,7 +675,7 @@
          * 
          * @param string $search Text being searched
          * 
-         * @return array[][]|null Array of all *???* retrieved - each *???* array within the array holds: [ **???**, **???** ]
+         * @return array[object]|null Array of all *???* retrieved - each *???* object contains: [ **???**, **???** ]
          */
         public function search(string $search): ?array 
         {
