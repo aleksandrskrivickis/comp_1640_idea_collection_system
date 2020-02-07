@@ -25,6 +25,11 @@
 |     Johan	Rodriguez Garcia	|     jr3007p@gre.ac.uk |     Engineer / Front-end
 
 # Project credentials
+
+## University Account
+st2645h
+Enterprise94
+
 ## HTTP
 http://enterprisecw.co.uk
 
