@@ -90,7 +90,7 @@
          * 
          * @param string $username Name of the user
          * 
-         * @return object|null If found, returns the Department, else null
+         * @return object|null *Department* object holds: [ **Name**, **Description**, **Closure**, **FinalClosure** ]
          */
         public function getDepartment(string $username): ?object 
         {
@@ -114,7 +114,7 @@
          * 
          * @param string $username Name of the user
          * 
-         * @return object|null If found, returns the Role, else null
+         * @return object|null *Role* object holds: [ **Name** ]
          * 
          * **All users are assoiciated to a department, except for QA Managers who not associated to any department**
          */
@@ -731,4 +731,3 @@
         }
     }
 ?>
-
