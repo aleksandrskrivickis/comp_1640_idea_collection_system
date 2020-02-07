@@ -27,8 +27,8 @@
 # Project credentials
 
 ## University Account
-st2645h
-Enterprise94
+      st2645h
+      Enterprise94
 
 ## HTTP
 http://enterprisecw.co.uk
