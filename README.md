@@ -164,12 +164,27 @@ All attended
       
 ## 07/02/2020 2-3 PM
 ### Attendance 
-      Sam Town - over video conference
+      Full attendance, Sam Town - over video conference (ideal scrum)
 
 ### Retrospective
-
+#### Tickets not closed:
+      Web Designer - Implement Design for Mobile views - Registration and Login - bug with switching from login view to registration view
+      Web Designer - Implement Design for Mobile views - Registration and Login - same bug as above
+      Scrum Master - Burndown Chart - standalone tools that come with trello fail/refuse to deliver burndown chart for free, looking for a workaround
+#### Successfully closed:
+      Product Owner - analyse project's example report, create report skeleton
+      Web Designer - Implement mobile website design sketch
+      Web Designer - Implement website design sketch
+      Database Designer - Database CRUD class
+      Build database - Sam and James
+      Engineer - Log In and Registration
+      Web Designer - Log In and Registration - 5
+      Tester - Implement Test Plan for login, registration and idea submission
+      Database Designer - Legal and Ethical research for Database Design
+      Scrum Master - Breakdown work into more detailed stories and prepare for next meeting
+      
 ### Work breakdown for next sprint
       
-### Assumptions 
-      
+### Things clarified with the customer 
+      Customer wants to see most popular posts with most popular comments on the index.php page 
       
