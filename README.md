@@ -157,3 +157,14 @@ All attended
       We have proposed two design prototypes (By Nisheeka Nynan and Nathalie), Nathalie's design was selected by the team as the most suitable one for demonstration to the custimer. - accepted
       
       
+## 07/02/2020 2-3 PM
+### Attendance 
+      Sam Town - over video conference
+
+### Retrospective
+
+### Work breakdown for next sprint
+      
+### Assumptions 
+      
+      
