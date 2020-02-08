@@ -19,10 +19,17 @@
             $username = "st2645h";
             $password = "Enterprise94";
             $database = "mdb_st2645h";
+
+            $connect = "mysql:host=" . $host . ";dbname=" . $database . ";charset=utf8";
             
             
             // Testing connection 
-            return mysqli_connect($host, $username, $password, $database) OR die("Couldn't connect to database".  mysqli_connect_errno());
+            try {
+                $this->dbc = new PDO($connect, $username, $password);
+                $this->dbc->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+            } catch (PDOException $e) {
+                echo 'Connection failed: ' . $e->getMessage();
+            }
         }
 
 
@@ -688,46 +695,86 @@
         /* =================================== DATABASE COMMANDS =================================== */
 
         /** Run SQL and return rows in a multi dimentional array */
-        private function getMultiArraySQL(string $sql): ?array 
+        private function getArrayObjectSQL(string $sql, array $fields): ?array 
         {
-            $query = mysqli_query($this->dbc, $sql);
+            try {
+                $query = $this->dbc->prepare($sql);
+                $query->execute($fields);
 
-            $array = array();
+                return $query->fetchAll(PDO::FETCH_OBJ);
 
-            while ($row = mysqli_fetch_array($query, MYSQLI_BOTH)) {
-                $array[] = $row;
+            } catch (Exception $e) {
+                echo "Caught exception: " . $e->getMessage() . "<br>";
+
+                return null;
             }
-            
-            return $array;
         }
 
 
-        /** Run SQL and return row in an array */
-        private function getArraySQL($sql): ?array 
+        /** Runs SQL and return row in an array */
+        private function getObjectSQL($sql, array $fields): ?object 
         {
-            $query = mysqli_query($this->dbc, $sql);
+            try {
+                $query = $this->dbc->prepare($sql);
+                $query->execute($fields);
 
-            return mysqli_fetch_array($query, MYSQLI_BOTH);
+                return $query->fetch(PDO::FETCH_OBJ);
+
+            } catch (Exception $e) {
+                echo "Caught exception: " . $e->getMessage() . "<br>";
+
+                return null;
+            }
         }
 
 
-        /** Run SQL and return a field */
-        private function getFieldSQL(string $sql, string $field): ?string
+        /** Runs SQL and return a field */
+        private function getFieldSQL(string $sql, array $fields, string $getField): ?string
         {
-            $query = mysqli_query($this->dbc, $sql);
-            $row = mysqli_fetch_array($query, MYSQLI_BOTH);
+            try {
+                $query = $this->dbc->prepare($sql);
+                $query->execute($fields);
+                $row = $query->fetch(PDO::FETCH_OBJ);
 
-            return $row[$field];
+                return $row->{$getField};
+
+            } catch (Exception $e) {
+                echo "Caught exception: " . $e->getMessage() . "<br>";
+
+                return null;
+            }
         }
 
 
-        /** Run SQL and check if returned a result */
-        private function doesExistSQL(string $sql) 
+        /** Runs SQL and check if returned a result */
+        private function doesExistSQL(string $sql, array $fields) 
         {
-            $query = mysqli_query($this->dbc, $sql);
-            $row = mysqli_fetch_array($query, MYSQLI_BOTH);
+            try {
+                $query = $this->dbc->prepare($sql);
+                $query->execute($fields);
 
-            return !empty($row);
+                return ($query->rowCount()) ? true : false;
+
+            } catch (Exception $e) {
+                echo "Caught exception: " . $e->getMessage() . "<br>";
+
+                return null;
+            }
+        }
+
+
+        /** Runs SQL */
+        private function runSQL(string $sql, array $fields): void 
+        {
+            try {
+                $query = $this->dbc->prepare($sql);
+                $query->execute($fields);
+
+            } catch (Exception $e) {
+                echo "Caught exception: " . $e->getMessage() . "<br>";
+
+                return;
+            }
         }
     }
 ?>
