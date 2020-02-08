@@ -397,13 +397,13 @@
         /**
          * Allows a user to like an idea
          * 
-         * @param int $ideaID
-         * @param int $userID
-         * @param bool $active When true an idea has been liked, else false
+         * @param int $username Name of the user
+         * @param string $ideaTitle Title of the idea 
+         * @param string $datePosted Date the idea was posted, *display in datetime format e.g. 'YYYY-MM-DD HH:MM:SS'*
          * 
          * @return void
          */
-        public function setLike(int $ideaID, int $userID, bool $active): void 
+        public function setLike(string $username, string $ideaTitle, string $datePosted): void 
         {
             
         }
@@ -412,13 +412,13 @@
         /**
          * Allows a user to dislike an idea
          * 
-         * @param int $ideaID
-         * @param int $userID
-         * @param bool $active When true an idea has been disliked, else false
+         * @param int $username Name of the user
+         * @param string $ideaTitle Title of the idea 
+         * @param string $datePosted Date the idea was posted, *display in datetime format e.g. 'YYYY-MM-DD HH:MM:SS'*
          * 
          * @return void
          */
-        public function setDislike(int $ideaID, int $userID, bool $active): void 
+        public function setDislike(string $username, string $ideaTitle, string $datePosted): void 
         {
             
         }
@@ -648,12 +648,12 @@
         /**
          * Edit the closure date for a forum
          * 
-         * @param $forum Name of the forum
-         * @param $closure Date when no more ideas can be posted to the forum, *display in datetime format e.g. 'YYYY-MM-DD HH:MM:SS'*
+         * @param string $forum Name of the forum
+         * @param string $closure Date when no more ideas can be posted to the forum, *display in datetime format e.g. 'YYYY-MM-DD HH:MM:SS'*
          * 
          * @return void
          */
-        public function editClosureDate($forum, $closure): void 
+        public function editClosureDate(string $forum, string $closure): void 
         {
 
         }
@@ -662,12 +662,12 @@
         /**
          * Edit the final closure date for a forum
          * 
-         * @param $forum Name of the forum
-         * @param $closure Date when no more comments can be posted to the forum, *display in datetime format e.g. 'YYYY-MM-DD HH:MM:SS'*
+         * @param string $forum Name of the forum
+         * @param string $closure Date when no more comments can be posted to the forum, *display in datetime format e.g. 'YYYY-MM-DD HH:MM:SS'*
          * 
          * @return void
          */
-        public function editFinalClosureDate($forum, $closure): void 
+        public function editFinalClosureDate(string $forum, string $closure): void 
         {
 
         }
@@ -772,9 +772,83 @@
 
             } catch (Exception $e) {
                 echo "Caught exception: " . $e->getMessage() . "<br>";
-
-                return;
             }
         }
+
+
+
+
+        /* =================================== VALIDATION =================================== */
+
+        /** Validates if a string contains only the accepted characters */
+        private function strValidation(string $var, string $varName, string $charType, $function) 
+        {
+            try { 
+                if ($charType == $this->letters) {
+                    $allowedChar = "a-z";
+                    $shouldContain = "letters";
+                } 
+                else if ($charType == $this->letterNum) {
+                    $allowedChar = "0-9a-z";
+                    $shouldContain = "letters and numbers";
+                } 
+                else if ($charType == $this->text) {
+                    $allowedChar = "0-9a-z .,!";
+                    $shouldContain = "letters and numbers";
+                } 
+                else if ($charType == $this->dateTime) {
+                    $allowedChar = "0-9 :-";
+                    $shouldContain = "a DateTime";
+                } 
+                else 
+                    throw new Exception("Validation failed!  No character type selected"); 
+
+
+                // Error if parameter contain incorrect information
+                if (preg_match("/[^$allowedChar]/i", $var))
+                    throw new Exception("Function {$function} parameter \${$varName} is attempting to pass \'{$var}\', it should only contain {$shouldContain}");
+
+                return null;
+            } 
+            catch (Exception $e) {
+                echo "Caught exception: " . $e->getMessage() . "<br>";
+
+                return $e;
+            }
+        }
+
+
+        /** Validates if variable is the correct data type */
+        private function typeValidation($var, string $varName, string $correctType, $function) 
+        {
+            try { 
+                if ($correctType == FILTER_VALIDATE_INT)
+                    $validType = "an integer";
+                else if ($correctType == FILTER_VALIDATE_BOOLEAN)
+                    $validType = "an boolean";
+                else if ($correctType == FILTER_VALIDATE_EMAIL) 
+                    $validType = "an email address";
+                else 
+                    throw new Exception("Validation failed!  No variable type selected");
+            
+
+                // Error if parameter contain incorrect data type
+                if (!filter_var($var, $correctType))
+                    throw new Exception("Function {$function} parameter \${$varName} is attempting to pass \'{$var}\', it should only contain {$validType}");
+
+                return null;
+            }
+            catch (Exception $e) {
+                echo "Caught exception: " . $e->getMessage() . "<br>";
+
+                return $e;
+            }
+        }
+
+        
+        private $letters = "letters";
+        private $letterNum = "letterNum";
+        private $text = "text";
+        private $dateTime = "DateTime";
     }
 ?>
