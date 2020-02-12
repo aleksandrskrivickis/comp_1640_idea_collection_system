@@ -2,19 +2,19 @@
     /** Connects to the database and runs SQL commands */
     class Database 
     {
-        
         private $dbc; // Database connection
         
         
         public function __construct() 
         {
-            $this->dbc = $this->Connection();
+            $this->connection();
         }
         
         
         /** Connection to the database */
         private function connection() 
         {
+            // Connection details
             $host = "mysql.cms.gre.ac.uk";
             $username = "st2645h";
             $password = "Enterprise94";
@@ -27,8 +27,9 @@
             try {
                 $this->dbc = new PDO($connect, $username, $password);
                 $this->dbc->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-            } catch (PDOException $e) {
-                echo 'Connection failed: ' . $e->getMessage();
+            } 
+            catch (PDOException $e) {
+                echo "<script> alert('ERROR \nConnection failed: ' . $e->getMessage()) </script>";
             }
         }
 
@@ -44,9 +45,37 @@
          * 
          * @return void
          */
-        public function createUser(string $username, string $password, string $email, string $role, string $department): void 
-        {
+        public function createUser(string $username, string $password, string $email, string $role, string $department): void // TESTED
+        {   
+            // Clear excess whitespace
+            $username = trim($username);
+            $password = trim($password);
+            $email = trim($email);
+            $role = trim($role);
+            $department = trim($department);
             
+            
+            // Parameter validation
+            $e1 = $this->strValidation($username, "username", $this->letterNum, __FUNCTION__);
+            $e2 = $this->strValidation($password, "password", $this->letterNum, __FUNCTION__);
+            $e3 = $this->typeValidation($email, "email", __FUNCTION__, FILTER_VALIDATE_EMAIL);
+            $e4 = $this->strValidation($role, "role", $this->letters, __FUNCTION__);
+            $e5 = $this->strValidation($department, "department", $this->letters, __FUNCTION__);
+            
+
+            // If parameters haven't thrown an error
+            if (!isset($e1) && !isset($e2) && !isset($e3) && !isset($e4) && !isset($e5)) {
+
+                $department_Sub = "SELECT IF (r.NoDepartment = 1, NULL, (SELECT d.DepartmentID FROM Department d WHERE d.Name = ?))";
+
+                $sql = "INSERT INTO User (DepartmentID, RoleID, UserName, Password, Email) 
+                        SELECT ($department_Sub), r.RoleID, ?, ?, ? FROM Role r
+                        WHERE r.Name = ?";
+
+                $this->runSQL($sql, [$department, $username, $password, $email, $role]);
+            }
+            else 
+                $this->errorMessage([$e1, $e2, $e3, $e4, $e5]);
         }
         
         
@@ -55,11 +84,28 @@
          * 
          * @param string $username Name of the user 
          * 
-         * @return bool true if username is taken, else false
+         * @return bool true if username is taken [default], else false
          */
-        public function usernameTaken(string $username) 
+        public function usernameTaken(string $username) // TESTED
         {
-            return false;
+            // Clear excess whitespace
+            $username = trim($username);
+
+
+            // Parameter validation
+            $e = $this->strValidation($username, "username", $this->letterNum, __FUNCTION__);
+                
+
+            // If parameter hasn't thrown an error
+            if (!isset($e)) {
+                $sql = "SELECT UserName FROM User WHERE UserName = ?";
+                
+                return $this->doesExistSQL($sql, [$username]);
+            }
+            else 
+                $this->errorMessage([$e]);
+            
+            return true;
         }
 
         
@@ -71,8 +117,27 @@
          * 
          * @return bool true if login sucessful, else false
          */
-        public function checkLogin(string $username, string $password) 
+        public function checkLogin(string $username, string $password) // TESTED
         {
+            // Clear excess whitespace
+            $username = trim($username);
+            $password = trim($password);
+
+
+            // Parameter validation
+            $e1 = $this->strValidation($username, "username", $this->letterNum, __FUNCTION__);
+            $e2 = $this->strValidation($password, "password", $this->letterNum, __FUNCTION__);
+
+
+            // If parameters haven't thrown an error
+            if (!isset($e1) && !isset($e2)) {
+                $sql = "SELECT UserName FROM User WHERE UserName = ? AND Password = ? AND Banned = '0' AND Removed = '0'";
+
+                return $this->doesExistSQL($sql, [$username, $password]);
+            }
+            else 
+                $this->errorMessage([$e1, $e2]);
+
             return false;
         }
 
@@ -86,9 +151,11 @@
          * 
          * @return array[object]|null Array of all *Departments* retrieved - each *Department* object contains: [ **Name**, **Description** ]
          */
-        public function getAllDepartments(): ?array 
+        public function getAllDepartments(): ?array // TESTED
         {
-            return null;
+            $sql = "SELECT Name, Description FROM Department WHERE Removed = '0' ORDER BY Name";
+            
+            return $this->getArrayObjectsSQL($sql);
         }
         
         
@@ -97,10 +164,35 @@
          * 
          * @param string $username Name of the user
          * 
-         * @return object|null *Department* object holds: [ **Name**, **Description**, **Closure**, **FinalClosure** ]
+         * @return object|null *Department* object holds: [ **Name**, **Description** ]
+         * 
+         * QA Manager's is not assigned to a department so returns an object with 'None' for both result, whereas failed searches return 'null'
          */
-        public function getDepartment(string $username): ?object 
+        public function getDepartment(string $username): ?object // TESTED
         {
+            // Clear excess whitespace
+            $username = trim($username);
+
+
+            // Parameter validation
+            $e = $this->strValidation($username, "username", $this->letterNum, __FUNCTION__);
+            
+            
+            // If parameter hasn't thrown an error
+            if (!isset($e)) {
+                $name_Sub = "IF (r.NoDepartment = 1, 'None', d.Name)";
+                $desc_Sub = "IF (r.NoDepartment = 1, 'None', d.Description)";
+                
+                $sql = "SELECT $name_Sub AS Name, $desc_Sub AS Description FROM Department d
+                        RIGHT JOIN User u ON d.DepartmentID = u.DepartmentID
+                        INNER JOIN Role r ON u.RoleID = r.RoleID
+                        WHERE u.UserName = ? AND u.Banned = '0' AND u.Removed = '0' AND  (d.Removed = 0 OR d.Removed IS NULL)";
+                
+                return $this->getObjectSQL($sql, [$username]);
+            }
+            else 
+                $this->errorMessage([$e]);
+            
             return null;
         }
 
@@ -108,11 +200,13 @@
         /**
          * Retrieves information for every role 
          * 
-         * @return array[object]|null Array of all *Roles* retrieved - each *Role* object contains: [ **Name**, **Type** ]
+         * @return array[object]|null Array of all *Roles* retrieved - each *Role* object contains: [ **Name**, **Type**, **Description** ]
          */
-        public function getAllRoles(): ?array
+        public function getAllRoles(): ?array // TESTED
         {
-            return null;
+            $sql = "SELECT Name, Type, Description FROM Role WHERE Removed = '0'";
+            
+            return $this->getArrayObjectsSQL($sql);
         }
         
         
@@ -121,12 +215,31 @@
          * 
          * @param string $username Name of the user
          * 
-         * @return object|null *Role* object holds: [ **Name** ]
+         * @return object|null *Role* object holds: [ **Name**, **Type**, **Description** ]
          * 
          * **All users are assoiciated to a department, except for QA Managers who not associated to any department**
          */
-        public function getRole(string $username): ?object 
+        public function getRole(string $username): ?object // TESTED
         {
+            // Clear excess whitespace
+            $username = trim($username);
+
+
+            // Parameter validation
+            $e = $this->strValidation($username, "username", $this->letterNum, __FUNCTION__);
+            
+
+            // If parameter hasn't thrown an error
+            if (!isset($e)) {
+                $sql = "SELECT r.Name, r.Type, r.Description FROM Role r 
+                        INNER JOIN User u ON r.RoleID = u.RoleID 
+                        WHERE u.UserName = ? AND u.Removed = '0' AND r.Removed = '0'";
+
+                return $this->getObjectSQL($sql, [$username]);
+            }
+            else 
+                $this->errorMessage([$e]);
+
             return null;
         }
 
@@ -140,9 +253,11 @@
          * 
          * @return array[object]|null Array of all *Forums* retrieved - each *Forum* object contains: [ **Name**, **Description**, **Closure**, **FinalClosure** ]
          */
-        public function getAllForums(): ?array 
+        public function getAllForums(): ?array // TESTED
         {
-            return null;
+            $sql = "SELECT Name, Description, Closure, FinalClosure FROM Forum WHERE Removed = '0' ORDER BY Name ASC";
+
+            return $this->getArrayObjectsSQL($sql);
         }
 
 
@@ -151,15 +266,38 @@
          * 
          * @param string $name Name of the forum
          * @param string $description Description of the forum
-         * @param string $closureDate Date the forum stops allow new ideas, *display in datetime format e.g. 'YYYY-MM-DD HH:MM:SS'*
+         * @param string $closureDate Date the forum stops allowing new ideas, *display in datetime format e.g. 'YYYY-MM-DD HH:MM:SS'*
          * 
          * @return void
          * 
-         * Comments will stop being allow one month after the closure date
+         * Comments will stop being allow 30 days after the closure date
          */
-        public function createForum(string $name, string $description, string $closureDate): void
+        public function createForum(string $name, string $desc, string $closureDate): void // TESTED
         {
+            // Clear excess whitespace
+            $name = trim($name);
+            $desc = trim($desc);
+            $closureDate = trim($closureDate);
+
             
+            // Parameter validation
+            $e1 = $this->strValidation($name, "name", $this->letters, __FUNCTION__);
+            $e2 = $this->strValidation($desc, "desc", $this->letterNum, __FUNCTION__);
+            $e3 = $this->strValidation($closureDate, "closureDate", $this->dateTime, __FUNCTION__);
+            
+            
+            // If parameters haven't thrown an error
+            if (!isset($e1) && !isset($e2) && !isset($e3)) {
+                
+                $closure = (new DateTime($closureDate))->format('Y-m-d H:i:s');
+                $finalClosure = (date_modify(new DateTime($closureDate), "+30 days"))->format('Y-m-d H:i:s');
+                
+                $sql = "INSERT INTO Forum (Name, Description, Closure, FinalClosure) VALUES (?, ?, ?, ?)";
+                
+                $this->runSQL($sql, [$name, $desc, $closure, $finalClosure]);
+            }
+            else 
+                $this->errorMessage([$e1, $e2, $e3]);
         }
         
 
@@ -695,16 +833,18 @@
         /* =================================== DATABASE COMMANDS =================================== */
 
         /** Run SQL and return rows in a multi dimentional array */
-        private function getArrayObjectSQL(string $sql, array $fields): ?array 
+        private function getArrayObjectsSQL(string $sql, array $fields = []): ?array 
         {
             try {
                 $query = $this->dbc->prepare($sql);
                 $query->execute($fields);
-
-                return $query->fetchAll(PDO::FETCH_OBJ);
+                $rows = $query->fetchAll(PDO::FETCH_OBJ);
+                
+                // If no rows found 
+                return ($rows == false) ? null : $rows;
 
             } catch (Exception $e) {
-                echo "Caught exception: " . $e->getMessage() . "<br>";
+                $this->errorMessage([$e]);
 
                 return null;
             }
@@ -712,16 +852,18 @@
 
 
         /** Runs SQL and return row in an array */
-        private function getObjectSQL($sql, array $fields): ?object 
+        private function getObjectSQL($sql, array $fields = []): ?object 
         {
             try {
                 $query = $this->dbc->prepare($sql);
                 $query->execute($fields);
-
-                return $query->fetch(PDO::FETCH_OBJ);
+                $row = $query->fetch(PDO::FETCH_OBJ);
+                
+                // If no row row found
+                return ($row == false) ? null : $row;
 
             } catch (Exception $e) {
-                echo "Caught exception: " . $e->getMessage() . "<br>";
+                $this->errorMessage([$e]);
 
                 return null;
             }
@@ -729,7 +871,7 @@
 
 
         /** Runs SQL and return a field */
-        private function getFieldSQL(string $sql, array $fields, string $getField): ?string
+        private function getFieldSQL(string $sql, string $getField, array $fields = []): ?string
         {
             try {
                 $query = $this->dbc->prepare($sql);
@@ -739,7 +881,7 @@
                 return $row->{$getField};
 
             } catch (Exception $e) {
-                echo "Caught exception: " . $e->getMessage() . "<br>";
+                $this->errorMessage([$e]);
 
                 return null;
             }
@@ -747,31 +889,34 @@
 
 
         /** Runs SQL and check if returned a result */
-        private function doesExistSQL(string $sql, array $fields) 
+        private function doesExistSQL(string $sql, array $fields = []) 
         {
             try {
                 $query = $this->dbc->prepare($sql);
-                $query->execute($fields);
+                $row = $query->execute($fields);
 
                 return ($query->rowCount()) ? true : false;
 
             } catch (Exception $e) {
-                echo "Caught exception: " . $e->getMessage() . "<br>";
-
+                $this->errorMessage([$e]);
+                
                 return null;
             }
         }
 
 
         /** Runs SQL */
-        private function runSQL(string $sql, array $fields): void 
+        private function runSQL(string $sql, array $fields = [], bool $countRows = false)
         {
             try {
                 $query = $this->dbc->prepare($sql);
                 $query->execute($fields);
 
+                if ($countRows)
+                    return $query->rowCount();
+
             } catch (Exception $e) {
-                echo "Caught exception: " . $e->getMessage() . "<br>";
+                $this->errorMessage([$e]);
             }
         }
 
@@ -784,21 +929,35 @@
         private function strValidation(string $var, string $varName, string $charType, $function) 
         {
             try { 
+                // Check variable is a string
+                if (!is_string($var)) {
+                    throw new Exception("Function {$function} parameter \${$varName} is attempting to validate \'{$var}\', it should be in a string format");
+                }
+                
+
+                // Set character types allow for string
                 if ($charType == $this->letters) {
-                    $allowedChar = "a-z";
-                    $shouldContain = "letters";
+                    $allowedChar = "a-z ";
+                    $shouldContain = "contain only letters";
                 } 
                 else if ($charType == $this->letterNum) {
-                    $allowedChar = "0-9a-z";
-                    $shouldContain = "letters and numbers";
+                    $allowedChar = "0-9a-z ";
+                    $shouldContain = "contain only letters and numbers";
                 } 
                 else if ($charType == $this->text) {
                     $allowedChar = "0-9a-z .,!";
-                    $shouldContain = "letters and numbers";
+                    $shouldContain = "contain only letters and numbers";
                 } 
                 else if ($charType == $this->dateTime) {
-                    $allowedChar = "0-9 :-";
-                    $shouldContain = "a DateTime";
+                    try { 
+                        new DateTime($var); // Check if can be in DateTime format
+                        
+                        $allowedChar = "0-9 :-";
+                        $shouldContain = "be a DateTime";
+                    } 
+                    catch (Exception $ee) { 
+                        throw new Exception("Function {$function}() parameter \${$varName} is attempting to pass '{$var}', it should {$shouldContain}");
+                    }
                 } 
                 else 
                     throw new Exception("Validation failed!  No character type selected"); 
@@ -806,41 +965,43 @@
 
                 // Error if parameter contain incorrect information
                 if (preg_match("/[^$allowedChar]/i", $var))
-                    throw new Exception("Function {$function} parameter \${$varName} is attempting to pass \'{$var}\', it should only contain {$shouldContain}");
-
+                    throw new Exception("Function {$function}() parameter \${$varName} is attempting to pass '{$var}', it should {$shouldContain}");
+                
                 return null;
             } 
             catch (Exception $e) {
-                echo "Caught exception: " . $e->getMessage() . "<br>";
-
                 return $e;
             }
         }
 
 
         /** Validates if variable is the correct data type */
-        private function typeValidation($var, string $varName, string $correctType, $function) 
+        private function typeValidation($var, string $varName, $function, string $correctType = null) 
         {
             try { 
-                if ($correctType == FILTER_VALIDATE_INT)
+                // Set type comparison
+                if (is_int($var)) {
                     $validType = "an integer";
-                else if ($correctType == FILTER_VALIDATE_BOOLEAN)
+                    $correctType = FILTER_VALIDATE_INT;
+                }
+                else if (is_bool($var)) {
                     $validType = "an boolean";
+                    $correctType == FILTER_VALIDATE_BOOLEAN;
+                }
                 else if ($correctType == FILTER_VALIDATE_EMAIL) 
-                    $validType = "an email address";
+                    $validType = "a valid email address";
                 else 
                     throw new Exception("Validation failed!  No variable type selected");
             
 
                 // Error if parameter contain incorrect data type
                 if (!filter_var($var, $correctType))
-                    throw new Exception("Function {$function} parameter \${$varName} is attempting to pass \'{$var}\', it should only contain {$validType}");
+                    throw new Exception("Function {$function}() parameter \${$varName} is attempting to pass '{$var}', it should contain {$validType}");
 
+                
                 return null;
             }
             catch (Exception $e) {
-                echo "Caught exception: " . $e->getMessage() . "<br>";
-
                 return $e;
             }
         }
@@ -850,5 +1011,19 @@
         private $letterNum = "letterNum";
         private $text = "text";
         private $dateTime = "DateTime";
+
+
+
+        private function errorMessage(array $errorMessage): void 
+        {
+            $message = 'ERRORS'; 
+            
+            foreach ($errorMessage as $e) {
+                if (!is_null($e)) 
+                    $message = $message . '\nCaught exception: ' . $e->getMessage();
+            }
+            
+            echo '<script> alert("'.$message.'") </script>';
+        }
     }
 ?>
