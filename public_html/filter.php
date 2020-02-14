@@ -5,7 +5,7 @@
 
     // If not logged in
     if (!isset($_SESSION['username'])) {
-        // Go to login
+        header ('Location: loginreg.php');
     }
     
     require 'database.php';
@@ -53,7 +53,7 @@
         <button class = "filterlinks" onclick = "displayFilter(event, 'recentIdeas')"> Recent Ideas </button>
         <button class = "filterlinks" onclick = "displayFilter(event, 'recentComments')"> Recent Comments </button>
 					
-	</div>
+    </div>
 	
     
     <?php $displayNum = 5; ?>
@@ -121,9 +121,9 @@
 
 	<script>
 		/* Reference 
-			* All tab code from w3schools
-			* Link: https://www.w3schools.com/howto/howto_js_tabs.asp
-			*/
+		 * All tab code from w3schools
+		 * Link: https://www.w3schools.com/howto/howto_js_tabs.asp
+		 */
 		
 		function displayFilter(evt, member) {
 			var i, tabcontent, tablinks;
