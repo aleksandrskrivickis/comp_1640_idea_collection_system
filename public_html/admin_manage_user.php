@@ -2,10 +2,11 @@
 #Include Decision function that checks if user is still logged in and dericts him to log in form, registration or main
 ?>
 
+
 <!DOCTYPE html>
 <html>
 <head>
-<title>Admin</title>
+<title>Manage Users</title>
 
   <!-- Required meta tags -->
   <meta charset="utf-8">
@@ -44,12 +45,12 @@
   <div class="collapse navbar-collapse" id="navbarSupportedContent">
     <ul class="navbar-nav mr-auto">
       <li class="nav-item active">
-        <button class="btn btn-light my-2 my-sm-0" type="submit">Forums</button>
+          <a href="forum.html"><button class="btn btn-light my-2 my-sm-0" type="submit">Forums</button></a>
       </li>
     </ul>
       
     <form class="form-inline my-2 my-lg-0">
-      <button style="margin:40px;" class="btn btn-light my-2 my-sm-0" type="Submit">Admin area</button>
+        <a href="admin.html"><button style="margin:40px;" class="btn btn-light my-2 my-sm-0" type="Submit">Admin area</button></a>
 
       </form> 
       
@@ -63,56 +64,61 @@
        
     
     <!--PAGE TITLE/HEADER--> 
-    <h1> Admin Area</h1>
-    
+    <h1> Manage users</h1>
+     <br>
     <form><!-- form action="" method="post"-->
-
-        <!-- FIRST FORUM -->
-    <div class="pad"> 
-    <div class="jumbotron jumbotron-fluid">
-    <div class="container">
-        <div class="row"> 
-        <div class="col-9">
-        <h2 class="display-4">Manage System Users</h2>
-       </div> 
-    <br> 
-      
+        
+        <div class="container">           
+  <table class="table table-bordered">
+    <thead>
+      <tr>
+        <th>UserID</th>  
+        <th>Username</th>
+        <th>Name</th>
+        <th>Email</th>
+          <th>Password</th>
+          <th>Edit</th>
+          <th>Delete</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>000998889</td>
+        <td>John</td>
+        <td>Doe</td>
+        <td>john@example.com</td>
+        <td>password</td>  
+        <td>Edit</td>
+        <td>Delete</td>
+      </tr>
+      <tr>
+        <td>939393993</td>  
+        <td>Mary</td>
+        <td>Moe</td>
+        <td>mary@example.com</td>
+        <td>password</td>
+        <td>Edit</td>
+        <td>Delete</td>
+      </tr>
+      <tr>
+        <td>009993333</td>  
+        <td>July</td>
+        <td>Dooley</td>
+        <td>july@example.com</td>
+        <td>Password</td>
+        <td>Edit</td>
+        <td>Delete</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+        
+    </form>
     
-    <div class="col-3">
-        <a href="admin_manage_user.php"><button type="button" class="seeforum">Manage Users</button></a> 
-    </div>
-            
-        </div>
-            </div>
-                </div>   
-        
-        <br>
-       <!-- SECOND FORUM -->    
-      
-    <div class="jumbotron jumbotron-fluid">
-    <div class="container">
-        <div class="row"> 
-        <div class="col-9">
-            <h2 class="display-4">Manage Forums</h2>
-       </div> 
-    <br> 
-      
-    
-    <div class="col-3">
-        <a href="forum.html"><button type="button" class="seeforum">Manage Forum</button></a> 
-    </div>
-            
-        </div>
-            </div>
-                </div>                
-                    
-        
-        
-        </div>
-        
-          </form>
     </body>
+    
 </html>
+
 
 <?php
 include_once "./footer.php";
