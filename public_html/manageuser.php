@@ -172,7 +172,7 @@
 $dbc = mysqli_connect($host, $username, $password, $database) OR die("couldn't connect to database".  mysqli_connect_errno());
 
         
-$result = mysqli_query($dbc, " SELECT UserID, u.UserName, u.Password, d.Name AS dName, Email, r.Name AS rName, Banned, u.Removed  FROM User u LEFT Join Department d ON u.DepartmentID=d.DepartmentID INNER join Role r on u.RoleID=r.RoleID ORDER BY u.UserID ASC");       
+$result = mysqli_query($dbc, " SELECT UserID, u.UserName, d.Name AS dName, Email, r.Name AS rName, Banned, u.Removed  FROM User u LEFT Join Department d ON u.DepartmentID=d.DepartmentID INNER join Role r on u.RoleID=r.RoleID ORDER BY u.UserID ASC");       
                       
 ?>
 
@@ -182,7 +182,7 @@ $result = mysqli_query($dbc, " SELECT UserID, u.UserName, u.Password, d.Name AS 
                         <th>Email</th>
                         <th>Department</th>
                         <th>Role</th>
-                        <th> Password</th>
+                 
                         <th>Status</th>
                         <th>Edit</th>
                     </tr>
@@ -205,7 +205,7 @@ $result = mysqli_query($dbc, " SELECT UserID, u.UserName, u.Password, d.Name AS 
                           
                             <td><?php echo $row['rName'];?></td>
                            
-                            <td><?php echo $row['Password'];?></td>
+                            
                            
                             <!-- Can be changed to block or remove -->
                             <td><?php 
