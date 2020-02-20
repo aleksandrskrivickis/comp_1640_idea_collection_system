@@ -43,9 +43,9 @@
          * @param string $password Password of the user
          * @param string $email Email address of the user
          * 
-         * @return void
+         * @return bool returns true when successful, else false
          */
-        public function createUser(string $username, string $password, string $email, string $role, string $department): void // TESTED
+        public function createUser(string $username, string $password, string $email, string $role, string $department) // TESTED
         {   
             // Clear excess whitespace
             $username = trim($username);
@@ -72,7 +72,7 @@
                         SELECT ($department_Sub), r.RoleID, ?, ?, ? FROM Role r
                         WHERE r.Name = ?";
 
-                $this->runSQL($sql, [$department, $username, $password, $email, $role]);
+                $this->doesExistSQL($sql, [$department, $username, $password, $email, $role]);
             }
             else 
                 $this->errorMessage([$e1, $e2, $e3, $e4, $e5]);
@@ -1346,39 +1346,203 @@
 
 
 
-        /* =================================== STATISTICS =================================== */
+        /* =================================== REPORTS =================================== */
 
         /**
          * Counts the number of ideas posted by each department
          * 
+         * @param string $department [optional] Name of the department
+         * 
          * @return array[object]|null Array of all *Ideas* retrieved - each *Idea* object contains: [ **Name**, **IdeaCount** ]
          */
-        public function getDepartmentIdeas(): ?array // TESTED
+        public function getDepartmentIdeas(string $department = null): ?array // TESTED
         {
-            // Number of ideas made by each Department
-            // Percentage of ideas by each Department
-            // Number of contributors within each Department
-
-            $department_Sub = "SELECT COUNT(d2.Name) FROM Department d2 
-                               INNER JOIN User u ON d2.DepartmentID = u.DepartmentID 
+            // Empty array
+            $fields = [];
+            
+            
+            // If not null
+            if (!is_null($department)) {
+                $departmentSQL .= "WHERE d.Name = ?";
+                $fields[] = $department;
+            }
+            
+            
+            $department_Sub = "SELECT COUNT(ds.Name) FROM Department ds 
+                               INNER JOIN User u ON ds.DepartmentID = u.DepartmentID 
                                INNER JOIN Idea i ON u.UserID = i.UserID 
-                               WHERE d2.DepartmentID IN (d1.DepartmentID) 
-                               GROUP BY d2.DepartmentID";
+                               INNER JOIN Forum f ON i.ForumID = f.ForumID 
+                               WHERE ds.DepartmentID IN (d.DepartmentID)
+                               GROUP BY ds.DepartmentID";
 
-            $sql = "SELECT d1.Name, ($department_Sub) AS IdeaCount FROM Department d1";
+            $sql = "SELECT d.Name, ($department_Sub) AS IdeaCount FROM Department d $departmentSQL";
 
-            return $this->getArrayObjectsSQL($sql);
+            return $this->getArrayObjectsSQL($sql, $fields);
+        }
+        
+        
+        /** 
+         * Gets the percentage of the number of ideas posted by each department
+         * 
+         * @param string $department [optional] Name of the department
+         * 
+         * @return array[object]|null Array of all *Ideas* retrieved - each *Idea* object contains: [ **Name**, **IdeaPercent** ]
+         */
+        public function getPercentageIdeas(string $department = null): ?array 
+        {
+            // Empty array
+            $fields = [];
+            
+            
+            // If not null
+            if (!is_null($department)) {
+                $departmentSQL = "WHERE d.Name = ?";
+                $fields[] = $department;
+            }
+            
+            
+            
+            $percent_Sub = "(COUNT(ds.Name)) / (SELECT COUNT(it.Title) FROM Idea it) * 100";
+            
+            $department_Sub = "SELECT ($percent_Sub) FROM Department ds 
+                               INNER JOIN User u ON ds.DepartmentID = u.DepartmentID 
+                               INNER JOIN Idea i ON u.UserID = i.UserID 
+                               INNER JOIN Forum f ON i.ForumID = f.ForumID 
+                               WHERE ds.DepartmentID IN (d.DepartmentID) 
+                               GROUP BY ds.DepartmentID";
+
+            $sql = "SELECT d.Name, ($department_Sub) AS IdeaPercent FROM Department d $departmentSQL";
+
+            return $this->getArrayObjectsSQL($sql, $fields);
         }
 
 
         /**
          * Counts the number of contributors of ideas posted by each department
          * 
-         * @return array[object]|null Array of all *Contributors* retrieved - each *Contributor* object contains: [  ]
+         * @param string $department [optional] Name of the department
+         * 
+         * @return array[object]|null Array of all *Ideas* retrieved - each *Idea* object contains: [ **Name**, **UserCount** ]
          */
-        public function departmentIdeaContributors(): ?array 
+        public function getDepartmentContributors(string $department = null): ?array 
         {
-            return null;
+            // Empty array
+            $fields = [];
+            
+            
+            // If not null
+            if (!is_null($department)) {
+                $departmentSQL .= "WHERE d.Name = ?";
+                $fields[] = $department;
+            }
+            
+            
+            
+            $department_Sub = "SELECT COUNT(DISTINCT u.UserName) FROM Department ds 
+                               INNER JOIN User u ON ds.DepartmentID = u.DepartmentID 
+                               INNER JOIN Idea i ON u.UserID = i.UserID 
+                               INNER JOIN Forum f ON i.ForumID = f.ForumID 
+                               WHERE ds.DepartmentID IN (d.DepartmentID) 
+                               GROUP BY ds.DepartmentID";
+
+            $sql = "SELECT d.Name, ($department_Sub) AS UserCount FROM Department d $departmentSQL";
+
+            return $this->getArrayObjectsSQL($sql, $fields);
+        }
+        
+        
+        /**
+         * Get all ideas with no comments
+         * 
+         * @param string $department [optional] Name of the department
+         * 
+         * @return array[object]|null Array of all *Ideas* retrieved - each *Idea* object contains: [ **UserName**, **Title**, **DatePosted** ]
+         */
+        public function getIdeasWithNoComments(string $department = null): ?array
+        {
+            // Empty array
+            $fields = [];
+            
+            
+            // If not null
+            if (!is_null($department)) {
+                $departmentSQL = "d.Name = ? AND";
+                $fields[] = $department;;
+            }
+            
+            
+            $sql = "SELECT u.UserName, i.Title, i.DatePosted FROM Idea i 
+                    INNER JOIN User u ON i.UserID = u.UserID 
+                    INNER JOIN Department d ON u.DepartmentID = d.DepartmentID 
+                    INNER JOIN Forum f ON i.ForumID = f.ForumID 
+                    WHERE $departmentSQL i.IdeaID NOT IN (SELECT c.IdeaID FROM Comment c)
+                    ORDER BY i.DatePosted DESC";
+
+            return $this->getArrayObjectsSQL($sql, $fields);
+        }
+        
+        
+        /**
+         * Get all ideas that where posted anonymously
+         * 
+         * @param string $department [optional] Name of the department
+         * 
+         * @return array[object]|null Array of all *Ideas* retrieved - each *Idea* object contains: [ **UserName**, **Title**, **IdeaText**, **DatePosted**, **ViewCounter**, **Removed** ]
+         */
+        public function getAnonymousIdeas(string $department = null): ?array 
+        {
+            
+            // Empty array
+            $fields = [];
+            
+            
+            // If not null
+            if (!is_null($department)) {
+                $departmentSQL .= "d.Name = ? AND";
+                $fields[] = $department;
+            }
+            
+            
+            $sql = "SELECT u.UserName, i.Title, i.IdeaText, i.DatePosted, i.ViewCounter, i.Removed FROM Idea i 
+                    INNER JOIN User u ON i.UserID = u.UserID 
+                    INNER JOIN Department d ON u.DepartmentID = d.DepartmentID 
+                    INNER JOIN Forum f ON i.ForumID = f.ForumID 
+                    WHERE $departmentSQL i.Anonymous = '1' 
+                    ORDER BY i.DatePosted DESC";
+
+            return $this->getArrayObjectsSQL($sql, $fields);
+        }
+        
+        
+        /**
+         * Gets all comments which were posted anonymously
+         * 
+         * @param string $department [optional] Name of the department
+         * 
+         * @return array[object]|null Array of all *Ideas* retrieved - each *Idea* object contains: [ **UserName**, **IdeaTitle**, **IdeaDatePosted**, **CommentText**, **DatePosted**, **Removed** ]
+         */
+        public function getAnonymousComments(string $department = null): ?array 
+        {
+            // Empty array
+            $fields = [];
+            
+            
+            // If not null
+            if (!is_null($department)) {
+                $departmentSQL .= "d.Name = ? AND";
+                $fields[] = $department;
+            }
+            
+            
+            $sql = "SELECT u.UserName, i.Title AS IdeaTitle, i.DatePosted AS IdeaDatePosted, c.CommentText, c.DatePosted, c.Removed FROM Comment c 
+                    INNER JOIN User u ON c.UserID = u.UserID 
+                    INNER JOIN Idea i ON c.IdeaID = i.IdeaID 
+                    INNER JOIN Department d ON u.DepartmentID = d.DepartmentID 
+                    INNER JOIN Forum f ON i.ForumID = f.ForumID 
+                    WHERE $departmentSQL c.Anonymous = '1' 
+                    ORDER BY i.DatePosted DESC";
+
+            return $this->getArrayObjectsSQL($sql, $fields);
         }
 
 
