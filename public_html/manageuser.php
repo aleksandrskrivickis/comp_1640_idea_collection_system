@@ -172,7 +172,7 @@
 $dbc = mysqli_connect($host, $username, $password, $database) OR die("couldn't connect to database".  mysqli_connect_errno());
 
         
-$result = mysqli_query($dbc, " SELECT UserID, u.UserName, d.Name AS dName, Email, r.Name AS rName, Banned, u.Removed  FROM User u LEFT Join Department d ON u.DepartmentID=d.DepartmentID INNER join Role r on u.RoleID=r.RoleID ORDER BY u.UserID ASC");       
+$result = mysqli_query($dbc, " SELECT UserID, u.UserName,u.Password, d.Name AS dName, Email, r.Name AS rName, Banned, u.Removed  FROM User u LEFT Join Department d ON u.DepartmentID=d.DepartmentID INNER join Role r on u.RoleID=r.RoleID ORDER BY u.UserID ASC");       
                       
 ?>
 
@@ -182,7 +182,7 @@ $result = mysqli_query($dbc, " SELECT UserID, u.UserName, d.Name AS dName, Email
                         <th>Email</th>
                         <th>Department</th>
                         <th>Role</th>
-                 
+                 <th>Password</th>
                         <th>Status</th>
                         <th>Edit</th>
                     </tr>
@@ -204,7 +204,7 @@ $result = mysqli_query($dbc, " SELECT UserID, u.UserName, d.Name AS dName, Email
                             <td><?php echo $row['dName'];?></td>
                           
                             <td><?php echo $row['rName'];?></td>
-                           
+                         <td><?php echo $row['Password'];?></td>
                             
                            
                             <!-- Can be changed to block or remove -->
@@ -236,11 +236,11 @@ $result = mysqli_query($dbc, " SELECT UserID, u.UserName, d.Name AS dName, Email
                     if(isset($_POST["Edit".$i])){
                         
                         echo "<div class='form-popup' id='myForm'>";
-                        echo "<form action='' class='form-container'>";
+                       echo "<form method ='post'> ";
                         echo "<h1>".$row['UserName']."</h1>";
   
                         echo "<label for='banned'><b>Banned</b></label>";
-                        echo "<select id='Banned'>";
+                        echo "<select id='Banned' name='Banned'>";
 
                         if($row['Banned'] == 1)
                         {
@@ -255,33 +255,86 @@ $result = mysqli_query($dbc, " SELECT UserID, u.UserName, d.Name AS dName, Email
                         
                         echo "</select>";
                         
-echo "<input type='submit' id=' ".$row['UserID']."' name='pwdReset'".$i."' value='Reset'>";
-echo    "<button type='submit' class='btn'>Submit</button>";
+echo "<input type='submit' id='".$row['UserID']."' name='pwdReset' value='Reset'  >";
+echo    "<input type='submit' id='".$row['UserID']."' name='EditSubmit'".$i." class='btn' />";
 echo    "<button type='button' class='btn cancel' onclick='closeForm()'>Close</button>";
-echo  "</form>";
-echo   "</div>";        
-}?>
+echo    "</form>";
+echo   "</div>";    
+                        
+}
+                            
+                            
+                      
+                            
+                            ?>
+                         
+                        <?php
+                         if(isset($_POST["pwdReset"]))
+                         {  
+                           
+                       echo $_POST["id".$i];
+                          $check = "UPDATE User SET Password = 'The Witcher 2' WHERE UserID = '".$_POST['id'.$i]."'";  
+                        
+                         if ($dbc->query($check) === TRUE)
+                         {
+                         echo "<meta http-equiv='refresh' content='0'>";
+                             
+                         }
+                         else 
+                         {
+                                  
+                        echo "<script> alert('Error updating record: " . $dbc->error . "')</script>";
+                         } 
+                
+                        }          
+                        
+                        ?>
+                            
+                            
+                            <?php
+                            if(isset($_POST["EditSubmit"]))
+                            {
+                                
+                               $BannedChecker = $_POST['Banned'];
+                                if ($BannedChecker == 'areBanned'){
+                                    $BanNum = 1;
+                                 
+                                }
+                                if($BannedChecker == 'notBanned'){
+                                    $BanNum = 0;
+                                  
+                                } 
+                                
+                               
+               $check = "UPDATE User SET Banned = '".$BanNum."' WHERE UserID = '".$_POST['id'.$i]."'";
+                      if ($dbc->query($check) === TRUE)
+                         {
+                         echo "<meta http-equiv='refresh' content='0'>";
+                         }
+                         else 
+                         {
+                                 echo 'Test'; 
+                 //       echo "<script> alert('Error updating record: " . $dbc->error . "')</script>";
+                         } 
+                                
+                                
+                                // update user, if banned, unbanned, or deleted, if already deleted then 
+                               // cannot change
+                                
+                            }
+                            
+                            
+                            
+                            ?>
                             
                             
                     </form>
                     </tr>
-
-                    <?php 
-                    if(isset($_POST["pwdReset".$i]))
-                    {       
-                        echo $_POST["id".$i];
-$check = "UPDATE User SET Password = 'The Witcher 3' WHERE UserID = '".$_POST['id'.$i]."'";  
-                        
-                         if ($dbc->query($check) === TRUE)
-                         {
-                         echo "<script> alert('Record updated successfully')</script>";
-                         }
-                         else 
-                         {
-                         echo "<script> alert('Error updating record: " . $dbc->error . "')</script>";
-                         } 
-                        echo header('Refresh: 0;');
-                        }?>
+                   
+                       
+                     
+                   
+                   
 
                         <?php $i++; endwhile;?>
                  
