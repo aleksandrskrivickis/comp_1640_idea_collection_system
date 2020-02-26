@@ -1,5 +1,6 @@
 <?php
 #Include Decision function that checks if user is still logged in and dericts him to log in form, registration or main
+//READ COMMIT CHANGE COMMENT
 ?>
 
 
