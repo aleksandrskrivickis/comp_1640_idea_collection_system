@@ -1,6 +1,11 @@
 <?php 
 include('server.php');
 $register = new Database();
+session_start();
+if(isset($_SESSION['username'])){
+     header("Location: forum.php");
+}
+
 ?>
 <!DOCTYPE html>
 <html>
