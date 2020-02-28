@@ -1,5 +1,14 @@
 <?php
-#Include Decision function that checks if user is still logged in and dericts him to log in form, registration or main
+session_start();
+
+    //setting the variable to the already assigned session
+  $username = $_SESSION['username'];
+include('database.php');
+$lastLog = new Database();
+
+     
+    
+
 ?>
 
 
@@ -36,35 +45,30 @@
 
 <!--NAVIGATION BAR-->
   <!-- Image and text -->
-    <nav class="navbar navbar-expand-lg navbar-dark" style="background-color: #036DA1;">
-  <a class="navbar-brand" href="#">Logo</a>
-  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-    <span class="navbar-toggler-icon"></span>
-  </button>
+<div id="nav-placeholder">
 
-  <div class="collapse navbar-collapse" id="navbarSupportedContent">
-    <ul class="navbar-nav mr-auto">
-      <li class="nav-item active">
-        <button class="btn btn-light my-2 my-sm-0" type="submit">Forums</button>
-      </li>
-    </ul>
-      
-    <form class="form-inline my-2 my-lg-0">
-      <button style="margin:40px;" class="btn btn-light my-2 my-sm-0" type="Submit">Admin area</button>
+</div>
 
-      </form> 
-      
-    <form class="form-inline my-2 my-lg-0">
-      <button class="btn btn-light my-2 my-sm-0" type="submit">Sign out</button>
-    </form>
-      
-   
-  </div>
-</nav>
+<script>
+$(function(){
+  $("#nav-placeholder").load("nav_bar.php");
+});
+</script>
+       
        
     
     <!--PAGE TITLE/HEADER--> 
     <h1> Select a Forum</h1>
+    
+    <?php echo '<p>Welcome ' . $username . '<p>';
+        $time = $lastLog->getLastLogin($username);
+            
+          echo  'Last Logged in '. $time ;
+     
+    
+    
+    ?>
+
     
     <form><!-- form action="" method="post"-->
 
