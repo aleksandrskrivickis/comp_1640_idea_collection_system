@@ -1,6 +1,6 @@
 <?php
 session_start();
-
+$username = $_SESSION['username'];
 ?>
 
 <nav class="navbar navbar-expand-lg navbar-dark" style="background-color: #036DA1;">
