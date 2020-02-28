@@ -1,6 +1,9 @@
 <?php
+include('database.php');
+$admin = new Database();
 session_start();
 $username = $_SESSION['username'];
+
 ?>
 
 <nav class="navbar navbar-expand-lg navbar-dark" style="background-color: #036DA1;">
@@ -18,10 +21,26 @@ $username = $_SESSION['username'];
       </li>
     </ul>
       
-    <form class="form-inline my-2 my-lg-0" action="admin_panel.php">
-      <button style="margin:40px;" class="btn btn-light my-2 my-sm-0" type="Submit">Admin area</button>
-
-      </form> 
+     
+      
+      
+      <?php
+      //Checks if user is an admin
+      
+      $user = $admin->isAdmin($username);
+      
+      if($user){
+        echo '<form class="form-inline my-2 my-lg-0" action="admin_panel.php">';
+        echo '<button style="margin:40px;" class="btn btn-light my-2 my-sm-0" type="Submit">Admin area</button>';
+        echo '</form>';
+        }
+      else {
+          
+      }
+      
+      
+            ?>
+      
       
       
       
