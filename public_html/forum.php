@@ -5,7 +5,7 @@ session_start();
   $username = $_SESSION['username'];
 include('database.php');
 $lastLog = new Database();
-
+$time = $_SESSION['timeStamp'];
      
     
 
@@ -61,10 +61,11 @@ $(function(){
     <h1> Select a Forum</h1>
     
     <?php echo '<p>Welcome ' . $username . '<p>';
-        $time = $lastLog->getLastLogin($username);
+        $times = $lastLog->setLastLogin($username);
             
           echo  'Last Logged in '. $time ;
-     
+    
+   
     
     
     ?>

@@ -69,8 +69,18 @@ if (isset($_POST['login_b'])){
     
      $user = $funObj->checkLogin($username, $password);  
         if ($user) {  
+           
             // login Success  
-          array_push($logerrors,"login successful"); 
+            array_push($logerrors,"login successful"); 
+            
+            //session for logged in user
+            session_start();
+            $_SESSION['username'] = $username;
+            $time = $funObj->getLastLogin($username);    
+            $_SESSION['timeStamp'] = $time;
+            // This will need to change to 
+            header("Location: https://stuweb.cms.gre.ac.uk/~st2645h/forum.php");
+               
         } 
     else {
                 array_push($logerrors,"Wrong password or ID");
