@@ -8,5 +8,5 @@ session_start();
 //this will need to be set as a session when logging in 
 unset($_SESSION["username"]);
 
-header("Location:LoginForm.php");
+header("Location:loginreg.php");
 ?>
