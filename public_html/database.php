@@ -140,6 +140,61 @@
 
             return false;
         }
+        
+        
+        /**
+         * Gets last login date
+         * 
+         * @param string $username Name of the user
+         * 
+         * @return string|null Date of the last login, if none then null
+         */
+        public function getLastLogin(string $username): ?string 
+        {
+            // Clear excess whitespace
+            $username = trim($username);
+            
+            
+            // Parameter validation
+            $e = $this->strValidation($username, "username", $this->letterNum, __FUNCTION__);
+            
+            
+            if (!isset($e)) {
+                $sql = "SELECT LastLogin FROM User WHERE UserName = ?";
+                
+                return $this->getFieldSQL($sql, "LastLogin", [$username]);
+            }
+            else 
+                $this->errorMessage([$e]);
+                
+                
+            return null;
+        }
+        
+	    
+        /**
+         * 
+         */
+        public function setLastLogin(string $username): void 
+        {
+            // Clear excess whitespace
+            $username = trim($username);
+            
+            
+            // Parameter validation
+            $e = $this->strValidation($username, "username", $this->letterNum, __FUNCTION__);
+            
+            
+            if (!isset($e)) {
+                $date = (new DateTime())->format('Y-m-d H:i:s');
+                
+                $sql = "UPDATE User SET LastLogin = ? WHERE UserName = ?";
+                
+                $this->runSQL($sql, [$date, $username]);
+            }
+            else 
+                $this->errorMessage([$e]);
+        }
 
 
 
