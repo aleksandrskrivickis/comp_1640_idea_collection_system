@@ -124,30 +124,16 @@
 
     <!--NAVIGATION BAR-->
     <!-- Image and text -->
-    <nav class="navbar navbar-expand-lg navbar-dark" style="background-color: #036DA1;">
-        <a class="navbar-brand" href="#">Logo</a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-    <span class="navbar-toggler-icon"></span>
-  </button>
+<div id="nav-placeholder">
 
-        <div class="collapse navbar-collapse" id="navbarSupportedContent">
-            <ul class="navbar-nav mr-auto">
-                <li class="nav-item active">
-                    <a href="forum.html"><button class="btn btn-light my-2 my-sm-0" type="submit">Forums</button></a>
-                </li>
-            </ul>
+</div>
 
-            <form class="form-inline my-2 my-lg-0">
-                <a href="admin.html"><button style="margin:40px;" class="btn btn-light my-2 my-sm-0" type="Submit">Admin area</button></a>
-
-            </form>
-
-            <form class="form-inline my-2 my-lg-0">
-                <button class="btn btn-light my-2 my-sm-0" type="submit">Sign out</button>
-            </form>
-
-        </div>
-    </nav>
+<script>
+$(function(){
+  $("#nav-placeholder").load("nav_bar.php");
+});
+</script>
+       
 
 
     <!--PAGE TITLE/HEADER-->
@@ -182,7 +168,6 @@ $result = mysqli_query($dbc, " SELECT UserID, u.UserName,u.Password, d.Name AS d
                         <th>Email</th>
                         <th>Department</th>
                         <th>Role</th>
-                 <th>Password</th>
                         <th>Status</th>
                         <th>Edit</th>
                     </tr>
@@ -204,7 +189,7 @@ $result = mysqli_query($dbc, " SELECT UserID, u.UserName,u.Password, d.Name AS d
                             <td><?php echo $row['dName'];?></td>
                           
                             <td><?php echo $row['rName'];?></td>
-                         <td><?php echo $row['Password'];?></td>
+
                             
                            
                             <!-- Can be changed to block or remove -->
