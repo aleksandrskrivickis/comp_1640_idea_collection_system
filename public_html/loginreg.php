@@ -1,4 +1,7 @@
-<?php include('server.php'); ?>
+<?php 
+include('server.php');
+$register = new Database();
+?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -59,10 +62,6 @@
             <br>
              <form action="loginreg.php" method="post">
 
-              <div class="form-group">
-                  <label>Name</label>
-                  <input type="text" name="name1" class="form-control" required>
-              </div>
 
               <div class="form-group">
                   <label>Username</label>
@@ -78,7 +77,34 @@
                   <label>Password</label>
                   <input type="password" name="password2" class="form-control" required>
               </div>
+                   <div class="form-group">
+                     
+                <label>Roles</label>
+                         <br>
+                    <select id='roles'>Roles
+                 <?php
 
+                   $user = $register->getAllRoles();
+                       foreach($user as $row){
+                        echo  '<option value="'.$row->Name.'">'.$row->Name.'</option>';
+                    }
+                 ?>
+            </select>    
+              </div>
+                <div class="form-group">
+                    <label>Department</label>
+                    <br>
+                    <select id='department'>Department
+                 <?php
+
+                   $user = $register->getAllDepartments();
+                       foreach($user as $row){
+                        echo  '<option value="'.$row->Name.'">'.$row->Name.'</option>';
+                    }
+                 ?>
+            </select>    
+              </div>
+                 
               <p><input type="checkbox" name="checkterms" value="terms">  Click here to agree to our terms and conditions </p><br>
 
               <button type="submit" class="btn btn-primary"> Register </button>
@@ -130,11 +156,6 @@
       <br>    
         <form action="loginreg.php" method="post">
       <div class="form-group">
-          <label>Name</label>
-          <input type="text" name="name1" class="form-control" required>
-      </div>
-
-      <div class="form-group">
           <label>Username</label>
           <input type="text" name="username1" class="form-control" required>
       </div>
@@ -148,7 +169,34 @@
           <label>Password</label>
           <input type="password" name="password2" class="form-control" required>
       </div>
+              <div class="form-group">
+                     
+                <label>Roles</label>
+                         <br>
+                    <select id='roles'>Roles
+                 <?php
 
+                   $user = $register->getAllRoles();
+                       foreach($user as $row){
+                        echo  '<option value="'.$row->Name.'">'.$row->Name.'</option>';
+                    }
+                 ?>
+            </select>    
+              </div>
+                <div class="form-group">
+                    <label>Department</label>
+                    <br>
+                    <select id='department'>Department
+                 <?php
+
+                   $user = $register->getAllDepartments();
+                       foreach($user as $row){
+                        echo  '<option value="'.$row->Name.'">'.$row->Name.'</option>';
+                    }
+                 ?>
+            </select>    
+              </div>
+                 
       <p><input type="checkbox" name="checkterms" value="terms">  Click here to agree to our terms and conditions </p><br>
 
 <div>
