@@ -21,12 +21,10 @@ $username = $_SESSION['username'];
       </li>
     </ul>
       
-     
-      
-      
       <?php
       //Checks if user is an admin
       
+      if(isset($_SESSION['username'])){
       $user = $admin->isAdmin($username);
       
       if($user){
@@ -36,17 +34,22 @@ $username = $_SESSION['username'];
         }
       else {
           
+        }
       }
       
+      if(isset($_SESSION['username'])){
+         echo '<form class="form-inline my-2 my-lg-0" action="logout.php">';
+         echo '<button class="btn btn-light my-2 my-sm-0" type="submit">Sign out</button>';
+         echo '</form>';
+      }
+      else {
+         echo '<form class="form-inline my-2 my-lg-0" action="loginreg.php">';
+         echo '<button class="btn btn-light my-2 my-sm-0" type="submit">Sign in</button>';
+         echo '</form>';    
+      }
+          ?>
       
-            ?>
-      
-      
-      
-      
-    <form class="form-inline my-2 my-lg-0" action="logout.php">
-      <button class="btn btn-light my-2 my-sm-0" type="submit">Sign out</button>
-    </form>
+     
       
    
   </div>
