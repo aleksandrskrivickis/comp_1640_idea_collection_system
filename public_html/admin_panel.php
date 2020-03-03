@@ -99,7 +99,7 @@
       
     
     <div class="col-3">
-        <a href="forum.html"><button type="button" class="seeforum">Manage Forum</button></a> 
+        <a href="forum.php"><button type="button" class="seeforum">Manage Forum</button></a> 
     </div>
             
         </div>
