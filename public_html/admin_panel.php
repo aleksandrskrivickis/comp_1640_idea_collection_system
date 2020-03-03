@@ -79,7 +79,7 @@
       
     
     <div class="col-3">
-        <a href="admin_manage_user.php"><button type="button" class="seeforum">Manage Users</button></a> 
+        <a href="manageuser.php"><button type="button" class="seeforum">Manage Users</button></a> 
     </div>
             
         </div>
