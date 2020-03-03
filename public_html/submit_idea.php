@@ -163,21 +163,24 @@
                 </div>
                 <div class="modal-body">
 
-                    <form> <!--form action="" method="post"-->
+                    <form action="submit_idea.php" method="post"> <!--form action="" method="post"-->
                         <h1> Submit an Idea</h1>
+                        
+                    
+                        
                         <div class="row">
                             <div class="col-6">
 
                                 <div class="row">     
                                     <div class="form-group">
                                         <label for="InputTitle">Idea Title:</label>
-                                        <input type="text" class="form-control" id="ideaTitle3">
+                                        <input type="text" name="ideatitle3" class="form-control" id="ideaTitle3">
                                     </div>
                                 </div>  
                                 
                                 <div class="row">   
                                     <p>Description:</p>    
-                                    <textarea class="form-control" id="Textarea2" rows="2" placeholder="Type here..."></textarea>     
+                                    <textarea class="form-control" name="description" id="Textarea2" rows="2" placeholder="Type here..."></textarea>     
                                 </div>     
 
 
@@ -186,7 +189,7 @@
                                     <div class="input-group mb-3">
                                         <div class="input-group-prepend">
                                             <div class="input-group-text">
-                                                <input type="checkbox" aria-label="Checkbox for following text input">
+                                                <input type="checkbox" name="ann" aria-label="Checkbox for following text input">
                                             </div>
                                         </div>
                                         <p>Submit anonymously</p>
@@ -201,14 +204,20 @@
                                 <div class="row">
                                     <div class="dropdown">
                                         <p> Select a catgeory:</p>
-                                        <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+                                      <!--  <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
                                             Category
                                         </button>
                                         <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
                                             <a class="dropdown-item" href="#">A</a>
                                             <a class="dropdown-item" href="#">B</a>
                                             <a class="dropdown-item" href="#">C</a>
-                                        </div>
+                                        </div> -->
+                                        <select name="category">
+                                            <a class="dropdown-item" href="#"><option value="A" >A</option></a>
+                                          <a class="dropdown-item" href="#"><option value="B" >B</option></a>
+                                           <a class="dropdown-item" href="#"><option value="C" >C</option></a>
+                                        </select>
+                                      <!--       </div> -->
                                     </div> 
                                 </div>
                                 <div class="row"> <br> </div>
@@ -223,14 +232,15 @@
                             </div>
                         </div>  
 
-
-                    </form>
-
-                </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                    <button type="button" class="btn btn-primary" style="background-color: #036DA1;">Submit</button>
+                    <button type="submit" class="btn btn-primary" name="sub_idea" style="background-color: #036DA1;">Submit</button>
                 </div>
+                    </form>
+
+
+                </div>
+                
             </div>
         </div>
     </div> 
