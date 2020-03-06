@@ -112,7 +112,7 @@ catch(PDOException $e)
 ?>
 <body>
 <!--NAVIGATION BAR-->
-<?php include 'navbar.php';
+<?php include 'nav_bar.php';
     
     try
     {

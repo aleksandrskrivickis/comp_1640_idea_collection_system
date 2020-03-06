@@ -17,7 +17,7 @@ if(isset($_SESSION['username'])){
 
 }else
 {
-     header("Location: https://stuweb.cms.gre.ac.uk/~st2645h/loginreg.php");
+     header("Location: loginreg.php");
 }
 ?>
 
