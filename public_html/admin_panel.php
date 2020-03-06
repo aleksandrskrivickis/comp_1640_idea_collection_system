@@ -1,5 +1,18 @@
 <?php
-#Include Decision function that checks if user is still logged in and dericts him to log in form, registration or main
+session_start();
+
+if(isset($_SESSION['username'])){
+$username = $_SESSION['username'];
+    
+    //We will need an admin cechk when loggin in to make into a session
+    //if(isset($_SESSION['admin'])){$admin = $_SESSION['admin'];}
+
+}else
+{
+     header("Location: https://stuweb.cms.gre.ac.uk/~st2645h/loginreg.php");
+}
+
+
 ?>
 
 <!DOCTYPE html>
