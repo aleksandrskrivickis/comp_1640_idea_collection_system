@@ -112,107 +112,109 @@ catch(PDOException $e)
 ?>
 <body>
 <!--NAVIGATION BAR-->
-<?php include 'nav_bar.php';
-    
-    try
-    {
-        $userid = $pdo->query('SELECT r.UserID FROM Rate r LEFT JOIN User u ON r.UserID = u.UserID WHERE u.UserName = "' . $username . '"');
-    }
-    catch (PDOException $e)
-    {
-        $output = 'Error adding a like' . $e;
-        echo $output;
-        exit();
-    }
-    foreach ($userid as $row)
-    {
-        $uid[] = array('id' => $row['UserID']);
-    }
-    foreach ($uid as $id)
-    {
-        $usID = $id['id'];
-    }
-    
-    if(isset($_POST['action']) and $_POST['action'] == 'likes')
-    {
-        try 
-    {
-        $sql = 'INSERT INTO Rate SET
-            IdeaID = :Ideaid,
-            UserID = :Userid,
-            ThumbUp = :Thumbup,
-            ThumbDown = :Thumbdown';
-        $s = $pdo->prepare($sql);
-        $s->bindValue(':Ideaid', $_POST['id']);
-        $s->bindValue(':Userid', $usID);
-        $s->bindValue(':Thumbup', 1);
-        $s->bindValue(':Thumbdown', 0);
-        $s->execute();
-    }
-    catch (PDOException $e)
-    {
-        $output = 'Error adding a like' . $e;
-        echo $output;
-        exit();
-    }
-        header("Refresh:0");
-    }
-    
-    if(isset($_POST['action']) and $_POST['action'] == 'dislikes')
-    {
-        try 
-    {
-        $sql = 'INSERT INTO Rate SET
-            IdeaID = :Ideaid,
-            UserID = :Userid,
-            ThumbUp = :Thumbup,
-            ThumbDown = :Thumbdown';
-        $s = $pdo->prepare($sql);
-        $s->bindValue(':Ideaid', $_POST['id']);
-        $s->bindValue(':Userid', $usID);
-        $s->bindValue(':Thumbup', 0);
-        $s->bindValue(':Thumbdown', 1);
-        $s->execute();
-    }
-    catch (PDOException $e)
-    {
-        $output = 'Error adding a like' . $e;
-        echo $output;
-        exit();
-    }
-        header("Refresh:0");
-    }
-    
-     if(isset($_POST['action']) and $_POST['action'] == 'comments')
-    {
-        try 
-    {
-        $sql = 'INSERT INTO Comment SET
-            IdeaID = :Ideaid,
-            UserID = :Userid,
-            CommentText = :Commenttext,
-            Anonymous = :Anonymous,
-            DatePosted = CURDATE(),
-            Removed = :Removed';
-            
-        $s = $pdo->prepare($sql);
-        $s->bindValue(':Ideaid', $_POST['id']);
-        $s->bindValue(':Userid', $usID);
-        $s->bindValue(':Commenttext', $_POST['commenttext']);
-        $s->bindValue(':Anonymous', 0);
-        $s->bindValue(':Removed', 0);
-        $s->execute();
-    }
-    catch (PDOException $e)
-    {
-        $output = 'Error adding a comment' . $e;
-        echo $output;
-        exit();
-    }
-        header("Refresh:0");
-    }
-    
-    ?>
+<?php 
+
+include 'nav_bar.php';
+
+try
+{
+	$userid = $pdo->query('SELECT r.UserID FROM Rate r LEFT JOIN User u ON r.UserID = u.UserID WHERE u.UserName = "' . $username . '"');
+}
+catch (PDOException $e)
+{
+	$output = 'Error adding a like' . $e;
+	echo $output;
+	exit();
+}
+foreach ($userid as $row)
+{
+	$uid[] = array('id' => $row['UserID']);
+}
+foreach ($uid as $id)
+{
+	$usID = $id['id'];
+}
+
+if(isset($_POST['action']) and $_POST['action'] == 'likes')
+{
+	try 
+{
+	$sql = 'INSERT INTO Rate SET
+		IdeaID = :Ideaid,
+		UserID = (SELECT UserID FROM User WHERE UserName = :UserName),
+		ThumbUp = :Thumbup,
+		ThumbDown = :Thumbdown';
+	$s = $pdo->prepare($sql);
+	$s->bindValue(':Ideaid', $_POST['id']);
+	$s->bindValue(':UserName', $username);
+	$s->bindValue(':Thumbup', 1);
+	$s->bindValue(':Thumbdown', 0);
+	$s->execute();
+}
+catch (PDOException $e)
+{
+	$output = 'Error adding a like' . $e;
+	echo $output;
+	exit();
+}
+	header("Refresh:0");
+}
+
+if(isset($_POST['action']) and $_POST['action'] == 'dislikes')
+{
+	try 
+{
+	$sql = 'INSERT INTO Rate SET
+		IdeaID = :Ideaid,
+		UserID = (SELECT UserID FROM User WHERE UserName = :UserName),
+		ThumbUp = :Thumbup,
+		ThumbDown = :Thumbdown';
+	$s = $pdo->prepare($sql);
+	$s->bindValue(':Ideaid', $_POST['id']);
+	$s->bindValue(':UserName', $username);
+	$s->bindValue(':Thumbup', 0);
+	$s->bindValue(':Thumbdown', 1);
+	$s->execute();
+}
+catch (PDOException $e)
+{
+	$output = 'Error adding a like' . $e;
+	echo $output;
+	exit();
+}
+	header("Refresh:0");
+}
+
+ if(isset($_POST['action']) and $_POST['action'] == 'comments')
+{
+	try 
+{
+	$sql = 'INSERT INTO Comment SET
+		IdeaID = :Ideaid,
+		UserID = (SELECT UserID FROM User WHERE UserName = :UserName),
+		CommentText = :Commenttext,
+		Anonymous = :Anonymous,
+		DatePosted = CURDATE(),
+		Removed = :Removed';
+		
+	$s = $pdo->prepare($sql);
+	$s->bindValue(':Ideaid', $_POST['id']);
+	$s->bindValue(':UserName', $username);
+	$s->bindValue(':Commenttext', $_POST['commenttext']);
+	$s->bindValue(':Anonymous', 0);
+	$s->bindValue(':Removed', 0);
+	$s->execute();
+}
+catch (PDOException $e)
+{
+	$output = 'Error adding a comment ' . $e;
+	echo $output;
+	exit();
+}
+	header("Refresh:0");
+}
+
+?>
     
 <h1><!--?php echo $forumname-->Temp</h1>
 
