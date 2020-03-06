@@ -1,12 +1,19 @@
 
 <?php
 session_start();
+ 
+
+if(isset($_SESSION['admin']) && ($_SESSION['admin'] != null)){
 
 if(isset($_SESSION['username'])){
-$username = $_SESSION['username'];
     
-    //We will need an admin cechk when loggin in to make into a session
-    //if(isset($_SESSION['admin'])){$admin = $_SESSION['admin'];}
+
+     $username = $_SESSION['username'];
+     $admin = $_SESSION['admin'];}
+    else {
+        header("Location: forum.php");
+                                       
+              }
 
 }else
 {

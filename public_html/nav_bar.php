@@ -28,12 +28,13 @@ $username = $_SESSION['username'];
       $user = $admin->isAdmin($username);
       
       if($user){
+          $_SESSION['admin'] = $user;
         echo '<form class="form-inline my-2 my-lg-0" action="admin_panel.php">';
         echo '<button style="margin:40px;" class="btn btn-light my-2 my-sm-0" type="Submit">Admin area</button>';
         echo '</form>';
         }
       else {
-          
+           $_SESSION['admin'] = null;
         }
       }
       
