@@ -1,5 +1,16 @@
 <?php
-#Include Decision function that checks if user is still logged in and dericts him to log in form, registration or main
+session_start();
+
+if(isset($_SESSION['username'])){
+$username = $_SESSION['username'];
+    
+    //We will need an admin cechk when loggin in to make into a session
+    //if(isset($_SESSION['admin'])){$admin = $_SESSION['admin'];}
+
+}else
+{
+     header("Location: https://stuweb.cms.gre.ac.uk/~st2645h/loginreg.php");
+}
 ?>
 
 #Adding some rtest changes
@@ -33,36 +44,18 @@
 </head>
   <body>
       
-<!--NAVIGATION BAR-->
-  <!-- Image and text -->
-    <nav class="navbar navbar-expand-lg navbar-dark" style="background-color: #036DA1;">
-  <a class="navbar-brand" href="#">Logo</a>
-  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-    <span class="navbar-toggler-icon"></span>
-  </button>
 
-  <div class="collapse navbar-collapse" id="navbarSupportedContent">
-    <ul class="navbar-nav mr-auto">
-      <li class="nav-item active">
-        <a href="forum.html"><button class="btn btn-light my-2 my-sm-0" type="submit">Forums</button></a>
-      </li>
-     <li class="nav-item active">
-        <button class="btn btn-light my-2 my-sm-0" style="margin:40px;" type="submit">QAM</button>
-      </li>
-    </ul>
-      
-    <form class="form-inline my-2 my-lg-0">
-      <a href="admin.html"><button style="margin:40px;" class="btn btn-light my-2 my-sm-0" type="Submit">Admin area</button></a>
+ <div id="nav-placeholder">
 
-      </form> 
-      
-    <form class="form-inline my-2 my-lg-0">
-      <button class="btn btn-light my-2 my-sm-0" type="submit">Sign out</button>
-    </form>
-      
-   
-  </div>
-</nav> 
+</div>
+
+<script>
+$(function(){
+  $("#nav-placeholder").load("nav_bar.php");
+});
+</script>
+     
+    
       <br><br>
       
       <h1>Forum Analytics</h1>
