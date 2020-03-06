@@ -99,27 +99,22 @@ if (isset($_POST['sub_idea'])){
     
  // will be removed when all the pages are connected
     $_SESSION['username'] = "IronSide";
-    
+    $_SESSION['forum'] = "Computing";
     
     //initialise variables
     $username = $_SESSION['username'];
     $title = $_POST['ideatitle3'];
-    $category = $_POST['category'];
+    $category = [$_POST['category']];
     $Description = $_POST['description'];
     $anonymous = $_POST['ann'];
-    $forum = "Computing";
-    $idea = "idea";
-    $now = new DateTime();
-    $dateposted = $now->format('Y-m-d h:i:s');
+    $forum = $_SESSION['forum'];
+   
+    
     
     //calling the function createIdea from the class database
-    $funObj->createIdea($idea, $title, $forum, $username, $anonymous);
+    $funObj->createIdea($Description, $title, $forum, $username, $anonymous, $category);
     
-     //calling the function createcategory from the class database
-    $funObj->createCategory($category, $Description);
-    
-     //calling the function setIdeaCategory from the class database
-    $funObj->setIdeaCategory($category,$title,$dateposted);
+   
      
 
 }
