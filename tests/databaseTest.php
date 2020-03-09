@@ -29,8 +29,9 @@
 	//$test->test_getComments();
 	//$test->test_createComment();
 	//$test->test_deleteComment();
-	/*$test->test_getDocument();*/
-	/*$test->test_uploadDocument();*/
+	//$test->test_getIdeaDocuments();
+	//$test->test_uploadDocument();
+	//$test->test_downloadDocument();
 	//$test->test_getUserEmail();
 	
 	//$test->test_liked();
@@ -66,7 +67,7 @@
 	//$test->test_editClosureDate();
 	//$test->test_editFinalClosureDate();
 	
-	/*$test->test_downloadDatabase();*/
+	//$test->test_downloadForum();
 	
     
     class Testing 
@@ -336,19 +337,46 @@
 		}
 		
 		
-		public function test_getDocument() // NOT YET TESTABLE
+		public function test_getIdeaDocuments() 
 		{
 			echo '<h3> Get Documents </h3>';
 			
-			
+			var_dump($this->db->getIdeaDocuments("Pool Table", "2020-02-01 12:00:00")); // PASSED
+			var_dump($this->db->getIdeaDocuments("Pool", "2020-02-01 12:00:00"));		// PASSED
 		}
 		
 		
-		public function test_uploadDocument() // NOT YET TESTABLE
+		public function test_uploadDocument()
 		{
-			echo '<h3> Upload Documents </h3>';
+			echo '<h3> Upload Document </h3>
 			
+			<form method="post" enctype="multipart/form-data">
+				Select document to upload:
+				<input type="file" name="doc" />
+				<input type="submit" name="submit" value="Upload" />
+			</form>';
 			
+			if (isset($_POST['submit'])) 
+				var_dump($this->db->uploadDocument($_FILES['doc'], "Pool Table", "2020-02-01 12:00:00")); // PASSED - Allow all accepted file types
+                                                                                                          // PASSED - Error all unaccepted file types
+                                                                                                          // PASSED - Accept name length under 100 char
+                                                                                                          // PASSED - Error when name length over 100 char
+                                                                                                          // PASSED - Allow files under 1 MB
+                                                                                                          // PASSED - Error file over 1 MB
+                                                                                                          // PASSED - Error no file 
+		}
+		
+		
+		public function test_downloadDocument() 
+		{
+			echo '<h3> Download Document </h3>';
+			
+			//$this->db->downloadDocument("Aqua.jpg", "Pool Table", "2020-02-01 12:00:00");             // PASSED - Downloaded image
+			//$this->db->downloadDocument("MeguminExplosion.jpg", "Pool Table", "2020-02-01 12:00:00"); // PASSED - Downloaded image
+			//$this->db->downloadDocument("Example doc.docx", "Pool Table", "2020-02-01 12:00:00");     // PASSED - Downloaded word doc
+			//$this->db->downloadDocument("Example doc.pdf", "Pool Table", "2020-02-01 12:00:00");      // PASSED - Downloaded pdf
+			//$this->db->downloadDocument("abc.txt", "Pool Table", "2020-02-01 12:00:00");              // PASSED - Downloaded empty file
+			//$this->db->downloadDocument("", "Pool Table", "2020-02-01 12:00:00");                     // PASSED - Downlaoded empty file
 		}
 		
 		
@@ -649,9 +677,11 @@
 		
 		/* DOWNLOAD */
 		
-		public function test_downloadDatabase() // NOT YET TESTABLE
+		public function test_downloadForum() // NOT YET TESTABLE
 		{
-			
+			echo '<h3> Download Forum </h3>';
+            
+            $this->db->downloadForum();
 		}
 	}
 ?>
