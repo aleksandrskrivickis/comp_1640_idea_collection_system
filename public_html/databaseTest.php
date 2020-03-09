@@ -29,12 +29,14 @@
                 $this->dbc->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
             } 
             catch (PDOException $e) {
-                echo "<script> alert('ERROR \nConnection failed: ' . $e->getMessage()) </script>";
+                echo "<script> alert('ERROR \nConnection failed: " . $e->getMessage() . "') </script>";
             }
         }
 
 
-        /* =================================== LOGIN / REGISTRATION =================================== */
+
+        
+		/* =================================== LOGIN / REGISTRATION =================================== */
 
         /**
          * Creates a new user
@@ -171,7 +173,7 @@
             return null;
         }
         
-	    
+		
         /**
          * 
          */
@@ -327,17 +329,17 @@
          * 
          * Comments will stop being allow 30 days after the closure date
          */
-        public function createForum(string $name, string $desc, string $closureDate): void // TESTED
+        public function createForum(string $name, string $description, string $closureDate): void // TESTED
         {
             // Clear excess whitespace
             $name = trim($name);
-            $desc = trim($desc);
+            $description = trim($description);
             $closureDate = trim($closureDate);
 
             
             // Parameter validation
             $e1 = $this->strValidation($name, "name", $this->letters, __FUNCTION__);
-            $e2 = $this->strValidation($desc, "desc", $this->letterNum, __FUNCTION__);
+            $e2 = $this->strValidation($description, "description", $this->letterNum, __FUNCTION__);
             $e3 = $this->strValidation($closureDate, "closureDate", $this->dateTime, __FUNCTION__);
             
             
@@ -349,7 +351,7 @@
                 
                 $sql = "INSERT INTO Forum (Name, Description, Closure, FinalClosure) VALUES (?, ?, ?, ?)";
                 
-                $this->runSQL($sql, [$name, $desc, $closure, $finalClosure]);
+                $this->runSQL($sql, [$name, $description, $closure, $finalClosure]);
             }
             else 
                 $this->errorMessage([$e1, $e2, $e3]);
@@ -480,7 +482,7 @@
          * 
          * @return void
          */
-        public function createIdea(string $idea, string $title, string $forum, string $username, bool $anonymous): void // TESTED
+        public function createIdea(string $idea, string $title, string $forum, string $username, bool $anonymous, array $categories = [], array $files = []): void // TESTED
         {
             // Clear excess whitespace
             $idea = trim($idea);
@@ -493,18 +495,32 @@
             // Parameter validation
             $e1 = $this->strValidation($forum, "forum", $this->letters, __FUNCTION__);
             $e2 = $this->strValidation($username, "username", $this->letterNum, __FUNCTION__);
-
+			
 
             // If parameters haven't thrown an error
             if (!isset($e1) && !isset($e2)) {
-
+				
+				$date = (new DateTime())->format('Y-m-d H:i:s');
+				
                 $user_Sub = "SELECT UserID FROM User WHERE UserName = ?";
                 $forum_Sub = "SELECT ForumID FROM Forum WHERE Name = ?";
 
-                $sql = "INSERT INTO Idea (UserID, ForumID, Title, IdeaText, Anonymous)
-                        VALUES (($user_Sub), ($forum_Sub), ?, ?, ?)";
+                $sql = "INSERT INTO Idea (UserID, ForumID, Title, IdeaText, DatePosted, Anonymous)
+                        VALUES (($user_Sub), ($forum_Sub), ?, ?, ?, ?)";
                 
-                $this->runSQL($sql, [$username, $forum, $title, $idea, $anonymous]);
+                $this->runSQL($sql, [$username, $forum, $title, $idea, $date, $anonymous]);
+				
+				
+				// Loop through all categories
+				foreach ($categories as $category) {
+					$this->setIdeaCategory($category, $title, $date);
+				}
+				
+				
+				// Loop through all files
+				foreach ($files as $file) {
+					$this->uploadDocument($file, $title, $date);
+				}
             }
             else 
                 $this->errorMessage([$e1, $e2]);
@@ -528,7 +544,7 @@
 
             // Parameter validation
             $e = $this->strValidation($datePosted, "datePosted", $this->dateTime, __FUNCTION__);
-
+			
 
             // If parameters haven't thrown an error
             if (!isset($e)) {
@@ -594,7 +610,7 @@
 
             // Parameter validation
             $e = $this->strValidation($datePosted, "datePosted", $this->dateTime, __FUNCTION__);
-
+			
 
             // If parameters haven't thrown an error
             if (!isset($e)) {
@@ -631,8 +647,8 @@
 
             // Parameter validation
             $e = $this->strValidation($datePosted, "datePosted", $this->dateTime, __FUNCTION__);
-
-
+			
+			
             // If parameters haven't thrown an error
             if (!isset($e)) {
 
@@ -675,10 +691,6 @@
 
             // Parameter validation
             $e1 = $this->strValidation($datePosted, "datePosted", $this->dateTime, __FUNCTION__);
-            if (!is_null($amount)) {
-                $e2 = $this->typeValidation($amount, "amount", __FUNCTION__);
-                $limit = "LIMIT $amount"; 
-            }
 			
 
             // If parameters haven't thrown an error
@@ -727,8 +739,8 @@
             // Parameter validation
             $e1 = $this->strValidation($datePosted, "datePosted", $this->dateTime, __FUNCTION__);
             $e2 = $this->strValidation($username, "username", $this->letterNum, __FUNCTION__);
-
-
+			
+			
             // If parameters haven't thrown an error
             if (!isset($e1) && !isset($e2)) {
 
@@ -765,7 +777,7 @@
             // Parameter validation
             $e = $this->strValidation($datePosted, "datePosted", $this->dateTime, __FUNCTION__);
 			
-
+			
             // If parameters haven't thrown an error
             if (!isset($e)) {
                 $date = (new DateTime($datePosted))->format('Y-m-d H:i:s');
@@ -777,18 +789,43 @@
             else 
                 $this->errorMessage([$e]);
 		}
-        
+		
         
         /**
-         * Retrieves documents post with an idea
+         * Retrieves all documents associated to an idea
          * 
          * @param string $ideaTitle Title of the idea 
-         * @param string $datePosted Date the idea was posted, *display in datetime format e.g. 'hh:mm:ss DD-MM-YYYY' or 'YYYY-MM-DD hh:mm:ss'*
+         * @param string $datePosted Date the idea was posted, *display in datetime format e.g. 'YYYY-MM-DD HH:MM:SS'*
          * 
          * @return array[object]|null Array of all *Documents* retrieved - each *Document* object contains: [  ]
          */
-        public function getDocument(string $ideaTitle, string $datePosted): ?array 
+        public function getIdeaDocuments(string $ideaTitle, string $datePosted): ?array // TESTED 
         {
+            // Clear excess whitespace
+            $ideaTitle = trim($ideaTitle);
+            $datePosted = trim($datePosted);
+
+
+            // Parameter validation
+            $e = $this->strValidation($datePosted, "datePosted", $this->dateTime, __FUNCTION__);
+			
+			
+            // If parameters haven't thrown an error
+            if (!isset($e)) {
+
+                // Can only one document be uploaded per idea?
+
+                $date = (new DateTime($datePosted))->format('Y-m-d H:i:s');
+
+                $sql = "SELECT d.Name, d.Type, d.Document, d.Size, d.Removed FROM Document d 
+						INNER JOIN Idea i ON d.IdeaID = i.IdeaID 
+						WHERE i.Title = ? AND i.DatePosted = ?";
+				
+                return $this->getArrayObjectsSQL($sql, [$ideaTitle, $date]);
+            }
+            else 
+                $this->errorMessage([$e]);
+
             return null;
         }
         
@@ -797,14 +834,134 @@
          * Upload a file
          * 
          * @param $file 
+		 * @param string $ideaTitle Title of the idea
+		 * @param string $datePosted Date the idea was posted, *display in datetime format e.g. 'YYYY-MM-DD HH:MM:SS'*
          * 
          * @return void
          */ 
-        public function uploadDocument($file): void 
+        public function uploadDocument($file, string $ideaTitle, string $datePosted) // TESTED
         {
-            
+            // Parameter validation
+            $e = $this->strValidation($datePosted, "datePosted", $this->dateTime, __FUNCTION__);
+			
+			
+			if (!isset($e)) {
+				$name = $file['name'];
+				$type = $file['type'];
+				$size = $file['size'];
+				$tmp_name = $file['tmp_name'];
+				
+				$data = file_get_contents($tmp_name);
+				
+                $date = (new DateTime($datePosted))->format('Y-m-d H:i:s');
+				
+				
+				try {
+                    // If file name longer than 100 char
+                    if (strlen($name) > 100)
+                        throw new Exception("File name too long");
+                    
+                    
+					// If file size is zero
+					if ($size == 0) 
+						throw new Exception("Select a file to upload");
+					
+					
+					// If file larger than 1 MB
+					if ($size > 1000000) 
+						throw new Exception("File too large, max size 1 MB"); 
+					
+					
+					
+					// Allowed file types
+					$allowedTypes = ['image/png', 
+									 'image/jpeg', 
+									 'image/gif', 
+									 'application/pdf', 
+									 'application/vnd.openxmlformats-officedocument.wordprocessingml.document', // Microsoft Word 
+									];
+					$accept = false;
+					
+					// Loop through file types
+					foreach ($allowedTypes as $ext) {
+						if ($type == $ext) {
+							$accept = true;
+							break;
+						}
+					}
+					
+					// If type not accepted
+					if (!$accept)
+						throw new Exception("File type is not accepted");
+					
+					
+					
+					$sql = "SELECT d.Name FROM Document d 
+							INNER JOIN Idea i ON d.IdeaID = i.IdeaID 
+							WHERE i.Title = ? AND i.DatePosted = ? AND d.Name = ?";
+				
+					// If name taken
+					if ($this->doesExistSQL($sql, [$ideaTitle, $date, $name])) 
+						throw new Exception("File already uploaded with that name");
+				}
+				catch (Exception $e) {
+					echo "<script> alert('" . $e->getMessage() . "') </script>";
+					
+					return false;
+				}
+				
+				
+				$idea_Sub = "SELECT i.IdeaID FROM Idea i WHERE i.Title = ? AND i.DatePosted = ?";
+				
+				$sql = "INSERT INTO Document (IdeaID, Name, Type, Document, Size) VALUES (($idea_Sub), ?, ?, ?, ?)";
+				
+				//$this->runSQL($sql, [$ideaTitle, $date, $name, $type, $data, $size]);
+				
+				return true;
+			}
+			else 
+                $this->errorMessage([$e]);
+			
+			
+			return false;
         }
         
+		
+		/**
+		 * Download a file linked to an idea
+		 * 
+		 * @param string $name Name of the file
+		 * @param string $ideaTitle Title of the idea
+		 * @param string $datePosted Date the idea was posted, *display in datetime format e.g. 'YYYY-MM-DD HH:MM:SS'*
+		 * 
+		 * @return void
+		 */
+		public function downloadDocument(string $name, string $ideaTitle, string $datePosted): void // TESTED
+		{
+            // Parameter validation
+            $e = $this->strValidation($datePosted, "datePosted", $this->dateTime, __FUNCTION__);
+			
+			
+			if (!isset($e)) {
+                $date = (new DateTime($datePosted))->format('Y-m-d H:i:s');
+				
+				$sql = "SELECT d.Name, d.Type, d.Document FROM Document d 
+						INNER JOIN Idea i ON d.IdeaID = i.IdeaID 
+						WHERE i.Title = ? AND i.DatePosted = ? AND d.Name = ?";
+				
+				$file = $this->getObjectSQL($sql, [$ideaTitle, $date, $name]);
+				
+				session_start();
+				$_SESSION['fileName'] = $file->Name;
+				$_SESSION['fileType'] = $file->Type;
+				$_SESSION['fileDocument'] = $file->Document;
+				
+				echo "<script> window.open('downloadFile.php', '_newtab'); </script>";
+			}
+			else 
+                $this->errorMessage([$e]);
+		}
+		
 
         /**
          * Retrieves the email address of a user
@@ -973,7 +1130,7 @@
          */
         public function setLike(string $username, string $ideaTitle, string $datePosted): void // TESTED
         {
-            $this->setRatings($username, $ideaTitle, $datePosted, true, true);
+            $this->setRatings($username, $ideaTitle, $datePosted, true, true, __FUNCTION__);
         }
         
         
@@ -988,7 +1145,7 @@
          */
         public function setDislike(string $username, string $ideaTitle, string $datePosted): void // TESTED
         {
-            $this->setRatings($username, $ideaTitle, $datePosted, false, true);
+            $this->setRatings($username, $ideaTitle, $datePosted, false, true, __FUNCTION__);
         }
 
 
@@ -1003,7 +1160,7 @@
          */
         public function unsetLike(string $username, string $ideaTitle, string $datePosted): void // TESTED
         {
-            $this->setRatings($username, $ideaTitle, $datePosted, true, false);
+            $this->setRatings($username, $ideaTitle, $datePosted, true, false, __FUNCTION__);
         }
 
 
@@ -1018,12 +1175,12 @@
          */
         public function unsetDislike(string $username, string $ideaTitle, string $datePosted): void // TESTED
         {
-            $this->setRatings($username, $ideaTitle, $datePosted, false, false);
+            $this->setRatings($username, $ideaTitle, $datePosted, false, false, __FUNCTION__);
         }
 
 
         /** Sets the rating of an idea */
-        private function setRatings(string $username, string $ideaTitle, string $datePosted, bool $like, bool $set): void 
+        private function setRatings(string $username, string $ideaTitle, string $datePosted, bool $like, bool $set, $function): void 
         {
             // Clear excess whitespace
             $username = trim($username);
@@ -1032,8 +1189,8 @@
 
 
             // Parameter validation
-            $e1 = $this->strValidation($username, "username", $this->letterNum, __FUNCTION__);
-            $e2 = $this->strValidation($datePosted, "datePosted", $this->dateTime, __FUNCTION__);
+            $e1 = $this->strValidation($username, "username", $this->letterNum, $function);
+            $e2 = $this->strValidation($datePosted, "datePosted", $this->dateTime, $function);
 
 
             // If parameters haven't thrown an error
@@ -1142,7 +1299,7 @@
          * 
          * @return void
          */
-        public function createCategory(string $category, string $desc = null): void // TESTED
+        public function createCategory(string $category, string $description = null): void // TESTED
         {
             // Clear excess whitespace
             $category = trim($category);
@@ -1150,7 +1307,7 @@
 
             // Parameter validation
             $e = $this->strValidation($category, "category", $this->letterNum, __FUNCTION__);
-
+			
 
             // If parameters haven't thrown an error
             if (!isset($e)) {
@@ -1159,7 +1316,7 @@
 
                 $sql = "INSERT INTO Category (Name, Description) VALUES (?, ?)";
 
-                $this->runSQL($sql, [$category, $desc]);
+                $this->runSQL($sql, [$category, $description]);
             }
             else 
                 $this->errorMessage([$e]);
@@ -1418,21 +1575,32 @@
             
             // If not null
             if (!is_null($department)) {
+				// Parameter validation
+				$e = $this->strValidation($category, "category", $this->letters, __FUNCTION__);
+				
                 $departmentSQL .= "WHERE d.Name = ?";
                 $fields[] = $department;
             }
             
-            
-            $department_Sub = "SELECT COUNT(ds.Name) FROM Department ds 
-                               INNER JOIN User u ON ds.DepartmentID = u.DepartmentID 
-                               INNER JOIN Idea i ON u.UserID = i.UserID 
-                               INNER JOIN Forum f ON i.ForumID = f.ForumID 
-                               WHERE ds.DepartmentID IN (d.DepartmentID)
-                               GROUP BY ds.DepartmentID";
+			
+			// If parameters haven't thrown an error
+            if (!isset($e)) {
+				$department_Sub = "SELECT COUNT(ds.Name) FROM Department ds 
+								   INNER JOIN User u ON ds.DepartmentID = u.DepartmentID 
+								   INNER JOIN Idea i ON u.UserID = i.UserID 
+								   INNER JOIN Forum f ON i.ForumID = f.ForumID 
+								   WHERE ds.DepartmentID IN (d.DepartmentID)
+								   GROUP BY ds.DepartmentID";
 
-            $sql = "SELECT d.Name, ($department_Sub) AS IdeaCount FROM Department d $departmentSQL";
+				$sql = "SELECT d.Name, ($department_Sub) AS IdeaCount FROM Department d $departmentSQL";
 
-            return $this->getArrayObjectsSQL($sql, $fields);
+				return $this->getArrayObjectsSQL($sql, $fields);
+			}
+			else 
+                $this->errorMessage([$e]);
+			
+			
+			return null;
         }
         
         
@@ -1451,24 +1619,34 @@
             
             // If not null
             if (!is_null($department)) {
+				// Parameter validation
+				$e = $this->strValidation($category, "category", $this->letters, __FUNCTION__);
+				
                 $departmentSQL = "WHERE d.Name = ?";
                 $fields[] = $department;
             }
             
             
-            
-            $percent_Sub = "(COUNT(ds.Name)) / (SELECT COUNT(it.Title) FROM Idea it) * 100";
-            
-            $department_Sub = "SELECT ($percent_Sub) FROM Department ds 
-                               INNER JOIN User u ON ds.DepartmentID = u.DepartmentID 
-                               INNER JOIN Idea i ON u.UserID = i.UserID 
-                               INNER JOIN Forum f ON i.ForumID = f.ForumID 
-                               WHERE ds.DepartmentID IN (d.DepartmentID) 
-                               GROUP BY ds.DepartmentID";
+			// If parameters haven't thrown an error
+            if (!isset($e)) {
+				$percent_Sub = "(COUNT(ds.Name)) / (SELECT COUNT(it.Title) FROM Idea it) * 100";
+				
+				$department_Sub = "SELECT ($percent_Sub) FROM Department ds 
+								   INNER JOIN User u ON ds.DepartmentID = u.DepartmentID 
+								   INNER JOIN Idea i ON u.UserID = i.UserID 
+								   INNER JOIN Forum f ON i.ForumID = f.ForumID 
+								   WHERE ds.DepartmentID IN (d.DepartmentID) 
+								   GROUP BY ds.DepartmentID";
 
-            $sql = "SELECT d.Name, ($department_Sub) AS IdeaPercent FROM Department d $departmentSQL";
+				$sql = "SELECT d.Name, ($department_Sub) AS IdeaPercent FROM Department d $departmentSQL";
 
-            return $this->getArrayObjectsSQL($sql, $fields);
+				return $this->getArrayObjectsSQL($sql, $fields);
+			}
+			else 
+                $this->errorMessage([$e]);
+			
+			
+			return null;
         }
 
 
@@ -1487,22 +1665,32 @@
             
             // If not null
             if (!is_null($department)) {
+				// Parameter validation
+				$e = $this->strValidation($category, "category", $this->letters, __FUNCTION__);
+				
                 $departmentSQL .= "WHERE d.Name = ?";
                 $fields[] = $department;
             }
             
             
-            
-            $department_Sub = "SELECT COUNT(DISTINCT u.UserName) FROM Department ds 
-                               INNER JOIN User u ON ds.DepartmentID = u.DepartmentID 
-                               INNER JOIN Idea i ON u.UserID = i.UserID 
-                               INNER JOIN Forum f ON i.ForumID = f.ForumID 
-                               WHERE ds.DepartmentID IN (d.DepartmentID) 
-                               GROUP BY ds.DepartmentID";
+			// If parameters haven't thrown an error
+            if (!isset($e)) {
+				$department_Sub = "SELECT COUNT(DISTINCT u.UserName) FROM Department ds 
+								   INNER JOIN User u ON ds.DepartmentID = u.DepartmentID 
+								   INNER JOIN Idea i ON u.UserID = i.UserID 
+								   INNER JOIN Forum f ON i.ForumID = f.ForumID 
+								   WHERE ds.DepartmentID IN (d.DepartmentID) 
+								   GROUP BY ds.DepartmentID";
 
-            $sql = "SELECT d.Name, ($department_Sub) AS UserCount FROM Department d $departmentSQL";
+				$sql = "SELECT d.Name, ($department_Sub) AS UserCount FROM Department d $departmentSQL";
 
-            return $this->getArrayObjectsSQL($sql, $fields);
+				return $this->getArrayObjectsSQL($sql, $fields);
+			}
+			else 
+                $this->errorMessage([$e]);
+			
+			
+			return null;
         }
         
         
@@ -1521,19 +1709,30 @@
             
             // If not null
             if (!is_null($department)) {
+				// Parameter validation
+				$e = $this->strValidation($category, "category", $this->letters, __FUNCTION__);
+				
                 $departmentSQL = "d.Name = ? AND";
                 $fields[] = $department;;
             }
             
-            
-            $sql = "SELECT u.UserName, i.Title, i.DatePosted FROM Idea i 
-                    INNER JOIN User u ON i.UserID = u.UserID 
-                    INNER JOIN Department d ON u.DepartmentID = d.DepartmentID 
-                    INNER JOIN Forum f ON i.ForumID = f.ForumID 
-                    WHERE $departmentSQL i.IdeaID NOT IN (SELECT c.IdeaID FROM Comment c)
-                    ORDER BY i.DatePosted DESC";
+			
+			// If parameters haven't thrown an error
+            if (!isset($e)) {
+				$sql = "SELECT u.UserName, i.Title, i.DatePosted FROM Idea i 
+						INNER JOIN User u ON i.UserID = u.UserID 
+						INNER JOIN Department d ON u.DepartmentID = d.DepartmentID 
+						INNER JOIN Forum f ON i.ForumID = f.ForumID 
+						WHERE $departmentSQL i.IdeaID NOT IN (SELECT c.IdeaID FROM Comment c)
+						ORDER BY i.DatePosted DESC";
 
-            return $this->getArrayObjectsSQL($sql, $fields);
+				return $this->getArrayObjectsSQL($sql, $fields);
+			}
+			else 
+                $this->errorMessage([$e]);
+			
+			
+			return null;
         }
         
         
@@ -1553,19 +1752,30 @@
             
             // If not null
             if (!is_null($department)) {
+				// Parameter validation
+				$e = $this->strValidation($category, "category", $this->letters, __FUNCTION__);
+				
                 $departmentSQL .= "d.Name = ? AND";
                 $fields[] = $department;
             }
             
-            
-            $sql = "SELECT u.UserName, i.Title, i.IdeaText, i.DatePosted, i.ViewCounter, i.Removed FROM Idea i 
-                    INNER JOIN User u ON i.UserID = u.UserID 
-                    INNER JOIN Department d ON u.DepartmentID = d.DepartmentID 
-                    INNER JOIN Forum f ON i.ForumID = f.ForumID 
-                    WHERE $departmentSQL i.Anonymous = '1' 
-                    ORDER BY i.DatePosted DESC";
+			
+			// If parameters haven't thrown an error
+            if (!isset($e)) {
+				$sql = "SELECT u.UserName, i.Title, i.IdeaText, i.DatePosted, i.ViewCounter, i.Removed FROM Idea i 
+						INNER JOIN User u ON i.UserID = u.UserID 
+						INNER JOIN Department d ON u.DepartmentID = d.DepartmentID 
+						INNER JOIN Forum f ON i.ForumID = f.ForumID 
+						WHERE $departmentSQL i.Anonymous = '1' 
+						ORDER BY i.DatePosted DESC";
 
-            return $this->getArrayObjectsSQL($sql, $fields);
+				return $this->getArrayObjectsSQL($sql, $fields);
+			}
+			else 
+                $this->errorMessage([$e]);
+			
+			
+			return null;
         }
         
         
@@ -1584,20 +1794,31 @@
             
             // If not null
             if (!is_null($department)) {
+				// Parameter validation
+				$e = $this->strValidation($category, "category", $this->letters, __FUNCTION__);
+				
                 $departmentSQL .= "d.Name = ? AND";
                 $fields[] = $department;
             }
             
             
-            $sql = "SELECT u.UserName, i.Title AS IdeaTitle, i.DatePosted AS IdeaDatePosted, c.CommentText, c.DatePosted, c.Removed FROM Comment c 
-                    INNER JOIN User u ON c.UserID = u.UserID 
-                    INNER JOIN Idea i ON c.IdeaID = i.IdeaID 
-                    INNER JOIN Department d ON u.DepartmentID = d.DepartmentID 
-                    INNER JOIN Forum f ON i.ForumID = f.ForumID 
-                    WHERE $departmentSQL c.Anonymous = '1' 
-                    ORDER BY i.DatePosted DESC";
+			// If parameters haven't thrown an error
+			if (!isset($e)) {
+				$sql = "SELECT u.UserName, i.Title AS IdeaTitle, i.DatePosted AS IdeaDatePosted, c.CommentText, c.DatePosted, c.Removed FROM Comment c 
+						INNER JOIN User u ON c.UserID = u.UserID 
+						INNER JOIN Idea i ON c.IdeaID = i.IdeaID 
+						INNER JOIN Department d ON u.DepartmentID = d.DepartmentID 
+						INNER JOIN Forum f ON i.ForumID = f.ForumID 
+						WHERE $departmentSQL c.Anonymous = '1' 
+						ORDER BY i.DatePosted DESC";
 
-            return $this->getArrayObjectsSQL($sql, $fields);
+				return $this->getArrayObjectsSQL($sql, $fields);
+			}
+			else 
+                $this->errorMessage([$e]);
+			
+			
+			return null;
         }
 
 
@@ -1739,6 +1960,56 @@
 		
 		
 		/**
+		 * Hide a user's ideas and comments
+		 * 
+		 * @param string $username Name of the user
+		 * 
+		 * @return void
+		 */
+		public function hideUser(string $username): void
+		{
+			$this->hiding($username, true, __FUNCTION__);
+		}
+		
+		
+		/**
+		 * Show a user's ideas and comments
+		 * 
+		 * @param string $username Name of the user
+		 * 
+		 * @return void
+		 */
+		public function unhideUser(string $username): void 
+		{
+			$this->hiding($username, false, __FUNCTION__);
+		}
+		
+		
+		/**  */
+		private function hiding(string $username, bool $hide, $function): void 
+		{
+			// Clear excess whitespace
+            $username = trim($username);
+			
+			$hide = ($hide) ? 1 : 0;
+
+
+            // Parameter validation
+            $e = $this->strValidation($username, "username", $this->letterNum, $function);
+
+
+            // If parameters haven't thrown an error
+            if (!isset($e)) {
+				$sql = "UPDATE User SET Hidden = ? WHERE UserName = ?";
+				
+				$this->runSQL($sql, [$hide, $username]);
+            }
+            else 
+                $this->errorMessage([$e]);
+		}
+		
+		
+		/**
 		 * Ban a user
          * 
          * @param string $username Name of a user
@@ -1747,19 +2018,41 @@
 		 */
 		public function banUser(string $username): void // TESTED
 		{
+			$this->banning($username, true, __FUNCTION__);
+		}
+		
+		
+		/**
+		 * Unban a user
+		 * 
+		 * @param string $username Name of the user
+		 * 
+		 * @return void
+		 */
+		public function unbanUser(string $username): void
+		{
+			$this->banning($username, false, __FUNCTION__);
+		}
+		
+		
+		/**  */
+		private function banning(string $username, bool $ban, $function): void
+		{
 			// Clear excess whitespace
             $username = trim($username);
+			
+			$ban = ($ban) ? 1 : 0;
 
 
             // Parameter validation
-            $e = $this->strValidation($username, "username", $this->letterNum, __FUNCTION__);
+            $e = $this->strValidation($username, "username", $this->letterNum, $function);
 
 
             // If parameters haven't thrown an error
             if (!isset($e)) {
-				$sql = "UPDATE User SET Banned = '1' WHERE UserName = ?";
+				$sql = "UPDATE User SET Banned = ? WHERE UserName = ?";
 				
-				$this->runSQL($sql, [$username]);
+				$this->runSQL($sql, [$ban, $username]);
             }
             else 
                 $this->errorMessage([$e]);
@@ -1775,22 +2068,7 @@
 		 */
 		public function deleteUser(string $username): void // TESTED
 		{
-			// Clear excess whitespace
-            $username = trim($username);
-
-
-            // Parameter validation
-            $e = $this->strValidation($username, "username", $this->letterNum, __FUNCTION__);
-
-
-            // If parameters haven't thrown an error
-            if (!isset($e)) {
-				$sql = "UPDATE User SET Removed = '1' WHERE UserName = ?";
-				
-				$this->runSQL($sql, [$username]);
-            }
-            else 
-                $this->errorMessage([$e]);
+			$this->removing($username, true, __FUNCTION__);
 		}
 		
 		
@@ -1803,24 +2081,33 @@
 		 */
 		public function recoverUser(string $username): void // TESTED
 		{
+			$this->removing($username, false, __FUNCTION__);
+		}
+		
+		
+		/**  */
+		private function removing(string $username, bool $remove, $function): void 
+		{
 			// Clear excess whitespace
             $username = trim($username);
+			
+			$remove = ($remove) ? 1 : 0;
 
 
             // Parameter validation
-            $e = $this->strValidation($username, "username", $this->letterNum, __FUNCTION__);
+            $e = $this->strValidation($username, "username", $this->letterNum, $function);
 
 
             // If parameters haven't thrown an error
             if (!isset($e)) {
-				$sql = "UPDATE User SET Banned = '0', Removed = '0' WHERE UserName = ?";
+				$sql = "UPDATE User SET Removed = ? WHERE UserName = ?";
 				
-				$this->runSQL($sql, [$username]);
+				$this->runSQL($sql, [$remove, $username]);
             }
             else 
                 $this->errorMessage([$e]);
 		}
-		
+
 
         /**
          * Edit the closure date for a forum
