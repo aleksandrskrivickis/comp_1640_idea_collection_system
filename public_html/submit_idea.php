@@ -1,5 +1,10 @@
 <?php
 #Include Decision function that checks if user is still logged in and dericts him to log in form, registration or main
+
+session_start();
+
+include_once('server.php');
+$db = new Database();
 ?>
 
 
@@ -31,15 +36,15 @@
     <!--NAVIGATION BAR-->
     <!-- Image and text -->
    
- <div id="nav-placeholder">
+    <div id="nav-placeholder">
 
-</div>
+    </div>
 
-<script>
-$(function(){
-  $("#nav-placeholder").load("nav_bar.php");
-});
-</script>
+    <script>
+        $(function(){
+            $("#nav-placeholder").load("nav_bar.php");
+        });
+    </script>
     
     <!--PAGE TITLE/HEADER-->    
     <h1> General wellbeing forum</h1>
@@ -52,7 +57,6 @@ $(function(){
         
         <div class="container">
             <div class="row justify-content-center">
-
 
                 <div class="col-4">
 
@@ -147,7 +151,7 @@ $(function(){
                 </div>
                 <div class="modal-body">
 
-                    <form action="submit_idea.php" method="post"> <!--form action="" method="post"-->
+                    <form action="submit_idea.php" method="post" enctype="multipart/form-data"> <!--form action="" method="post"-->
                         <h1> Submit an Idea</h1>
                         
                     
@@ -188,18 +192,13 @@ $(function(){
                                 <div class="row">
                                     <div class="dropdown">
                                         <p> Select a catgeory:</p>
-                                      <!--  <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
-                                            Category
-                                        </button>
-                                        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                                            <a class="dropdown-item" href="#">A</a>
-                                            <a class="dropdown-item" href="#">B</a>
-                                            <a class="dropdown-item" href="#">C</a>
-                                        </div> -->
                                         <select name="category">
-                                            <a class="dropdown-item" href="#"><option value="A" >A</option></a>
-                                          <a class="dropdown-item" href="#"><option value="B" >B</option></a>
-                                           <a class="dropdown-item" href="#"><option value="C" >C</option></a>
+                                            <option value="" selected disabled>Select</option>
+                                            <?php 
+                                                foreach ($db->getAllCategories() as $category) {
+                                                    echo "<option value='" . $category->Name ."'>" . $category->Name ."</option>";
+                                                }
+                                            ?>
                                         </select>
                                       <!--       </div> -->
                                     </div> 
@@ -207,38 +206,28 @@ $(function(){
                                 <div class="row"> <br> </div>
                                 <div class="row">
                                     <div class="form-group">
-                                        <label for="exampleFormControlFile1">File Upload:</label>
-                                        <input type="file" class="form-control-file" id="exampleFormControlFile1">
+                                        <label for="fileUpload">File Upload:</label>
+                                        <input type="file" class="form-control-file" id="fileUpload" name="fileUpload">
                                     </div>
-
                                 </div>
-
                             </div>
                         </div>  
 
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                    <button type="submit" class="btn btn-primary" name="sub_idea" style="background-color: #036DA1;">Submit</button>
-                </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                            <button type="submit" class="btn btn-primary" name="sub_idea" style="background-color: #036DA1;">Submit</button>
+                        </div>
                     </form>
-
-
                 </div>
-                
             </div>
         </div>
     </div> 
     
-    
-    
 </body>
-    
-    
 </html>
 
 
 
 <?php
-include_once "./footer.php";
+    include_once "./footer.php";
 ?>
-
