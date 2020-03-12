@@ -16,6 +16,6 @@ The content of the document......
 
 
 <?php
-include_once "./footer.php";
+#include_once "./footer.php";
 ?>
 
