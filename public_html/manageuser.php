@@ -167,9 +167,9 @@ $result = mysqli_query($dbc, " SELECT UserID, u.UserName,u.Password, d.Name AS d
                         
                         echo "</select>";
                         
-echo "<input type='submit' id='".$row['UserID']."' name='pwdReset' value='Reset'  >";
-echo    "<input type='submit' id='".$row['UserID']."' name='EditSubmit'".$i." class='btn' />";
-echo    "<button type='button' class='btn cancel' onclick='closeForm()'>Close</button>";
+echo "<input type='submit' class='button3' id='".$row['UserID']."' name='pwdReset' value='Reset'  >";
+echo    "<input type='submit' id='".$row['UserID']."' name='EditSubmit'".$i." class='button2' />";
+echo    "<button type='button' class='button' onclick='closeForm()'>Close</button>";
 echo    "</form>";
 echo   "</div>";    
                         
