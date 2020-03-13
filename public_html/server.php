@@ -37,7 +37,7 @@
 
             $register = $funObj->createUser($username, $password1, $email, 'Support', 'Computing');  
 
-            if($register){  
+            if(!$register){  
                 array_push($errors,"Registration Successful");
             }else{  
                 array_push($errors,"Registration Not Successful");  
