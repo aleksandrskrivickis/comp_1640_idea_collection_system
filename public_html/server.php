@@ -9,39 +9,52 @@
     
     // if the register button is clicked
 
+  
+        
     if (isset($_POST['register_b'])){
         
-        $username = $_POST['username1'];
-        $email = $_POST['email1'];
-     $password1 = $_POST['password2'];
-    $salt = "randomstringforsalt";
-   
-    $password1 = md5($salt.$password1);
+        $termsCheck = is_null($_POST['checkterms']) ? false : true;
         
-        
-        // ensure that form fields are filled properly
+        if ($termsCheck)
+        {
+            $username = $_POST['username1'];
+            $email = $_POST['email1'];
+            $password1 = $_POST['password2'];
+            $salt = "randomstringforsalt";
+
+            $password1 = md5($salt.$password1);
+
+            $role = $_POST['role'];
+            $department = $_POST['department'];
+
+            // ensure that form fields are filled properly
 
 
-        $user = $funObj->usernameTaken($username);
-        if ($user){
-            array_push($errors,"user already exists");
+            $user = $funObj->usernameTaken($username);
+            if ($user){
+                array_push($errors,"user already exists");
+            }
+
+            if(filter_var($email, FILTER_VALIDATE_EMAIL) == false){
+                array_push($errors,"invalid email");
+            }
+
+            // if there are no errors, save user to database
+
+            if (count($errors) == 0) {
+
+                //$register = $funObj->createUser($username, $password1, $email, $role, $department);  
+
+                if(!$register){  
+                    array_push($errors,"Registration Successful");
+                }else{  
+                    array_push($errors,"Registration Not Successful");  
+                } 
+            }
         }
-
-        if(filter_var($email, FILTER_VALIDATE_EMAIL) == false){
-            array_push($errors,"invalid email");
-        }
-
-        // if there are no errors, save user to database
-
-        if (count($errors) == 0) {
-
-            $register = $funObj->createUser($username, $password1, $email, 'Support', 'Computing');  
-
-            if(!$register){  
-                array_push($errors,"Registration Successful");
-            }else{  
-                array_push($errors,"Registration Not Successful");  
-            } 
+        else 
+        {
+            array_push($errors,"Terms & Conditions not accepted");
         }
     }
     
@@ -54,10 +67,9 @@
 
         $username = $_POST['username1'];
         $password = $_POST['password'];
-         $salt = "randomstringforsalt";
-   
-    $password = md5($salt.$password);
-
+        $salt = "randomstringforsalt";
+        $password = md5($salt.$password);
+        
         $user = $funObj->checkLogin($username, $password);  
         if ($user) {  
 
@@ -70,7 +82,7 @@
             $time = $funObj->getLastLogin($username);    
             $_SESSION['timeStamp'] = $time;
             // This will need to change to 
-            header("Location: https://stuweb.cms.gre.ac.uk/~st2645h/forum.php");
+            header("Location: forum.php");
 
         } 
         else {

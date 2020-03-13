@@ -92,10 +92,9 @@ if(isset($_SESSION['username'])){
                   <input type="password" name="password2" class="form-control" required>
               </div>
                    <div class="form-group">
-                     
-                <label>Roles</label>
+                       <label>Roles</label>
                          <br>
-                    <select id='roles'>Roles
+                    <select id='roles' name='role'>
                  <?php
                      
                    $user = $register->getAllRoles();
@@ -108,7 +107,7 @@ if(isset($_SESSION['username'])){
                 <div class="form-group">
                     <label>Department</label>
                     <br>
-                    <select id='department'>Department
+                    <select id='department' name='department'>
                  <?php
 
                    $user = $register->getAllDepartments();
@@ -116,7 +115,8 @@ if(isset($_SESSION['username'])){
                         echo  '<option value="'.$row->Name.'">'.$row->Name.'</option>';
                     }
                  ?>
-            </select>    
+            </select>
+                  
               </div>
                  
               <p><input type="checkbox" name="checkterms" value="terms">  Click here to agree to our terms and conditions </p><br>
@@ -183,32 +183,32 @@ if(isset($_SESSION['username'])){
           <label>Password</label>
           <input type="password" name="password2" class="form-control" required>
       </div>
-              <div class="form-group">
+      <div class="form-group">
                      
-                <label>Roles</label>
-                         <br>
-                    <select id='roles'>Roles
-                 <?php
+                    <label>Roles</label>
+                    <br>
+                    <select id='roles' name="role">
+                    <?php
 
-                   $user = $register->getAllRoles();
-                       foreach($user as $row){
-                        echo  '<option value="'.$row->Name.'">'.$row->Name.'</option>';
-                    }
-                 ?>
-            </select>    
-              </div>
+                        $user = $register->getAllRoles();
+                        foreach($user as $row){
+                            echo  '<option value="'.$row->Name.'" selected>'.$row->Name.'</option>';
+                        }
+                    ?>
+                    </select>    
+                </div>
                 <div class="form-group">
                     <label>Department</label>
                     <br>
-                    <select id='department'>Department
-                 <?php
+                    <select id='department' name='department'>
+                        <?php
 
-                   $user = $register->getAllDepartments();
-                       foreach($user as $row){
-                        echo  '<option value="'.$row->Name.'">'.$row->Name.'</option>';
-                    }
-                 ?>
-            </select>    
+                        $user = $register->getAllDepartments();
+                        foreach($user as $row){
+                            echo  '<option value="'.$row->Name.'" selected>'.$row->Name.'</option>';
+                        }
+                        ?>
+                    </select>    
               </div>
                  
       <p><input type="checkbox" name="checkterms" value="terms">  Click here to agree to our terms and conditions </p><br>
