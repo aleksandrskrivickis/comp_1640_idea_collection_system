@@ -97,17 +97,13 @@
 
     if (isset($_POST['sub_idea'])){
 
-        // will be removed when all the pages are connected
-        $_SESSION['username'] = "IronSide";
-        $_SESSION['forum'] = "Computing";
-
-        //initialise variables
+         //initialise variables
         $username = $_SESSION['username'];
         $title = $_POST['ideatitle3'];
         $category = [$_POST['category']];
         $description = $_POST['description'];
         $anonymous = (is_null($_POST['ann'])) ? false : true;
-        $forum = $_SESSION['forum'];
+        $forum = $_SESSION['forum_name'];
         $file = [$_FILES['fileUpload']];
         
         //calling the function createIdea from the class database
