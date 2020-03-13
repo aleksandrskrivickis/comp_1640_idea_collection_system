@@ -71,7 +71,11 @@ if(isset($_SESSION['username'])){
             <h2 align="center"> Register </h2>
             <br>
              <form action="loginreg.php" method="post">
-
+               <!-- errors -->
+                        <?php 
+                            include('regerrors.php');
+                        ?><br>
+                        <!-- errors -->
 
               <div class="form-group">
                   <label>Username</label>
@@ -117,7 +121,7 @@ if(isset($_SESSION['username'])){
                  
               <p><input type="checkbox" name="checkterms" value="terms">  Click here to agree to our terms and conditions </p><br>
 
-              <button type="submit" class="btn btn-primary"> Register </button>
+              <button type="submit" name="register_b" class="btn btn-primary"> Register </button>
             </form>
 
         </div>
