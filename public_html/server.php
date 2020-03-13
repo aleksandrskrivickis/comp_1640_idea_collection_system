@@ -13,7 +13,10 @@
         
         $username = $_POST['username1'];
         $email = $_POST['email1'];
-        $password1 = $_POST['password2'];
+     $password1 = $_POST['password2'];
+    $salt = "randomstringforsalt";
+   
+    $password1 = md5($salt.$password1);
         
         
         // ensure that form fields are filled properly
@@ -51,6 +54,9 @@
 
         $username = $_POST['username1'];
         $password = $_POST['password'];
+         $salt = "randomstringforsalt";
+   
+    $password = md5($salt.$password);
 
         $user = $funObj->checkLogin($username, $password);  
         if ($user) {  
