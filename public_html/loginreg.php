@@ -66,6 +66,12 @@ if(isset($_SESSION['username'])){
             <h2 align="center"> Register </h2>
             <br>
              <form action="loginreg.php" method="post">
+                  
+                   <!-- errors -->
+                        <?php 
+                            include('regerrors.php');
+                        ?><br>
+                        <!-- errors -->
 
 
               <div class="form-group">
