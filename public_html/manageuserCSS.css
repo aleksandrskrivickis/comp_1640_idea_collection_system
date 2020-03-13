@@ -38,42 +38,16 @@
   margin: 4px 2px;
   cursor: pointer;
 }       
-   
-.button2 {
-  background-color: #4CAF50;
-  border: none;
-  color: white;
-  padding: 15px 32px;
-  text-align: center;
-  text-decoration: none;
-  display: inline-block;
-  font-size: 16px;
-  margin: 4px 2px;
-  cursor: pointer;
-}     
         
-.button3 {
-  background-color: cornflowerblue;
-  border: none;
-  color: white;
-  padding: 15px 32px;
-  text-align: center;
-  text-decoration: none;
-  display: inline-block;
-  font-size: 16px;
-  margin: 4px 2px;
-  cursor: pointer;
-}  
-
- .form-popup {
+        .form-popup {
 
   position: fixed;
-  top: 30%;
-  left: 50%;
+ top: 30%;
+    left: 50%;
   margin-top: -50px;
-  margin-left: -50px;
+   margin-left: -50px;
   border: 3px solid #f1f1f1;
-  background-color: #D3D3D3;
+ background-color: #D3D3D3;
   z-index: 9;
 }
 
@@ -109,6 +83,11 @@
   width: 100%;
   margin-bottom:10px;
   opacity: 0.8;
+}
+
+/* Add a red background color to the cancel button */
+.form-container .cancel {
+  background-color: red;
 }
 
 /* Add some hover effects to buttons */
