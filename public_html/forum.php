@@ -71,16 +71,27 @@ $(function(){
     ?>
 
     
-    <form><!-- form action="" method="post"-->
+    <form action="forum.php" method="post">
 
 			<!-- FIRST FORUM -->
-    <div class="pad"> 
+        
+         <div class="pad"> 
+        <?php 
+       
+      //  while ($res = mysqli_fetch_array($query)) {
+         $user = $lastLog->getAllForums();
+        foreach($user as $row){
+                        //echo  '<option value="'.$row->Name.'">'.$row->Name.'</option>';
+                    
+        
+        ?>
+   
     <div class="row">   
     <div class="jumbotron jumbotron-fluid">
    <div class="container">
-    <h2 class="display-4">General Wellbeing forum</h2>
+    <h2 class="display-4"><?php echo $row->Name ?></h2>
      <p class="closure">Forum closes in 10 days</p>  
-    <p class="lead">Actual Jumbotron needed. This is a modified jumbotron that occupies the entire horizontal space of its parent. This is a modified jumbotron that occupies the entire horizontal space of its parent. </p>
+    <p class="lead"><?php echo $row->Description ?></p>
       
     <br> 
       
@@ -89,40 +100,22 @@ $(function(){
     <p>12 ideas submitted</p>      
     </div>
     <div class="col-3">
-        <a href="ideasubmission.html"><button type="button" class="seeforum">Enter Forum</button></a> 
+         <a href="submit_idea.php?name=<?php echo $row->Name; ?>"><button type="button" class="seeforum">Enter Forum</button></a> 
+    </div>
     </div>
         </div>
             </div>
                 </div>                
-                    </div>
+                    
         
         <br>
-       <!-- SECOND FORUM -->    
-      <div class="row">   
-    <div class="jumbotron jumbotron-fluid">
-   <div class="container">
-    <h2 class="display-4">Computing forum</h2>
-     <p class="closure">Forum closes in 10 days</p>  
-    <p class="lead"> Example Jumbotron to get rid of after coding. This is a modified jumbotron that occupies the entire horizontal space of its parent. This is a modified jumbotron that occupies the entire horizontal space of its parent. </p>
       
-    <br> 
-      
-      <div class="row">
-    <div class="col-9">
-    <p>12 ideas submitted</p>      
-    </div>
-    <div class="col-3">
-        <a href="ideasubmission.html"><button type="button" class="seeforum">Enter Forum</button></a> 
-    </div>
-        </div>
-            </div>
-                </div>                
-                    </div>
-        
-        
+    
+        <?php } ?>
+    
         </div>
         
-          </form>
+          </form> 
     </body>
 </html>
 
