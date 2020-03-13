@@ -76,7 +76,7 @@ $(function(){
       <!-- TABLE FOR CLOSURE DATES -->
 <table id="closureDates">
   <tr>
-    <th>Idea</th>
+    <th>Forum</th>
     <th>Closure Date</th>
     <th>Final Closure Date</th>
       <th> Edit Dates</th>
