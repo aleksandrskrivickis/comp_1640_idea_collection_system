@@ -1,12 +1,17 @@
 <?php 
 include('server.php');
 $register = new Database();
+
 session_start();
 if(isset($_SESSION['username'])){
      header("Location: forum.php");
 }
 
+
 ?>
+
+
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -66,12 +71,6 @@ if(isset($_SESSION['username'])){
             <h2 align="center"> Register </h2>
             <br>
              <form action="loginreg.php" method="post">
-                  
-                   <!-- errors -->
-                        <?php 
-                            include('regerrors.php');
-                        ?><br>
-                        <!-- errors -->
 
 
               <div class="form-group">
@@ -94,7 +93,7 @@ if(isset($_SESSION['username'])){
                          <br>
                     <select id='roles'>Roles
                  <?php
-
+                     
                    $user = $register->getAllRoles();
                        foreach($user as $row){
                         echo  '<option value="'.$row->Name.'">'.$row->Name.'</option>';
@@ -118,7 +117,7 @@ if(isset($_SESSION['username'])){
                  
               <p><input type="checkbox" name="checkterms" value="terms">  Click here to agree to our terms and conditions </p><br>
 
-              <button type="submit" name="register_b" class="btn btn-primary"> Register </button>
+              <button type="submit" class="btn btn-primary"> Register </button>
             </form>
 
         </div>
