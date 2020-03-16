@@ -119,6 +119,5 @@ $(function(){
 </html>
 
 <?php
-include_once "./footer.php";
 ?>
 

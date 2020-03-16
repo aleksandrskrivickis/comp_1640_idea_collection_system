@@ -1,16 +1,19 @@
 <?php
-    try
-{
-    $pdo = new PDO('mysql:host=mysql.cms.gre.ac.uk; dbname=mdb_st2645h', 'st2645h', 'Enterprise94');
-    $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-    $pdo->exec('SET NAMES "utf8"');
-}
-catch(PDOException $e)
-{
-    $output = 'Unable to connect to the database:' . $e->getMessage();
-    //$output = 'Unable to connect to the database:';
-    include 'error.html.php';
-    exit();
+
+//error_reporting(E_ALL);
+//ini_set('display_errors', 'On');
+
+include_once('database.php');
+$funObj = new Database();
+
+$PAGINATION_STEP = 5;
+
+if ($_GET['pagination_step_from'] + $_GET['pagination_step_to'] > 0){
+	$pagination_step_from = $_GET['pagination_step_from'];
+	$pagination_step_to = $_GET['pagination_step_to'];
+}else{
+	$pagination_step_from = 0;
+	$pagination_step_to = $PAGINATION_STEP;
 }
 
 ?>
@@ -46,30 +49,14 @@ catch(PDOException $e)
 </head>
 <?php
 
-    try //server attempts to run query
-    {
-        $result = $pdo->query('SELECT I.IdeaID, I.Title, I.IdeaText, I.Anonymous, I.DatePosted, U.UserName, 
-        (SELECT COUNT(ThumbUp) 
-        FROM Rate ra 
-        WHERE ra.IdeaID = r.IdeaID AND ra.ThumbUp = 1) 
-        AS Likes, 
-        (SELECT COUNT(ThumbDown) 
-        FROM Rate ra 
-        WHERE ra.IdeaID = r.IdeaID AND ra.ThumbDown = 1) 
-        AS Dislikes,
-        (CASE WHEN (SELECT COUNT(CommentID) FROM Comment ci WHERE ci.IdeaID = c.IdeaID GROUP BY I.IdeaID) IS NULL THEN "0" ELSE (SELECT COUNT(CommentID) FROM Comment ci WHERE ci.IdeaID = c.IdeaID GROUP BY I.IdeaID) END) AS commentCount
-        FROM Idea AS I
-        INNER JOIN User AS U ON I.UserID = U.UserID
-        INNER JOIN Rate r ON I.IdeaID = r.IdeaID
-        LEFT JOIN Comment c ON I.IdeaID = c.IdeaID
-        GROUP BY I.IdeaID LIMIT 10'); //this would be replaced with the relevant class in database.php
-    }
-    catch (PDOException $e)//opens error page if query fails
-    {
-        $output = 'Error fetching ideas:' .  $e->getMessage(); 
-        echo $output;
-        exit();
-    }
+$idea_count = $funObj -> getIdeaCount();
+//Please extend getIdeasWithPagination() and update below line with one more parameter: $p_forum_id
+$result = $funObj -> getIdeasWithPagination($pagination_step_from, $pagination_step_to);
+
+
+	
+	
+	
     foreach($result as $row) //loops through the SQL query
     {
         if ($row['Anonymous'] == false) //if the value of Anonymous is false, the username value in the array gets set to the user's username
@@ -83,11 +70,7 @@ catch(PDOException $e)
         }
         try 
         {
-          $displayComment = $pdo->query('SELECT C.CommentID, C.IdeaID, U.UserName, C.CommentText, C.Anonymous, C.DatePosted
-          FROM Comment C
-          JOIN User as U ON U.UserID = C.UserID
-          JOIN Idea as I ON I.IdeaID = C.IdeaID
-          WHERE C.IdeaID = ' . $row['IdeaID']);  
+          $displayComment = $funObj-> getCommentsForJake($row['IdeaID']);  
         }
         
         catch (PDOException $e)//opens error page if query fails
@@ -113,104 +96,24 @@ catch(PDOException $e)
 <body>
 <!--NAVIGATION BAR-->
 <?php 
-
 include 'nav_bar.php';
-
-try
-{
-	$userid = $pdo->query('SELECT r.UserID FROM Rate r LEFT JOIN User u ON r.UserID = u.UserID WHERE u.UserName = "' . $username . '"');
-}
-catch (PDOException $e)
-{
-	$output = 'Error adding a like' . $e;
-	echo $output;
-	exit();
-}
-foreach ($userid as $row)
-{
-	$uid[] = array('id' => $row['UserID']);
-}
-foreach ($uid as $id)
-{
-	$usID = $id['id'];
-}
+//$username = "NumberOne"; //For test purposes
 
 if(isset($_POST['action']) and $_POST['action'] == 'likes')
 {
-	try 
-{
-	$sql = 'INSERT INTO Rate SET
-		IdeaID = :Ideaid,
-		UserID = (SELECT UserID FROM User WHERE UserName = :UserName),
-		ThumbUp = :Thumbup,
-		ThumbDown = :Thumbdown';
-	$s = $pdo->prepare($sql);
-	$s->bindValue(':Ideaid', $_POST['id']);
-	$s->bindValue(':UserName', $username);
-	$s->bindValue(':Thumbup', 1);
-	$s->bindValue(':Thumbdown', 0);
-	$s->execute();
-}
-catch (PDOException $e)
-{
-	$output = 'Error adding a like' . $e;
-	echo $output;
-	exit();
-}
-	header("Refresh:0");
+	$funObj->setThumbsUpDownForJake($_POST['id'], $username, 1);
+	header("Refresh:1");
 }
 
 if(isset($_POST['action']) and $_POST['action'] == 'dislikes')
 {
-	try 
-{
-	$sql = 'INSERT INTO Rate SET
-		IdeaID = :Ideaid,
-		UserID = (SELECT UserID FROM User WHERE UserName = :UserName),
-		ThumbUp = :Thumbup,
-		ThumbDown = :Thumbdown';
-	$s = $pdo->prepare($sql);
-	$s->bindValue(':Ideaid', $_POST['id']);
-	$s->bindValue(':UserName', $username);
-	$s->bindValue(':Thumbup', 0);
-	$s->bindValue(':Thumbdown', 1);
-	$s->execute();
-}
-catch (PDOException $e)
-{
-	$output = 'Error adding a like' . $e;
-	echo $output;
-	exit();
-}
-	header("Refresh:0");
+	$funObj->setThumbsUpDownForJake($_POST['id'], $username, 0);
+	header("Refresh:1");
 }
 
  if(isset($_POST['action']) and $_POST['action'] == 'comments')
 {
-	try 
-{
-	$sql = 'INSERT INTO Comment SET
-		IdeaID = :Ideaid,
-		UserID = (SELECT UserID FROM User WHERE UserName = :UserName),
-		CommentText = :Commenttext,
-		Anonymous = :Anonymous,
-		DatePosted = CURDATE(),
-		Removed = :Removed';
-		
-	$s = $pdo->prepare($sql);
-	$s->bindValue(':Ideaid', $_POST['id']);
-	$s->bindValue(':UserName', $username);
-	$s->bindValue(':Commenttext', $_POST['commenttext']);
-	$s->bindValue(':Anonymous', 0);
-	$s->bindValue(':Removed', 0);
-	$s->execute();
-}
-catch (PDOException $e)
-{
-	$output = 'Error adding a comment ' . $e;
-	echo $output;
-	exit();
-}
+	$funObj->insertCommentForJake($_POST['id'], $username, $_POST['commenttext']);
 	header("Refresh:0");
 }
 
@@ -253,7 +156,9 @@ else
    <p><?php echo $comment['commenttext'];?></p>
         
         
-<?php } endforeach; } ?>
+<?php } endforeach; 
+}
+ ?>
 
     <!-- ADD A COMMENT -->
     <hr class="my-4">
@@ -273,7 +178,20 @@ else
 </div>
 </div>  
 </form>
-    <?php endforeach; ?>
+    <?php 
+	
+	endforeach; 
+	
+$counter = 0;
+	
+echo "Pages: ";
+	for ($h = 0; $h < $idea_count; $h += $PAGINATION_STEP) {
+		$counter += 1;
+		$pagination_step_to = $h + $PAGINATION_STEP;
+		echo "<a href='view_ideas.php?pagination_step_from=$h&pagination_step_to=$pagination_step_to'>$counter</a>";
+	}	
+	
+	?>
 
     
 </body>

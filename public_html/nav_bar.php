@@ -1,5 +1,5 @@
 <?php
-include('database.php');
+include_once('database.php');
 $admin = new Database();
 session_start();
 $username = $_SESSION['username'];

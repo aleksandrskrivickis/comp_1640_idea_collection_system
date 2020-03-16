@@ -1,0 +1,307 @@
+[12-Mar-2020 13:27:15 America/Chicago] PHP Warning:  include_once(./footer.php): failed to open stream: No such file or directory in /home3/jsmarchant97/enterprisecw/index.php on line 19
+[12-Mar-2020 13:27:15 America/Chicago] PHP Warning:  include_once(): Failed opening './footer.php' for inclusion (include_path='.:/opt/php71/lib/php') in /home3/jsmarchant97/enterprisecw/index.php on line 19
+[12-Mar-2020 13:27:50 America/Chicago] PHP Parse error:  syntax error, unexpected '<' in /home3/jsmarchant97/enterprisecw/database.php on line 2161
+[12-Mar-2020 13:31:22 America/Chicago] PHP Parse error:  syntax error, unexpected end of file in /home3/jsmarchant97/enterprisecw/database.php on line 4573
+[12-Mar-2020 13:36:31 America/Chicago] PHP Warning:  session_start(): Cannot send session cookie - headers already sent by (output started at /home3/jsmarchant97/enterprisecw/view_ideas.php:17) in /home3/jsmarchant97/enterprisecw/nav_bar.php on line 4
+[12-Mar-2020 13:36:31 America/Chicago] PHP Warning:  session_start(): Cannot send session cache limiter - headers already sent (output started at /home3/jsmarchant97/enterprisecw/view_ideas.php:17) in /home3/jsmarchant97/enterprisecw/nav_bar.php on line 4
+[12-Mar-2020 13:36:31 America/Chicago] PHP Warning:  Invalid argument supplied for foreach() in /home3/jsmarchant97/enterprisecw/view_ideas.php on line 133
+[12-Mar-2020 13:40:58 America/Chicago] PHP Warning:  include_once(./footer.php): failed to open stream: No such file or directory in /home3/jsmarchant97/enterprisecw/forum.php on line 130
+[12-Mar-2020 13:40:58 America/Chicago] PHP Warning:  include_once(): Failed opening './footer.php' for inclusion (include_path='.:/opt/php71/lib/php') in /home3/jsmarchant97/enterprisecw/forum.php on line 130
+[12-Mar-2020 13:41:29 America/Chicago] PHP Warning:  include_once(./footer.php): failed to open stream: No such file or directory in /home3/jsmarchant97/enterprisecw/forum.php on line 130
+[12-Mar-2020 13:41:29 America/Chicago] PHP Warning:  include_once(): Failed opening './footer.php' for inclusion (include_path='.:/opt/php71/lib/php') in /home3/jsmarchant97/enterprisecw/forum.php on line 130
+[12-Mar-2020 13:41:34 America/Chicago] PHP Warning:  session_start(): Cannot send session cache limiter - headers already sent (output started at /home3/jsmarchant97/enterprisecw/view_ideas.php:17) in /home3/jsmarchant97/enterprisecw/nav_bar.php on line 4
+[12-Mar-2020 13:44:35 America/Chicago] PHP Warning:  include(error.html.php): failed to open stream: No such file or directory in /home3/jsmarchant97/enterprisecw/view_ideas.php on line 12
+[12-Mar-2020 13:44:35 America/Chicago] PHP Warning:  include(error.html.php): failed to open stream: No such file or directory in /home3/jsmarchant97/enterprisecw/view_ideas.php on line 12
+[12-Mar-2020 13:44:35 America/Chicago] PHP Warning:  include(): Failed opening 'error.html.php' for inclusion (include_path='.:/opt/php71/lib/php') in /home3/jsmarchant97/enterprisecw/view_ideas.php on line 12
+[12-Mar-2020 13:44:44 America/Chicago] PHP Warning:  include(error.html.php): failed to open stream: No such file or directory in /home3/jsmarchant97/enterprisecw/view_ideas.php on line 12
+[12-Mar-2020 13:44:44 America/Chicago] PHP Warning:  include(error.html.php): failed to open stream: No such file or directory in /home3/jsmarchant97/enterprisecw/view_ideas.php on line 12
+[12-Mar-2020 13:44:44 America/Chicago] PHP Warning:  include(): Failed opening 'error.html.php' for inclusion (include_path='.:/opt/php71/lib/php') in /home3/jsmarchant97/enterprisecw/view_ideas.php on line 12
+[12-Mar-2020 13:45:46 America/Chicago] PHP Warning:  session_start(): Cannot send session cache limiter - headers already sent (output started at /home3/jsmarchant97/enterprisecw/view_ideas.php:16) in /home3/jsmarchant97/enterprisecw/nav_bar.php on line 4
+[12-Mar-2020 13:45:46 America/Chicago] PHP Fatal error:  Uncaught Error: Call to a member function prepare() on null in /home3/jsmarchant97/enterprisecw/database.php:2258
+Stack trace:
+#0 /home3/jsmarchant97/enterprisecw/database.php(1850): Database->getFieldSQL('SELECT Admin FR...', 'Admin', Array)
+#1 /home3/jsmarchant97/enterprisecw/nav_bar.php(28): Database->isAdmin('Mr Bump')
+#2 /home3/jsmarchant97/enterprisecw/view_ideas.php(116): include('/home3/jsmarcha...')
+#3 {main}
+  thrown in /home3/jsmarchant97/enterprisecw/database.php on line 2258
+[12-Mar-2020 13:46:03 America/Chicago] PHP Warning:  session_start(): Cannot send session cache limiter - headers already sent (output started at /home3/jsmarchant97/enterprisecw/view_ideas.php:16) in /home3/jsmarchant97/enterprisecw/nav_bar.php on line 4
+[12-Mar-2020 14:47:12 America/Chicago] PHP Fatal error:  Uncaught TypeError: Argument 1 passed to Database::setLastLogin() must be of the type string, null given, called in /home3/jsmarchant97/enterprisecw/forum.php on line 64 and defined in /home3/jsmarchant97/enterprisecw/database.php:180
+Stack trace:
+#0 /home3/jsmarchant97/enterprisecw/forum.php(64): Database->setLastLogin(NULL)
+#1 {main}
+  thrown in /home3/jsmarchant97/enterprisecw/database.php on line 180
+[12-Mar-2020 14:49:13 America/Chicago] PHP Warning:  session_start(): Cannot send session cookie - headers already sent by (output started at /home3/jsmarchant97/enterprisecw/view_ideas.php:16) in /home3/jsmarchant97/enterprisecw/nav_bar.php on line 4
+[12-Mar-2020 14:49:13 America/Chicago] PHP Warning:  session_start(): Cannot send session cache limiter - headers already sent (output started at /home3/jsmarchant97/enterprisecw/view_ideas.php:16) in /home3/jsmarchant97/enterprisecw/nav_bar.php on line 4
+[12-Mar-2020 14:49:13 America/Chicago] PHP Warning:  Invalid argument supplied for foreach() in /home3/jsmarchant97/enterprisecw/view_ideas.php on line 132
+[12-Mar-2020 15:19:49 America/Chicago] PHP Warning:  include_once(./footer.php): failed to open stream: No such file or directory in /home3/jsmarchant97/enterprisecw/index.php on line 19
+[12-Mar-2020 15:19:49 America/Chicago] PHP Warning:  include_once(): Failed opening './footer.php' for inclusion (include_path='.:/opt/php71/lib/php') in /home3/jsmarchant97/enterprisecw/index.php on line 19
+[12-Mar-2020 15:31:27 America/Chicago] PHP Warning:  session_start(): Cannot send session cache limiter - headers already sent (output started at /home3/jsmarchant97/enterprisecw/view_ideas.php:16) in /home3/jsmarchant97/enterprisecw/nav_bar.php on line 4
+[12-Mar-2020 15:31:27 America/Chicago] PHP Warning:  Invalid argument supplied for foreach() in /home3/jsmarchant97/enterprisecw/view_ideas.php on line 132
+[12-Mar-2020 15:32:14 America/Chicago] PHP Fatal error:  Uncaught TypeError: Argument 1 passed to Database::setLastLogin() must be of the type string, null given, called in /home3/jsmarchant97/enterprisecw/forum.php on line 64 and defined in /home3/jsmarchant97/enterprisecw/database.php:180
+Stack trace:
+#0 /home3/jsmarchant97/enterprisecw/forum.php(64): Database->setLastLogin(NULL)
+#1 {main}
+  thrown in /home3/jsmarchant97/enterprisecw/database.php on line 180
+[12-Mar-2020 19:54:49 America/Chicago] PHP Warning:  include_once(./footer.php): failed to open stream: No such file or directory in /home3/jsmarchant97/enterprisecw/index.php on line 19
+[12-Mar-2020 19:54:49 America/Chicago] PHP Warning:  include_once(): Failed opening './footer.php' for inclusion (include_path='.:/opt/php71/lib/php') in /home3/jsmarchant97/enterprisecw/index.php on line 19
+[12-Mar-2020 20:00:27 America/Chicago] PHP Warning:  session_start(): Cannot send session cache limiter - headers already sent (output started at /home3/jsmarchant97/enterprisecw/view_ideas.php:16) in /home3/jsmarchant97/enterprisecw/nav_bar.php on line 4
+[12-Mar-2020 20:00:27 America/Chicago] PHP Warning:  Invalid argument supplied for foreach() in /home3/jsmarchant97/enterprisecw/view_ideas.php on line 132
+[12-Mar-2020 20:00:40 America/Chicago] PHP Warning:  include_once(./footer.php): failed to open stream: No such file or directory in /home3/jsmarchant97/enterprisecw/view_idea.php on line 125
+[12-Mar-2020 20:00:40 America/Chicago] PHP Warning:  include_once(): Failed opening './footer.php' for inclusion (include_path='.:/opt/php71/lib/php') in /home3/jsmarchant97/enterprisecw/view_idea.php on line 125
+[12-Mar-2020 20:27:52 America/Chicago] PHP Warning:  include_once(./footer.php): failed to open stream: No such file or directory in /home3/jsmarchant97/enterprisecw/analytics.php on line 223
+[12-Mar-2020 20:27:52 America/Chicago] PHP Warning:  include_once(): Failed opening './footer.php' for inclusion (include_path='.:/opt/php71/lib/php') in /home3/jsmarchant97/enterprisecw/analytics.php on line 223
+[12-Mar-2020 20:36:38 America/Chicago] PHP Warning:  include_once(./footer.php): failed to open stream: No such file or directory in /home3/jsmarchant97/enterprisecw/admin_panel.php on line 122
+[12-Mar-2020 20:36:38 America/Chicago] PHP Warning:  include_once(): Failed opening './footer.php' for inclusion (include_path='.:/opt/php71/lib/php') in /home3/jsmarchant97/enterprisecw/admin_panel.php on line 122
+[12-Mar-2020 20:36:39 America/Chicago] PHP Warning:  include_once(./footer.php): failed to open stream: No such file or directory in /home3/jsmarchant97/enterprisecw/forum.php on line 130
+[12-Mar-2020 20:36:39 America/Chicago] PHP Warning:  include_once(): Failed opening './footer.php' for inclusion (include_path='.:/opt/php71/lib/php') in /home3/jsmarchant97/enterprisecw/forum.php on line 130
+[12-Mar-2020 20:37:01 America/Chicago] PHP Warning:  include_once(./footer.php): failed to open stream: No such file or directory in /home3/jsmarchant97/enterprisecw/forum.php on line 130
+[12-Mar-2020 20:37:01 America/Chicago] PHP Warning:  include_once(): Failed opening './footer.php' for inclusion (include_path='.:/opt/php71/lib/php') in /home3/jsmarchant97/enterprisecw/forum.php on line 130
+[12-Mar-2020 20:37:05 America/Chicago] PHP Warning:  include_once(./footer.php): failed to open stream: No such file or directory in /home3/jsmarchant97/enterprisecw/admin_panel.php on line 122
+[12-Mar-2020 20:37:05 America/Chicago] PHP Warning:  include_once(): Failed opening './footer.php' for inclusion (include_path='.:/opt/php71/lib/php') in /home3/jsmarchant97/enterprisecw/admin_panel.php on line 122
+[12-Mar-2020 20:37:06 America/Chicago] PHP Warning:  include_once(./footer.php): failed to open stream: No such file or directory in /home3/jsmarchant97/enterprisecw/forum.php on line 130
+[12-Mar-2020 20:37:06 America/Chicago] PHP Warning:  include_once(): Failed opening './footer.php' for inclusion (include_path='.:/opt/php71/lib/php') in /home3/jsmarchant97/enterprisecw/forum.php on line 130
+[12-Mar-2020 20:39:22 America/Chicago] PHP Warning:  include_once(./footer.php): failed to open stream: No such file or directory in /home3/jsmarchant97/enterprisecw/forum.php on line 130
+[12-Mar-2020 20:39:22 America/Chicago] PHP Warning:  include_once(): Failed opening './footer.php' for inclusion (include_path='.:/opt/php71/lib/php') in /home3/jsmarchant97/enterprisecw/forum.php on line 130
+[12-Mar-2020 20:39:30 America/Chicago] PHP Warning:  include_once(./footer.php): failed to open stream: No such file or directory in /home3/jsmarchant97/enterprisecw/admin_panel.php on line 122
+[12-Mar-2020 20:39:30 America/Chicago] PHP Warning:  include_once(): Failed opening './footer.php' for inclusion (include_path='.:/opt/php71/lib/php') in /home3/jsmarchant97/enterprisecw/admin_panel.php on line 122
+[12-Mar-2020 20:40:27 America/Chicago] PHP Warning:  session_start(): Cannot send session cache limiter - headers already sent (output started at /home3/jsmarchant97/enterprisecw/manageuser.php:1) in /home3/jsmarchant97/enterprisecw/manageuser.php on line 3
+[12-Mar-2020 20:40:59 America/Chicago] PHP Warning:  include_once(./footer.php): failed to open stream: No such file or directory in /home3/jsmarchant97/enterprisecw/forum.php on line 130
+[12-Mar-2020 20:40:59 America/Chicago] PHP Warning:  include_once(): Failed opening './footer.php' for inclusion (include_path='.:/opt/php71/lib/php') in /home3/jsmarchant97/enterprisecw/forum.php on line 130
+[12-Mar-2020 20:41:09 America/Chicago] PHP Warning:  include_once(./footer.php): failed to open stream: No such file or directory in /home3/jsmarchant97/enterprisecw/forum.php on line 130
+[12-Mar-2020 20:41:09 America/Chicago] PHP Warning:  include_once(): Failed opening './footer.php' for inclusion (include_path='.:/opt/php71/lib/php') in /home3/jsmarchant97/enterprisecw/forum.php on line 130
+[12-Mar-2020 20:42:18 America/Chicago] PHP Warning:  include_once(./footer.php): failed to open stream: No such file or directory in /home3/jsmarchant97/enterprisecw/forum.php on line 130
+[12-Mar-2020 20:42:18 America/Chicago] PHP Warning:  include_once(): Failed opening './footer.php' for inclusion (include_path='.:/opt/php71/lib/php') in /home3/jsmarchant97/enterprisecw/forum.php on line 130
+[12-Mar-2020 20:42:25 America/Chicago] PHP Warning:  include_once(./footer.php): failed to open stream: No such file or directory in /home3/jsmarchant97/enterprisecw/forum.php on line 130
+[12-Mar-2020 20:42:25 America/Chicago] PHP Warning:  include_once(): Failed opening './footer.php' for inclusion (include_path='.:/opt/php71/lib/php') in /home3/jsmarchant97/enterprisecw/forum.php on line 130
+[12-Mar-2020 20:42:35 America/Chicago] PHP Warning:  mysqli_connect(): (HY000/2003): Can't connect to MySQL server on 'mysql.cms.gre.ac.uk' (110) in /home3/jsmarchant97/enterprisecw/manageuser.php on line 85
+[12-Mar-2020 20:42:37 America/Chicago] PHP Warning:  session_start(): Cannot send session cache limiter - headers already sent (output started at /home3/jsmarchant97/enterprisecw/view_ideas.php:16) in /home3/jsmarchant97/enterprisecw/nav_bar.php on line 4
+[12-Mar-2020 20:43:14 America/Chicago] PHP Warning:  include_once(./footer.php): failed to open stream: No such file or directory in /home3/jsmarchant97/enterprisecw/forum.php on line 130
+[12-Mar-2020 20:43:14 America/Chicago] PHP Warning:  include_once(): Failed opening './footer.php' for inclusion (include_path='.:/opt/php71/lib/php') in /home3/jsmarchant97/enterprisecw/forum.php on line 130
+[13-Mar-2020 07:23:15 America/Chicago] PHP Warning:  include_once(./footer.php): failed to open stream: No such file or directory in /home3/jsmarchant97/enterprisecw/index.php on line 19
+[13-Mar-2020 07:23:15 America/Chicago] PHP Warning:  include_once(): Failed opening './footer.php' for inclusion (include_path='.:/opt/php71/lib/php') in /home3/jsmarchant97/enterprisecw/index.php on line 19
+[13-Mar-2020 07:23:16 America/Chicago] PHP Warning:  include_once(./footer.php): failed to open stream: No such file or directory in /home3/jsmarchant97/enterprisecw/index.php on line 19
+[13-Mar-2020 07:23:16 America/Chicago] PHP Warning:  include_once(): Failed opening './footer.php' for inclusion (include_path='.:/opt/php71/lib/php') in /home3/jsmarchant97/enterprisecw/index.php on line 19
+[13-Mar-2020 07:28:11 America/Chicago] PHP Warning:  include_once(./footer.php): failed to open stream: No such file or directory in /home3/jsmarchant97/enterprisecw/index.php on line 19
+[13-Mar-2020 07:28:11 America/Chicago] PHP Warning:  include_once(): Failed opening './footer.php' for inclusion (include_path='.:/opt/php71/lib/php') in /home3/jsmarchant97/enterprisecw/index.php on line 19
+[13-Mar-2020 07:28:18 America/Chicago] PHP Warning:  session_start(): Cannot send session cache limiter - headers already sent (output started at /home3/jsmarchant97/enterprisecw/view_ideas.php:16) in /home3/jsmarchant97/enterprisecw/nav_bar.php on line 4
+[13-Mar-2020 07:28:18 America/Chicago] PHP Warning:  Invalid argument supplied for foreach() in /home3/jsmarchant97/enterprisecw/view_ideas.php on line 132
+[13-Mar-2020 07:28:32 America/Chicago] PHP Warning:  include_once(./footer.php): failed to open stream: No such file or directory in /home3/jsmarchant97/enterprisecw/forum.php on line 130
+[13-Mar-2020 07:28:32 America/Chicago] PHP Warning:  include_once(): Failed opening './footer.php' for inclusion (include_path='.:/opt/php71/lib/php') in /home3/jsmarchant97/enterprisecw/forum.php on line 130
+[13-Mar-2020 07:28:35 America/Chicago] PHP Warning:  include_once(./footer.php): failed to open stream: No such file or directory in /home3/jsmarchant97/enterprisecw/forum.php on line 130
+[13-Mar-2020 07:28:35 America/Chicago] PHP Warning:  include_once(): Failed opening './footer.php' for inclusion (include_path='.:/opt/php71/lib/php') in /home3/jsmarchant97/enterprisecw/forum.php on line 130
+[13-Mar-2020 07:36:55 America/Chicago] PHP Warning:  include_once(./footer.php): failed to open stream: No such file or directory in /home3/jsmarchant97/enterprisecw/forum.php on line 130
+[13-Mar-2020 07:36:55 America/Chicago] PHP Warning:  include_once(): Failed opening './footer.php' for inclusion (include_path='.:/opt/php71/lib/php') in /home3/jsmarchant97/enterprisecw/forum.php on line 130
+[13-Mar-2020 07:59:48 America/Chicago] PHP Warning:  include_once(./footer.php): failed to open stream: No such file or directory in /home3/jsmarchant97/enterprisecw/forum.php on line 130
+[13-Mar-2020 07:59:48 America/Chicago] PHP Warning:  include_once(): Failed opening './footer.php' for inclusion (include_path='.:/opt/php71/lib/php') in /home3/jsmarchant97/enterprisecw/forum.php on line 130
+[13-Mar-2020 08:09:09 America/Chicago] PHP Warning:  include_once(./footer.php): failed to open stream: No such file or directory in /home3/jsmarchant97/enterprisecw/forum.php on line 130
+[13-Mar-2020 08:09:09 America/Chicago] PHP Warning:  include_once(): Failed opening './footer.php' for inclusion (include_path='.:/opt/php71/lib/php') in /home3/jsmarchant97/enterprisecw/forum.php on line 130
+[13-Mar-2020 08:09:12 America/Chicago] PHP Warning:  session_start(): Cannot send session cache limiter - headers already sent (output started at /home3/jsmarchant97/enterprisecw/view_ideas.php:16) in /home3/jsmarchant97/enterprisecw/nav_bar.php on line 4
+[13-Mar-2020 08:38:26 America/Chicago] PHP Warning:  include_once(./footer.php): failed to open stream: No such file or directory in /home3/jsmarchant97/enterprisecw/view_idea.php on line 125
+[13-Mar-2020 08:38:26 America/Chicago] PHP Warning:  include_once(): Failed opening './footer.php' for inclusion (include_path='.:/opt/php71/lib/php') in /home3/jsmarchant97/enterprisecw/view_idea.php on line 125
+[13-Mar-2020 08:48:52 America/Chicago] PHP Warning:  include_once(./footer.php): failed to open stream: No such file or directory in /home3/jsmarchant97/enterprisecw/view_idea.php on line 125
+[13-Mar-2020 08:48:52 America/Chicago] PHP Warning:  include_once(): Failed opening './footer.php' for inclusion (include_path='.:/opt/php71/lib/php') in /home3/jsmarchant97/enterprisecw/view_idea.php on line 125
+[13-Mar-2020 09:01:43 America/Chicago] PHP Warning:  include_once(./footer.php): failed to open stream: No such file or directory in /home3/jsmarchant97/enterprisecw/view_idea.php on line 125
+[13-Mar-2020 09:01:43 America/Chicago] PHP Warning:  include_once(): Failed opening './footer.php' for inclusion (include_path='.:/opt/php71/lib/php') in /home3/jsmarchant97/enterprisecw/view_idea.php on line 125
+[13-Mar-2020 09:01:50 America/Chicago] PHP Warning:  include_once(./footer.php): failed to open stream: No such file or directory in /home3/jsmarchant97/enterprisecw/view_idea.php on line 125
+[13-Mar-2020 09:01:50 America/Chicago] PHP Warning:  include_once(): Failed opening './footer.php' for inclusion (include_path='.:/opt/php71/lib/php') in /home3/jsmarchant97/enterprisecw/view_idea.php on line 125
+[13-Mar-2020 09:01:55 America/Chicago] PHP Warning:  include_once(./footer.php): failed to open stream: No such file or directory in /home3/jsmarchant97/enterprisecw/index.php on line 19
+[13-Mar-2020 09:01:55 America/Chicago] PHP Warning:  include_once(): Failed opening './footer.php' for inclusion (include_path='.:/opt/php71/lib/php') in /home3/jsmarchant97/enterprisecw/index.php on line 19
+[13-Mar-2020 09:08:15 America/Chicago] PHP Warning:  include_once(./footer.php): failed to open stream: No such file or directory in /home3/jsmarchant97/enterprisecw/index.php on line 19
+[13-Mar-2020 09:08:15 America/Chicago] PHP Warning:  include_once(): Failed opening './footer.php' for inclusion (include_path='.:/opt/php71/lib/php') in /home3/jsmarchant97/enterprisecw/index.php on line 19
+[13-Mar-2020 09:08:34 America/Chicago] PHP Warning:  session_start(): Cannot send session cookie - headers already sent by (output started at /home3/jsmarchant97/enterprisecw/manageuser.php:1) in /home3/jsmarchant97/enterprisecw/manageuser.php on line 3
+[13-Mar-2020 09:08:34 America/Chicago] PHP Warning:  session_start(): Cannot send session cache limiter - headers already sent (output started at /home3/jsmarchant97/enterprisecw/manageuser.php:1) in /home3/jsmarchant97/enterprisecw/manageuser.php on line 3
+[13-Mar-2020 09:08:34 America/Chicago] PHP Warning:  Cannot modify header information - headers already sent by (output started at /home3/jsmarchant97/enterprisecw/manageuser.php:1) in /home3/jsmarchant97/enterprisecw/manageuser.php on line 20
+[13-Mar-2020 09:09:04 America/Chicago] PHP Warning:  session_start(): Cannot send session cache limiter - headers already sent (output started at /home3/jsmarchant97/enterprisecw/manageuser.php:1) in /home3/jsmarchant97/enterprisecw/manageuser.php on line 3
+[13-Mar-2020 09:09:04 America/Chicago] PHP Warning:  Cannot modify header information - headers already sent by (output started at /home3/jsmarchant97/enterprisecw/manageuser.php:1) in /home3/jsmarchant97/enterprisecw/manageuser.php on line 20
+[13-Mar-2020 09:10:22 America/Chicago] PHP Parse error:  syntax error, unexpected '<' in /home3/jsmarchant97/enterprisecw/database.php on line 2161
+[13-Mar-2020 09:10:27 America/Chicago] PHP Parse error:  syntax error, unexpected '<' in /home3/jsmarchant97/enterprisecw/database.php on line 2161
+[13-Mar-2020 09:10:33 America/Chicago] PHP Parse error:  syntax error, unexpected '<' in /home3/jsmarchant97/enterprisecw/database.php on line 2161
+[13-Mar-2020 09:10:42 America/Chicago] PHP Warning:  mysqli_connect(): (HY000/2003): Can't connect to MySQL server on 'mysql.cms.gre.ac.uk' (110) in /home3/jsmarchant97/enterprisecw/manageuser.php on line 85
+[13-Mar-2020 09:11:12 America/Chicago] PHP Warning:  mysqli_connect(): (HY000/2003): Can't connect to MySQL server on 'mysql.cms.gre.ac.uk' (110) in /home3/jsmarchant97/enterprisecw/manageuser.php on line 85
+[13-Mar-2020 09:11:23 America/Chicago] PHP Parse error:  syntax error, unexpected '<' in /home3/jsmarchant97/enterprisecw/database.php on line 2161
+[13-Mar-2020 09:11:37 America/Chicago] PHP Parse error:  syntax error, unexpected '<' in /home3/jsmarchant97/enterprisecw/database.php on line 2161
+[13-Mar-2020 09:11:53 America/Chicago] PHP Fatal error:  Uncaught Error: Class 'Database' not found in /home3/jsmarchant97/enterprisecw/server.php:5
+Stack trace:
+#0 /home3/jsmarchant97/enterprisecw/loginreg.php(2): include()
+#1 {main}
+  thrown in /home3/jsmarchant97/enterprisecw/server.php on line 5
+[13-Mar-2020 09:12:24 America/Chicago] PHP Parse error:  syntax error, unexpected end of file in /home3/jsmarchant97/enterprisecw/database.php on line 4577
+[13-Mar-2020 09:12:31 America/Chicago] PHP Parse error:  syntax error, unexpected end of file in /home3/jsmarchant97/enterprisecw/database.php on line 4577
+[13-Mar-2020 09:12:33 America/Chicago] PHP Parse error:  syntax error, unexpected end of file in /home3/jsmarchant97/enterprisecw/database.php on line 4577
+[13-Mar-2020 09:12:58 America/Chicago] PHP Parse error:  syntax error, unexpected end of file in /home3/jsmarchant97/enterprisecw/database.php on line 4575
+[13-Mar-2020 09:13:33 America/Chicago] PHP Parse error:  syntax error, unexpected end of file in /home3/jsmarchant97/enterprisecw/database.php on line 4577
+[13-Mar-2020 09:14:07 America/Chicago] PHP Warning:  session_start(): Cannot send session cache limiter - headers already sent (output started at /home3/jsmarchant97/enterprisecw/database.php:1) in /home3/jsmarchant97/enterprisecw/server.php on line 3
+[13-Mar-2020 09:14:07 America/Chicago] PHP Fatal error:  Uncaught Error: Class 'Database' not found in /home3/jsmarchant97/enterprisecw/server.php:5
+Stack trace:
+#0 /home3/jsmarchant97/enterprisecw/loginreg.php(2): include()
+#1 {main}
+  thrown in /home3/jsmarchant97/enterprisecw/server.php on line 5
+[13-Mar-2020 09:14:35 America/Chicago] PHP Warning:  session_start(): Cannot send session cache limiter - headers already sent (output started at /home3/jsmarchant97/enterprisecw/database.php:1) in /home3/jsmarchant97/enterprisecw/server.php on line 3
+[13-Mar-2020 09:14:36 America/Chicago] PHP Fatal error:  Uncaught Error: Class 'Database' not found in /home3/jsmarchant97/enterprisecw/server.php:5
+Stack trace:
+#0 /home3/jsmarchant97/enterprisecw/loginreg.php(2): include()
+#1 {main}
+  thrown in /home3/jsmarchant97/enterprisecw/server.php on line 5
+[13-Mar-2020 09:14:43 America/Chicago] PHP Parse error:  syntax error, unexpected end of file in /home3/jsmarchant97/enterprisecw/database.php on line 4577
+[13-Mar-2020 09:18:00 America/Chicago] PHP Parse error:  syntax error, unexpected end of file in /home3/jsmarchant97/enterprisecw/database.php on line 4577
+[13-Mar-2020 09:18:54 America/Chicago] PHP Parse error:  syntax error, unexpected '<' in /home3/jsmarchant97/enterprisecw/database.php on line 2161
+[13-Mar-2020 09:19:24 America/Chicago] PHP Parse error:  syntax error, unexpected '<' in /home3/jsmarchant97/enterprisecw/database.php on line 2161
+[13-Mar-2020 09:19:26 America/Chicago] PHP Parse error:  syntax error, unexpected '<' in /home3/jsmarchant97/enterprisecw/database.php on line 2161
+[13-Mar-2020 09:19:39 America/Chicago] PHP Parse error:  syntax error, unexpected '<' in /home3/jsmarchant97/enterprisecw/database.php on line 2161
+[13-Mar-2020 09:20:17 America/Chicago] PHP Parse error:  syntax error, unexpected '<' in /home3/jsmarchant97/enterprisecw/database.php on line 2161
+[13-Mar-2020 09:20:49 America/Chicago] PHP Parse error:  syntax error, unexpected end of file in /home3/jsmarchant97/enterprisecw/database.php on line 4576
+[13-Mar-2020 09:27:12 America/Chicago] PHP Parse error:  syntax error, unexpected end of file in /home3/jsmarchant97/enterprisecw/database.php on line 4576
+[13-Mar-2020 09:29:47 America/Chicago] PHP Parse error:  syntax error, unexpected end of file in /home3/jsmarchant97/enterprisecw/database.php on line 4576
+[13-Mar-2020 09:29:48 America/Chicago] PHP Parse error:  syntax error, unexpected end of file in /home3/jsmarchant97/enterprisecw/database.php on line 4576
+[13-Mar-2020 09:32:58 America/Chicago] PHP Parse error:  syntax error, unexpected end of file in /home3/jsmarchant97/enterprisecw/database.php on line 4576
+[13-Mar-2020 09:37:22 America/Chicago] PHP Parse error:  syntax error, unexpected end of file in /home3/jsmarchant97/enterprisecw/database.php on line 4576
+[13-Mar-2020 09:37:23 America/Chicago] PHP Parse error:  syntax error, unexpected end of file in /home3/jsmarchant97/enterprisecw/database.php on line 4576
+[13-Mar-2020 09:37:46 America/Chicago] PHP Parse error:  syntax error, unexpected end of file in /home3/jsmarchant97/enterprisecw/database.php on line 4576
+[13-Mar-2020 09:39:47 America/Chicago] PHP Parse error:  syntax error, unexpected end of file in /home3/jsmarchant97/enterprisecw/database.php on line 4576
+[13-Mar-2020 10:15:25 America/Chicago] PHP Parse error:  syntax error, unexpected end of file in /home3/jsmarchant97/enterprisecw/database.php on line 4576
+[13-Mar-2020 10:23:20 America/Chicago] PHP Parse error:  syntax error, unexpected end of file in /home3/jsmarchant97/enterprisecw/database.php on line 4576
+[13-Mar-2020 10:24:40 America/Chicago] PHP Parse error:  syntax error, unexpected end of file in /home3/jsmarchant97/enterprisecw/database.php on line 4576
+[13-Mar-2020 10:24:52 America/Chicago] PHP Warning:  include(error.html.php): failed to open stream: No such file or directory in /home3/jsmarchant97/enterprisecw/view_ideas.php on line 12
+[13-Mar-2020 10:24:52 America/Chicago] PHP Warning:  include(error.html.php): failed to open stream: No such file or directory in /home3/jsmarchant97/enterprisecw/view_ideas.php on line 12
+[13-Mar-2020 10:24:52 America/Chicago] PHP Warning:  include(): Failed opening 'error.html.php' for inclusion (include_path='.:/opt/php71/lib/php') in /home3/jsmarchant97/enterprisecw/view_ideas.php on line 12
+[13-Mar-2020 10:25:52 America/Chicago] PHP Warning:  include(error.html.php): failed to open stream: No such file or directory in /home3/jsmarchant97/enterprisecw/view_ideas.php on line 12
+[13-Mar-2020 10:25:52 America/Chicago] PHP Warning:  include(error.html.php): failed to open stream: No such file or directory in /home3/jsmarchant97/enterprisecw/view_ideas.php on line 12
+[13-Mar-2020 10:25:52 America/Chicago] PHP Warning:  include(): Failed opening 'error.html.php' for inclusion (include_path='.:/opt/php71/lib/php') in /home3/jsmarchant97/enterprisecw/view_ideas.php on line 12
+[13-Mar-2020 10:26:37 America/Chicago] PHP Warning:  include(error.html.php): failed to open stream: No such file or directory in /home3/jsmarchant97/enterprisecw/view_ideas.php on line 12
+[13-Mar-2020 10:26:37 America/Chicago] PHP Warning:  include(error.html.php): failed to open stream: No such file or directory in /home3/jsmarchant97/enterprisecw/view_ideas.php on line 12
+[13-Mar-2020 10:26:37 America/Chicago] PHP Warning:  include(): Failed opening 'error.html.php' for inclusion (include_path='.:/opt/php71/lib/php') in /home3/jsmarchant97/enterprisecw/view_ideas.php on line 12
+[13-Mar-2020 10:35:53 America/Chicago] PHP Parse error:  syntax error, unexpected end of file in /home3/jsmarchant97/enterprisecw/database.php on line 4576
+[13-Mar-2020 10:45:03 America/Chicago] PHP Fatal error:  Uncaught Error: Call to a member function prepare() on null in /home3/jsmarchant97/enterprisecw/database.php:2220
+Stack trace:
+#0 /home3/jsmarchant97/enterprisecw/database.php(266): Database->getArrayObjectsSQL('SELECT Name, Ty...')
+#1 /home3/jsmarchant97/enterprisecw/loginreg.php(98): Database->getAllRoles()
+#2 {main}
+  thrown in /home3/jsmarchant97/enterprisecw/database.php on line 2220
+[13-Mar-2020 10:45:14 America/Chicago] PHP Fatal error:  Uncaught Error: Call to a member function prepare() on null in /home3/jsmarchant97/enterprisecw/database.php:2220
+Stack trace:
+#0 /home3/jsmarchant97/enterprisecw/database.php(266): Database->getArrayObjectsSQL('SELECT Name, Ty...')
+#1 /home3/jsmarchant97/enterprisecw/loginreg.php(98): Database->getAllRoles()
+#2 {main}
+  thrown in /home3/jsmarchant97/enterprisecw/database.php on line 2220
+[13-Mar-2020 10:49:18 America/Chicago] PHP Fatal error:  Uncaught Error: Call to a member function prepare() on null in /home3/jsmarchant97/enterprisecw/database.php:2220
+Stack trace:
+#0 /home3/jsmarchant97/enterprisecw/database.php(266): Database->getArrayObjectsSQL('SELECT Name, Ty...')
+#1 /home3/jsmarchant97/enterprisecw/loginreg.php(98): Database->getAllRoles()
+#2 {main}
+  thrown in /home3/jsmarchant97/enterprisecw/database.php on line 2220
+[13-Mar-2020 10:49:29 America/Chicago] PHP Fatal error:  Uncaught Error: Call to a member function prepare() on null in /home3/jsmarchant97/enterprisecw/database.php:2220
+Stack trace:
+#0 /home3/jsmarchant97/enterprisecw/database.php(266): Database->getArrayObjectsSQL('SELECT Name, Ty...')
+#1 /home3/jsmarchant97/enterprisecw/loginreg.php(98): Database->getAllRoles()
+#2 {main}
+  thrown in /home3/jsmarchant97/enterprisecw/database.php on line 2220
+[13-Mar-2020 10:53:02 America/Chicago] PHP Warning:  include(error.html.php): failed to open stream: No such file or directory in /home3/jsmarchant97/enterprisecw/view_ideas.php on line 12
+[13-Mar-2020 10:53:02 America/Chicago] PHP Warning:  include(error.html.php): failed to open stream: No such file or directory in /home3/jsmarchant97/enterprisecw/view_ideas.php on line 12
+[13-Mar-2020 10:53:02 America/Chicago] PHP Warning:  include(): Failed opening 'error.html.php' for inclusion (include_path='.:/opt/php71/lib/php') in /home3/jsmarchant97/enterprisecw/view_ideas.php on line 12
+[13-Mar-2020 10:53:14 America/Chicago] PHP Fatal error:  Uncaught TypeError: Argument 1 passed to Database::setLastLogin() must be of the type string, null given, called in /home3/jsmarchant97/enterprisecw/forum.php on line 64 and defined in /home3/jsmarchant97/enterprisecw/database.php:180
+Stack trace:
+#0 /home3/jsmarchant97/enterprisecw/forum.php(64): Database->setLastLogin(NULL)
+#1 {main}
+  thrown in /home3/jsmarchant97/enterprisecw/database.php on line 180
+[13-Mar-2020 10:53:33 America/Chicago] PHP Fatal error:  Uncaught Error: Call to a member function prepare() on null in /home3/jsmarchant97/enterprisecw/database.php:2220
+Stack trace:
+#0 /home3/jsmarchant97/enterprisecw/database.php(266): Database->getArrayObjectsSQL('SELECT Name, Ty...')
+#1 /home3/jsmarchant97/enterprisecw/loginreg.php(98): Database->getAllRoles()
+#2 {main}
+  thrown in /home3/jsmarchant97/enterprisecw/database.php on line 2220
+[13-Mar-2020 10:53:43 America/Chicago] PHP Fatal error:  Uncaught Error: Call to a member function prepare() on null in /home3/jsmarchant97/enterprisecw/database.php:2220
+Stack trace:
+#0 /home3/jsmarchant97/enterprisecw/database.php(266): Database->getArrayObjectsSQL('SELECT Name, Ty...')
+#1 /home3/jsmarchant97/enterprisecw/loginreg.php(98): Database->getAllRoles()
+#2 {main}
+  thrown in /home3/jsmarchant97/enterprisecw/database.php on line 2220
+[13-Mar-2020 10:55:53 America/Chicago] PHP Warning:  include(error.html.php): failed to open stream: No such file or directory in /home3/jsmarchant97/enterprisecw/view_ideas.php on line 12
+[13-Mar-2020 10:55:53 America/Chicago] PHP Warning:  include(error.html.php): failed to open stream: No such file or directory in /home3/jsmarchant97/enterprisecw/view_ideas.php on line 12
+[13-Mar-2020 10:55:53 America/Chicago] PHP Warning:  include(): Failed opening 'error.html.php' for inclusion (include_path='.:/opt/php71/lib/php') in /home3/jsmarchant97/enterprisecw/view_ideas.php on line 12
+[13-Mar-2020 10:56:31 America/Chicago] PHP Warning:  include(error.html.php): failed to open stream: No such file or directory in /home3/jsmarchant97/enterprisecw/view_ideas.php on line 12
+[13-Mar-2020 10:56:31 America/Chicago] PHP Warning:  include(error.html.php): failed to open stream: No such file or directory in /home3/jsmarchant97/enterprisecw/view_ideas.php on line 12
+[13-Mar-2020 10:56:31 America/Chicago] PHP Warning:  include(): Failed opening 'error.html.php' for inclusion (include_path='.:/opt/php71/lib/php') in /home3/jsmarchant97/enterprisecw/view_ideas.php on line 12
+[13-Mar-2020 10:57:29 America/Chicago] PHP Fatal error:  Uncaught Error: Call to a member function prepare() on null in /home3/jsmarchant97/enterprisecw/database.php:2220
+Stack trace:
+#0 /home3/jsmarchant97/enterprisecw/database.php(266): Database->getArrayObjectsSQL('SELECT Name, Ty...')
+#1 /home3/jsmarchant97/enterprisecw/loginreg.php(98): Database->getAllRoles()
+#2 {main}
+  thrown in /home3/jsmarchant97/enterprisecw/database.php on line 2220
+[13-Mar-2020 10:57:29 America/Chicago] PHP Fatal error:  Uncaught Error: Call to a member function prepare() on null in /home3/jsmarchant97/enterprisecw/database.php:2220
+Stack trace:
+#0 /home3/jsmarchant97/enterprisecw/database.php(266): Database->getArrayObjectsSQL('SELECT Name, Ty...')
+#1 /home3/jsmarchant97/enterprisecw/loginreg.php(98): Database->getAllRoles()
+#2 {main}
+  thrown in /home3/jsmarchant97/enterprisecw/database.php on line 2220
+[13-Mar-2020 10:57:40 America/Chicago] PHP Warning:  include(error.html.php): failed to open stream: No such file or directory in /home3/jsmarchant97/enterprisecw/view_ideas.php on line 12
+[13-Mar-2020 10:57:40 America/Chicago] PHP Warning:  include(error.html.php): failed to open stream: No such file or directory in /home3/jsmarchant97/enterprisecw/view_ideas.php on line 12
+[13-Mar-2020 10:57:40 America/Chicago] PHP Warning:  include(): Failed opening 'error.html.php' for inclusion (include_path='.:/opt/php71/lib/php') in /home3/jsmarchant97/enterprisecw/view_ideas.php on line 12
+[13-Mar-2020 10:57:44 America/Chicago] PHP Warning:  include(error.html.php): failed to open stream: No such file or directory in /home3/jsmarchant97/enterprisecw/view_ideas.php on line 12
+[13-Mar-2020 10:57:44 America/Chicago] PHP Warning:  include(error.html.php): failed to open stream: No such file or directory in /home3/jsmarchant97/enterprisecw/view_ideas.php on line 12
+[13-Mar-2020 10:57:44 America/Chicago] PHP Warning:  include(): Failed opening 'error.html.php' for inclusion (include_path='.:/opt/php71/lib/php') in /home3/jsmarchant97/enterprisecw/view_ideas.php on line 12
+[13-Mar-2020 10:57:48 America/Chicago] PHP Fatal error:  Uncaught Error: Call to a member function prepare() on null in /home3/jsmarchant97/enterprisecw/database.php:2220
+Stack trace:
+#0 /home3/jsmarchant97/enterprisecw/database.php(266): Database->getArrayObjectsSQL('SELECT Name, Ty...')
+#1 /home3/jsmarchant97/enterprisecw/loginreg.php(98): Database->getAllRoles()
+#2 {main}
+  thrown in /home3/jsmarchant97/enterprisecw/database.php on line 2220
+[13-Mar-2020 10:57:58 America/Chicago] PHP Fatal error:  Uncaught Error: Call to a member function prepare() on null in /home3/jsmarchant97/enterprisecw/database.php:2220
+Stack trace:
+#0 /home3/jsmarchant97/enterprisecw/database.php(266): Database->getArrayObjectsSQL('SELECT Name, Ty...')
+#1 /home3/jsmarchant97/enterprisecw/loginreg.php(98): Database->getAllRoles()
+#2 {main}
+  thrown in /home3/jsmarchant97/enterprisecw/database.php on line 2220
+[13-Mar-2020 10:58:25 America/Chicago] PHP Warning:  include(error.html.php): failed to open stream: No such file or directory in /home3/jsmarchant97/enterprisecw/view_ideas.php on line 12
+[13-Mar-2020 10:58:25 America/Chicago] PHP Warning:  include(error.html.php): failed to open stream: No such file or directory in /home3/jsmarchant97/enterprisecw/view_ideas.php on line 12
+[13-Mar-2020 10:58:25 America/Chicago] PHP Warning:  include(): Failed opening 'error.html.php' for inclusion (include_path='.:/opt/php71/lib/php') in /home3/jsmarchant97/enterprisecw/view_ideas.php on line 12
+[13-Mar-2020 11:00:05 America/Chicago] PHP Fatal error:  Uncaught Error: Call to a member function prepare() on null in /home3/jsmarchant97/enterprisecw/database.php:2220
+Stack trace:
+#0 /home3/jsmarchant97/enterprisecw/database.php(266): Database->getArrayObjectsSQL('SELECT Name, Ty...')
+#1 /home3/jsmarchant97/enterprisecw/loginreg.php(98): Database->getAllRoles()
+#2 {main}
+  thrown in /home3/jsmarchant97/enterprisecw/database.php on line 2220
+[13-Mar-2020 11:03:52 America/Chicago] PHP Warning:  session_start(): Cannot send session cache limiter - headers already sent (output started at /home3/jsmarchant97/enterprisecw/view_ideas.php:17) in /home3/jsmarchant97/enterprisecw/nav_bar.php on line 4
+[13-Mar-2020 11:03:52 America/Chicago] PHP Warning:  Invalid argument supplied for foreach() in /home3/jsmarchant97/enterprisecw/view_ideas.php on line 133
+[13-Mar-2020 11:09:29 America/Chicago] PHP Warning:  session_start(): Cannot send session cache limiter - headers already sent (output started at /home3/jsmarchant97/enterprisecw/view_ideas.php:17) in /home3/jsmarchant97/enterprisecw/nav_bar.php on line 4
+[13-Mar-2020 11:09:29 America/Chicago] PHP Warning:  Invalid argument supplied for foreach() in /home3/jsmarchant97/enterprisecw/view_ideas.php on line 133
+[13-Mar-2020 11:09:59 America/Chicago] PHP Warning:  session_start(): Cannot send session cache limiter - headers already sent (output started at /home3/jsmarchant97/enterprisecw/view_ideas.php:17) in /home3/jsmarchant97/enterprisecw/nav_bar.php on line 4
+[13-Mar-2020 11:09:59 America/Chicago] PHP Warning:  Invalid argument supplied for foreach() in /home3/jsmarchant97/enterprisecw/view_ideas.php on line 133
+[13-Mar-2020 11:09:59 America/Chicago] PHP Warning:  session_start(): Cannot send session cache limiter - headers already sent (output started at /home3/jsmarchant97/enterprisecw/view_ideas.php:17) in /home3/jsmarchant97/enterprisecw/nav_bar.php on line 4
+[13-Mar-2020 11:09:59 America/Chicago] PHP Warning:  Invalid argument supplied for foreach() in /home3/jsmarchant97/enterprisecw/view_ideas.php on line 133
+[13-Mar-2020 11:10:00 America/Chicago] PHP Warning:  session_start(): Cannot send session cache limiter - headers already sent (output started at /home3/jsmarchant97/enterprisecw/view_ideas.php:17) in /home3/jsmarchant97/enterprisecw/nav_bar.php on line 4
+[13-Mar-2020 11:10:00 America/Chicago] PHP Warning:  Invalid argument supplied for foreach() in /home3/jsmarchant97/enterprisecw/view_ideas.php on line 133
+[13-Mar-2020 11:10:00 America/Chicago] PHP Warning:  session_start(): Cannot send session cache limiter - headers already sent (output started at /home3/jsmarchant97/enterprisecw/view_ideas.php:17) in /home3/jsmarchant97/enterprisecw/nav_bar.php on line 4
+[13-Mar-2020 11:10:00 America/Chicago] PHP Warning:  Invalid argument supplied for foreach() in /home3/jsmarchant97/enterprisecw/view_ideas.php on line 133
+[13-Mar-2020 11:14:42 America/Chicago] PHP Warning:  session_start(): Cannot send session cache limiter - headers already sent (output started at /home3/jsmarchant97/enterprisecw/view_ideas.php:17) in /home3/jsmarchant97/enterprisecw/nav_bar.php on line 4
+[13-Mar-2020 11:14:42 America/Chicago] PHP Warning:  Invalid argument supplied for foreach() in /home3/jsmarchant97/enterprisecw/view_ideas.php on line 133
+[13-Mar-2020 11:14:55 America/Chicago] PHP Fatal error:  Uncaught TypeError: Argument 1 passed to Database::setLastLogin() must be of the type string, null given, called in /home3/jsmarchant97/enterprisecw/forum.php on line 64 and defined in /home3/jsmarchant97/enterprisecw/database.php:180
+Stack trace:
+#0 /home3/jsmarchant97/enterprisecw/forum.php(64): Database->setLastLogin(NULL)
+#1 {main}
+  thrown in /home3/jsmarchant97/enterprisecw/database.php on line 180
+[13-Mar-2020 11:29:44 America/Chicago] PHP Fatal error:  Uncaught TypeError: Argument 1 passed to Database::setLastLogin() must be of the type string, null given, called in /home3/jsmarchant97/enterprisecw/forum.php on line 64 and defined in /home3/jsmarchant97/enterprisecw/database.php:180
+Stack trace:
+#0 /home3/jsmarchant97/enterprisecw/forum.php(64): Database->setLastLogin(NULL)
+#1 {main}
+  thrown in /home3/jsmarchant97/enterprisecw/database.php on line 180
+[13-Mar-2020 12:20:48 America/Chicago] PHP Fatal error:  Uncaught TypeError: Argument 1 passed to Database::setLastLogin() must be of the type string, null given, called in /home3/jsmarchant97/enterprisecw/forum.php on line 64 and defined in /home3/jsmarchant97/enterprisecw/database.php:180
+Stack trace:
+#0 /home3/jsmarchant97/enterprisecw/forum.php(64): Database->setLastLogin(NULL)
+#1 {main}
+  thrown in /home3/jsmarchant97/enterprisecw/database.php on line 180
+[14-Mar-2020 08:35:18 America/Chicago] PHP Warning:  session_start(): Cannot send session cache limiter - headers already sent (output started at /home3/jsmarchant97/enterprisecw/view_ideas.php:17) in /home3/jsmarchant97/enterprisecw/nav_bar.php on line 4
+[14-Mar-2020 08:35:18 America/Chicago] PHP Warning:  Invalid argument supplied for foreach() in /home3/jsmarchant97/enterprisecw/view_ideas.php on line 133
+[14-Mar-2020 08:35:43 America/Chicago] PHP Warning:  session_start(): Cannot send session cache limiter - headers already sent (output started at /home3/jsmarchant97/enterprisecw/view_ideas.php:17) in /home3/jsmarchant97/enterprisecw/nav_bar.php on line 4
+[14-Mar-2020 08:35:43 America/Chicago] PHP Warning:  Invalid argument supplied for foreach() in /home3/jsmarchant97/enterprisecw/view_ideas.php on line 133
+[14-Mar-2020 08:40:07 America/Chicago] PHP Warning:  session_start(): Cannot send session cache limiter - headers already sent (output started at /home3/jsmarchant97/enterprisecw/view_ideas.php:17) in /home3/jsmarchant97/enterprisecw/nav_bar.php on line 4
+[14-Mar-2020 08:40:07 America/Chicago] PHP Warning:  Invalid argument supplied for foreach() in /home3/jsmarchant97/enterprisecw/view_ideas.php on line 133
+[14-Mar-2020 08:40:55 America/Chicago] PHP Fatal error:  Uncaught TypeError: Argument 1 passed to Database::setLastLogin() must be of the type string, null given, called in /home3/jsmarchant97/enterprisecw/forum.php on line 64 and defined in /home3/jsmarchant97/enterprisecw/database.php:180
+Stack trace:
+#0 /home3/jsmarchant97/enterprisecw/forum.php(64): Database->setLastLogin(NULL)
+#1 {main}
+  thrown in /home3/jsmarchant97/enterprisecw/database.php on line 180
+[15-Mar-2020 13:27:29 America/Chicago] PHP Warning:  session_start(): Cannot send session cookie - headers already sent by (output started at /home3/jsmarchant97/enterprisecw/view_ideas.php:17) in /home3/jsmarchant97/enterprisecw/nav_bar.php on line 4
+[15-Mar-2020 13:27:29 America/Chicago] PHP Warning:  session_start(): Cannot send session cache limiter - headers already sent (output started at /home3/jsmarchant97/enterprisecw/view_ideas.php:17) in /home3/jsmarchant97/enterprisecw/nav_bar.php on line 4
+[15-Mar-2020 13:27:29 America/Chicago] PHP Warning:  Invalid argument supplied for foreach() in /home3/jsmarchant97/enterprisecw/view_ideas.php on line 133
+[16-Mar-2020 12:54:38 America/Chicago] PHP Warning:  session_start(): Cannot send session cache limiter - headers already sent (output started at /home3/jsmarchant97/enterprisecw/view_ideas.php:17) in /home3/jsmarchant97/enterprisecw/nav_bar.php on line 4
+[16-Mar-2020 12:54:38 America/Chicago] PHP Warning:  Invalid argument supplied for foreach() in /home3/jsmarchant97/enterprisecw/view_ideas.php on line 133

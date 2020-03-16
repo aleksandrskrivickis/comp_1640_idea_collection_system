@@ -226,9 +226,3 @@ $db = new Database();
     
 </body>
 </html>
-
-
-
-<?php
-    include_once "./footer.php";
-?>

@@ -1,4 +1,8 @@
 <?php
+
+//error_reporting(E_ALL);
+//ini_set('display_errors', 'On');
+
     /** Connects to the database and runs SQL commands */
     class Database 
     {
@@ -13,23 +17,29 @@
         
         /** Connection to the database */
         private function connection() 
-        {
-            // Connection details
-            $host = "mysql.cms.gre.ac.uk";
-            $username = "st2645h";
-            $password = "Enterprise94";
-            $database = "mdb_st2645h";
-
-            $connect = "mysql:host=" . $host . ";dbname=" . $database . ";charset=utf8";
-            
-            
+        {        
             // Testing connection 
             try {
+            	$host = "mysql.cms.gre.ac.uk";
+            	$username = "st2645h";
+            	$password = "Enterprise94";
+            	$database = "mdb_st2645h";
+            	$connect = "mysql:host=" . $host . ";dbname=" . $database . ";charset=utf8";
                 $this->dbc = new PDO($connect, $username, $password);
                 $this->dbc->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
             } 
             catch (PDOException $e) {
-                echo "<script> alert('ERROR \nConnection failed: " . $e->getMessage() . "') </script>";
+		try {
+            		$host = "mysql.cms.gre.ac.uk";
+            		$username = "st2645h";
+            		$password = "Enterprise94";
+            		$database = "mdb_st2645h";
+            		$connect = "mysql:host=" . $host . ";dbname=" . $database . ";charset=utf8";
+                	$this->dbc = new PDO($connect, $username, $password);
+                	$this->dbc->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+		} catch (PDOException $e) {
+                	echo "<script> alert('ERROR \nConnection failed: " . $e->getMessage() . "') </script>";
+		}
             }
         }
 
@@ -624,11 +634,145 @@
             else 
                 $this->errorMessage([$e]);
         }
+		
+		public function insertCommentForJake(string $p_post_id, string $p_user_name, string $p_comment_text)// UNTESTED
+        {
+
+			try //server attempts to run query
+			{
+				$sql = 'INSERT INTO Comment SET
+					IdeaID = :Ideaid,
+					UserID = (SELECT UserID FROM User WHERE UserName = :UserName),
+					CommentText = :Commenttext,
+					Anonymous = :Anonymous,
+					DatePosted = CURDATE(),
+					Removed = :Removed';
+					
+				$s = $this->dbc->prepare($sql);
+				$s->bindValue(':Ideaid', $p_post_id);
+				$s->bindValue(':UserName', $p_user_name);
+				$s->bindValue(':Commenttext', $p_comment_text);
+				$s->bindValue(':Anonymous', 0);
+				$s->bindValue(':Removed', 0);
+				$s->execute();
+			}catch (PDOException $e)//opens error page if query fails
+			{
+				$this->errorMessage([$e]);
+				//$output = 'Error fetching ideas:' .  $e->getMessage(); 
+			}
+        }
+		
+        public function setThumbsUpDownForJake(string $p_post_id, string $p_user_name, int $p_thumb_position)// UNTESTED
+        {
+			$thumb_down = 0;
+			if ($p_thumb_position == 0){
+				$thumb_down = 1;
+			}
+
+			try //server attempts to run query
+			{
+				
+				$sql = 'INSERT INTO Rate SET
+					IdeaID = :Ideaid,
+					UserID = (SELECT UserID FROM User WHERE UserName = :UserName),
+					ThumbUp = :Thumbup,
+					ThumbDown = :Thumbdown';
+				$s = $this->dbc->prepare($sql);
+				$s->bindValue(':Ideaid', $p_post_id);
+				$s->bindValue(':UserName', $p_user_name);
+				$s->bindValue(':Thumbup', $p_thumb_position);
+				$s->bindValue(':Thumbdown', $thumb_down);
+				$s->execute();
+				}
+			catch (PDOException $e)//opens error page if query fails
+			{
+				$this->errorMessage([$e]);
+				//$output = 'Error fetching ideas:' .  $e->getMessage(); 
+			}
+        }
 
 
+        public function getCommentsForJake(int $p_idea_id)// UNTESTED
+        {
 
+			try //server attempts to run query
+			{
+				$result = $this->dbc->query('SELECT C.CommentID, C.IdeaID, U.UserName, C.CommentText, C.Anonymous, C.DatePosted
+          FROM Comment C
+          JOIN User as U ON U.UserID = C.UserID
+          JOIN Idea as I ON I.IdeaID = C.IdeaID
+          WHERE C.IdeaID = ' . $p_idea_id);
+				return $result;
+			}
+			catch (PDOException $e)//opens error page if query fails
+			{
+				$this->errorMessage([$e]);
+				//$output = 'Error fetching ideas:' .  $e->getMessage(); 
+			}
+        }
+
+        public function getIdeaCount()// UNTESTED
+        {
+
+			try //server attempts to run query
+			{
+				$result = $this->dbc->query("SELECT COUNT(*) AS record_count FROM Idea")->fetch()["record_count"];
+				return $result;
+			}
+			catch (PDOException $e)//opens error page if query fails
+			{
+				$this->errorMessage([$e]);
+				//$output = 'Error fetching ideas:' .  $e->getMessage(); 
+			}
+        }
 
         /* =================================== IDEA PAGE =================================== */
+
+        /**
+		*
+         */
+        public function getIdeasWithPagination(string $p_pagination_step_from, string $p_pagination_step_to)// UNTESTED
+        {
+			$q = '
+					SELECT 
+						Idea.IdeaID,
+						Title,
+						IdeaText,
+						Anonymous,
+						DatePosted,
+						UserName,
+						ThumbUpSum AS Likes,
+						ThumbDownSum AS Dislikes,
+						commentCount 	
+					FROM 
+						Idea
+					LEFT JOIN 
+						(SELECT IdeaID, SUM(ThumbUp) AS ThumbUpSum, SUM(ThumbDown) AS ThumbDownSum FROM Rate GROUP BY IdeaID) AS RateAggregated
+						ON
+						RateAggregated.IdeaID = Idea.IdeaID
+					LEFT JOIN 
+						(SELECT IdeaID, COUNT(CommentID) AS commentCount FROM `Comment` GROUP BY IdeaID) AS CommentAggregated
+						ON
+						CommentAggregated.IdeaID = Idea.IdeaID
+					  LEFT JOIN 
+						`User`
+						ON
+						Idea.UserID = `User`.`UserID`
+					ORDER BY 
+						IdeaID DESC	
+					LIMIT '.$p_pagination_step_from.', '.$p_pagination_step_to;
+			try //server attempts to run query
+			{
+				$result = $this->dbc->query($q);
+				return $result;
+			}
+			catch (PDOException $e)//opens error page if query fails
+			{
+				$this->errorMessage([$e]);
+				//$output = 'Error fetching ideas:' .  $e->getMessage(); 
+			}
+        }
+
 
         /**
          * Retrieve an idea 
