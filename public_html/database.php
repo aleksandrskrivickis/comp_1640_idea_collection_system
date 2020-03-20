@@ -20,14 +20,14 @@
         {        
             // Testing connection 
             try {
-            	$host = "mysql.cms.gre.ac.uk";
-            	$username = "st2645h";
-            	$password = "Enterprise94";
-            	$database = "mdb_st2645h";
+            	$host = "localhost";
+            	$username = "jsmarchant97";
+            	$password = "enterpriseCW";
+            	$database = "jsmarcha_enterprisecw";
             	$connect = "mysql:host=" . $host . ";dbname=" . $database . ";charset=utf8";
                 $this->dbc = new PDO($connect, $username, $password);
                 $this->dbc->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-            } 
+            }
             catch (PDOException $e) {
 		try {
             		$host = "mysql.cms.gre.ac.uk";
