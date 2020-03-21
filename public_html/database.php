@@ -1399,7 +1399,9 @@
          */
         public function getAllCategories(): ?array // TESTED
         {
-            $sql = "SELECT Name, Description FROM Category WHERE Removed = '0' ORDER BY Name ASC";
+            $status_Sub = "SELECT DISTINCT ic.CategoryID FROM IdeaCategory ic WHERE ic.CategoryID = c.CategoryID";
+            
+            $sql = "SELECT c.Name, c.Description, IF (c.CategoryID IN ($status_Sub), true, false) AS Status FROM Category c WHERE Removed = '0' ORDER BY Name ASC";
 
             return $this->getArrayObjectsSQL($sql);
         }
