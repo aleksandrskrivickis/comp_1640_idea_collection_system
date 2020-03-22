@@ -2,7 +2,7 @@
 
 # Table of Contents  
 - [Group](#group)
-- [Specifications document](https://moodlecurrent.gre.ac.uk/pluginfile.php/1462970/mod_resource/content/13/COMP1640_1920_ver1.pdf)
+- [Specifications document](https://moodlecurrent.gre.ac.uk/pluginfile.php/1462970/mod_resource/content/14/COMP1640_1920_ver2.pdf)
 - [Example Report](https://moodlecurrent.gre.ac.uk/pluginfile.php/1463112/mod_resource/content/1/enterprise%20group%20report%20new%20.pdf)
 - [Google Drive](https://drive.google.com/drive/u/0/folders/1GQoqBhNVXk_yFTkNl_QnNDmkUuhcpDkE)
 - [Kanban Board](https://trello.com/b/xC7CBjBU/coursework-board)
