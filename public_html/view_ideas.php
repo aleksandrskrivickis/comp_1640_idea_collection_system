@@ -1,9 +1,11 @@
 <?php
+session_start();
+include_once 'nav_bar.php';
+include_once 'database.php';
 
 //error_reporting(E_ALL);
 //ini_set('display_errors', 'On');
 
-include_once('database.php');
 $funObj = new Database();
 
 $PAGINATION_STEP = 5;
@@ -96,7 +98,6 @@ $result = $funObj -> getIdeasWithPagination($pagination_step_from, $pagination_s
 <body>
 <!--NAVIGATION BAR-->
 <?php 
-include_once 'nav_bar.php';
 //$username = "NumberOne"; //For test purposes
 
 if(isset($_POST['action']) and $_POST['action'] == 'likes')

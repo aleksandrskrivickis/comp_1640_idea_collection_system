@@ -13,8 +13,6 @@ $username = $_SESSION['username'];
 }
 ?>
 
-#Adding some rtest changes
-
 <html>   
 <head>
 <title>Analytics</title>
@@ -220,6 +218,6 @@ $(function(){
 
 
 <?php
-include_once "./footer.php";
+
 ?>
 

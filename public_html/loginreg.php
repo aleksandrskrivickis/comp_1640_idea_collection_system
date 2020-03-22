@@ -1,12 +1,14 @@
 <?php 
-include('server.php');
+session_start();
+include_once 'server.php';
 $register = new Database();
 
-session_start();
+
 if(isset($_SESSION['username'])){
      header("Location: forum.php");
 }
 
+include_once 'nav_bar.php';
 
 ?>
 
@@ -29,14 +31,6 @@ if(isset($_SESSION['username'])){
 </head>
 
 <body>
-
-<!--NAVIGATION BAR-->
-  <!-- Image and text -->
-  <nav class="navbar navbar-dark" style="background-color: #036DA1;">
-    <a class="navbar-brand" href="#">
-      <img src="logo.jpg" width="100" height="30" class="d-inline-block align-top" alt="">
-    </a>
-  </nav>
 
 <!-- LOGIN AND REG FORM DESKTOP -->
   <div class="form3 col-md-8" id="LoginRegDesk">

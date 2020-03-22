@@ -2,7 +2,7 @@
 session_start();
 
     //setting the variable to the already assigned session
-  $username = $_SESSION['username'];
+$username = $_SESSION['username'];
 include('database.php');
 $lastLog = new Database();
 $time = $_SESSION['timeStamp'];
@@ -64,9 +64,6 @@ $(function(){
         $times = $lastLog->setLastLogin($username);
             
           echo  'Last Logged in '. $time ;
-    
-   
-    
     
     ?>
 

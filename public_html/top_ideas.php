@@ -1,15 +1,16 @@
 <?php 
-    session_start(); 
-    
-    $_SESSION['username'] = 'abc';
+include_once 'nav_bar.php';
+session_start(); 
 
-    // If not logged in
-    if (!isset($_SESSION['username'])) {
-        header ('Location: loginreg.php');
-    }
-    
-    require 'database.php';
-    $db = new Database();
+$_SESSION['username'] = 'abc';
+
+// If not logged in
+if (!isset($_SESSION['username'])) {
+header ('Location: loginreg.php');
+}
+
+include_once 'database.php';
+$db = new Database();
 ?>
 
 <HTML>
