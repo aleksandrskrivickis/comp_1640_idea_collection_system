@@ -96,7 +96,7 @@ $result = $funObj -> getIdeasWithPagination($pagination_step_from, $pagination_s
 <body>
 <!--NAVIGATION BAR-->
 <?php 
-include 'nav_bar.php';
+include_once 'nav_bar.php';
 //$username = "NumberOne"; //For test purposes
 
 if(isset($_POST['action']) and $_POST['action'] == 'likes')

@@ -7,7 +7,10 @@ $username = $_SESSION['username'];
 ?>
 
 <nav class="navbar navbar-expand-lg navbar-dark" style="background-color: #036DA1;">
-  <a class="navbar-brand" href="#">Logo</a>
+  <a href="/">
+  <img border="0" alt="Idea Submission System" src="/images/Logo.png" width="112.35" height="37.5">
+  <a class="navbar-brand" href="/"></a>
+
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>

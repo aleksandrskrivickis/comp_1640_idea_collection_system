@@ -4,7 +4,7 @@
 //ini_set('display_errors', 'On');
 
     /** Connects to the database and runs SQL commands */
-    class Database 
+    class Database
     {
         private $dbc; // Database connection
         
@@ -27,7 +27,7 @@
             	$connect = "mysql:host=" . $host . ";dbname=" . $database . ";charset=utf8";
                 $this->dbc = new PDO($connect, $username, $password);
                 $this->dbc->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-            }
+            } 
             catch (PDOException $e) {
 		try {
             		$host = "mysql.cms.gre.ac.uk";
@@ -958,7 +958,6 @@
             if (!isset($e)) {
 
                 // Can only one document be uploaded per idea?
-
                 $date = (new DateTime($datePosted))->format('Y-m-d H:i:s');
 
                 $sql = "SELECT d.Name, d.Type, d.Document, d.Size, d.Removed FROM Document d 
@@ -1399,9 +1398,7 @@
          */
         public function getAllCategories(): ?array // TESTED
         {
-            $status_Sub = "SELECT DISTINCT ic.CategoryID FROM IdeaCategory ic WHERE ic.CategoryID = c.CategoryID";
-            
-            $sql = "SELECT c.Name, c.Description, IF (c.CategoryID IN ($status_Sub), true, false) AS Status FROM Category c WHERE Removed = '0' ORDER BY Name ASC";
+            $sql = "SELECT Name, Description FROM Category WHERE Removed = '0' ORDER BY Name ASC";
 
             return $this->getArrayObjectsSQL($sql);
         }
