@@ -441,3 +441,72 @@ Stack trace:
 [22-Mar-2020 15:22:51 America/Chicago] PHP Warning:  include_once(): Failed opening './footer.php' for inclusion (include_path='.:/opt/php71/lib/php') in /home3/jsmarchant97/enterprisecw/forum.php on line 120
 [22-Mar-2020 15:23:33 America/Chicago] PHP Warning:  include_once(./footer.php): failed to open stream: No such file or directory in /home3/jsmarchant97/enterprisecw/forum.php on line 120
 [22-Mar-2020 15:23:33 America/Chicago] PHP Warning:  include_once(): Failed opening './footer.php' for inclusion (include_path='.:/opt/php71/lib/php') in /home3/jsmarchant97/enterprisecw/forum.php on line 120
+[22-Mar-2020 15:35:15 America/Chicago] PHP Warning:  mysqli_connect(): (HY000/2003): Can't connect to MySQL server on 'mysql.cms.gre.ac.uk' (110) in /home3/jsmarchant97/enterprisecw/qa_management.php on line 85
+[22-Mar-2020 15:37:22 America/Chicago] PHP Warning:  mysqli_connect(): (HY000/2003): Can't connect to MySQL server on 'mysql.cms.gre.ac.uk' (110) in /home3/jsmarchant97/enterprisecw/qa_management.php on line 85
+[22-Mar-2020 16:57:55 America/Chicago] PHP Warning:  mysqli_connect(): (HY000/2003): Can't connect to MySQL server on 'mysql.cms.gre.ac.uk' (110) in /home3/jsmarchant97/enterprisecw/qa_management.php on line 85
+[22-Mar-2020 17:01:52 America/Chicago] PHP Warning:  mysqli_query() expects parameter 1 to be mysqli, null given in /home3/jsmarchant97/enterprisecw/qa_management.php on line 89
+[22-Mar-2020 17:01:52 America/Chicago] PHP Warning:  mysqli_fetch_array() expects parameter 1 to be mysqli_result, null given in /home3/jsmarchant97/enterprisecw/qa_management.php on line 114
+[22-Mar-2020 17:03:27 America/Chicago] PHP Warning:  mysqli_query() expects parameter 1 to be mysqli, null given in /home3/jsmarchant97/enterprisecw/qa_management.php on line 89
+[22-Mar-2020 17:03:27 America/Chicago] PHP Warning:  mysqli_fetch_array() expects parameter 1 to be mysqli_result, null given in /home3/jsmarchant97/enterprisecw/qa_management.php on line 114
+[22-Mar-2020 17:03:41 America/Chicago] PHP Warning:  mysqli_query() expects parameter 1 to be mysqli, null given in /home3/jsmarchant97/enterprisecw/qa_management.php on line 90
+[22-Mar-2020 17:03:41 America/Chicago] PHP Warning:  mysqli_fetch_array() expects parameter 1 to be mysqli_result, null given in /home3/jsmarchant97/enterprisecw/qa_management.php on line 115
+[22-Mar-2020 17:03:54 America/Chicago] PHP Warning:  mysqli_query() expects parameter 1 to be mysqli, null given in /home3/jsmarchant97/enterprisecw/qa_management.php on line 88
+[22-Mar-2020 17:03:54 America/Chicago] PHP Warning:  mysqli_fetch_array() expects parameter 1 to be mysqli_result, null given in /home3/jsmarchant97/enterprisecw/qa_management.php on line 113
+[22-Mar-2020 17:09:57 America/Chicago] PHP Fatal error:  Uncaught Error: Call to undefined function getArrayObjectsSQL() in /home3/jsmarchant97/enterprisecw/qa_management.php:87
+Stack trace:
+#0 {main}
+  thrown in /home3/jsmarchant97/enterprisecw/qa_management.php on line 87
+[22-Mar-2020 17:10:13 America/Chicago] PHP Fatal error:  Uncaught Error: Call to private method Database::getArrayObjectsSQL() from context '' in /home3/jsmarchant97/enterprisecw/qa_management.php:87
+Stack trace:
+#0 {main}
+  thrown in /home3/jsmarchant97/enterprisecw/qa_management.php on line 87
+[22-Mar-2020 17:12:36 America/Chicago] PHP Fatal error:  Uncaught Error: Call to private method Database::getArrayObjectsSQL() from context '' in /home3/jsmarchant97/enterprisecw/qa_management.php:87
+Stack trace:
+#0 {main}
+  thrown in /home3/jsmarchant97/enterprisecw/qa_management.php on line 87
+[22-Mar-2020 17:16:23 America/Chicago] PHP Parse error:  syntax error, unexpected 'getArrayObjectsSQLMakePublickH' (T_STRING), expecting function (T_FUNCTION) or const (T_CONST) in /home3/jsmarchant97/enterprisecw/database.php on line 96
+[22-Mar-2020 17:16:54 America/Chicago] PHP Fatal error:  Uncaught Error: Class 'Database' not found in /home3/jsmarchant97/enterprisecw/qa_management.php:5
+Stack trace:
+#0 {main}
+  thrown in /home3/jsmarchant97/enterprisecw/qa_management.php on line 5
+[22-Mar-2020 17:17:38 America/Chicago] PHP Warning:  mysqli_fetch_array() expects parameter 1 to be mysqli_result, array given in /home3/jsmarchant97/enterprisecw/qa_management.php on line 111
+[22-Mar-2020 17:19:06 America/Chicago] PHP Warning:  mysqli_fetch_array() expects parameter 1 to be mysqli_result, array given in /home3/jsmarchant97/enterprisecw/qa_management.php on line 112
+[22-Mar-2020 17:25:35 America/Chicago] PHP Parse error:  syntax error, unexpected 'as' (T_AS) in /home3/jsmarchant97/enterprisecw/qa_management.php on line 112
+[22-Mar-2020 17:25:37 America/Chicago] PHP Parse error:  syntax error, unexpected 'as' (T_AS) in /home3/jsmarchant97/enterprisecw/qa_management.php on line 112
+[22-Mar-2020 17:25:39 America/Chicago] PHP Parse error:  syntax error, unexpected 'as' (T_AS) in /home3/jsmarchant97/enterprisecw/qa_management.php on line 112
+[22-Mar-2020 17:25:58 America/Chicago] PHP Parse error:  syntax error, unexpected 'as' (T_AS), expecting ';' in /home3/jsmarchant97/enterprisecw/qa_management.php on line 112
+[22-Mar-2020 17:25:59 America/Chicago] PHP Parse error:  syntax error, unexpected 'as' (T_AS), expecting ';' in /home3/jsmarchant97/enterprisecw/qa_management.php on line 112
+[22-Mar-2020 17:26:47 America/Chicago] PHP Parse error:  syntax error, unexpected 'endwhile' (T_ENDWHILE) in /home3/jsmarchant97/enterprisecw/qa_management.php on line 162
+[22-Mar-2020 17:33:17 America/Chicago] PHP Fatal error:  Uncaught Error: Cannot use object of type stdClass as array in /home3/jsmarchant97/enterprisecw/qa_management.php:116
+Stack trace:
+#0 {main}
+  thrown in /home3/jsmarchant97/enterprisecw/qa_management.php on line 116
+[22-Mar-2020 17:40:44 America/Chicago] PHP Warning:  mysqli_query() expects parameter 1 to be mysqli, null given in /home3/jsmarchant97/enterprisecw/qa_management.php on line 87
+[22-Mar-2020 17:40:44 America/Chicago] PHP Warning:  mysqli_fetch_array() expects parameter 1 to be mysqli_result, null given in /home3/jsmarchant97/enterprisecw/qa_management.php on line 112
+[22-Mar-2020 17:41:16 America/Chicago] PHP Warning:  mysqli_query() expects parameter 1 to be mysqli, null given in /home3/jsmarchant97/enterprisecw/qa_management.php on line 87
+[22-Mar-2020 17:41:16 America/Chicago] PHP Warning:  mysqli_fetch_array() expects parameter 1 to be mysqli_result, null given in /home3/jsmarchant97/enterprisecw/qa_management.php on line 112
+[22-Mar-2020 17:41:36 America/Chicago] PHP Warning:  mysqli_query() expects parameter 1 to be mysqli, null given in /home3/jsmarchant97/enterprisecw/qa_management.php on line 87
+[22-Mar-2020 17:41:36 America/Chicago] PHP Warning:  mysqli_fetch_array() expects parameter 1 to be mysqli_result, null given in /home3/jsmarchant97/enterprisecw/qa_management.php on line 112
+[22-Mar-2020 17:43:08 America/Chicago] PHP Warning:  mysqli_query() expects parameter 1 to be mysqli, null given in /home3/jsmarchant97/enterprisecw/qa_management.php on line 87
+[22-Mar-2020 17:43:08 America/Chicago] PHP Warning:  mysqli_fetch_array() expects parameter 1 to be mysqli_result, null given in /home3/jsmarchant97/enterprisecw/qa_management.php on line 112
+[22-Mar-2020 17:43:38 America/Chicago] PHP Warning:  mysqli_query() expects parameter 1 to be mysqli, null given in /home3/jsmarchant97/enterprisecw/qa_management.php on line 87
+[22-Mar-2020 17:43:38 America/Chicago] PHP Warning:  mysqli_fetch_array() expects parameter 1 to be mysqli_result, null given in /home3/jsmarchant97/enterprisecw/qa_management.php on line 112
+[22-Mar-2020 17:43:52 America/Chicago] PHP Warning:  mysqli_query() expects parameter 1 to be mysqli, null given in /home3/jsmarchant97/enterprisecw/qa_management.php on line 88
+[22-Mar-2020 17:43:52 America/Chicago] PHP Warning:  mysqli_fetch_array() expects parameter 1 to be mysqli_result, null given in /home3/jsmarchant97/enterprisecw/qa_management.php on line 113
+[22-Mar-2020 17:44:58 America/Chicago] PHP Warning:  mysqli_query() expects parameter 1 to be mysqli, null given in /home3/jsmarchant97/enterprisecw/qa_management.php on line 84
+[22-Mar-2020 17:44:58 America/Chicago] PHP Warning:  mysqli_fetch_array() expects parameter 1 to be mysqli_result, null given in /home3/jsmarchant97/enterprisecw/qa_management.php on line 109
+[22-Mar-2020 17:45:09 America/Chicago] PHP Warning:  mysqli_query() expects parameter 1 to be mysqli, null given in /home3/jsmarchant97/enterprisecw/qa_management.php on line 84
+[22-Mar-2020 17:45:09 America/Chicago] PHP Warning:  mysqli_fetch_array() expects parameter 1 to be mysqli_result, null given in /home3/jsmarchant97/enterprisecw/qa_management.php on line 109
+[22-Mar-2020 17:45:11 America/Chicago] PHP Warning:  mysqli_query() expects parameter 1 to be mysqli, null given in /home3/jsmarchant97/enterprisecw/qa_management.php on line 84
+[22-Mar-2020 17:45:11 America/Chicago] PHP Warning:  mysqli_fetch_array() expects parameter 1 to be mysqli_result, null given in /home3/jsmarchant97/enterprisecw/qa_management.php on line 109
+[22-Mar-2020 17:45:46 America/Chicago] PHP Fatal error:  Uncaught Error: Class 'Database' not found in /home3/jsmarchant97/enterprisecw/qa_management.php:81
+Stack trace:
+#0 {main}
+  thrown in /home3/jsmarchant97/enterprisecw/qa_management.php on line 81
+[22-Mar-2020 17:47:57 America/Chicago] PHP Warning:  mysqli_query() expects parameter 1 to be mysqli, null given in /home3/jsmarchant97/enterprisecw/qa_management.php on line 83
+[22-Mar-2020 17:47:57 America/Chicago] PHP Warning:  mysqli_fetch_array() expects parameter 1 to be mysqli_result, null given in /home3/jsmarchant97/enterprisecw/qa_management.php on line 108
+[22-Mar-2020 17:48:47 America/Chicago] PHP Warning:  mysqli_query() expects parameter 1 to be mysqli, null given in /home3/jsmarchant97/enterprisecw/qa_management.php on line 83
+[22-Mar-2020 17:48:47 America/Chicago] PHP Warning:  mysqli_fetch_array() expects parameter 1 to be mysqli_result, null given in /home3/jsmarchant97/enterprisecw/qa_management.php on line 108
+[22-Mar-2020 17:50:32 America/Chicago] PHP Parse error:  syntax error, unexpected '{' in /home3/jsmarchant97/enterprisecw/qa_management.php on line 87
+[22-Mar-2020 17:50:44 America/Chicago] PHP Parse error:  syntax error, unexpected '$e' (T_VARIABLE), expecting ',' or ')' in /home3/jsmarchant97/enterprisecw/qa_management.php on line 87
+[22-Mar-2020 17:53:06 America/Chicago] PHP Warning:  mysqli_connect(): (HY000/2003): Can't connect to MySQL server on 'mysql.cms.gre.ac.uk' (110) in /home3/jsmarchant97/enterprisecw/qa_management.php on line 86

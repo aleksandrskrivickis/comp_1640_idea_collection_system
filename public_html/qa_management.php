@@ -73,17 +73,13 @@ $(function(){
   $("#nav-placeholder").load("nav_bar.php");
 });
 </script>
-                                 <?php  //connection
-    $host = "mysql.cms.gre.ac.uk";
-    $username = "st2645h";
-    $password = "Enterprise94";
-    $database = "mdb_st2645h";
+<?php  //connection
 
-    
-
-
+$host = "localhost";
+$username = "jsmarchant97";
+$password = "enterpriseCW";
+$database = "jsmarcha_enterprisecw";
 $dbc = mysqli_connect($host, $username, $password, $database) OR die("couldn't connect to database".  mysqli_connect_errno());
-
         
 $result = mysqli_query($dbc, " SELECT Name, Description FROM Category Where Removed = 0");       
                       
