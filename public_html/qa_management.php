@@ -174,11 +174,19 @@ $result = mysqli_query($dbc, " SELECT Name, Description FROM Category Where Remo
                                 echo 'empty';
                                 }
                                 else{
-                                    
-                             $check = "INSERT INTO Category (NAME, Description, Removed) VALUES ('".$subject."','".$disc."', 0 )";
-                     $dbc->query($check);
+                              $check = "SELECT * FROM Category WHERE (Name ='".$subject."' AND Removed = 0)";
+                                $result=mysqli_query($dbc,$check);
+
+                                    if(mysqli_num_rows($result) ==0)
+                                    {
+                             $add = "INSERT INTO Category (NAME, Description, Removed) VALUES ('".$subject."','".$disc."', 0 )";
+                                        $dbc->query($add);
+                                        
                                          echo "<meta http-equiv='refresh' content='0'>";
-                                
+                                    }
+                                    else {
+                                        echo 'Name already exsited';
+                                    }
                                 }
                             }
                             
