@@ -2,20 +2,16 @@
 <?php
 session_start();
  
-
 if(isset($_SESSION['admin']) && ($_SESSION['admin'] != null)){
 
-if(isset($_SESSION['username'])){
-    
-
-     $username = $_SESSION['username'];
-     $admin = $_SESSION['admin'];}
+    if(isset($_SESSION['username'])){
+       $username = $_SESSION['username'];
+       $admin = $_SESSION['admin'];
+    }
     else {
-        header("Location: forum.php");
-                                       
-              }
-
-}else
+        header("Location: forum.php");                      
+         }
+} else
 {
      header("Location: loginreg.php");
 }
@@ -74,15 +70,20 @@ $(function(){
                 <thead>
 
                     <?php  //connection
-    $host = "mysql.cms.gre.ac.uk";
-    $username = "st2645h";
-    $password = "Enterprise94";
-    $database = "mdb_st2645h";
 
-    
-
-
+try {
+$host = "localhost";
+$username = "jsmarchant97";
+$password = "enterpriseCW";
+$database = "jsmarcha_enterprisecw";
 $dbc = mysqli_connect($host, $username, $password, $database) OR die("couldn't connect to database".  mysqli_connect_errno());
+} catch (Exception $e){
+  $host = "mysql.cms.gre.ac.uk";
+  $username = "st2645h";
+  $password = "Enterprise94";
+  $database = "mdb_st2645h";
+  $dbc = mysqli_connect($host, $username, $password, $database) OR die("couldn't connect to database".  mysqli_connect_errno());
+}        
 
         
 $result = mysqli_query($dbc, " SELECT UserID, u.UserName,u.Password, d.Name AS dName, Email, r.Name AS rName, Banned, u.Removed  FROM User u LEFT Join Department d ON u.DepartmentID=d.DepartmentID INNER join Role r on u.RoleID=r.RoleID ORDER BY u.UserID ASC");       

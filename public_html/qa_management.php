@@ -33,7 +33,7 @@ include_once('database.php');
             
             font-size: 50px;
         }
-        
+
  #closureDates {
   font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
   border-collapse: collapse;
@@ -75,12 +75,19 @@ $(function(){
 </script>
 <?php  //connection
 
+try {
 $host = "localhost";
 $username = "jsmarchant97";
 $password = "enterpriseCW";
 $database = "jsmarcha_enterprisecw";
 $dbc = mysqli_connect($host, $username, $password, $database) OR die("couldn't connect to database".  mysqli_connect_errno());
-        
+} catch (Exception $e){
+  $host = "mysql.cms.gre.ac.uk";
+  $username = "st2645h";
+  $password = "Enterprise94";
+  $database = "mdb_st2645h";
+  $dbc = mysqli_connect($host, $username, $password, $database) OR die("couldn't connect to database".  mysqli_connect_errno());
+}        
 $result = mysqli_query($dbc, " SELECT Name, Description FROM Category Where Removed = 0");       
                       
 ?>
@@ -97,9 +104,11 @@ $result = mysqli_query($dbc, " SELECT Name, Description FROM Category Where Remo
 <table id="closureDates">
   <tr>
       <th>Subject</th>
-                        <th>Description</th>
-                        <th>Status</th>
-                        <th>Delete</th>
+      <th>Description</th>
+      <th>Closure date</th>
+      <th>Final closure date</th>
+      <th>Status</th>
+      <th></th>
   </tr>
     
  
@@ -107,37 +116,42 @@ $result = mysqli_query($dbc, " SELECT Name, Description FROM Category Where Remo
                     <?php 
                     $i = 0;
                     while($row = mysqli_fetch_array($result)): ?>
-                    <tr>
+  <tr>
 
-                        <form method="post">
-                            <td><?php echo $row['Name'];?></td>
-                            
-                            <td><?php echo $row['Description'];?></td>
-                           
+      <form method="post">
+          <td><?php echo $row['Name'];?></td>
+          
+          <td><?php echo $row['Description'];?></td>
+         
+          <td>Closure date placeholder</td>
+          <td>Final closure date placeholder</td>
+         
+          <!-- Can be changed to block or remove -->
+          <td><?php 
+              
+             if($row['Removed'] == 1)
+              {
+               echo '<p1>Deleted</p1>';
+              }
+              else if($row['Banned'] == 1)
+              {
+              echo '<p1>Banned</p1>';
+              }
 
-                            
-                           
-                            <!-- Can be changed to block or remove -->
-                            <td><?php 
-                                
-                               if($row['Removed'] == 1)
-                                {
-                                 echo '<p1>Deleted</p1>';
-                                }
-                                else if($row['Banned'] == 1)
-                                {
-                                echo '<p1>Banned</p1>';
-                                }
-
-                                else if($row['Banned'] == 0 && $row['Removed'] == 0){
-                                    echo '<p2> Normal</p2>';
-                            };
-                                ?></td>
-                            
-                            <input type="hidden" name="id<?php echo $i; ?>" value="<?php echo $row['CategoryID']; ?>" >
-                       
-                        
-                        <th><button name="Delete<?php echo $i;?>" class="open-form" onclick="openForm()">Delete</button></th>
+              else if($row['Banned'] == 0 && $row['Removed'] == 0){
+                  echo '<p2> Normal</p2>';
+          };
+              ?></td>
+          
+          <input type="hidden" name="id<?php echo $i; ?>" value="<?php echo $row['CategoryID']; ?>" >
+     
+      
+      <td>
+        <button type="button" class="btn btn-light" data-toggle="modal" data-target="#exampleModalCenter"> <!-- Trigger modal --> Edit </button>
+        <button type="button" class="btn btn-light downloaded">Download</button>
+        <button name="Delete<?php echo $i;?>" class="btn btn-light" onclick="openForm()">Delete</button>
+      </td>
+    </tr>
                       
                         
                         
@@ -211,7 +225,7 @@ $result = mysqli_query($dbc, " SELECT Name, Description FROM Category Where Remo
 </div>
 <div class="input-group input-group-sm mb-3">
   <div class="input-group-prepend">
-    <span class="input-group-text" id="inputGroup-sizing-sm">Discription</span>   
+    <span class="input-group-text" id="inputGroup-sizing-sm">Description</span>   
   </div>
   <input type="text" value="" name="Dis" class="form-control" aria-label="Small" aria-describedby="inputGroup-sizing-sm">
 </div>
@@ -227,10 +241,44 @@ $result = mysqli_query($dbc, " SELECT Name, Description FROM Category Where Remo
       </div>  
 
 
-      
+<!-- MODAL FOR EDIT BUTTON- CLOSURE DATES -->
+<div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLongTitle">Edit</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <div class="dropdown">
+  <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+    Edit Closure Dates
+  </button>
+  <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+    <a class="dropdown-item">Closure Date</a>
+    <a class="dropdown-item">Final Closure Date</a>
+  </div>
+       <br>    
+            <br>
+            <div class="input-group input-group-sm mb-3">
+  <div class="input-group-prepend">
+    <span class="input-group-text" id="inputGroup-sizing-sm">New Closure Date</span>
+  </div>
+  <input type="text" class="form-control" aria-label="Small" aria-describedby="inputGroup-sizing-sm">
+</div>
+            
+</div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-light" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-light">Save changes</button>
+      </div>
+    </div>
+  </div>
+</div>
 
-
-          
                         </form>
                     </tr>        
     
@@ -250,7 +298,7 @@ $(document).ready(function(){
         $(this).html($(this).html() == 'Download' ? 'Downloaded' : 'Download');
     });
 });
-    </script>
+</script>
 
 
 
