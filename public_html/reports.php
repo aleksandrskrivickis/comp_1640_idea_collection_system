@@ -1,18 +1,21 @@
 <?php 
-    // Test users
-    $users = array( null,        "QAM",             // QAM 
-                    "Computing", "QAC - Computing", // QAC for Computing
-                    "Science",   "QAC - Science",   // QAC for Science
-                    "Sports",    "QAC - Sports",    // QAC for Sport
-                  );
+session_start();
+include_once 'nav_bar.php';
+
+// Test users
+$users = array( null,        "QAM",             // QAM 
+                "Computing", "QAC - Computing", // QAC for Computing
+                "Science",   "QAC - Science",   // QAC for Science
+                "Sports",    "QAC - Sports",    // QAC for Sport
+              );
 
 
-    require 'database.php';
-    $db = new Database();
+//require 'database.php';
+$db = new Database();
 
     
-    // If variable exist save else null - null returns all results e.g. for QAM
-    $department = ($_REQUEST['user']) ? $_REQUEST['user'] : null;
+// If variable exist save else null - null returns all results e.g. for QAM
+$department = ($_REQUEST['user']) ? $_REQUEST['user'] : null;
 ?>
 
 <HTML>
@@ -51,39 +54,57 @@
 </head>
 
 <body>
-    <!-- Test selectors -->
-    <form method="GET">
-        <p> User: 
-            <select name="user" onchange="this.form.submit()">
-                <?php
-                    for ($i = 0; $i < count($users); $i++) {
-                        if ($users[$i] == $_GET['user']) {
-                            echo "<option value='$users[$i]' selected>";
-                                $i++;
-                                echo $users[$i] ;
-                            echo "</option>";
-                        }
-                        else {
-                            echo "<option value='$users[$i]'>";
-                                $i++;
-                                echo $users[$i] ;
-                            echo "</option>";
-                        }
-                    }
-                ?>
-            </select>
-        </p>
-    </form>
+
     
     
     
-    <h1> Statistics </h1>
 
     <!-- Tab list -->
-    <div class = "tab">
-        <button class = "links" onclick = "displayTab(event, 'number')" id = defaultOpen> Ideas per Department </button>
-        <button class = "links" onclick = "displayTab(event, 'percent')"> Percentage per Department </button>
-        <button class = "links" onclick = "displayTab(event, 'contributor')"> Contributors per Department </button>
+
+    <div class="Jumbotroncentral">
+        <div class="jumbotron">
+        <!-- Test selectors -->
+        <form method="GET">
+            <p> User: 
+                <select name="user" onchange="this.form.submit()">
+                    <?php
+                        for ($i = 0; $i < count($users); $i++) {
+                            if ($users[$i] == $_GET['user']) {
+                                echo "<option value='$users[$i]' selected>";
+                                    $i++;
+                                    echo $users[$i] ;
+                                echo "</option>";
+                            }
+                            else {
+                                echo "<option value='$users[$i]'>";
+                                    $i++;
+                                    echo $users[$i] ;
+                                echo "</option>";
+                            }
+                        }
+                    ?>
+                </select>
+            </p>
+        </form>            
+            
+
+            <div class = "tab">
+<table class="table table-responsive">
+  <tr>
+    <th colspan="3"><h1 align="center">Statistics</h1></th>
+    <th colspan="3"><h1 align="center">Exception Reports</h1></th>
+  </tr>
+  <tr>
+    <td><button class = "links" onclick = "displayTab(event, 'number')" id = defaultOpen> Ideas per Department </button></td>
+    <td><button class = "links" onclick = "displayTab(event, 'percent')"> Percentage per Department </button></td>
+    <td><button class = "links" onclick = "displayTab(event, 'contributor')"> Contributors per Department </button></td>
+    <td><button class = "links" onclick = "displayTab(event, 'noComment')"> Ideas Without Comments </button></td>
+    <td><button class = "links" onclick = "displayTab(event, 'anonymousIdeas')"> Anonymous Ideas </button></td>
+    <td><button class = "links" onclick = "displayTab(event, 'anonymousComments')"> Anonymous Comments </button></td>     
+  </tr>
+</table>          
+            </div>
+        </div>
     </div>
 
 
@@ -96,9 +117,17 @@
                 // If IdeaCount returns a value, save value or set as zero 
                 $ideaCount = ($idea->IdeaCount) ? $idea->IdeaCount : 0;
 
-                // Display results
-                echo "<p> <b> Department: </b> " . $idea->Name . " </p>
-                <p> <b> No. of Ideas: </b> " . $ideaCount . " </p> <br>";
+                echo @"
+                    <form>          
+                        <div class=\"Jumbotroncentral\">
+                            <div class=\"jumbotron\">
+                                <h3 class=\"display-9\">Department: ".$idea->Name."</h3>
+                                <p class=\"display-9\">No. of ideas: ".$ideaCount."</p>    
+                            </div>        
+                        </div>
+                    </form>
+                ";
+
             }
         ?>
     </div>
@@ -113,9 +142,16 @@
                 // If IdeaPercent returns a value, save value or set as zero 
                 $ideaPercent = ($idea->IdeaPercent) ? $idea->IdeaPercent : 0;
 
-                // Display results
-                echo "<p> <b> Department: </b> " . $idea->Name . " </p>
-                <p> <b> Ideas Percent: </b> " . number_format($ideaPercent, 2) . "% </p> <br>";
+                echo @"
+                    <form>          
+                        <div class=\"Jumbotroncentral\">
+                            <div class=\"jumbotron\">
+                                <h3 class=\"display-9\">Department: ".$idea->Name."</h3>
+                                <p class=\"display-9\">Ideas Percent: ".number_format($ideaPercent, 2)." %</p>    
+                            </div>        
+                        </div>
+                    </form>
+                ";                
             }
         ?>
     </div>
@@ -130,24 +166,19 @@
                 // If UserCount returns a value, save value or set as zero 
                 $userCount = ($idea->UserCount) ? $idea->UserCount : 0;
 
-                // Display results
-                echo "<p> <b> Department: </b> " . $idea->Name . " </p>
-                <p> <b> Contributors: </b> " . $userCount . " </p> <br>";
+                echo @"
+                    <form>          
+                        <div class=\"Jumbotroncentral\">
+                            <div class=\"jumbotron\">
+                                <h3 class=\"display-9\">Department: ".$idea->Name."</h3>
+                                <p class=\"display-9\">Contributors: ".$userCount."</p>    
+                            </div>        
+                        </div>
+                    </form>
+                ";                
             }
         ?>
     </div>
-
-
-
-    <h1> Exception Reports </h1>
-
-    <!-- Tab list -->
-    <div class = "tab">
-        <button class = "links" onclick = "displayTab(event, 'noComment')"> Ideas Without Comments </button>
-        <button class = "links" onclick = "displayTab(event, 'anonymousIdeas')"> Anonymous Ideas </button>
-        <button class = "links" onclick = "displayTab(event, 'anonymousComments')"> Anonymous Comments </button>
-    </div>
-
 
     <!-- Ideas without a comment -->
     <div id = "noComment" class = "content">
@@ -161,10 +192,17 @@
                     // Date format
                     $date = ((new DateTime($idea->DatePosted))->format('jS M Y H:m'));
 
-                    // Display results
-                    echo "<p> <b> Idea Posted By: </b> " . $idea->UserName . " </p>
-                    <p> <b> Ideas Title: </b> " . $idea->Title . " </p>
-                    <p> <b> Ideas Posted: </b> " . $date . " </p> <br>";
+                    echo @"
+                        <form>          
+                            <div class=\"Jumbotroncentral\">
+                                <div class=\"jumbotron\">
+                                    <h3 class=\"display-9\">Title: ".$idea->Title."</h3>
+                                    <p class=\"display-9\">Posted by: ".$idea->UserName."</p>    
+                                    <p class=\"display-9\">Posted at: ".$date."</p>    
+                                </div>        
+                            </div>
+                        </form>
+                    ";                         
                 }
             }
             else {
@@ -189,14 +227,21 @@
                     // Date format
                     $date = ((new DateTime($idea->DatePosted))->format('jS M Y H:m'));
 
-                    // Display results
-                    echo "<p> <b> Idea Posted By: </b> " . $idea->UserName . " </p>
-                    <p> <b> Ideas Title: </b> " . $idea->Title . " </p>
-                    <p> <b> Ideas Posted: </b> " . $date . " </p> 
-                    <p> <b> No. of Views: </b> " . $idea->ViewCounter . " </p> 
-                    <p> <b> Deleted: </b> " . $removed . " </p> <br>";
-
                     $idea->IdeaText; // Other variable
+
+                    echo @"
+                        <form>          
+                            <div class=\"Jumbotroncentral\">
+                                <div class=\"jumbotron\">
+                                    <h3 class=\"display-9\">Title: ".$idea->Title."</h3>
+                                    <p class=\"display-9\">Posted by: ".$idea->UserName."</p>    
+                                    <p class=\"display-9\">Posted at: ".$date."</p>    
+                                    <p class=\"display-9\">Views count: ".$idea->ViewCounter."</p>    
+                                    <p class=\"display-9\">Deleted: ".$removed."</p>    
+                                </div>        
+                            </div>
+                        </form>
+                    ";                           
                 }
             }
             else {
@@ -222,14 +267,21 @@
                     $date = ((new DateTime($comment->DatePosted))->format('jS M Y H:m'));
                     $ideaDate = ((new DateTime($comment->IdeaDatePosted))->format('jS M Y H:m'));
 
-                    // Display results
-                    echo "<p> <b> Comment Posted By: </b> " . $comment->UserName . " </p>
-                    <p> <b> Comment Text: </b> " . $comment->CommentText . " </p> 
-                    <p> <b> Comment Posted: </b> " . $date . " </p> 
-                    <p> <b> Deleted: </b> " . $removed . " </p> 
-                    <p> <b> From Idea: </b> " . $comment->IdeaTitle . " </p> <br>";
+                    echo @"
+                        <form>          
+                            <div class=\"Jumbotroncentral\">
+                                <div class=\"jumbotron\">
+                                    <h3 class=\"display-9\">Idea: ".$comment->IdeaTitle."</h3>
+                                    <p class=\"display-9\">Idea posted at: ".$comment->IdeaDatePosted."</p>    
+                                    <p class=\"display-9\">Author: ".$comment->UserName."</p>    
+                                    <p class=\"display-9\">Text: ".$comment->CommentText."</p>    
+                                    <p class=\"display-9\">Comment posted at: ".$date."</p>    
+                                    <p class=\"display-9\">Deleted: ".$removed."</p>    
+                                </div>        
+                            </div>
+                        </form>
+                    "; 
 
-                    $comment->IdeaDatePosted; // Other variable
                 }
             }
             else {
