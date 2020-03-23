@@ -56,10 +56,6 @@ $username = $_SESSION['username'];
      echo '</form>';    
   }
 ?>
-
-     
-      
-   
   </div>
 </nav>
        
