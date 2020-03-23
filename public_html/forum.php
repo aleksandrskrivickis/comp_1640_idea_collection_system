@@ -60,10 +60,10 @@ $(function(){
     <!--PAGE TITLE/HEADER--> 
     <h1> Select a Forum</h1>
     
-    <?php echo '<p>Welcome ' . $username . '<p>';
+    <?php //echo '<p>Welcome ' . $username . '<p>';
         $times = $lastLog->setLastLogin($username);
             
-          echo  'Last Logged in '. $time ;
+          //echo  'Last Logged in '. $time ;
     
     ?>
 
@@ -117,6 +117,5 @@ $(function(){
 </html>
 
 <?php
-include_once "./footer.php";
 ?>
 

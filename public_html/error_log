@@ -577,3 +577,27 @@ Stack trace:
 [23-Mar-2020 12:01:28 America/Chicago] PHP Warning:  array_values() expects parameter 1 to be array, object given in /home3/jsmarchant97/enterprisecw/reports.php on line 34
 [23-Mar-2020 12:01:28 America/Chicago] PHP Warning:  array_values() expects parameter 1 to be array, object given in /home3/jsmarchant97/enterprisecw/reports.php on line 34
 [23-Mar-2020 12:01:28 America/Chicago] PHP Warning:  array_values() expects parameter 1 to be array, object given in /home3/jsmarchant97/enterprisecw/reports.php on line 34
+[23-Mar-2020 14:42:17 America/Chicago] PHP Warning:  include_once(./footer.php): failed to open stream: No such file or directory in /home3/jsmarchant97/enterprisecw/forum.php on line 120
+[23-Mar-2020 14:42:17 America/Chicago] PHP Warning:  include_once(): Failed opening './footer.php' for inclusion (include_path='.:/opt/php71/lib/php') in /home3/jsmarchant97/enterprisecw/forum.php on line 120
+[23-Mar-2020 14:42:30 America/Chicago] PHP Fatal error:  Uncaught TypeError: Argument 1 passed to Database::strValidation() must be of the type string, null given, called in /home3/jsmarchant97/enterprisecw/database.php on line 1722 and defined in /home3/jsmarchant97/enterprisecw/database.php:2453
+Stack trace:
+#0 /home3/jsmarchant97/enterprisecw/database.php(1722): Database->strValidation(NULL, 'category', 'letters', 'getDepartmentId...')
+#1 /home3/jsmarchant97/enterprisecw/reports.php(115): Database->getDepartmentIdeas('Computing')
+#2 {main}
+  thrown in /home3/jsmarchant97/enterprisecw/database.php on line 2453
+[23-Mar-2020 14:42:32 America/Chicago] PHP Fatal error:  Uncaught TypeError: Argument 1 passed to Database::strValidation() must be of the type string, null given, called in /home3/jsmarchant97/enterprisecw/database.php on line 1722 and defined in /home3/jsmarchant97/enterprisecw/database.php:2453
+Stack trace:
+#0 /home3/jsmarchant97/enterprisecw/database.php(1722): Database->strValidation(NULL, 'category', 'letters', 'getDepartmentId...')
+#1 /home3/jsmarchant97/enterprisecw/reports.php(115): Database->getDepartmentIdeas('Science')
+#2 {main}
+  thrown in /home3/jsmarchant97/enterprisecw/database.php on line 2453
+[23-Mar-2020 14:42:34 America/Chicago] PHP Fatal error:  Uncaught TypeError: Argument 1 passed to Database::strValidation() must be of the type string, null given, called in /home3/jsmarchant97/enterprisecw/database.php on line 1722 and defined in /home3/jsmarchant97/enterprisecw/database.php:2453
+Stack trace:
+#0 /home3/jsmarchant97/enterprisecw/database.php(1722): Database->strValidation(NULL, 'category', 'letters', 'getDepartmentId...')
+#1 /home3/jsmarchant97/enterprisecw/reports.php(115): Database->getDepartmentIdeas('Sports')
+#2 {main}
+  thrown in /home3/jsmarchant97/enterprisecw/database.php on line 2453
+[23-Mar-2020 14:42:57 America/Chicago] PHP Warning:  include_once(./footer.php): failed to open stream: No such file or directory in /home3/jsmarchant97/enterprisecw/forum.php on line 120
+[23-Mar-2020 14:42:57 America/Chicago] PHP Warning:  include_once(): Failed opening './footer.php' for inclusion (include_path='.:/opt/php71/lib/php') in /home3/jsmarchant97/enterprisecw/forum.php on line 120
+[23-Mar-2020 14:44:55 America/Chicago] PHP Warning:  include_once(./footer.php): failed to open stream: No such file or directory in /home3/jsmarchant97/enterprisecw/forum.php on line 120
+[23-Mar-2020 14:44:55 America/Chicago] PHP Warning:  include_once(): Failed opening './footer.php' for inclusion (include_path='.:/opt/php71/lib/php') in /home3/jsmarchant97/enterprisecw/forum.php on line 120
