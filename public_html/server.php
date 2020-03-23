@@ -43,7 +43,7 @@
 
             if (count($errors) == 0) {
 
-                //$register = $funObj->createUser($username, $password1, $email, $role, $department);  
+                $register = $funObj->createUser($username, $password1, $email, $role, $department);  
 
                 if(!$register){  
                     array_push($errors,"Registration Successful");
