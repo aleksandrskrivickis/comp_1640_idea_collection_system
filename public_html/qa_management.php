@@ -27,6 +27,8 @@ include_once('database.php');
     
     <!-- CSS -->
   <link rel="stylesheet" type="text/css" href="chartstyle.css">   
+  <link rel="stylesheet" type="text/css" href="manageuserCSS.css">
+
     <style>
     
         .display-4 {
@@ -88,7 +90,31 @@ $dbc = mysqli_connect($host, $username, $password, $database) OR die("couldn't c
   $database = "mdb_st2645h";
   $dbc = mysqli_connect($host, $username, $password, $database) OR die("couldn't connect to database".  mysqli_connect_errno());
 }        
-$result = mysqli_query($dbc, " SELECT Name, Description FROM Category Where Removed = 0");       
+$result = mysqli_query($dbc, @"
+  SELECT 
+    Category.CategoryID,
+    Category.Name, 
+    Category.Description, 
+    Category.Removed,
+    Forum.Closure,
+    Forum.FinalClosure
+  FROM 
+    Category
+  LEFT JOIN 
+    IdeaCategory 
+    ON
+      Category.CategoryID = IdeaCategory.CategoryID
+  LEFT JOIN
+    Idea
+    ON
+      IdeaCategory.IdeaID = Idea.IdeaID
+  LEFT JOIN
+    Forum
+    ON
+      Idea.ForumID = Forum.ForumID
+  ORDER BY 
+    Forum.FinalClosure DESC
+  ");       
                       
 ?>
       
@@ -97,6 +123,11 @@ $result = mysqli_query($dbc, " SELECT Name, Description FROM Category Where Remo
       <!-- Button trigger modal EDIT CATEGORIES -->
 <button type="button" class="btn btn-light" data-toggle="modal" data-target="#exampleModal"  style="border-color: #036CA0;">
   Add Categories
+</button>
+
+<!-- Button trigger modal EDIT USERS -->
+<button type="button" class="btn btn-light" data-toggle="modal" data-target="#exampleModal1"  style="border-color: #036CA0;">
+  Edit Users
 </button>
       <br><br>
       
@@ -117,18 +148,14 @@ $result = mysqli_query($dbc, " SELECT Name, Description FROM Category Where Remo
                     $i = 0;
                     while($row = mysqli_fetch_array($result)): ?>
   <tr>
-
       <form method="post">
           <td><?php echo $row['Name'];?></td>
-          
           <td><?php echo $row['Description'];?></td>
-         
-          <td>Closure date placeholder</td>
-          <td>Final closure date placeholder</td>
-         
+          <td><?= $row['Closure'] ?></td>
+          <td><?= $row['FinalClosure'] ?></td>
           <!-- Can be changed to block or remove -->
-          <td><?php 
-              
+          <td>
+            <?php   
              if($row['Removed'] == 1)
               {
                echo '<p1>Deleted</p1>';
@@ -137,70 +164,67 @@ $result = mysqli_query($dbc, " SELECT Name, Description FROM Category Where Remo
               {
               echo '<p1>Banned</p1>';
               }
-
               else if($row['Banned'] == 0 && $row['Removed'] == 0){
                   echo '<p2> Normal</p2>';
-          };
-              ?></td>
+              };
+              ?>
+          </td>
           
           <input type="hidden" name="id<?php echo $i; ?>" value="<?php echo $row['CategoryID']; ?>" >
      
       
       <td>
         <button type="button" class="btn btn-light" data-toggle="modal" data-target="#exampleModalCenter"> <!-- Trigger modal --> Edit </button>
-        <button type="button" class="btn btn-light downloaded">Download</button>
-        <button name="Delete<?php echo $i;?>" class="btn btn-light" onclick="openForm()">Delete</button>
+        <a href="csv.php?forum=<?php echo $row['Name']; ?>"><button type="button" class="btn btn-light downloaded">Download</button></a>         
+         <a href="qa_management.php?delete_category=<?php echo $row['Name']; ?>"><button type="button" class="btn btn-light">Delete</button></a> 
       </td>
-    </tr>
-                      
-                        
-                        
+    </tr>       
                 
-                       <?php
-                    if(isset($_POST["Delete".$i])){
-                         
-                        $cat = $delete->deleteCategory($row['Name']);  
-                        if ($cat)
-                        {
-                        echo "<meta http-equiv='refresh' content='0'>";
-                            
-                        }
-                            
-                            
-                            
-                    }
-                            ?>
-                                                  <?php $i++; endwhile;?>
-      
-                            
-                            <?php
-                              $subject = $_POST['newCat'];
+ <?php
+  if(isset($_GET['delete_category'])){
+       
+      $cat = $delete->deleteCategory($_GET['delete_category']);  
+      if ($cat)
+      {
+      echo "<meta http-equiv='refresh' content='0'>";
+          
+      }
+          
+          
+          
+  }
+          ?>
+                                <?php $i++; endwhile;?>
 
-                                $disc = $_POST['Dis'];
-                            //  echo $subject;
-                            if(isset($_POST['save']))
-                            {
-                                if(empty($_POST['newCat'])){
-                                echo 'empty';
-                                }
-                                else{
-                              $check = "SELECT * FROM Category WHERE (Name ='".$subject."' AND Removed = 0)";
-                                $result=mysqli_query($dbc,$check);
+          
+          <?php
+            $subject = $_POST['newCat'];
 
-                                    if(mysqli_num_rows($result) ==0)
-                                    {
-                             $add = "INSERT INTO Category (NAME, Description, Removed) VALUES ('".$subject."','".$disc."', 0 )";
-                                        $dbc->query($add);
-                                        
-                                         echo "<meta http-equiv='refresh' content='0'>";
-                                    }
-                                    else {
-                                        echo 'Name already exsited';
-                                    }
-                                }
-                            }
-                            
-                            ?>
+              $disc = $_POST['Dis'];
+          //  echo $subject;
+          if(isset($_POST['save']))
+          {
+              if(empty($_POST['newCat'])){
+              echo 'empty';
+              }
+              else{
+            $check = "SELECT * FROM Category WHERE (Name ='".$subject."' AND Removed = 0)";
+              $result=mysqli_query($dbc,$check);
+
+                  if(mysqli_num_rows($result) ==0)
+                  {
+           $add = "INSERT INTO Category (NAME, Description, Removed) VALUES ('".$subject."','".$disc."', 0 )";
+                      $dbc->query($add);
+                      
+                       echo "<meta http-equiv='refresh' content='0'>";
+                  }
+                  else {
+                      echo 'Name already exsited';
+                  }
+              }
+          }
+        
+?>
                       
        <!-- MODAL FOR EDIR ADDING OR DELETING CATEGORIES -->
       <!-- Modal -->
@@ -279,18 +303,225 @@ $result = mysqli_query($dbc, " SELECT Name, Description FROM Category Where Remo
   </div>
 </div>
 
-                        </form>
-                    </tr>        
+</form>
+</tr>        
     
  
 </table>
 
 
+<!-- MODAL FOR EDIT ADDING OR DELETING USERS -->
+      <!-- Modal -->
+<div class="modal fade"   id="exampleModal1" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-xl" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Edit User</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+             <?php  //connection
+          
+          
+try {
+$host = "localhost";
+$username = "jsmarchant97";
+$password = "enterpriseCW";
+$database = "jsmarcha_enterprisecw";
+$dbc = mysqli_connect($host, $username, $password, $database) OR die("couldn't connect to database".  mysqli_connect_errno());
+} catch (Exception $e){
+  $host = "mysql.cms.gre.ac.uk";
+  $username = "st2645h";
+  $password = "Enterprise94";
+  $database = "mdb_st2645h";
+  $dbc = mysqli_connect($host, $username, $password, $database) OR die("couldn't connect to database".  mysqli_connect_errno());
+}  
+
+        
+$result = mysqli_query($dbc, " SELECT UserID, u.UserName,u.Password, d.Name AS dName, Email, r.Name AS rName, Banned, u.Removed  FROM User u LEFT Join Department d ON u.DepartmentID=d.DepartmentID INNER join Role r on u.RoleID=r.RoleID ORDER BY u.UserID ASC");       
+                      
+?>
+             <div class="container">
+            <table class="table table-bordered" id="table">
+                <thead>
+
+
+
+                    <tr>
+                        <th>Username</th>
+                        <th>Email</th>
+                        <th>Department</th>
+                        <th>Role</th>
+                        <th>Status</th>
+                        <th>Edit</th>
+                    </tr>
+
+                    </thead>
+                    <tbody>
+
+
+                    <?php 
+                    $i = 0;
+                    while($row = mysqli_fetch_array($result)): ?>
+                    <tr>
+
+                        <form method="post">
+                            <td><?php echo $row['UserName'];?></td>
+                            
+                            <td><?php echo $row['Email'];?></td>
+                           
+                            <td><?php echo $row['dName'];?></td>
+                          
+                            <td><?php echo $row['rName'];?></td>
+
+                       
+                        <?php// } ?>
+                        
+                             <!-- Can be changed to block or remove -->
+                            <td><?php 
+                                
+                               if($row['Removed'] == 1)
+                                {
+                                 echo '<p1>Deleted</p1>';
+                                }
+                                else if($row['Banned'] == 1)
+                                {
+                                echo '<p1>Banned</p1>';
+                                }
+
+                                else if($row['Banned'] == 0 && $row['Removed'] == 0){
+                                    echo '<p2> Normal</p2>';
+                            };
+                                ?></td>
+                            
+                            <input type="hidden" name="id<?php echo $i; ?>" value="<?php echo $row['UserID']; ?>" >
+                       
+                        
+                        <th><button name="Edit<?php echo $i;?>" class="open-form" onclick="openForm()">Edit</button></th>
+                        
+                          <?php
+                    if(isset($_POST["Edit".$i])){
+                        
+                        echo "<div class='form-popup' id='myForm'>";
+                       echo "<form method ='post'> ";
+                        echo "<h1>".$row['UserName']."</h1>";
+  
+                        echo "<label for='banned'><b>Banned</b></label>";
+                        echo "<select id='Banned' name='Banned'>";
+
+                        if($row['Banned'] == 1)
+                        {
+                            echo "<option value='areBanned' selected>Banned</option>";
+                            echo "<option value='notBanned'>Not Banned</option>";
+                        } 
+                        else if($row['Banned'] == 0)
+                        {
+                            echo "<option value='notBanned' selected>Not Banned</option>";
+                            echo "<option value='areBanned'>Banned</option>";
+                        };                    
+                        
+                        echo "</select>";
+                        
+echo "<input type='submit' class='button3' id='".$row['UserID']."' name='pwdReset' value='Reset'  >";
+echo    "<input type='submit' id='".$row['UserID']."' name='EditSubmit'".$i." class='button2' />";
+echo    "<button type='button' class='button' onclick='closeForm()'>Close</button>";
+echo    "</form>";
+echo   "</div>";    
+                        
+}
+                            
+                            
+                      
+                            
+                            ?>
+                         
+                        <?php
+                         if(isset($_POST["pwdReset"]))
+                         {  
+                           
+                       echo $_POST["id".$i];
+                          $check = "UPDATE User SET Password = 'The Witcher 2' WHERE UserID = '".$_POST['id'.$i]."'";  
+                        
+                         if ($dbc->query($check) === TRUE)
+                         {
+                         echo "<meta http-equiv='refresh' content='0'>";
+                             
+                         }
+                         else 
+                         {
+                                  
+                        echo "<script> alert('Error updating record: " . $dbc->error . "')</script>";
+                         } 
+                
+                        }          
+                        
+                        ?>
+                            
+                            
+                            <?php
+                            if(isset($_POST["EditSubmit"]))
+                            {
+                                
+                               $BannedChecker = $_POST['Banned'];
+                                if ($BannedChecker == 'areBanned'){
+                                    $BanNum = 1;
+                                 
+                                }
+                                if($BannedChecker == 'notBanned'){
+                                    $BanNum = 0;
+                                  
+                                } 
+                                
+                               
+               $check = "UPDATE User SET Banned = '".$BanNum."' WHERE UserID = '".$_POST['id'.$i]."'";
+                      if ($dbc->query($check) === TRUE)
+                         {
+                         echo "<meta http-equiv='refresh' content='0'>";
+                         }
+                         else 
+                         {
+                                 echo 'Test'; 
+                 //       echo "<script> alert('Error updating record: " . $dbc->error . "')</script>";
+                         } 
+                                
+                                
+                                // update user, if banned, unbanned, or deleted, if already deleted then 
+                               // cannot change
+                                
+                            }
+                            
+                            
+                            
+                            ?>
+                            
+                            
+                    
+                   
+                       
+                     
+                   
+                   
+
+                        <?php $i++; endwhile;?>
+                 
+                        </form>
+                           
+                </tbody>
+                 </table>
+                 
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary">Save changes</button>
+      </div>
+
+    </div>
+  </div>
+</div>
+</div>
+</div>
  
-      
-                                        
- 
-      
 
 <script>
 $(document).ready(function(){

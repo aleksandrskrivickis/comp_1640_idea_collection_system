@@ -94,7 +94,7 @@ $(function(){
       
       <div class="row">
     <div class="col-9">
-    <p>12 ideas submitted</p>      
+    <!-- <p>12 ideas submitted</p>      -->
     </div>
     <div class="col-3">
          <a href="submit_idea.php?name=<?php echo $row->Name; ?>"><button type="button" class="seeforum">Enter Forum</button></a> 

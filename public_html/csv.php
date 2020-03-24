@@ -1,5 +1,5 @@
 <?php 
-    $_GET['forum'] = "Computing";
+    //$_GET['forum'] = "Computing";
     $forum = $_GET['forum'];
 
     $host = "localhost";
