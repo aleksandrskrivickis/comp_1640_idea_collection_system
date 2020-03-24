@@ -729,7 +729,7 @@
         /* =================================== IDEA PAGE =================================== */
 
         /**
-		*
+		 * 
          */
         public function getIdeasWithPagination(string $p_pagination_step_from, string $p_pagination_step_to)// UNTESTED
         {
@@ -834,12 +834,13 @@
 
 
             // Parameter validation
-            $e1 = $this->strValidation($datePosted, "datePosted", $this->dateTime, __FUNCTION__);
+            $e = $this->strValidation($datePosted, "datePosted", $this->dateTime, __FUNCTION__);
 			
 
             // If parameters haven't thrown an error
-            if (!isset($e1) & !isset($e2)) {
+            if (!isset($e)) {
                 $date = (new DateTime($datePosted))->format('Y-m-d H:i:s');
+                $limit= "";
 
                 $username_Sub = "CASE WHEN u.Removed = '1' THEN 'Deleted' WHEN c.Anonymous = '1' THEN 'Anonymous' ELSE u.UserName END";
 
@@ -853,7 +854,7 @@
                 return $this->getArrayObjectsSQL($sql, [$ideaTitle, $date]);
             }
             else 
-                $this->errorMessage([$e1, $e2]);
+                $this->errorMessage([$e]);
 
             return null;
         }
@@ -1398,7 +1399,9 @@
          */
         public function getAllCategories(): ?array // TESTED
         {
-            $sql = "SELECT Name, Description FROM Category WHERE Removed = '0' ORDER BY Name ASC";
+            $status_Sub = "SELECT DISTINCT ic.CategoryID FROM IdeaCategory ic WHERE ic.CategoryID = c.CategoryID";
+
+            $sql = "SELECT c.Name, c.Description, IF (c.CategoryID IN ($status_Sub), true, false) AS Status FROM Category c WHERE Removed = '0' ORDER BY Name ASC";
 
             return $this->getArrayObjectsSQL($sql);
         }
@@ -1719,7 +1722,7 @@
             // If not null
             if (!is_null($department)) {
 				// Parameter validation
-				$e = $this->strValidation($category, "category", $this->letters, __FUNCTION__);
+				$e = $this->strValidation($department, "category", $this->letters, __FUNCTION__);
 				
                 $departmentSQL .= "WHERE d.Name = ?";
                 $fields[] = $department;
@@ -1763,7 +1766,7 @@
             // If not null
             if (!is_null($department)) {
 				// Parameter validation
-				$e = $this->strValidation($category, "category", $this->letters, __FUNCTION__);
+				$e = $this->strValidation($department, "category", $this->letters, __FUNCTION__);
 				
                 $departmentSQL = "WHERE d.Name = ?";
                 $fields[] = $department;
@@ -1809,7 +1812,7 @@
             // If not null
             if (!is_null($department)) {
 				// Parameter validation
-				$e = $this->strValidation($category, "category", $this->letters, __FUNCTION__);
+				$e = $this->strValidation($department, "category", $this->letters, __FUNCTION__);
 				
                 $departmentSQL .= "WHERE d.Name = ?";
                 $fields[] = $department;
@@ -1853,7 +1856,7 @@
             // If not null
             if (!is_null($department)) {
 				// Parameter validation
-				$e = $this->strValidation($category, "category", $this->letters, __FUNCTION__);
+				$e = $this->strValidation($department, "category", $this->letters, __FUNCTION__);
 				
                 $departmentSQL = "d.Name = ? AND";
                 $fields[] = $department;;
@@ -1896,7 +1899,7 @@
             // If not null
             if (!is_null($department)) {
 				// Parameter validation
-				$e = $this->strValidation($category, "category", $this->letters, __FUNCTION__);
+				$e = $this->strValidation($department, "category", $this->letters, __FUNCTION__);
 				
                 $departmentSQL .= "d.Name = ? AND";
                 $fields[] = $department;
@@ -1938,7 +1941,7 @@
             // If not null
             if (!is_null($department)) {
 				// Parameter validation
-				$e = $this->strValidation($category, "category", $this->letters, __FUNCTION__);
+				$e = $this->strValidation($department, "category", $this->letters, __FUNCTION__);
 				
                 $departmentSQL .= "d.Name = ? AND";
                 $fields[] = $department;
