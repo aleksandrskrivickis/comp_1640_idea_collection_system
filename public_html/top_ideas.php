@@ -104,16 +104,19 @@ $db = new Database();
     <?php 
         function displayIdeas($ideaList) 
         {
-			$num = 0;
             foreach ($ideaList as $idea) {
-                echo '<br> <h3> <u> Idea ' . ++$num . ' </u> </h3>
-                
-                <p> <b> User: </b> ' . $idea->UserName . ' </p>
-                <p> <b> Title: </b> ' . $idea->Title . ' </p>
-                <p> <b> Text: </b> ' . $idea->IdeaText . ' </p>
-                <p> <b> Date Posted: </b> ' . ((new DateTime($idea->DatePosted))->format('jS M Y H:m')) . ' </p>
-                <p> <b> Likes: </b> ' . $idea->Likes . ' </p>
-                <p> <b> Dislikes: </b> ' . $idea->Dislikes . ' </p> <br>';
+                echo '
+                <div class="Jumbotroncentral">
+                <div class="jumbotron">
+                <p style="float: right;">Posted on: ' . ((new DateTime($idea->DatePosted))->format('jS M Y H:m')) . '</p>
+                <h3 class="display-9"> ' . $idea->Title . ' </h3>
+                <p class="display-9"> ' . $idea->UserName . ' </p>
+                <p class="lead"> ' . $idea->IdeaText . ' </p>
+                <button style="font-size:14px"> ' . $idea->Likes . ' <i class="fa fa-thumbs-up"></i></button>
+                <button style="font-size:14px">' . $idea->Dislikes . '<i class="fa fa-thumbs-down"></i></button>
+                </div>
+                </div>  
+                ';
             }
         }
         
@@ -122,12 +125,16 @@ $db = new Database();
         {
 			$num = 0;
             foreach ($commentList as $comment) {
-                echo '<br> <h3> <u> Comment ' . ++$num . ' </u> </h3>
-                
-                <p> <b> User: </b> ' . $comment->UserName . ' </p>
-                <p> <b> Comment: </b> ' . $comment->CommentText . ' </p>
-                <p> <b> Date Posted: </b> ' . ((new DateTime($comment->DatePosted))->format('jS M Y H:m')) . ' </p>
-                <p> <b> From Idea: </b> ' . $comment->IdeaTitle . ' </p>';
+                echo '
+                <div class="Jumbotroncentral">
+                <div class="jumbotron">
+                <p style="float: right;">Posted on: ' . ((new DateTime($comment->DatePosted))->format('jS M Y H:m')) . ' </p>
+                <h3 class="display-9"> From Idea: ' . $comment->IdeaTitle . ' </h3>
+                <p class="display-9">  ' . $comment->UserName . ' </p>
+                <p class="lead">Comment: ' . $comment->CommentText . ' </p>
+                </div>
+                </div>
+                ';
                 $comment->IdeaDatePosted; // Other variable
             }
         }
