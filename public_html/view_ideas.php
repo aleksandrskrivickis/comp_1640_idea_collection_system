@@ -2,10 +2,11 @@
 session_start();
 include_once 'nav_bar.php';
 include_once 'database.php';
-
+include_once('server.php');
+//$_SESSION['forum_name'] = $_GET['name'];
 //error_reporting(E_ALL);
 //ini_set('display_errors', 'On');
-
+$db = new Database();
 $funObj = new Database();
 
 $PAGINATION_STEP = 5;
@@ -121,15 +122,55 @@ if(isset($_POST['action']) and $_POST['action'] == 'dislikes')
 ?>
     
 <h1><!--?php echo $forumname-->Temp</h1>
+    
 
-<?php echo $username; ?>
-<div><!-- need an area to put search, sorting etc --></div>
+<?php// echo $username; ?>
+      <div class="container">
+            <div class="row justify-content-center">
+              <div class="col-4">
+
+                    <div class="container">
+                         <!-- button for pop up modal form- code for form is at the end-->    
+                        <div class="row">
+                            <button type="button" class="btn btn-primary" data-toggle="modal" data-target=".bd-example-modal-xl" style="background-color: #036DA1; width: 100%">Submit an idea</button> 
+                        </div>
+
+						<br>
+
+						<div class="row">
+							<form>
+								<input class="form-control mr-sm-1" type="search" placeholder="Search" aria-label="Search">
+							</form>
+						</div>
+						
+						<br>
+						
+						<div class="row">
+                                <div class="dropdown">
+                                    <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                        Sort by
+                                    </button>
+                                    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                                        <a class="dropdown-item" href="#">Most popular</a>
+                                        <a class="dropdown-item" href="#">Most recent</a>
+                                        <a class="dropdown-item" href="#">Most commented</a>
+                                    </div>
+                                </div>						
+						</div>
+
+                        <br>
+
+                    </div>     
+                </div>
     <?php foreach($ideas as $idea):
     ?> <!--Another loop, this time echoing the data within html tags-->
- <form form action="?" method="post">
-    <div class="Jumbotroncentral">
+                <div class="col-8">
+    <form form action="?" method="post">
+ <!--<div class="Jumbotroncentral"> -->
+                        <!--    <div class="jumbotron">-->
+
         
-    <div class="jumbotron">
+    <div class="container">
     <input type="hidden" name="id" value="<?php echo $idea['id']; ?>">
     <h3 class="display-9"><?php echo $idea['title']; ?></h3>
     <p class="display-9"> <?php echo $idea['username']; ?></p>    
@@ -175,13 +216,23 @@ else
     <button class="btn btn-light" name="action" value="comments">Submit Comment</button>
     </div>        
   </div>
-       
-</div>
+
 </div>  
 </form>
+   </div>             
+                       
+ 
+  
     <?php 
 	
-	endforeach; 
+	endforeach;
+    ?>
+             
+</div>
+    </div>
+    
+    
+    <?php
 	
 $counter = 0;
 	
@@ -193,7 +244,94 @@ echo "Pages: ";
 	}	
 	
 	?>
-
     
+     <!-- *************************************************************************************** MODAL ************************************************************************************************************************** -->
+    <div class="modal fade bd-example-modal-xl" tabindex="-1" role="dialog" aria-labelledby="myExtraLargeModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-xl" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="staticBackdropLabel">Idea Submission</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+
+                    <form action="submit_idea.php" method="post" enctype="multipart/form-data"> <!--form action="" method="post"-->
+                        <h1> Submit an Idea</h1>
+                        
+                    
+                        
+                        <div class="row">
+                            <div class="col-6">
+
+                                <div class="row">     
+                                    <div class="form-group">
+                                        <label for="InputTitle">Idea Title:</label>
+                                        <input type="text" name="ideatitle3" class="form-control" id="ideaTitle3">
+                                    </div>
+                                </div>  
+                                
+                                <div class="row">   
+                                    <p>Description:</p>    
+                                    <textarea class="form-control" name="description" id="Textarea2" rows="2" placeholder="Type here..."></textarea>     
+                                </div>     
+
+
+                                <div class="row"> <br> </div>
+                                <div class="row">  
+                                    <div class="input-group mb-3">
+                                        <div class="input-group-prepend">
+                                            <div class="input-group-text">
+                                                <input type="checkbox" name="ann" aria-label="Checkbox for following text input">
+                                            </div>
+                                        </div>
+                                        <p>Submit anonymously</p>
+                                    </div>    
+
+                                </div>              
+                            </div> <!-- end of first column -->
+
+                                
+                            <div class="col-6"> 
+
+                                <div class="row">
+                                    <div class="dropdown">
+                                        <p> Select a catgeory:</p>
+                                        <select name="category">
+                                            <option value="" selected disabled>Select</option>
+                                            <?php 
+                                                foreach ($db->getAllCategories() as $category) {
+                                                    echo "<option value='" . $category->Name ."'>" . $category->Name ."</option>";
+                                                }
+                                            ?>
+                                        </select>
+                                         </div> 
+                                    </div> 
+                          
+                                <div class="row"> <br> </div>
+                                
+                                
+                                <div class="row">
+                                    <div class="form-group">
+                                        <label for="fileUpload">File Upload:</label>
+                                        <input type="file" class="form-control-file" id="fileUpload" name="fileUpload">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>  
+
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                            <button type="submit" class="btn btn-primary" name="sub_idea" style="background-color: #036DA1;">Submit</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div> 
+    
+
+   
 </body>
 </html>
