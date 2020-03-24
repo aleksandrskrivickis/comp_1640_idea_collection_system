@@ -4,7 +4,9 @@
 session_start();
 
 include_once('server.php');
+if($_GET['name'] != null){
 $_SESSION['forum_name'] = $_GET['name'];
+}
 $db = new Database();
 ?>
 
