@@ -3,7 +3,11 @@ session_start();
 include_once 'nav_bar.php';
 include_once 'database.php';
 include_once('server.php');
-//$_SESSION['forum_name'] = $_GET['name'];
+
+if($_GET['name'] != null){
+$_SESSION['forum_name'] = $_GET['name'];
+}
+
 //error_reporting(E_ALL);
 //ini_set('display_errors', 'On');
 $db = new Database();
