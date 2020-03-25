@@ -3,18 +3,14 @@ session_start();
 include_once 'nav_bar.php';
 include_once 'database.php';
 include_once('server.php');
-
 if($_GET['name'] != null){
 $_SESSION['forum_name'] = $_GET['name'];
 }
-
 //error_reporting(E_ALL);
 //ini_set('display_errors', 'On');
 $db = new Database();
 $funObj = new Database();
-
 $PAGINATION_STEP = 5;
-
 if ($_GET['pagination_step_from'] + $_GET['pagination_step_to'] > 0){
 	$pagination_step_from = $_GET['pagination_step_from'];
 	$pagination_step_to = $_GET['pagination_step_to'];
@@ -22,14 +18,21 @@ if ($_GET['pagination_step_from'] + $_GET['pagination_step_to'] > 0){
 	$pagination_step_from = 0;
 	$pagination_step_to = $PAGINATION_STEP;
 }
-
 ?>
+<script>
+function myFunction(){
+    var x;
+    var r = confirm("Post has been reported");
+    if(r == true){
+        x = "post has been reported"
+    }
+}
+</script>
 <html lang="en-GB">
 <!DOCTYPE html>
 <html>
 <head>
 <title>Forum Discussion</title>
-
   <!-- Required meta tags -->
   <meta charset="utf-8">
   <!--To allow MS Edge and IE -->  
@@ -55,12 +58,9 @@ if ($_GET['pagination_step_from'] + $_GET['pagination_step_to'] > 0){
     </style>
 </head>
 <?php
-
 $idea_count = $funObj -> getIdeaCount();
 //Please extend getIdeasWithPagination() and update below line with one more parameter: $p_forum_id
 $result = $funObj -> getIdeasWithPagination($pagination_step_from, $pagination_step_to);
-
-
 	
 	
 	
@@ -68,12 +68,12 @@ $result = $funObj -> getIdeasWithPagination($pagination_step_from, $pagination_s
     {
         if ($row['Anonymous'] == false) //if the value of Anonymous is false, the username value in the array gets set to the user's username
         {
-             $ideas[] = array('id' => $row['IdeaID'], 'title' => $row['Title'], 'ideatext' => $row['IdeaText'], 'dateposted' => $row['DatePosted'], 'username' => $row['UserName'],'likes' => $row['Likes'], 'dislikes' => $row['Dislikes'], 'commentCount' => $row['commentCount']); 
+             $ideas[] = array('id' => $row['IdeaID'], 'title' => $row['Title'], 'ideatext' => $row['IdeaText'], 'dateposted' => $row['DatePosted'], 'username' => $row['UserName'],'likes' => $row['Likes'], 'dislikes' => $row['Dislikes'], 'commentCount' => $row['commentCount'], 'banned' => $row['Banned']); 
         }
             
         else //if the value is true, then it gets hardcoded to 'anonymous'
         {
-             $ideas[] = array('id' => $row['IdeaID'], 'title' => $row['Title'], 'ideatext' => $row['IdeaText'], 'dateposted' => $row['DatePosted'], 'username' => 'Anonymous', 'likes' => $row['Likes'], 'dislikes' => $row['Dislikes'], 'Anonymous', 'commentCount' => $row['commentCount']); 
+             $ideas[] = array('id' => $row['IdeaID'], 'title' => $row['Title'], 'ideatext' => $row['IdeaText'], 'dateposted' => $row['DatePosted'], 'username' => 'Anonymous', 'likes' => $row['Likes'], 'dislikes' => $row['Dislikes'], 'Anonymous', 'commentCount' => $row['commentCount'], 'banned' => $row['Banned']); 
         }
         try 
         {
@@ -90,11 +90,11 @@ $result = $funObj -> getIdeasWithPagination($pagination_step_from, $pagination_s
         {
            if ($comment['Anonymous'] == false) 
            {
-               $com[] = array('id' => $comment['CommentID'], 'iid' => $comment['IdeaID'], 'username' => $comment['UserName'], 'commenttext' => $comment['CommentText'], 'dateposted' => $comment['DatePosted']);
+               $com[] = array('id' => $comment['CommentID'], 'iid' => $comment['IdeaID'], 'username' => $comment['UserName'], 'commenttext' => $comment['CommentText'], 'dateposted' => $comment['DatePosted'], 'banned' => $comment['Banned']);
            }
             else
             {
-               $com[] = array('id' => $comment['CommentID'], 'iid' => $comment['IdeaID'], 'username' => 'Anonymous', 'commenttext' => $comment['CommentText'], 'dateposted' => $comment['DatePosted']); 
+               $com[] = array('id' => $comment['CommentID'], 'iid' => $comment['IdeaID'], 'username' => 'Anonymous', 'commenttext' => $comment['CommentText'], 'dateposted' => $comment['DatePosted'], 'banned' => $comment['Banned']); 
             }
         }
     }
@@ -104,43 +104,33 @@ $result = $funObj -> getIdeasWithPagination($pagination_step_from, $pagination_s
 <!--NAVIGATION BAR-->
 <?php 
 //$username = "NumberOne"; //For test purposes
-
 if(isset($_POST['action']) and $_POST['action'] == 'likes')
 {
 	$funObj->setThumbsUpDownForJake($_POST['id'], $username, 1);
 	header("Refresh:1");
 }
-
 if(isset($_POST['action']) and $_POST['action'] == 'dislikes')
 {
 	$funObj->setThumbsUpDownForJake($_POST['id'], $username, 0);
 	header("Refresh:1");
 }
-
  if(isset($_POST['action']) and $_POST['action'] == 'comments')
 {
 	$funObj->insertCommentForJake($_POST['id'], $username, $_POST['commenttext']);
 	header("Refresh:0");
 }
-
 ?>
     
-<h1><!--?php echo $forumname-->Temp</h1>
-    
-
-<?php// echo $username; ?>
+<h1><?php echo $_SESSION['forum_name'];?></h1>
       <div class="container">
             <div class="row justify-content-center">
               <div class="col-4">
-
                     <div class="container">
                          <!-- button for pop up modal form- code for form is at the end-->    
                         <div class="row">
                             <button type="button" class="btn btn-primary" data-toggle="modal" data-target=".bd-example-modal-xl" style="background-color: #036DA1; width: 100%">Submit an idea</button> 
                         </div>
-
 						<br>
-
 						<div class="row">
 							<form>
 								<input class="form-control mr-sm-1" type="search" placeholder="Search" aria-label="Search">
@@ -161,13 +151,13 @@ if(isset($_POST['action']) and $_POST['action'] == 'dislikes')
                                     </div>
                                 </div>						
 						</div>
-
                         <br>
-
                     </div>     
                 </div>
     <?php foreach($ideas as $idea):
     ?> <!--Another loop, this time echoing the data within html tags-->
+    
+    <?php if($idea['banned'] == 0) {?>
                 <div class="col-8">
     
      <?php if(isset($_SESSION['username']))
@@ -175,10 +165,6 @@ if(isset($_POST['action']) and $_POST['action'] == 'dislikes')
          echo '<form action="?" method="post">';
      }
      ?>
- <!--<div class="Jumbotroncentral"> -->
-                        <!--    <div class="jumbotron">-->
-
-        
     <div class="container">
     <input type="hidden" name="id" value="<?php echo $idea['id']; ?>">
     <h3 class="display-9"><?php echo $idea['title']; ?></h3>
@@ -188,6 +174,7 @@ if(isset($_POST['action']) and $_POST['action'] == 'dislikes')
   <button style="font-size:14px" name="action" value="dislikes"><?php echo $idea['dislikes']; ?> <i class="fa fa-thumbs-down"></i></button>    
   <button style="font-size:14px"> <?php echo $idea['commentCount']; ?> <i class="fa fa-commenting-o"></i></button> 
   <button style="font-size:14px"> Example paper <i class="fa fa-download"></i></button>  
+<button style="font-size:14px" onclick="myFunction()"> report post </button>  
      
         
     <!-- COMMENT SECTION -->
@@ -201,16 +188,26 @@ else
     <?php foreach($com as $comment): 
         if ($idea['id'] == $comment['iid'])
         {
+            if($comment['banned'] == 0) {
         ?>
    <hr class="my-4"> 
    <h5><?php echo $comment['username']; ?></h5>          
    <p><?php echo $comment['commenttext'];?></p>
         
         
-<?php } endforeach; 
+<?php 
+    }
+    else
+    {
+        echo '
+        <hr class="my-4">
+        <h5>The user who made this comment has been banned!</h5>
+        ';
+    }
+        
+    } endforeach; 
 }
  ?>
-
     <!-- ADD A COMMENT -->
     
      <?php 
@@ -231,9 +228,19 @@ else
         </div>        
       </div>';
      }?>
-
 </div>  
 </form>
+
+<?php 
+    }
+    else
+    {
+        echo '
+            <div class="col-8">
+            <h3 class="display-9">The user that created this Idea has been banned!</h3>
+        ';
+    }
+?>
    </div>             
                        
  
@@ -271,7 +278,6 @@ echo "Pages: ";
                     </button>
                 </div>
                 <div class="modal-body">
-
                     <form action="submit_idea.php" method="post" enctype="multipart/form-data"> <!--form action="" method="post"-->
                         <h1> Submit an Idea</h1>
                         
@@ -279,7 +285,6 @@ echo "Pages: ";
                         
                         <div class="row">
                             <div class="col-6">
-
                                 <div class="row">     
                                     <div class="form-group">
                                         <label for="InputTitle">Idea Title:</label>
@@ -291,8 +296,6 @@ echo "Pages: ";
                                     <p>Description:</p>    
                                     <textarea class="form-control" name="description" id="Textarea2" rows="2" placeholder="Type here..."></textarea>     
                                 </div>     
-
-
                                 <div class="row"> <br> </div>
                                 <div class="row">  
                                     <div class="input-group mb-3">
@@ -303,13 +306,10 @@ echo "Pages: ";
                                         </div>
                                         <p>Submit anonymously</p>
                                     </div>    
-
                                 </div>              
                             </div> <!-- end of first column -->
-
                                 
                             <div class="col-6"> 
-
                                 <div class="row">
                                     <div class="dropdown">
                                         <p> Select a catgeory:</p>
@@ -335,7 +335,6 @@ echo "Pages: ";
                                 </div>
                             </div>
                         </div>  
-
                         <div class="modal-footer">
                             <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
                             <button type="submit" class="btn btn-primary" name="sub_idea" style="background-color: #036DA1;">Submit</button>
@@ -346,7 +345,6 @@ echo "Pages: ";
         </div>
     </div> 
     
-
    
 </body>
 </html>
