@@ -716,7 +716,7 @@
 
 			try //server attempts to run query
 			{
-				$result = $this->dbc->query("SELECT COUNT(*) AS record_count FROM Idea")->fetch()["record_count"];
+				$result = $this->dbc->query('SELECT COUNT(*) AS record_count FROM Idea I LEFT JOIN Forum F ON F.ForumID = I.ForumID WHERE F.Name = "' . $_SESSION['forum_name'] . '"')->fetch()["record_count"];
 				return $result;
 			}
 			catch (PDOException $e)//opens error page if query fails
@@ -759,6 +759,11 @@
 						`User`
 						ON
 						Idea.UserID = `User`.`UserID`
+                         LEFT JOIN 
+						`Forum`
+						ON
+						Idea.ForumID = `Forum`.`ForumID`
+                        WHERE `Forum`.Name LIKE "' . $_SESSION['forum_name'] . '"
 					ORDER BY 
 						IdeaID DESC	
 					LIMIT '.$p_pagination_step_from.', '.$p_pagination_step_to;
