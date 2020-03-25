@@ -96,7 +96,7 @@
     // submit idea
 
     if (isset($_POST['sub_idea'])){
-
+        
          //initialise variables
         $username = $_SESSION['username'];
         $title = $_POST['ideatitle3'];
@@ -104,7 +104,7 @@
         $description = $_POST['description'];
         $anonymous = (is_null($_POST['ann'])) ? false : true;
         $forum = $_SESSION['forum_name'];
-        $file = [$_FILES['fileUpload']];
+        $file = $_FILES['fileUpload']['tmp_name'] == "" ? [] : [$_FILES['fileUpload']];
         
         //calling the function createIdea from the class database
         $funObj->createIdea($description, $title, $forum, $username, $anonymous, $category, $file);
