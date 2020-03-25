@@ -92,6 +92,7 @@ $dbc = mysqli_connect($host, $username, $password, $database) OR die("couldn't c
 }        
 $result = mysqli_query($dbc, @"
   SELECT 
+    Forum.ForumID,
     Category.CategoryID,
     Category.Name, 
     Category.Description, 
@@ -174,7 +175,8 @@ $result = mysqli_query($dbc, @"
      
       
       <td>
-        <button type="button" class="btn btn-light" data-toggle="modal" data-target="#exampleModalCenter"> <!-- Trigger modal --> Edit </button>
+        <button type="button" class="btn btn-light" data-toggle="modal" data-target="#exampleModalCenter" onclick="sessionStorage.setItem('ForumID', <?= $row['ForumID']; ?>);"> <!-- Trigger modal --> Edit</button>
+
         <a href="csv.php?forum=<?php echo $row['Name']; ?>"><button type="button" class="btn btn-light downloaded">Download</button></a>         
          <a href="qa_management.php?delete_category=<?php echo $row['Name']; ?>"><button type="button" class="btn btn-light">Delete</button></a> 
       </td>
@@ -248,65 +250,69 @@ $result = mysqli_query($dbc, @"
   <input type="text" value="" name="newCat" class="form-control" aria-label="Small" aria-describedby="inputGroup-sizing-sm">
 </div>
 <div class="input-group input-group-sm mb-3">
-  <div class="input-group-prepend">
-    <span class="input-group-text" id="inputGroup-sizing-sm">Description</span>   
-  </div>
-  <input type="text" value="" name="Dis" class="form-control" aria-label="Small" aria-describedby="inputGroup-sizing-sm">
+    <div class="input-group-prepend">
+      <span class="input-group-text" id="inputGroup-sizing-sm">Description</span>   
+    </div>
+    <input type="text" value="" name="Dis" class="form-control" aria-label="Small" aria-describedby="inputGroup-sizing-sm">
 </div>
 
       
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-        <button type="submit" name="save" class="btn btn-primary">Save changes</button>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+          <button type="submit" name="save" class="btn btn-primary">Save changes</button>
+        </div>
       </div>
     </div>
   </div>
-</div>
-      </div>  
+</div>  
 
 
 <!-- MODAL FOR EDIT BUTTON- CLOSURE DATES -->
-<div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-  <div class="modal-dialog modal-dialog-centered" role="document">
+<div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLongTitle">Edit</h5>
+        <h5 class="modal-title" id="exampleModalLabel">Amend closure dates</h5>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
       <div class="modal-body">
-        <div class="dropdown">
-  <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-    Edit Closure Dates
-  </button>
-  <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-    <a class="dropdown-item">Closure Date</a>
-    <a class="dropdown-item">Final Closure Date</a>
-  </div>
        <br>    
-            <br>
-            <div class="input-group input-group-sm mb-3">
+        <br>
+          
+<div class="input-group input-group-sm mb-3">
   <div class="input-group-prepend">
-    <span class="input-group-text" id="inputGroup-sizing-sm">New Closure Date</span>
+    <span class="input-group-text" id="inputGroup-sizing-sm">Forum ID</span>   
   </div>
-  <input type="text" class="form-control" aria-label="Small" aria-describedby="inputGroup-sizing-sm">
+    <input type="text" id="ForumID" value="" readonly id="ForumID" name="ForumID" class="form-control">
+  </div>
+<div class="input-group input-group-sm mb-3">
+  <div class="input-group-prepend">
+    <span class="input-group-text" id="inputGroup-sizing-sm">Closure date</span>   
+  </div>
+    <input type="date" id="closureDate" value="" name="closureDate" class="form-control">    
 </div>
-            
+<div class="input-group input-group-sm mb-3">
+    <div class="input-group-prepend">
+      <span class="input-group-text" id="inputGroup-sizing-sm">Final closure date</span>   
+    </div>
+    <input type="date" id="finalClosureDate" value="<?php echo $_SESSION['finalClosureDate']; ?>" id="finalClosureDate" name="finalClosureDate" class="form-control">
 </div>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-light" data-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-light">Save changes</button>
+
+      
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+          <button type="submit" name="save" class="btn btn-primary">Save changes</button>
+        </div>
       </div>
     </div>
   </div>
-</div>
+</div>  
 
-</form>
+
+
 </tr>        
-    
- 
 </table>
 
 
@@ -346,9 +352,6 @@ $result = mysqli_query($dbc, " SELECT UserID, u.UserName,u.Password, d.Name AS d
              <div class="container">
             <table class="table table-bordered" id="table">
                 <thead>
-
-
-
                     <tr>
                         <th>Username</th>
                         <th>Email</th>
@@ -405,7 +408,7 @@ $result = mysqli_query($dbc, " SELECT UserID, u.UserName,u.Password, d.Name AS d
                     if(isset($_POST["Edit".$i])){
                         
                         echo "<div class='form-popup' id='myForm'>";
-                       echo "<form method ='post'> ";
+                        echo "<form method ='post'> ";
                         echo "<h1>".$row['UserName']."</h1>";
   
                         echo "<label for='banned'><b>Banned</b></label>";
@@ -528,6 +531,14 @@ $(document).ready(function(){
     $('.downloaded').click(function(){
         $(this).html($(this).html() == 'Download' ? 'Downloaded' : 'Download');
     });
+});
+
+$(document).ready(function () { 
+     $('#exampleModalCenter').on('shown.bs.modal', function (e) {
+            document.getElementById('ForumID').value = sessionStorage.getItem("ForumID");
+            document.getElementById('closureDate').value = sessionStorage.getItem("Closure");
+            document.getElementById('finalClosureDate').value = sessionStorage.getItem("FinalClosure");
+      });
 });
 </script>
 

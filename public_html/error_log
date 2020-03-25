@@ -862,3 +862,96 @@ Stack trace:
 [24-Mar-2020 14:37:53 America/Chicago] PHP Warning:  mysqli_fetch_array() expects parameter 1 to be mysqli_result, boolean given in /home3/jsmarchant97/enterprisecw/qa_management.php on line 149
 [24-Mar-2020 14:38:36 America/Chicago] PHP Warning:  mysqli_fetch_array() expects parameter 1 to be mysqli_result, boolean given in /home3/jsmarchant97/enterprisecw/qa_management.php on line 149
 [24-Mar-2020 14:40:54 America/Chicago] PHP Warning:  mysqli_fetch_array() expects parameter 1 to be mysqli_result, boolean given in /home3/jsmarchant97/enterprisecw/qa_management.php on line 149
+[24-Mar-2020 15:38:48 America/Chicago] PHP Fatal error:  Uncaught TypeError: Argument 1 passed to Database::setLastLogin() must be of the type string, null given, called in /home3/jsmarchant97/enterprisecw/forum.php on line 64 and defined in /home3/jsmarchant97/enterprisecw/database.php:190
+Stack trace:
+#0 /home3/jsmarchant97/enterprisecw/forum.php(64): Database->setLastLogin(NULL)
+#1 {main}
+  thrown in /home3/jsmarchant97/enterprisecw/database.php on line 190
+[24-Mar-2020 15:47:08 America/Chicago] PHP Parse error:  syntax error, unexpected end of file in /home3/jsmarchant97/enterprisecw/qa_management.php on line 421
+[24-Mar-2020 15:55:50 America/Chicago] PHP Parse error:  syntax error, unexpected end of file, expecting variable (T_VARIABLE) or ${ (T_DOLLAR_OPEN_CURLY_BRACES) or {$ (T_CURLY_OPEN) in /home3/jsmarchant97/enterprisecw/qa_management.php on line 419
+[24-Mar-2020 15:57:35 America/Chicago] PHP Parse error:  syntax error, unexpected end of file, expecting variable (T_VARIABLE) or ${ (T_DOLLAR_OPEN_CURLY_BRACES) or {$ (T_CURLY_OPEN) in /home3/jsmarchant97/enterprisecw/qa_management.php on line 419
+[24-Mar-2020 16:02:27 America/Chicago] PHP Parse error:  syntax error, unexpected 'echo' (T_ECHO) in /home3/jsmarchant97/enterprisecw/qa_management.php on line 178
+[24-Mar-2020 16:05:56 America/Chicago] PHP Parse error:  syntax error, unexpected ';', expecting ',' or ')' in /home3/jsmarchant97/enterprisecw/qa_management.php on line 178
+[24-Mar-2020 16:05:58 America/Chicago] PHP Parse error:  syntax error, unexpected ';', expecting ',' or ')' in /home3/jsmarchant97/enterprisecw/qa_management.php on line 178
+[24-Mar-2020 16:06:06 America/Chicago] PHP Parse error:  syntax error, unexpected end of file, expecting variable (T_VARIABLE) or ${ (T_DOLLAR_OPEN_CURLY_BRACES) or {$ (T_CURLY_OPEN) in /home3/jsmarchant97/enterprisecw/qa_management.php on line 419
+[24-Mar-2020 16:06:08 America/Chicago] PHP Fatal error:  Uncaught Error: Call to a member function format() on string in /home3/jsmarchant97/enterprisecw/qa_management.php:178
+Stack trace:
+#0 {main}
+  thrown in /home3/jsmarchant97/enterprisecw/qa_management.php on line 178
+[24-Mar-2020 16:06:12 America/Chicago] PHP Fatal error:  Uncaught Error: Call to a member function format() on string in /home3/jsmarchant97/enterprisecw/qa_management.php:178
+Stack trace:
+#0 {main}
+  thrown in /home3/jsmarchant97/enterprisecw/qa_management.php on line 178
+[24-Mar-2020 16:06:28 America/Chicago] PHP Parse error:  syntax error, unexpected ')', expecting ',' or ';' in /home3/jsmarchant97/enterprisecw/qa_management.php on line 178
+[24-Mar-2020 16:06:58 America/Chicago] PHP Fatal error:  Uncaught Error: Call to a member function format() on string in /home3/jsmarchant97/enterprisecw/qa_management.php:178
+Stack trace:
+#0 {main}
+  thrown in /home3/jsmarchant97/enterprisecw/qa_management.php on line 178
+[24-Mar-2020 16:21:26 America/Chicago] PHP Parse error:  syntax error, unexpected '?>' in /home3/jsmarchant97/enterprisecw/qa_management.php on line 178
+[24-Mar-2020 16:21:50 America/Chicago] PHP Parse error:  syntax error, unexpected '?>' in /home3/jsmarchant97/enterprisecw/qa_management.php on line 178
+[24-Mar-2020 16:21:51 America/Chicago] PHP Parse error:  syntax error, unexpected '?>' in /home3/jsmarchant97/enterprisecw/qa_management.php on line 178
+[24-Mar-2020 16:21:53 America/Chicago] PHP Parse error:  syntax error, unexpected '?>' in /home3/jsmarchant97/enterprisecw/qa_management.php on line 178
+[24-Mar-2020 16:21:56 America/Chicago] PHP Parse error:  syntax error, unexpected '?>' in /home3/jsmarchant97/enterprisecw/qa_management.php on line 178
+[24-Mar-2020 16:21:58 America/Chicago] PHP Parse error:  syntax error, unexpected '?>' in /home3/jsmarchant97/enterprisecw/qa_management.php on line 178
+[24-Mar-2020 16:27:48 America/Chicago] PHP Parse error:  syntax error, unexpected '' (T_ENCAPSED_AND_WHITESPACE), expecting '-' or identifier (T_STRING) or variable (T_VARIABLE) or number (T_NUM_STRING) in /home3/jsmarchant97/enterprisecw/qa_management.php on line 181
+[24-Mar-2020 16:27:50 America/Chicago] PHP Parse error:  syntax error, unexpected '' (T_ENCAPSED_AND_WHITESPACE), expecting '-' or identifier (T_STRING) or variable (T_VARIABLE) or number (T_NUM_STRING) in /home3/jsmarchant97/enterprisecw/qa_management.php on line 181
+[24-Mar-2020 16:28:12 America/Chicago] PHP Parse error:  syntax error, unexpected '' (T_ENCAPSED_AND_WHITESPACE), expecting '-' or identifier (T_STRING) or variable (T_VARIABLE) or number (T_NUM_STRING) in /home3/jsmarchant97/enterprisecw/qa_management.php on line 181
+[24-Mar-2020 16:29:01 America/Chicago] PHP Parse error:  syntax error, unexpected '' (T_ENCAPSED_AND_WHITESPACE), expecting '-' or identifier (T_STRING) or variable (T_VARIABLE) or number (T_NUM_STRING) in /home3/jsmarchant97/enterprisecw/qa_management.php on line 181
+[24-Mar-2020 16:29:22 America/Chicago] PHP Parse error:  syntax error, unexpected '' (T_ENCAPSED_AND_WHITESPACE), expecting '-' or identifier (T_STRING) or variable (T_VARIABLE) or number (T_NUM_STRING) in /home3/jsmarchant97/enterprisecw/qa_management.php on line 180
+[24-Mar-2020 16:30:06 America/Chicago] PHP Parse error:  syntax error, unexpected '' (T_ENCAPSED_AND_WHITESPACE), expecting '-' or identifier (T_STRING) or variable (T_VARIABLE) or number (T_NUM_STRING) in /home3/jsmarchant97/enterprisecw/qa_management.php on line 180
+[24-Mar-2020 16:30:07 America/Chicago] PHP Parse error:  syntax error, unexpected '' (T_ENCAPSED_AND_WHITESPACE), expecting '-' or identifier (T_STRING) or variable (T_VARIABLE) or number (T_NUM_STRING) in /home3/jsmarchant97/enterprisecw/qa_management.php on line 180
+[24-Mar-2020 16:31:35 America/Chicago] PHP Parse error:  syntax error, unexpected '' (T_ENCAPSED_AND_WHITESPACE), expecting '-' or identifier (T_STRING) or variable (T_VARIABLE) or number (T_NUM_STRING) in /home3/jsmarchant97/enterprisecw/qa_management.php on line 180
+[24-Mar-2020 16:32:36 America/Chicago] PHP Parse error:  syntax error, unexpected '' (T_ENCAPSED_AND_WHITESPACE), expecting '-' or identifier (T_STRING) or variable (T_VARIABLE) or number (T_NUM_STRING) in /home3/jsmarchant97/enterprisecw/qa_management.php on line 181
+[24-Mar-2020 16:33:38 America/Chicago] PHP Parse error:  syntax error, unexpected ';' in /home3/jsmarchant97/enterprisecw/qa_management.php(187) : eval()'d code on line 2
+[24-Mar-2020 16:36:25 America/Chicago] PHP Parse error:  syntax error, unexpected end of file in /home3/jsmarchant97/enterprisecw/qa_management.php on line 426
+[24-Mar-2020 16:36:28 America/Chicago] PHP Parse error:  syntax error, unexpected '=', expecting end of file in /home3/jsmarchant97/enterprisecw/qa_management.php(183) : eval()'d code on line 1
+[24-Mar-2020 16:36:31 America/Chicago] PHP Parse error:  syntax error, unexpected '=', expecting end of file in /home3/jsmarchant97/enterprisecw/qa_management.php(183) : eval()'d code on line 1
+[24-Mar-2020 16:36:33 America/Chicago] PHP Parse error:  syntax error, unexpected '=', expecting end of file in /home3/jsmarchant97/enterprisecw/qa_management.php(183) : eval()'d code on line 1
+[24-Mar-2020 16:36:50 America/Chicago] PHP Parse error:  syntax error, unexpected '=', expecting end of file in /home3/jsmarchant97/enterprisecw/qa_management.php(183) : eval()'d code on line 1
+[24-Mar-2020 16:36:59 America/Chicago] PHP Parse error:  syntax error, unexpected '=', expecting end of file in /home3/jsmarchant97/enterprisecw/qa_management.php(183) : eval()'d code on line 1
+[24-Mar-2020 16:37:01 America/Chicago] PHP Parse error:  syntax error, unexpected end of file in /home3/jsmarchant97/enterprisecw/qa_management.php(183) : eval()'d code on line 1
+[24-Mar-2020 16:37:47 America/Chicago] PHP Parse error:  syntax error, unexpected ';' in /home3/jsmarchant97/enterprisecw/qa_management.php(188) : eval()'d code on line 1
+[24-Mar-2020 16:38:08 America/Chicago] PHP Parse error:  syntax error, unexpected end of file in /home3/jsmarchant97/enterprisecw/qa_management.php on line 428
+[24-Mar-2020 16:39:39 America/Chicago] PHP Parse error:  syntax error, unexpected '?>' in /home3/jsmarchant97/enterprisecw/qa_management.php on line 187
+[24-Mar-2020 16:39:53 America/Chicago] PHP Parse error:  syntax error, unexpected '?>' in /home3/jsmarchant97/enterprisecw/qa_management.php on line 187
+[24-Mar-2020 16:39:54 America/Chicago] PHP Parse error:  syntax error, unexpected 'echo' (T_ECHO) in /home3/jsmarchant97/enterprisecw/qa_management.php on line 187
+[24-Mar-2020 16:39:56 America/Chicago] PHP Parse error:  syntax error, unexpected 'echo' (T_ECHO) in /home3/jsmarchant97/enterprisecw/qa_management.php on line 187
+[24-Mar-2020 16:43:07 America/Chicago] PHP Parse error:  syntax error, unexpected 'echo' (T_ECHO) in /home3/jsmarchant97/enterprisecw/qa_management.php on line 180
+[24-Mar-2020 16:43:09 America/Chicago] PHP Parse error:  syntax error, unexpected 'echo' (T_ECHO) in /home3/jsmarchant97/enterprisecw/qa_management.php on line 180
+[24-Mar-2020 16:43:18 America/Chicago] PHP Parse error:  syntax error, unexpected 'echo' (T_ECHO) in /home3/jsmarchant97/enterprisecw/qa_management.php on line 180
+[24-Mar-2020 16:43:19 America/Chicago] PHP Parse error:  syntax error, unexpected 'echo' (T_ECHO) in /home3/jsmarchant97/enterprisecw/qa_management.php on line 180
+[24-Mar-2020 16:47:56 America/Chicago] PHP Parse error:  syntax error, unexpected end of file in /home3/jsmarchant97/enterprisecw/qa_management.php on line 426
+[24-Mar-2020 16:53:02 America/Chicago] PHP Parse error:  syntax error, unexpected '$_SESSION' (T_VARIABLE), expecting ',' or ';' in /home3/jsmarchant97/enterprisecw/qa_management.php on line 181
+[24-Mar-2020 16:53:39 America/Chicago] PHP Parse error:  syntax error, unexpected end of file in /home3/jsmarchant97/enterprisecw/qa_management.php(181) : eval()'d code on line 1
+[24-Mar-2020 16:54:41 America/Chicago] PHP Parse error:  syntax error, unexpected '' (T_ENCAPSED_AND_WHITESPACE), expecting '-' or identifier (T_STRING) or variable (T_VARIABLE) or number (T_NUM_STRING) in /home3/jsmarchant97/enterprisecw/qa_management.php on line 181
+[24-Mar-2020 16:54:56 America/Chicago] PHP Parse error:  syntax error, unexpected 'closureDate' (T_STRING) in /home3/jsmarchant97/enterprisecw/qa_management.php on line 181
+[24-Mar-2020 16:54:58 America/Chicago] PHP Parse error:  syntax error, unexpected 'closureDate' (T_STRING) in /home3/jsmarchant97/enterprisecw/qa_management.php on line 181
+[24-Mar-2020 16:55:31 America/Chicago] PHP Parse error:  syntax error, unexpected 'finalClosureDate' (T_STRING) in /home3/jsmarchant97/enterprisecw/qa_management.php on line 181
+[24-Mar-2020 17:00:06 America/Chicago] PHP Parse error:  syntax error, unexpected 'echo' (T_ECHO) in /home3/jsmarchant97/enterprisecw/qa_management.php on line 178
+[24-Mar-2020 17:00:08 America/Chicago] PHP Parse error:  syntax error, unexpected 'echo' (T_ECHO) in /home3/jsmarchant97/enterprisecw/qa_management.php on line 178
+[24-Mar-2020 17:00:19 America/Chicago] PHP Parse error:  syntax error, unexpected 'echo' (T_ECHO) in /home3/jsmarchant97/enterprisecw/qa_management.php on line 178
+[24-Mar-2020 17:01:51 America/Chicago] PHP Parse error:  syntax error, unexpected 'echo' (T_ECHO) in /home3/jsmarchant97/enterprisecw/qa_management.php on line 178
+[24-Mar-2020 17:01:55 America/Chicago] PHP Parse error:  syntax error, unexpected 'echo' (T_ECHO) in /home3/jsmarchant97/enterprisecw/qa_management.php on line 178
+[24-Mar-2020 18:30:42 America/Chicago] PHP Parse error:  syntax error, unexpected 'echo' (T_ECHO) in /home3/jsmarchant97/enterprisecw/qa_management.php on line 288
+[24-Mar-2020 18:31:23 America/Chicago] PHP Parse error:  syntax error, unexpected 'echo' (T_ECHO) in /home3/jsmarchant97/enterprisecw/qa_management.php on line 288
+[24-Mar-2020 18:34:40 America/Chicago] PHP Parse error:  syntax error, unexpected 'echo' (T_ECHO) in /home3/jsmarchant97/enterprisecw/qa_management.php on line 289
+[24-Mar-2020 18:36:13 America/Chicago] PHP Parse error:  syntax error, unexpected 'echo' (T_ECHO) in /home3/jsmarchant97/enterprisecw/qa_management.php on line 289
+[24-Mar-2020 18:37:04 America/Chicago] PHP Parse error:  syntax error, unexpected 'echo' (T_ECHO) in /home3/jsmarchant97/enterprisecw/qa_management.php on line 289
+[24-Mar-2020 18:37:07 America/Chicago] PHP Parse error:  syntax error, unexpected 'echo' (T_ECHO) in /home3/jsmarchant97/enterprisecw/tst.php on line 2
+[24-Mar-2020 18:37:28 America/Chicago] PHP Parse error:  syntax error, unexpected 'echo' (T_ECHO) in /home3/jsmarchant97/enterprisecw/tst.php on line 2
+[24-Mar-2020 18:37:46 America/Chicago] PHP Parse error:  syntax error, unexpected 'echo' (T_ECHO) in /home3/jsmarchant97/enterprisecw/tst.php on line 2
+[24-Mar-2020 18:37:48 America/Chicago] PHP Parse error:  syntax error, unexpected 'echo' (T_ECHO) in /home3/jsmarchant97/enterprisecw/tst.php on line 2
+[24-Mar-2020 18:38:01 America/Chicago] PHP Parse error:  syntax error, unexpected 'echo' (T_ECHO) in /home3/jsmarchant97/enterprisecw/tst.php on line 2
+[24-Mar-2020 18:38:55 America/Chicago] PHP Parse error:  syntax error, unexpected 'echo' (T_ECHO) in /home3/jsmarchant97/enterprisecw/qa_management.php on line 289
+[24-Mar-2020 18:38:57 America/Chicago] PHP Parse error:  syntax error, unexpected 'echo' (T_ECHO) in /home3/jsmarchant97/enterprisecw/tst.php on line 2
+[24-Mar-2020 18:39:16 America/Chicago] PHP Parse error:  syntax error, unexpected 'echo' (T_ECHO) in /home3/jsmarchant97/enterprisecw/tst.php on line 10
+[24-Mar-2020 18:39:17 America/Chicago] PHP Parse error:  syntax error, unexpected 'echo' (T_ECHO) in /home3/jsmarchant97/enterprisecw/tst.php on line 10
+[24-Mar-2020 18:51:39 America/Chicago] PHP Parse error:  syntax error, unexpected end of file in /home3/jsmarchant97/enterprisecw/qa_management.php on line 423
+[24-Mar-2020 19:30:52 America/Chicago] PHP Parse error:  syntax error, unexpected 'echo' (T_ECHO) in /home3/jsmarchant97/enterprisecw/qa_management.php on line 178
+[24-Mar-2020 19:32:19 America/Chicago] PHP Parse error:  syntax error, unexpected '?>', expecting ',' or ')' in /home3/jsmarchant97/enterprisecw/qa_management.php on line 178
+[24-Mar-2020 19:32:20 America/Chicago] PHP Parse error:  syntax error, unexpected '?>', expecting ',' or ')' in /home3/jsmarchant97/enterprisecw/qa_management.php on line 178
+[24-Mar-2020 19:32:33 America/Chicago] PHP Parse error:  syntax error, unexpected ';', expecting ',' or ')' in /home3/jsmarchant97/enterprisecw/qa_management.php on line 178
+[24-Mar-2020 19:32:34 America/Chicago] PHP Parse error:  syntax error, unexpected ';', expecting ',' or ')' in /home3/jsmarchant97/enterprisecw/qa_management.php on line 178
+[24-Mar-2020 19:33:31 America/Chicago] PHP Parse error:  syntax error, unexpected 'echo' (T_ECHO) in /home3/jsmarchant97/enterprisecw/qa_management.php on line 178
+[24-Mar-2020 19:33:33 America/Chicago] PHP Parse error:  syntax error, unexpected 'echo' (T_ECHO) in /home3/jsmarchant97/enterprisecw/qa_management.php on line 178
+[24-Mar-2020 19:33:54 America/Chicago] PHP Parse error:  syntax error, unexpected 'echo' (T_ECHO) in /home3/jsmarchant97/enterprisecw/qa_management.php on line 178
