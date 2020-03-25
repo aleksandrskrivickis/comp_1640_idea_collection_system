@@ -1,10 +1,14 @@
 <?php 
 include_once('database.php');
-    session_start();
+session_start();
     
-    $delete = new Database();
+$delete = new Database();
 
-
+if(isset($_POST["ForumID"]) && isset($_POST["closureDate"]) && isset($_POST["finalClosureDate"])){
+	$delete -> editClosureDate($_POST["ForumID"], $_POST["closureDate"]);
+	$delete -> editFinalClosureDate($_POST["ForumID"], $_POST["finalClosureDate"]);
+	echo "<meta http-equiv='refresh' content='0'>";
+}
 
 ?>
 
@@ -175,7 +179,10 @@ $result = mysqli_query($dbc, @"
      
       
       <td>
-        <button type="button" class="btn btn-light" data-toggle="modal" data-target="#exampleModalCenter" onclick="sessionStorage.setItem('ForumID', <?= $row['ForumID']; ?>);"> <!-- Trigger modal --> Edit</button>
+        <button type="button" class="btn btn-light" data-toggle="modal" data-target="#exampleModalCenter" onclick="sessionStorage.setItem('ForumID', <?= $row['ForumID']; ?>);
+			sessionStorage.setItem('closureDate', '2020-03-25');
+			sessionStorage.setItem('finalClosureDate', '2020-03-25');
+        "> <!-- Trigger modal --> Edit</button>
 
         <a href="csv.php?forum=<?php echo $row['Name']; ?>"><button type="button" class="btn btn-light downloaded">Download</button></a>         
          <a href="qa_management.php?delete_category=<?php echo $row['Name']; ?>"><button type="button" class="btn btn-light">Delete</button></a> 
@@ -303,9 +310,10 @@ $result = mysqli_query($dbc, @"
       
         <div class="modal-footer">
           <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-          <button type="submit" name="save" class="btn btn-primary">Save changes</button>
+          <button type="submit" name="save" class="btn btn-primary">Save closure dates</button>
         </div>
       </div>
+</form method="post" action="tst.php" enctype="multipart/form-data"></form>
     </div>
   </div>
 </div>  
@@ -329,21 +337,6 @@ $result = mysqli_query($dbc, @"
       </div>
       <div class="modal-body">
              <?php  //connection
-          
-          
-try {
-$host = "localhost";
-$username = "jsmarchant97";
-$password = "enterpriseCW";
-$database = "jsmarcha_enterprisecw";
-$dbc = mysqli_connect($host, $username, $password, $database) OR die("couldn't connect to database".  mysqli_connect_errno());
-} catch (Exception $e){
-  $host = "mysql.cms.gre.ac.uk";
-  $username = "st2645h";
-  $password = "Enterprise94";
-  $database = "mdb_st2645h";
-  $dbc = mysqli_connect($host, $username, $password, $database) OR die("couldn't connect to database".  mysqli_connect_errno());
-}  
 
         
 $result = mysqli_query($dbc, " SELECT UserID, u.UserName,u.Password, d.Name AS dName, Email, r.Name AS rName, Banned, u.Removed  FROM User u LEFT Join Department d ON u.DepartmentID=d.DepartmentID INNER join Role r on u.RoleID=r.RoleID ORDER BY u.UserID ASC");       
@@ -536,8 +529,8 @@ $(document).ready(function(){
 $(document).ready(function () { 
      $('#exampleModalCenter').on('shown.bs.modal', function (e) {
             document.getElementById('ForumID').value = sessionStorage.getItem("ForumID");
-            document.getElementById('closureDate').value = sessionStorage.getItem("Closure");
-            document.getElementById('finalClosureDate').value = sessionStorage.getItem("FinalClosure");
+            document.getElementById('closureDate').value = sessionStorage.getItem("closureDate");
+            document.getElementById('finalClosureDate').value = sessionStorage.getItem("finalClosureDate");
       });
 });
 </script>

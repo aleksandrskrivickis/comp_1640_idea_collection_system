@@ -697,7 +697,7 @@
 
 			try //server attempts to run query
 			{
-				$result = $this->dbc->query('SELECT C.CommentID, C.IdeaID, U.UserName, C.CommentText, C.Anonymous, C.DatePosted
+				$result = $this->dbc->query('SELECT C.CommentID, C.IdeaID, U.UserName, C.CommentText, C.Anonymous, C.DatePosted, U.Banned
           FROM Comment C
           JOIN User as U ON U.UserID = C.UserID
           JOIN Idea as I ON I.IdeaID = C.IdeaID
@@ -743,7 +743,8 @@
 						UserName,
 						IF (ThumbUpSum IS NULL, 0 ,ThumbUpSum) AS Likes,
 						IF (ThumbDownSum IS NULL, 0 ,ThumbDownSum) AS Dislikes,
-						IF (commentCount IS NULL, 0, commentCount) AS commentCount	
+						IF (commentCount IS NULL, 0, commentCount) AS commentCount,
+						Banned
 					FROM 
 						Idea
 					LEFT JOIN 
@@ -2263,15 +2264,15 @@
          * 
          * @return void
          */
-        public function editClosureDate(string $forum, string $closure): void // TESTED
+        public function editClosureDate(string $forum_id, string $closure): void // TESTED
         {
             // Clear excess whitespace
-            $forum = trim($forum);
+            $forum_id = trim($forum_id);
             $closure = trim($closure);
             
 
             // Parameter validation
-            $e1 = $this->strValidation($forum, "forum", $this->letters, __FUNCTION__);
+            $e1 = $this->strValidation($forum_id, "forum", $this->letterNum, __FUNCTION__);
             $e2 = $this->strValidation($closure, "closure", $this->dateTime, __FUNCTION__);
 
 
@@ -2281,9 +2282,9 @@
 
                 $date = (new DateTime($closure))->format('Y-m-d H:i:s');
 
-                $sql = "UPDATE Forum SET Closure = ? WHERE Name = ?";
+                $sql = "UPDATE Forum SET Closure = ? WHERE ForumID = ?";
                 
-                $this->runSQL($sql, [$date, $forum]);
+                $this->runSQL($sql, [$date, $forum_id]);
             }
             else 
                 $this->errorMessage([$e1, $e2]);
@@ -2298,15 +2299,15 @@
          * 
          * @return void
          */
-        public function editFinalClosureDate(string $forum, string $closure): void // TESTED
+        public function editFinalClosureDate(string $forum_id, string $closure): void // TESTED
         {
             // Clear excess whitespace
-            $forum = trim($forum);
+            $forum_id = trim($forum_id);
             $closure = trim($closure);
             
 
             // Parameter validation
-            $e1 = $this->strValidation($forum, "forum", $this->letters, __FUNCTION__);
+            $e1 = $this->strValidation($forum_id, "forum", $this->letterNum, __FUNCTION__);
             $e2 = $this->strValidation($closure, "closure", $this->dateTime, __FUNCTION__);
 
 
@@ -2316,9 +2317,9 @@
 
                 $date = (new DateTime($closure))->format('Y-m-d H:i:s');
 
-                $sql = "UPDATE Forum SET FinalClosure = ? WHERE Name = ?";
+                $sql = "UPDATE Forum SET FinalClosure = ? WHERE ForumID = ?";
                 
-                $this->runSQL($sql, [$date, $forum]);
+                $this->runSQL($sql, [$date, $forum_id]);
             }
             else 
                 $this->errorMessage([$e1, $e2]);
