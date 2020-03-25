@@ -741,9 +741,9 @@
 						Anonymous,
 						DatePosted,
 						UserName,
-						ThumbUpSum AS Likes,
-						ThumbDownSum AS Dislikes,
-						commentCount 	
+						IF (ThumbUpSum IS NULL, 0 ,ThumbUpSum) AS Likes,
+						IF (ThumbDownSum IS NULL, 0 ,ThumbDownSum) AS Dislikes,
+						IF (commentCount IS NULL, 0, commentCount) AS commentCount	
 					FROM 
 						Idea
 					LEFT JOIN 
