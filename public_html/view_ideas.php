@@ -165,7 +165,12 @@ if(isset($_POST['action']) and $_POST['action'] == 'dislikes')
     <?php foreach($ideas as $idea):
     ?> <!--Another loop, this time echoing the data within html tags-->
                 <div class="col-8">
-    <form form action="?" method="post">
+    
+     <?php if(isset($_SESSION['username']))
+     {
+         echo '<form action="?" method="post">';
+     }
+     ?>
  <!--<div class="Jumbotroncentral"> -->
                         <!--    <div class="jumbotron">-->
 
@@ -203,19 +208,25 @@ else
  ?>
 
     <!-- ADD A COMMENT -->
-    <hr class="my-4">
-    <div class="row">
-    <div class="col-sm-9">
-    <div class="form-group">
-  
-    <textarea class="form-control" id="exampleFormControlTextarea1" name="commenttext" rows="2" placeholder="Type here..."></textarea>
-    </div>           
-              
-    </div>
-    <div class="col-3">
-    <button class="btn btn-light" name="action" value="comments">Submit Comment</button>
-    </div>        
-  </div>
+    
+     <?php 
+     if(isset($_SESSION['username']))
+     {
+         echo '
+        <hr class="my-4">
+        <div class="row">
+        <div class="col-sm-9">
+        <div class="form-group">
+      
+        <textarea class="form-control" id="exampleFormControlTextarea1" name="commenttext" rows="2" placeholder="Type here..."></textarea>
+        </div>           
+                  
+        </div>
+        <div class="col-3">
+        <button class="btn btn-light" name="action" value="comments">Submit Comment</button>
+        </div>        
+      </div>';
+     }?>
 
 </div>  
 </form>
