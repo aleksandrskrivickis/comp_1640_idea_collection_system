@@ -97,7 +97,7 @@ $(function(){
     <!-- <p>12 ideas submitted</p>      -->
     </div>
     <div class="col-3">
-         <a href="submit_idea.php?name=<?php echo $row->Name; ?>"><button type="button" class="seeforum">Enter Forum</button></a> 
+         <a href="view_ideas.php?name=<?php echo $row->Name; ?>"><button type="button" class="seeforum">Enter Forum</button></a> 
     </div>
     </div>
         </div>
