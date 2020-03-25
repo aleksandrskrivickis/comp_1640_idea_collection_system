@@ -124,36 +124,8 @@ if(isset($_POST['action']) and $_POST['action'] == 'dislikes')
 <h1><?php echo $_SESSION['forum_name'];?></h1>
       <div class="container">
             <div class="row justify-content-center">
-              <div class="col-4">
-                    <div class="container">
                          <!-- button for pop up modal form- code for form is at the end-->    
-                        <div class="row">
-                            <button type="button" class="btn btn-primary" data-toggle="modal" data-target=".bd-example-modal-xl" style="background-color: #036DA1; width: 100%">Submit an idea</button> 
-                        </div>
-						<br>
-						<div class="row">
-							<form>
-								<input class="form-control mr-sm-1" type="search" placeholder="Search" aria-label="Search">
-							</form>
-						</div>
-						
-						<br>
-						
-						<div class="row">
-                                <div class="dropdown">
-                                    <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                        Sort by
-                                    </button>
-                                    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                                        <a class="dropdown-item" href="#">Most popular</a>
-                                        <a class="dropdown-item" href="#">Most recent</a>
-                                        <a class="dropdown-item" href="#">Most commented</a>
-                                    </div>
-                                </div>						
-						</div>
-                        <br>
-                    </div>     
-                </div>
+                            <button type="button" class="btn btn-primary" data-toggle="modal" data-target=".bd-example-modal-xl" style="background-color: #036DA1; width: 65%; margin-top: 2%; margin-bottom: 5%;">Submit an idea</button> 
     <?php foreach($ideas as $idea):
     ?> <!--Another loop, this time echoing the data within html tags-->
     
