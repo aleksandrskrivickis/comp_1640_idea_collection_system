@@ -93,28 +93,24 @@ $(function(){
     <!--PAGE TITLE/HEADER--> 
     <h1> Select a Forum</h1>
     <form action="forum.php" method="post">
-        
-			<!-- FIRST FORUM -->
-         <div class="pad"> 
-        <?php 
-      //  while ($res = mysqli_fetch_array($query)) {
-         $user = $lastLog->getAllForums();
-        foreach($user as $row){
-                        //echo  '<option value="'.$row->Name.'">'.$row->Name.'</option>';
-        ?>
- 
-      <div class="fixing">
-    <h2 class="display-4"><?php echo $row->Name ?></h2>
-    <p class="lead"><?php echo $row->Description ?></p>
-         <a href="view_ideas.php?name=<?php echo $row->Name; ?>"><button type="button" class="seeforum">Enter Forum</button></a>
-    </div>
-              
 
-        <br>
-
-        <?php } ?>
+        <!-- FIRST FORUM -->
+        <div class="pad"> 
+            <?php 
+            //  while ($res = mysqli_fetch_array($query)) {
+            $user = $lastLog->getAllForums();
+            foreach($user as $row){ ?>
+                <div class="Jumbotroncentral">
+                    <div class="jumbotron">
+                        <h2 class="display-9"><?php echo $row->Name ?></h2>
+                        <p class="display-9"><?php echo $row->Description ?></p>
+                        <a href="view_ideas.php?name=<?php echo $row->Name; ?>"><button type="button" class="seeforum">Enter Forum</button></a>
+                    </div>
+                </div>
+                <br>
+            <?php } ?>
         </div>
-          </form> 
+    </form> 
     </body>
 </html>
 <?php
