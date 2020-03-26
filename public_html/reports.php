@@ -27,9 +27,14 @@ $db = new Database();
     
 // If variable exist save else null - null returns all results e.g. for QAM
 //$department = ($_REQUEST['user']) ? $_REQUEST['user'] : null;
-//echo $_SESSION['username'];
+// echo $_SESSION['username'];
 $department =  $db->getDepartment($_SESSION['username']);
-//echo $department;
+// echo $department;
+if ($department == "None"){
+    $department = null;
+}
+// echo $department;
+
 ?>
 
 <HTML>

@@ -1181,3 +1181,12 @@ Stack trace:
 #0 /home3/jsmarchant97/enterprisecw/reports.php(31): Database->getDepartment('Jesus')
 #1 {main}
   thrown in /home3/jsmarchant97/enterprisecw/database.php on line 276
+[26-Mar-2020 13:43:42 America/Chicago] PHP Warning:  Invalid argument supplied for foreach() in /home3/jsmarchant97/enterprisecw/reports.php on line 129
+[26-Mar-2020 13:43:42 America/Chicago] PHP Warning:  Invalid argument supplied for foreach() in /home3/jsmarchant97/enterprisecw/reports.php on line 154
+[26-Mar-2020 13:43:42 America/Chicago] PHP Warning:  Invalid argument supplied for foreach() in /home3/jsmarchant97/enterprisecw/reports.php on line 178
+[26-Mar-2020 13:43:42 America/Chicago] PHP Warning:  Invalid argument supplied for foreach() in /home3/jsmarchant97/enterprisecw/reports.php on line 129
+[26-Mar-2020 13:43:42 America/Chicago] PHP Warning:  Invalid argument supplied for foreach() in /home3/jsmarchant97/enterprisecw/reports.php on line 154
+[26-Mar-2020 13:43:42 America/Chicago] PHP Warning:  Invalid argument supplied for foreach() in /home3/jsmarchant97/enterprisecw/reports.php on line 178
+[26-Mar-2020 13:44:25 America/Chicago] PHP Warning:  Invalid argument supplied for foreach() in /home3/jsmarchant97/enterprisecw/reports.php on line 129
+[26-Mar-2020 13:44:25 America/Chicago] PHP Warning:  Invalid argument supplied for foreach() in /home3/jsmarchant97/enterprisecw/reports.php on line 154
+[26-Mar-2020 13:44:25 America/Chicago] PHP Warning:  Invalid argument supplied for foreach() in /home3/jsmarchant97/enterprisecw/reports.php on line 178
