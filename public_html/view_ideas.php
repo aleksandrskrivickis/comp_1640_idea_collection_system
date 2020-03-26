@@ -124,8 +124,10 @@ if(isset($_POST['action']) and $_POST['action'] == 'dislikes')
 <h1><?php echo $_SESSION['forum_name'];?></h1>
       <div class="container">
             <div class="row justify-content-center">
-                         <!-- button for pop up modal form- code for form is at the end-->    
+                         <!-- button for pop up modal form- code for form is at the end-->   
+                <?if(isset($_SESSION['username'])){?>
                             <button type="button" class="btn btn-primary" data-toggle="modal" data-target=".bd-example-modal-xl" style="background-color: #036DA1; width: 65%; margin-top: 2%; margin-bottom: 5%;">Submit an idea</button> 
+                <?}?>
     <?php foreach($ideas as $idea):
     ?> <!--Another loop, this time echoing the data within html tags-->
     
