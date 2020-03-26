@@ -287,7 +287,7 @@
          * 
          * **All users are assoiciated to a department, except for QA Managers who not associated to any department**
          */
-        public function getRole(string $username): ?object // TESTED
+        public function getRole(string $username): ?string // TESTED
         {
             // Clear excess whitespace
             $username = trim($username);
@@ -301,9 +301,9 @@
             if (!isset($e)) {
                 $sql = "SELECT r.Name, r.Type, r.Description FROM Role r 
                         INNER JOIN User u ON r.RoleID = u.RoleID 
-                        WHERE u.UserName = ? AND u.Removed = '0' AND r.Removed = '0'";
+                        WHERE u.UserName = '".$username."' AND u.Removed = '0' AND r.Removed = '0'";
 
-                return $this->getObjectSQL($sql, [$username]);
+                return $this->dbc->query($sql)->fetch()["Name"];
             }
             else 
                 $this->errorMessage([$e]);

@@ -1190,3 +1190,42 @@ Stack trace:
 [26-Mar-2020 13:44:25 America/Chicago] PHP Warning:  Invalid argument supplied for foreach() in /home3/jsmarchant97/enterprisecw/reports.php on line 129
 [26-Mar-2020 13:44:25 America/Chicago] PHP Warning:  Invalid argument supplied for foreach() in /home3/jsmarchant97/enterprisecw/reports.php on line 154
 [26-Mar-2020 13:44:25 America/Chicago] PHP Warning:  Invalid argument supplied for foreach() in /home3/jsmarchant97/enterprisecw/reports.php on line 178
+[26-Mar-2020 15:00:35 America/Chicago] PHP Fatal error:  Uncaught TypeError: Argument 1 passed to Database::getRole() must be of the type string, null given, called in /home3/jsmarchant97/enterprisecw/nav_bar.php on line 7 and defined in /home3/jsmarchant97/enterprisecw/database.php:290
+Stack trace:
+#0 /home3/jsmarchant97/enterprisecw/nav_bar.php(7): Database->getRole(NULL)
+#1 /home3/jsmarchant97/enterprisecw/top_ideas.php(9): include_once('/home3/jsmarcha...')
+#2 {main}
+  thrown in /home3/jsmarchant97/enterprisecw/database.php on line 290
+[26-Mar-2020 15:00:49 America/Chicago] PHP Fatal error:  Uncaught TypeError: Argument 1 passed to Database::getRole() must be of the type string, null given, called in /home3/jsmarchant97/enterprisecw/nav_bar.php on line 7 and defined in /home3/jsmarchant97/enterprisecw/database.php:290
+Stack trace:
+#0 /home3/jsmarchant97/enterprisecw/nav_bar.php(7): Database->getRole(NULL)
+#1 /home3/jsmarchant97/enterprisecw/top_ideas.php(9): include_once('/home3/jsmarcha...')
+#2 {main}
+  thrown in /home3/jsmarchant97/enterprisecw/database.php on line 290
+[26-Mar-2020 15:01:12 America/Chicago] PHP Fatal error:  Uncaught TypeError: Argument 1 passed to Database::getRole() must be of the type string, null given, called in /home3/jsmarchant97/enterprisecw/nav_bar.php on line 8 and defined in /home3/jsmarchant97/enterprisecw/database.php:290
+Stack trace:
+#0 /home3/jsmarchant97/enterprisecw/nav_bar.php(8): Database->getRole(NULL)
+#1 /home3/jsmarchant97/enterprisecw/top_ideas.php(9): include_once('/home3/jsmarcha...')
+#2 {main}
+  thrown in /home3/jsmarchant97/enterprisecw/database.php on line 290
+[26-Mar-2020 15:02:20 America/Chicago] PHP Fatal error:  Uncaught TypeError: Return value of Database::getObjectSQL() must be an instance of object or null, instance of stdClass returned in /home3/jsmarchant97/enterprisecw/database.php:2397
+Stack trace:
+#0 /home3/jsmarchant97/enterprisecw/database.php(306): Database->getObjectSQL('SELECT r.Name, ...', Array)
+#1 /home3/jsmarchant97/enterprisecw/nav_bar.php(8): Database->getRole('NumberOne')
+#2 /home3/jsmarchant97/enterprisecw/loginreg.php(11): include_once('/home3/jsmarcha...')
+#3 {main}
+  thrown in /home3/jsmarchant97/enterprisecw/database.php on line 2397
+[26-Mar-2020 15:02:22 America/Chicago] PHP Fatal error:  Uncaught TypeError: Return value of Database::getObjectSQL() must be an instance of object or null, instance of stdClass returned in /home3/jsmarchant97/enterprisecw/database.php:2397
+Stack trace:
+#0 /home3/jsmarchant97/enterprisecw/database.php(306): Database->getObjectSQL('SELECT r.Name, ...', Array)
+#1 /home3/jsmarchant97/enterprisecw/nav_bar.php(8): Database->getRole('NumberOne')
+#2 /home3/jsmarchant97/enterprisecw/top_ideas.php(9): include_once('/home3/jsmarcha...')
+#3 {main}
+  thrown in /home3/jsmarchant97/enterprisecw/database.php on line 2397
+[26-Mar-2020 15:06:19 America/Chicago] PHP Fatal error:  Uncaught PDOException: SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '? AND u.Removed = '0' AND r.Removed = '0'' at line 3 in /home3/jsmarchant97/enterprisecw/database.php:306
+Stack trace:
+#0 /home3/jsmarchant97/enterprisecw/database.php(306): PDO->query('SELECT r.Name, ...')
+#1 /home3/jsmarchant97/enterprisecw/nav_bar.php(8): Database->getRole('NumberOne')
+#2 /home3/jsmarchant97/enterprisecw/top_ideas.php(9): include_once('/home3/jsmarcha...')
+#3 {main}
+  thrown in /home3/jsmarchant97/enterprisecw/database.php on line 306

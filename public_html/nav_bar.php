@@ -4,6 +4,12 @@ include_once('database.php');
 $admin = new Database();
 $username = $_SESSION['username'];
 
+if (isset($_SESSION['username'])){
+  $str_user_role = $admin->getRole($username);
+  // echo $str_user_role;
+}
+
+
 ?>
 
 <!-- Required meta tags -->
@@ -53,13 +59,37 @@ $username = $_SESSION['username'];
     echo '<form class="form-inline my-2 my-lg-0" action="admin_panel.php">';
     echo '<button style="margin:40px;" class="btn btn-light my-2 my-sm-0" type="Submit">Admin area</button>';
     echo '</form>';
+
+    echo '<form class="form-inline my-2 my-lg-0" action="qa_management.php">';
+    echo '<button style="margin:40px;" class="btn btn-light my-2 my-sm-0" type="Submit">QA Management Panel</button>';
+    echo '</form>';     
     }
   else {
        $_SESSION['admin'] = null;
     }
   }
 
+  switch ($str_user_role) {
+    case "Quality Assurance Manager":
+        if (!$user){
+            echo '<form class="form-inline my-2 my-lg-0" action="qa_management.php">';
+            echo '<button style="margin:40px;" class="btn btn-light my-2 my-sm-0" type="Submit">QA Management Panel</button>';
+            echo '</form>';            
+        }
+        break;
+    case "Quality Assurance Coordinator":
+        break;
+    case "Academic":
+        break;
+    case "Support":
+        break;       
+}
+
   if(isset($_SESSION['username'])){
+    echo '<form class="form-inline my-2 my-lg-0" action="reports.php">';
+    echo '<button style="margin:40px;" class="btn btn-light my-2 my-sm-0" type="Submit">Reports</button>';
+    echo '</form>';  
+
      echo '<form class="form-inline my-2 my-lg-0" action="logout.php">';
      echo '<button class="btn btn-light my-2 my-sm-0" type="submit">Sign out</button>';
      echo '</form>';
