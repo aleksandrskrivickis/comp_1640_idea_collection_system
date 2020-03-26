@@ -235,7 +235,7 @@
          * 
          * QA Manager's is not assigned to a department so returns an object with 'None' for both result, whereas failed searches return 'null'
          */
-        public function getDepartment(string $username): ?object // TESTED
+        public function getDepartment(string $username): ?string // TESTED
         {
             // Clear excess whitespace
             $username = trim($username);
@@ -253,9 +253,10 @@
                 $sql = "SELECT $name_Sub AS Name, $desc_Sub AS Description FROM Department d
                         RIGHT JOIN User u ON d.DepartmentID = u.DepartmentID
                         INNER JOIN Role r ON u.RoleID = r.RoleID
-                        WHERE u.UserName = ? AND u.Banned = '0' AND u.Removed = '0' AND  (d.Removed = 0 OR d.Removed IS NULL)";
-                
-                return $this->getObjectSQL($sql, [$username]);
+                        WHERE u.UserName = '".$username."' AND u.Banned = '0' AND u.Removed = '0' AND  (d.Removed = 0 OR d.Removed IS NULL)";
+                //->fetch()["record_count"];
+                return $this->dbc->query($sql)->fetch()["Name"];
+                //return $this->getObjectSQL($sql, [$username]);
             }
             else 
                 $this->errorMessage([$e]);

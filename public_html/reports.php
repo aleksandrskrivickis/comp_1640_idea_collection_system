@@ -7,22 +7,29 @@ if(!isset($_SESSION['username'])){
 
 include_once 'nav_bar.php';
 
+//$_GET["username"]
+//$user = databaseGetDepartMent(username)
+//Replace $_GET['user'] below with $user
+
 
 
 // Test users
-$users = array( null,        "QAM",             // QAM 
-                "Computing", "QAC - Computing", // QAC for Computing
-                "Science",   "QAC - Science",   // QAC for Science
-                "Sports",    "QAC - Sports",    // QAC for Sport
-              );
+// $users = array( null,        "QAM",             // QAM 
+//                 "Computing", "QAC - Computing", // QAC for Computing
+//                 "Science",   "QAC - Science",   // QAC for Science
+//                 "Sports",    "QAC - Sports",    // QAC for Sport
+//               );
 
 
-//require 'database.php';
+include_once 'database.php';
 $db = new Database();
 
     
 // If variable exist save else null - null returns all results e.g. for QAM
-$department = ($_REQUEST['user']) ? $_REQUEST['user'] : null;
+//$department = ($_REQUEST['user']) ? $_REQUEST['user'] : null;
+//echo $_SESSION['username'];
+$department =  $db->getDepartment($_SESSION['username']);
+//echo $department;
 ?>
 
 <HTML>
@@ -71,7 +78,7 @@ $department = ($_REQUEST['user']) ? $_REQUEST['user'] : null;
     <div class="Jumbotroncentral">
         <div class="jumbotron">
         <!-- Test selectors -->
-        <form method="GET">
+<!--         <form method="GET">
             <p> User: 
                 <select name="user" onchange="this.form.submit()">
                     <?php
@@ -92,7 +99,7 @@ $department = ($_REQUEST['user']) ? $_REQUEST['user'] : null;
                     ?>
                 </select>
             </p>
-        </form>            
+        </form>  -->           
             
 
             <div class = "tab">
