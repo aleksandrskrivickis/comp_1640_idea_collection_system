@@ -1,14 +1,12 @@
 <?php 
-include_once 'nav_bar.php';
 session_start(); 
 
-$_SESSION['username'] = 'abc';
+//$_SESSION['username'] = 'abc';
 
 // If not logged in
-if (!isset($_SESSION['username'])) {
-header ('Location: loginreg.php');
-}
 
+
+include_once 'nav_bar.php';
 include_once 'database.php';
 $db = new Database();
 ?>

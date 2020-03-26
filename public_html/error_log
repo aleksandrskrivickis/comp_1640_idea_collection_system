@@ -955,3 +955,111 @@ Stack trace:
 [24-Mar-2020 19:33:31 America/Chicago] PHP Parse error:  syntax error, unexpected 'echo' (T_ECHO) in /home3/jsmarchant97/enterprisecw/qa_management.php on line 178
 [24-Mar-2020 19:33:33 America/Chicago] PHP Parse error:  syntax error, unexpected 'echo' (T_ECHO) in /home3/jsmarchant97/enterprisecw/qa_management.php on line 178
 [24-Mar-2020 19:33:54 America/Chicago] PHP Parse error:  syntax error, unexpected 'echo' (T_ECHO) in /home3/jsmarchant97/enterprisecw/qa_management.php on line 178
+[25-Mar-2020 07:06:55 America/Chicago] PHP Warning:  session_start(): Cannot send session cache limiter - headers already sent (output started at /home3/jsmarchant97/enterprisecw/view_ideas.php:20) in /home3/jsmarchant97/enterprisecw/nav_bar.php on line 2
+[25-Mar-2020 07:10:40 America/Chicago] PHP Warning:  include(error.html.php): failed to open stream: No such file or directory in /home3/jsmarchant97/enterprisecw/view_ideas.php on line 12
+[25-Mar-2020 07:10:40 America/Chicago] PHP Warning:  include(error.html.php): failed to open stream: No such file or directory in /home3/jsmarchant97/enterprisecw/view_ideas.php on line 12
+[25-Mar-2020 07:10:40 America/Chicago] PHP Warning:  include(): Failed opening 'error.html.php' for inclusion (include_path='.:/opt/php71/lib/php') in /home3/jsmarchant97/enterprisecw/view_ideas.php on line 12
+[25-Mar-2020 07:44:46 America/Chicago] PHP Fatal error:  Uncaught TypeError: Argument 2 passed to Database::setThumbsUpDownForJake() must be of the type string, null given, called in /home3/jsmarchant97/enterprisecw/view_ideas.php on line 106 and defined in /home3/jsmarchant97/enterprisecw/database.php:665
+Stack trace:
+#0 /home3/jsmarchant97/enterprisecw/view_ideas.php(106): Database->setThumbsUpDownForJake('23', NULL, 1)
+#1 {main}
+  thrown in /home3/jsmarchant97/enterprisecw/database.php on line 665
+[25-Mar-2020 08:05:12 America/Chicago] PHP Fatal error:  Uncaught TypeError: Argument 1 passed to Database::setLastLogin() must be of the type string, null given, called in /home3/jsmarchant97/enterprisecw/forum.php on line 64 and defined in /home3/jsmarchant97/enterprisecw/database.php:190
+Stack trace:
+#0 /home3/jsmarchant97/enterprisecw/forum.php(64): Database->setLastLogin(NULL)
+#1 {main}
+  thrown in /home3/jsmarchant97/enterprisecw/database.php on line 190
+[25-Mar-2020 08:57:07 America/Chicago] PHP Warning:  Cannot modify header information - headers already sent by (output started at /home3/jsmarchant97/enterprisecw/nav_bar.php:8) in /home3/jsmarchant97/enterprisecw/view_ideas.php on line 107
+[25-Mar-2020 08:59:13 America/Chicago] PHP Fatal error:  Uncaught TypeError: Argument 1 passed to Database::setLastLogin() must be of the type string, null given, called in /home3/jsmarchant97/enterprisecw/forum.php on line 64 and defined in /home3/jsmarchant97/enterprisecw/database.php:190
+Stack trace:
+#0 /home3/jsmarchant97/enterprisecw/forum.php(64): Database->setLastLogin(NULL)
+#1 {main}
+  thrown in /home3/jsmarchant97/enterprisecw/database.php on line 190
+[25-Mar-2020 11:12:46 America/Chicago] PHP Warning:  Cannot modify header information - headers already sent by (output started at /home3/jsmarchant97/enterprisecw/nav_bar.php:8) in /home3/jsmarchant97/enterprisecw/view_ideas.php on line 112
+[25-Mar-2020 11:12:57 America/Chicago] PHP Warning:  Cannot modify header information - headers already sent by (output started at /home3/jsmarchant97/enterprisecw/nav_bar.php:8) in /home3/jsmarchant97/enterprisecw/view_ideas.php on line 112
+[25-Mar-2020 11:28:02 America/Chicago] PHP Warning:  file_get_contents(): Filename cannot be empty in /home3/jsmarchant97/enterprisecw/database.php on line 999
+[25-Mar-2020 11:35:51 America/Chicago] PHP Parse error:  syntax error, unexpected end of file in /home3/jsmarchant97/enterprisecw/view_ideas.php on line 115
+[25-Mar-2020 11:39:18 America/Chicago] PHP Warning:  Cannot modify header information - headers already sent by (output started at /home3/jsmarchant97/enterprisecw/server.php:226) in /home3/jsmarchant97/enterprisecw/loginreg.php on line 8
+[25-Mar-2020 11:40:08 America/Chicago] PHP Warning:  Cannot modify header information - headers already sent by (output started at /home3/jsmarchant97/enterprisecw/nav_bar.php:8) in /home3/jsmarchant97/enterprisecw/view_ideas.php on line 119
+[25-Mar-2020 11:41:13 America/Chicago] PHP Warning:  Cannot modify header information - headers already sent by (output started at /home3/jsmarchant97/enterprisecw/server.php:226) in /home3/jsmarchant97/enterprisecw/loginreg.php on line 8
+[25-Mar-2020 11:41:14 America/Chicago] PHP Fatal error:  Uncaught TypeError: Argument 3 passed to Database::createIdea() must be of the type string, null given, called in /home3/jsmarchant97/enterprisecw/server.php on line 219 and defined in /home3/jsmarchant97/enterprisecw/database.php:495
+Stack trace:
+#0 /home3/jsmarchant97/enterprisecw/server.php(219): Database->createIdea('', '', NULL, 'abc', false, Array, Array)
+#1 /home3/jsmarchant97/enterprisecw/submit_idea.php(6): include_once('/home3/jsmarcha...')
+#2 {main}
+  thrown in /home3/jsmarchant97/enterprisecw/database.php on line 495
+[25-Mar-2020 11:42:17 America/Chicago] PHP Fatal error:  Uncaught TypeError: Argument 3 passed to Database::createIdea() must be of the type string, null given, called in /home3/jsmarchant97/enterprisecw/server.php on line 219 and defined in /home3/jsmarchant97/enterprisecw/database.php:495
+Stack trace:
+#0 /home3/jsmarchant97/enterprisecw/server.php(219): Database->createIdea('aa', 'a', NULL, 'abc', false, Array, Array)
+#1 /home3/jsmarchant97/enterprisecw/submit_idea.php(6): include_once('/home3/jsmarcha...')
+#2 {main}
+  thrown in /home3/jsmarchant97/enterprisecw/database.php on line 495
+[25-Mar-2020 11:42:53 America/Chicago] PHP Fatal error:  Uncaught TypeError: Argument 1 passed to Database::setLastLogin() must be of the type string, null given, called in /home3/jsmarchant97/enterprisecw/forum.php on line 64 and defined in /home3/jsmarchant97/enterprisecw/database.php:190
+Stack trace:
+#0 /home3/jsmarchant97/enterprisecw/forum.php(64): Database->setLastLogin(NULL)
+#1 {main}
+  thrown in /home3/jsmarchant97/enterprisecw/database.php on line 190
+[25-Mar-2020 11:43:02 America/Chicago] PHP Fatal error:  Uncaught TypeError: Argument 1 passed to Database::setLastLogin() must be of the type string, null given, called in /home3/jsmarchant97/enterprisecw/forum.php on line 64 and defined in /home3/jsmarchant97/enterprisecw/database.php:190
+Stack trace:
+#0 /home3/jsmarchant97/enterprisecw/forum.php(64): Database->setLastLogin(NULL)
+#1 {main}
+  thrown in /home3/jsmarchant97/enterprisecw/database.php on line 190
+[25-Mar-2020 11:44:46 America/Chicago] PHP Fatal error:  Uncaught TypeError: Argument 1 passed to Database::setLastLogin() must be of the type string, null given, called in /home3/jsmarchant97/enterprisecw/forum.php on line 64 and defined in /home3/jsmarchant97/enterprisecw/database.php:190
+Stack trace:
+#0 /home3/jsmarchant97/enterprisecw/forum.php(64): Database->setLastLogin(NULL)
+#1 {main}
+  thrown in /home3/jsmarchant97/enterprisecw/database.php on line 190
+[25-Mar-2020 11:44:49 America/Chicago] PHP Fatal error:  Uncaught TypeError: Argument 1 passed to Database::setLastLogin() must be of the type string, null given, called in /home3/jsmarchant97/enterprisecw/forum.php on line 64 and defined in /home3/jsmarchant97/enterprisecw/database.php:190
+Stack trace:
+#0 /home3/jsmarchant97/enterprisecw/forum.php(64): Database->setLastLogin(NULL)
+#1 {main}
+  thrown in /home3/jsmarchant97/enterprisecw/database.php on line 190
+[25-Mar-2020 11:44:51 America/Chicago] PHP Fatal error:  Uncaught TypeError: Argument 1 passed to Database::setLastLogin() must be of the type string, null given, called in /home3/jsmarchant97/enterprisecw/forum.php on line 64 and defined in /home3/jsmarchant97/enterprisecw/database.php:190
+Stack trace:
+#0 /home3/jsmarchant97/enterprisecw/forum.php(64): Database->setLastLogin(NULL)
+#1 {main}
+  thrown in /home3/jsmarchant97/enterprisecw/database.php on line 190
+[25-Mar-2020 11:45:02 America/Chicago] PHP Fatal error:  Uncaught TypeError: Argument 3 passed to Database::createIdea() must be of the type string, null given, called in /home3/jsmarchant97/enterprisecw/server.php on line 110 and defined in /home3/jsmarchant97/enterprisecw/database.php:495
+Stack trace:
+#0 /home3/jsmarchant97/enterprisecw/server.php(110): Database->createIdea('Idea with no up...', 'Test', NULL, 'abc', true, Array, Array)
+#1 /home3/jsmarchant97/enterprisecw/submit_idea.php(6): include_once('/home3/jsmarcha...')
+#2 {main}
+  thrown in /home3/jsmarchant97/enterprisecw/database.php on line 495
+[25-Mar-2020 11:46:10 America/Chicago] PHP Fatal error:  Uncaught TypeError: Argument 3 passed to Database::createIdea() must be of the type string, null given, called in /home3/jsmarchant97/enterprisecw/server.php on line 110 and defined in /home3/jsmarchant97/enterprisecw/database.php:495
+Stack trace:
+#0 /home3/jsmarchant97/enterprisecw/server.php(110): Database->createIdea('Idea with no do...', 'Test', NULL, 'NumberOne', false, Array, Array)
+#1 /home3/jsmarchant97/enterprisecw/submit_idea.php(6): include_once('/home3/jsmarcha...')
+#2 {main}
+  thrown in /home3/jsmarchant97/enterprisecw/database.php on line 495
+[25-Mar-2020 12:04:13 America/Chicago] PHP Parse error:  syntax error, unexpected ')', expecting ',' or ';' in /home3/jsmarchant97/enterprisecw/qa_management.php on line 7
+[25-Mar-2020 12:04:24 America/Chicago] PHP Parse error:  syntax error, unexpected end of file in /home3/jsmarchant97/enterprisecw/qa_management.php on line 417
+[25-Mar-2020 12:44:58 America/Chicago] PHP Warning:  Invalid argument supplied for foreach() in /home3/jsmarchant97/enterprisecw/view_ideas.php on line 138
+[25-Mar-2020 12:44:58 America/Chicago] PHP Warning:  Invalid argument supplied for foreach() in /home3/jsmarchant97/enterprisecw/view_ideas.php on line 342
+[25-Mar-2020 12:48:57 America/Chicago] PHP Fatal error:  Uncaught TypeError: Argument 1 passed to Database::setLastLogin() must be of the type string, null given, called in /home3/jsmarchant97/enterprisecw/forum.php on line 127 and defined in /home3/jsmarchant97/enterprisecw/database.php:190
+Stack trace:
+#0 /home3/jsmarchant97/enterprisecw/forum.php(127): Database->setLastLogin(NULL)
+#1 {main}
+  thrown in /home3/jsmarchant97/enterprisecw/database.php on line 190
+[25-Mar-2020 12:53:54 America/Chicago] PHP Warning:  Invalid argument supplied for foreach() in /home3/jsmarchant97/enterprisecw/view_ideas.php on line 337
+[25-Mar-2020 12:54:17 America/Chicago] PHP Warning:  Invalid argument supplied for foreach() in /home3/jsmarchant97/enterprisecw/view_ideas.php on line 337
+[25-Mar-2020 12:54:34 America/Chicago] PHP Warning:  Invalid argument supplied for foreach() in /home3/jsmarchant97/enterprisecw/view_ideas.php on line 337
+[25-Mar-2020 12:55:22 America/Chicago] PHP Warning:  Invalid argument supplied for foreach() in /home3/jsmarchant97/enterprisecw/view_ideas.php on line 337
+[25-Mar-2020 12:59:35 America/Chicago] PHP Warning:  Invalid argument supplied for foreach() in /home3/jsmarchant97/enterprisecw/view_ideas.php on line 337
+[25-Mar-2020 13:04:59 America/Chicago] PHP Warning:  Invalid argument supplied for foreach() in /home3/jsmarchant97/enterprisecw/view_ideas.php on line 337
+[25-Mar-2020 13:10:52 America/Chicago] PHP Warning:  Invalid argument supplied for foreach() in /home3/jsmarchant97/enterprisecw/view_ideas.php on line 337
+[25-Mar-2020 13:11:21 America/Chicago] PHP Warning:  Invalid argument supplied for foreach() in /home3/jsmarchant97/enterprisecw/view_ideas.php on line 337
+[25-Mar-2020 15:25:25 America/Chicago] PHP Warning:  Invalid argument supplied for foreach() in /home3/jsmarchant97/enterprisecw/view_ideas.php on line 129
+[25-Mar-2020 15:26:25 America/Chicago] PHP Warning:  Invalid argument supplied for foreach() in /home3/jsmarchant97/enterprisecw/view_ideas.php on line 129
+[25-Mar-2020 15:27:26 America/Chicago] PHP Warning:  Invalid argument supplied for foreach() in /home3/jsmarchant97/enterprisecw/view_ideas.php on line 129
+[25-Mar-2020 15:59:49 America/Chicago] PHP Warning:  Invalid argument supplied for foreach() in /home3/jsmarchant97/enterprisecw/view_ideas.php on line 129
+[25-Mar-2020 17:23:55 America/Chicago] PHP Warning:  Invalid argument supplied for foreach() in /home3/jsmarchant97/enterprisecw/view_ideas.php on line 129
+[25-Mar-2020 17:26:33 America/Chicago] PHP Warning:  Invalid argument supplied for foreach() in /home3/jsmarchant97/enterprisecw/view_ideas.php on line 129
+[26-Mar-2020 08:09:14 America/Chicago] PHP Warning:  Invalid argument supplied for foreach() in /home3/jsmarchant97/enterprisecw/view_ideas.php on line 129
+[26-Mar-2020 09:06:40 America/Chicago] PHP Warning:  Cannot modify header information - headers already sent by (output started at /home3/jsmarchant97/enterprisecw/nav_bar.php:8) in /home3/jsmarchant97/enterprisecw/view_ideas.php on line 110
+[26-Mar-2020 09:06:46 America/Chicago] PHP Warning:  Cannot modify header information - headers already sent by (output started at /home3/jsmarchant97/enterprisecw/nav_bar.php:8) in /home3/jsmarchant97/enterprisecw/view_ideas.php on line 115
+[26-Mar-2020 09:06:51 America/Chicago] PHP Warning:  Cannot modify header information - headers already sent by (output started at /home3/jsmarchant97/enterprisecw/nav_bar.php:8) in /home3/jsmarchant97/enterprisecw/view_ideas.php on line 110
+[26-Mar-2020 09:06:54 America/Chicago] PHP Warning:  Cannot modify header information - headers already sent by (output started at /home3/jsmarchant97/enterprisecw/nav_bar.php:8) in /home3/jsmarchant97/enterprisecw/view_ideas.php on line 110
+[26-Mar-2020 09:24:29 America/Chicago] PHP Warning:  Cannot modify header information - headers already sent by (output started at /home3/jsmarchant97/enterprisecw/nav_bar.php:8) in /home3/jsmarchant97/enterprisecw/view_ideas.php on line 120
+[26-Mar-2020 09:53:30 America/Chicago] PHP Warning:  Cannot modify header information - headers already sent by (output started at /home3/jsmarchant97/enterprisecw/nav_bar.php:8) in /home3/jsmarchant97/enterprisecw/view_ideas.php on line 120
+[26-Mar-2020 10:24:38 America/Chicago] PHP Warning:  Cannot modify header information - headers already sent by (output started at /home3/jsmarchant97/enterprisecw/nav_bar.php:8) in /home3/jsmarchant97/enterprisecw/top_ideas.php on line 9
+[26-Mar-2020 10:26:21 America/Chicago] PHP Warning:  Cannot modify header information - headers already sent by (output started at /home3/jsmarchant97/enterprisecw/nav_bar.php:8) in /home3/jsmarchant97/enterprisecw/top_ideas.php on line 9

@@ -5,7 +5,7 @@ $register = new Database();
 
 
 if(isset($_SESSION['username'])){
-     header("Location: forum.php");
+     header("Location: index.php");
 }
 
 include_once 'nav_bar.php';

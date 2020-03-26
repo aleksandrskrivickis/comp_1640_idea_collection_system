@@ -109,6 +109,7 @@
         //calling the function createIdea from the class database
         $funObj->createIdea($description, $title, $forum, $username, $anonymous, $category, $file);
         
-         header("Location: view_ideas.php");
+        header("Location: view_ideas.php");
+        
     }
 ?>
