@@ -1,6 +1,13 @@
 <?php 
 session_start();
+
+if(!isset($_SESSION['username'])){
+     header("Location: loginreg.php");
+}
+
 include_once 'nav_bar.php';
+
+
 
 // Test users
 $users = array( null,        "QAM",             // QAM 
