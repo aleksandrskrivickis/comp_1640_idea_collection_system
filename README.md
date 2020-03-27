@@ -2,7 +2,7 @@
 
 # Submission Artefacts - executive information extract for Matthew Prichard
 - [Functionality demonstration video](https://www.youtube.com/watch?v=lSIJ5J8ry7w)
-- Database diagrams
+- [Database diagrams](https://github.com/aleksandrskrivickis/comp_1640_idea_collection_system/blob/master/artefacts/database_diagrams)
 - Design documents
 - wireframe
 - Burndown charts
