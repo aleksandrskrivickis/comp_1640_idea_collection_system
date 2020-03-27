@@ -1,12 +1,13 @@
 ![Brand Logo](https://github.com/aleksandrskrivickis/comp_1640_idea_collection_system/blob/master/public_html/images/logo.jpg)
 
 # Submission Artefacts - executive information extract for Matthew Prichard
+- [Developed Website](http://enterprisecw.co.uk/)
 - [Functionality demonstration video](https://www.youtube.com/watch?v=lSIJ5J8ry7w) [Downloadable Version](https://github.com/aleksandrskrivickis/comp_1640_idea_collection_system/blob/master/artefacts/Enterprise%20Screencast%20(CTRL%20ALT%20DELETE).mp4)
 - [Database diagrams](https://github.com/aleksandrskrivickis/comp_1640_idea_collection_system/blob/master/artefacts/database_diagrams) [ERD 7 (Latest)](https://github.com/aleksandrskrivickis/comp_1640_idea_collection_system/blob/master/artefacts/database_diagrams/ERD%207.jpg)
 - [Burndown charts](https://github.com/aleksandrskrivickis/comp_1640_idea_collection_system/blob/master/artefacts/burndown_chart/) [Final Sprint Brundown](https://github.com/aleksandrskrivickis/comp_1640_idea_collection_system/blob/master/artefacts/burndown_chart/burndown_chart_2020-03-23.jpeg) [Burndown Chart Generation Code (Python)](https://github.com/aleksandrskrivickis/comp_1640_idea_collection_system/blob/master/artefacts/burndown_chart/analytics_burndown_chart.ipynb)
 - [Web Design documents (Wireframes, etc.)](https://github.com/aleksandrskrivickis/comp_1640_idea_collection_system/blob/master/artefacts/Design%20Documents.docx)
 - [Information Architecture](https://github.com/aleksandrskrivickis/comp_1640_idea_collection_system/blob/master/artefacts/Information%20Architecture.jpg)
-- [Trello Board
+- [Trello Board](https://trello.com/b/xC7CBjBU/coursework-board)
 - [The Code](https://github.com/aleksandrskrivickis/comp_1640_idea_collection_system/tree/master/public_html)
 - [Unit Tests](https://github.com/aleksandrskrivickis/comp_1640_idea_collection_system/tree/master/tests)
 - [Test documentation](https://github.com/aleksandrskrivickis/comp_1640_idea_collection_system/blob/master/artefacts/Test%20cases.xlsx)
@@ -15,8 +16,6 @@
 - [System Diagrams](https://github.com/aleksandrskrivickis/comp_1640_idea_collection_system/blob/master/artefacts/System%20Diagrams.docx)
 - [Architecture Diagram](https://github.com/aleksandrskrivickis/comp_1640_idea_collection_system/blob/master/artefacts/architecture.jpg)
 - [User Stories](https://github.com/aleksandrskrivickis/comp_1640_idea_collection_system/blob/master/artefacts/User%20Stories.docx)
-
-
 
 # Table of Contents  
 - [Group](#group)
@@ -46,16 +45,16 @@
 # Project credentials
 
 ## University Account
-      st2645h
-      Enterprise94
+      <!--st2645h-->
+      <!--Enterprise94-->
 
 ## HTTP
 http://enterprisecw.co.uk
 
 ## FTP Access
       host: ftp.voltafy.co.uk
-      user: ftphost@enterprisecw.co.uk
-      password: 64754742
+      user: <!-- ftphost@enterprisecw.co.uk -->
+      password: <!-- 64754742 -->
       port: 21
       
 # Architecture
