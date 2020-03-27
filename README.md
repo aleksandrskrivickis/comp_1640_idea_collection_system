@@ -2,6 +2,7 @@
 
 # Submission Artefacts - executive information extract for Matthew Prichard
 - [Developed Website](http://enterprisecw.co.uk/)
+- [Report](https://github.com/aleksandrskrivickis/comp_1640_idea_collection_system/blob/master/artefacts/report.pdf)
 - [Functionality demonstration video](https://www.youtube.com/watch?v=lSIJ5J8ry7w) [Downloadable Version](https://github.com/aleksandrskrivickis/comp_1640_idea_collection_system/blob/master/artefacts/Enterprise%20Screencast%20(CTRL%20ALT%20DELETE).mp4)
 - [Database diagrams](https://github.com/aleksandrskrivickis/comp_1640_idea_collection_system/blob/master/artefacts/database_diagrams) [ERD 7 (Latest)](https://github.com/aleksandrskrivickis/comp_1640_idea_collection_system/blob/master/artefacts/database_diagrams/ERD%207.jpg)
 - [Burndown charts](https://github.com/aleksandrskrivickis/comp_1640_idea_collection_system/blob/master/artefacts/burndown_chart/) [Final Sprint Brundown](https://github.com/aleksandrskrivickis/comp_1640_idea_collection_system/blob/master/artefacts/burndown_chart/burndown_chart_2020-03-23.jpeg) [Burndown Chart Generation Code (Python)](https://github.com/aleksandrskrivickis/comp_1640_idea_collection_system/blob/master/artefacts/burndown_chart/analytics_burndown_chart.ipynb)
