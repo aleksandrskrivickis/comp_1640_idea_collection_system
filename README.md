@@ -45,16 +45,16 @@
 # Project credentials
 
 ## University Account
-      <!--st2645h-->
-      <!--Enterprise94-->
+      MASKED
+      MASKED
 
 ## HTTP
 http://enterprisecw.co.uk
 
 ## FTP Access
       host: ftp.voltafy.co.uk
-      user: <!-- ftphost@enterprisecw.co.uk -->
-      password: <!-- 64754742 -->
+      user: MASKED
+      password: MASKED
       port: 21
       
 # Architecture
@@ -71,16 +71,15 @@ http://enterprisecw.co.uk
   
 ## Project Architecture Diagram
 https://www.lucidchart.com/invitations/accept/9385d2e1-63b3-4135-a64c-ac0a94b906e0
-![Architecture diagram](https://github.com/aleksandrskrivickis/comp_1640_idea_collection_system/blob/master/documentation/Architecture.jpeg)
+![Architecture diagram](https://github.com/aleksandrskrivickis/comp_1640_idea_collection_system/blob/master/artefacts/architecture.jpg)
 
 ## Data Archirtecture (ERD)
 https://www.lucidchart.com/documents/edit/e21ec631-0069-4916-8132-37b8631b7e27/CmEtv3hlvse.
-![ERD](https://github.com/aleksandrskrivickis/comp_1640_idea_collection_system/blob/master/documentation/Database%20-%20ERD5.jpeg)
+![ERD](https://github.com/aleksandrskrivickis/comp_1640_idea_collection_system/blob/master/artefacts/database_diagrams/ERD%207.jpg)
 
 ## Information Architecture Sketch
 https://k23tr4.axshare.com/#id=6kr2iu&p=login_register - Desktop prototype
 https://jagx9j.axshare.com/#id=6kr2iu&p=login_register - Mobile prototype
-![Information Architecture](https://github.com/aleksandrskrivickis/comp_1640_idea_collection_system/blob/master/documentation/information%20architecture.jpg)
 
 
 # Meetings
@@ -118,10 +117,6 @@ https://jagx9j.axshare.com/#id=6kr2iu&p=login_register - Mobile prototype
   * Implement scrum methods
 ### 11. Team name
    CTRL ALT DELETE (CAD)
-   
-### 12. Must have / Can have
-![MHCH-P1](https://github.com/aleksandrskrivickis/comp_1640_idea_collection_system/blob/master/documentation/WhatsApp%20Image%202020-01-24%20at%203.22.36%20PM.jpeg)
-![MHCH-P1](https://github.com/aleksandrskrivickis/comp_1640_idea_collection_system/blob/master/documentation/WhatsApp%20Image%202020-01-24%20at%203.22.36%20PM%20(1).jpeg)
 
 ## 31/01/2020 2-4 PM
 ### Attendance 
