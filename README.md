@@ -6,8 +6,8 @@
 - [Burndown charts](https://github.com/aleksandrskrivickis/comp_1640_idea_collection_system/blob/master/artefacts/burndown_chart/) [Final Sprint Brundown](https://github.com/aleksandrskrivickis/comp_1640_idea_collection_system/blob/master/artefacts/burndown_chart/burndown_chart_2020-03-23.jpeg) [Burndown Chart Generation Code (Python)](https://github.com/aleksandrskrivickis/comp_1640_idea_collection_system/blob/master/artefacts/burndown_chart/analytics_burndown_chart.ipynb)
 - [Web Design documents (Wireframes, etc.)](https://github.com/aleksandrskrivickis/comp_1640_idea_collection_system/blob/master/artefacts/Design%20Documents.docx)
 - [Information Architecture](https://github.com/aleksandrskrivickis/comp_1640_idea_collection_system/blob/master/artefacts/Information%20Architecture.jpg)
-- Sprint boards
-- [The code](https://github.com/aleksandrskrivickis/comp_1640_idea_collection_system/tree/master/public_html)
+- [Trello Board
+- [The Code](https://github.com/aleksandrskrivickis/comp_1640_idea_collection_system/tree/master/public_html)
 - [Unit Tests](https://github.com/aleksandrskrivickis/comp_1640_idea_collection_system/tree/master/tests)
 - [Test documentation](https://github.com/aleksandrskrivickis/comp_1640_idea_collection_system/blob/master/artefacts/Test%20cases.xlsx)
 - [Scrum Meetings Log](https://github.com/aleksandrskrivickis/comp_1640_idea_collection_system/blob/master/artefacts/Meetings.docx)
