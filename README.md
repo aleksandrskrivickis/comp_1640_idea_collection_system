@@ -1,13 +1,22 @@
 ![Brand Logo](https://github.com/aleksandrskrivickis/comp_1640_idea_collection_system/blob/master/public_html/images/logo.jpg)
 
 # Submission Artefacts - executive information extract for Matthew Prichard
-- [Functionality demonstration video](https://www.youtube.com/watch?v=lSIJ5J8ry7w)
+- [Functionality demonstration video](https://www.youtube.com/watch?v=lSIJ5J8ry7w) [Downloadable Version](https://github.com/aleksandrskrivickis/comp_1640_idea_collection_system/blob/master/artefacts/Enterprise%20Screencast%20(CTRL%20ALT%20DELETE).mp4)
 - [Database diagrams](https://github.com/aleksandrskrivickis/comp_1640_idea_collection_system/blob/master/artefacts/database_diagrams) [ERD 7 (Latest)](https://github.com/aleksandrskrivickis/comp_1640_idea_collection_system/blob/master/artefacts/database_diagrams/ERD%207.jpg)
-- Design documents
-- wireframe
-- Burndown charts
+- [Burndown charts](https://github.com/aleksandrskrivickis/comp_1640_idea_collection_system/blob/master/artefacts/burndown_chart/) [Final Sprint Brundown](https://github.com/aleksandrskrivickis/comp_1640_idea_collection_system/blob/master/artefacts/burndown_chart/burndown_chart_2020-03-23.jpeg) [Burndown Chart Generation Code (Python)](https://github.com/aleksandrskrivickis/comp_1640_idea_collection_system/blob/master/artefacts/burndown_chart/analytics_burndown_chart.ipynb)
+- [Web Design documents (Wireframes, etc.)](https://github.com/aleksandrskrivickis/comp_1640_idea_collection_system/blob/master/artefacts/Design%20Documents.docx)
+- [Information Architecture](https://github.com/aleksandrskrivickis/comp_1640_idea_collection_system/blob/master/artefacts/Information%20Architecture.jpg)
 - Sprint boards
-- The code
+- [The code](https://github.com/aleksandrskrivickis/comp_1640_idea_collection_system/tree/master/public_html)
+- [Unit Tests](https://github.com/aleksandrskrivickis/comp_1640_idea_collection_system/tree/master/tests)
+- [Test documentation](https://github.com/aleksandrskrivickis/comp_1640_idea_collection_system/blob/master/artefacts/Test%20cases.xlsx)
+- [Scrum Meetings Log](https://github.com/aleksandrskrivickis/comp_1640_idea_collection_system/blob/master/artefacts/Meetings.docx)
+- [Product Breakdown](https://github.com/aleksandrskrivickis/comp_1640_idea_collection_system/blob/master/artefacts/Product%20Breakdown.docx)
+- [System Diagrams](https://github.com/aleksandrskrivickis/comp_1640_idea_collection_system/blob/master/artefacts/System%20Diagrams.docx)
+- [Architecture Diagram](https://github.com/aleksandrskrivickis/comp_1640_idea_collection_system/blob/master/artefacts/architecture.jpg)
+- [User Stories](https://github.com/aleksandrskrivickis/comp_1640_idea_collection_system/blob/master/artefacts/User%20Stories.docx)
+
+
 
 # Table of Contents  
 - [Group](#group)
