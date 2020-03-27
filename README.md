@@ -1,5 +1,14 @@
 ![Brand Logo](https://github.com/aleksandrskrivickis/comp_1640_idea_collection_system/blob/master/public_html/images/logo.jpg)
 
+# Submission Artefacts - executive information extract for Matthew Prichard
+- [Functionality demonstration video](https://www.youtube.com/watch?v=lSIJ5J8ry7w)
+- Database diagrams
+- Design documents
+- wireframe
+- Burndown charts
+- Sprint boards
+- The code
+
 # Table of Contents  
 - [Group](#group)
 - [Specifications document](https://moodlecurrent.gre.ac.uk/pluginfile.php/1462970/mod_resource/content/14/COMP1640_1920_ver2.pdf)
