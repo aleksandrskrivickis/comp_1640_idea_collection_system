@@ -10,6 +10,10 @@ if(isset($_POST["ForumID"]) && isset($_POST["closureDate"]) && isset($_POST["fin
 	echo "<meta http-equiv='refresh' content='0'>";
 }
 
+if(!isset($_SESSION['username'])){
+     header("Location: index.php");
+}
+
 ?>
 
 <html>   
@@ -290,9 +294,9 @@ $result = mysqli_query($dbc, @"
           
 <div class="input-group input-group-sm mb-3">
   <div class="input-group-prepend">
-    <span class="input-group-text" id="inputGroup-sizing-sm">Forum ID</span>   
+    <span class="input-group-text" hidden id="inputGroup-sizing-sm">Forum ID</span>   
   </div>
-    <input type="text" id="ForumID" value="" readonly id="ForumID" name="ForumID" class="form-control">
+    <input type="text" id="ForumID" value="" hidden readonly id="ForumID" name="ForumID" class="form-control">
   </div>
 <div class="input-group input-group-sm mb-3">
   <div class="input-group-prepend">

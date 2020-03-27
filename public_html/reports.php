@@ -33,6 +33,7 @@ $department =  $db->getDepartment($_SESSION['username']);
 if ($department == "None"){
     $department = null;
 }
+
 // echo $department;
 
 ?>
