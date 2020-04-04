@@ -13,49 +13,50 @@ $db = new Database();
 
 <HTML>
 <head>
-<style>
-	.filterTab {
-		overflow: hidden;
-	}
+	<style>
+		.filterTab {
+			overflow: hidden;
+		}
 
-	.filterTab button {
-		background-color: inherit;
-		float: left;
-		border: none;
-		outline: none;
-		cursor: pointer;
-		padding: 14px 16px;
-		transition: 0.3s;
-		font-size: 16px;
-	}
+		.filterTab button {
+			background-color: inherit;
+			float: left;
+			border: none;
+			outline: none;
+			cursor: pointer;
+			padding: 14px 16px;
+			transition: 0.3s;
+			font-size: 16px;
+		}
 
-	.filterTab button:hover {
-		background-color: #ddd;
-	}
+		.filterTab button:hover {
+			background-color: #ddd;
+		}
 
-	.filterTab button.active {
-		background-color: #ccc;
-	}
+		.filterTab button.active {
+			background-color: #ccc;
+		}
 
-	.filterContent {
-		display: none;
-		padding: 6px 12px;
-	}
-</style>
-  <!-- Required meta tags -->
-  <meta charset="utf-8">
-  <!--To allow MS Edge and IE -->  
-  <meta http-equiv="X-UA-Compatible" content="IE=Edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
-   
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+		.filterContent {
+			display: none;
+			padding: 6px 12px;
+		}
+	</style>
+
+	<!-- Required meta tags -->
+	<meta charset="utf-8">
+
+	<!--To allow MS Edge and IE -->  
+	<meta http-equiv="X-UA-Compatible" content="IE=Edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+	
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
     
     <!-- ADD ICON LIBRARY -->
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 </head>
 
 <body>
@@ -65,7 +66,6 @@ $db = new Database();
         <button class = "filterlinks" onclick = "displayFilter(event, 'mostViewedIdeas')"> Most Viewed Ideas </button>
         <button class = "filterlinks" onclick = "displayFilter(event, 'recentIdeas')"> Recent Ideas </button>
         <button class = "filterlinks" onclick = "displayFilter(event, 'recentComments')"> Recent Comments </button>
-					
     </div>
 	
     
@@ -105,16 +105,15 @@ $db = new Database();
             foreach ($ideaList as $idea) {
                 echo '
                 <div class="Jumbotroncentral">
-                <div class="jumbotron">
-                <p style="float: right;">Posted on: ' . ((new DateTime($idea->DatePosted))->format('jS M Y H:m')) . '</p>
-                <h3 class="display-9"> ' . $idea->Title . ' </h3>
-                <p class="display-9"> ' . $idea->UserName . ' </p>
-                <p class="lead"> ' . $idea->IdeaText . ' </p>
-                <button style="font-size:14px"> ' . $idea->Likes . ' <i class="fa fa-thumbs-up"></i></button>
-                <button style="font-size:14px">' . $idea->Dislikes . '<i class="fa fa-thumbs-down"></i></button>
-                </div>
-                </div>  
-                ';
+                	<div class="jumbotron">
+						<p style="float: right;">Posted on: ' . ((new DateTime($idea->DatePosted))->format('jS M Y H:m')) . '</p>
+						<h3 class="display-9"> ' . $idea->Title . ' </h3>
+						<p class="display-9"> ' . $idea->UserName . ' </p>
+						<p class="lead"> ' . $idea->IdeaText . ' </p>
+						<button style="font-size:14px"> ' . $idea->Likes . ' <i class="fa fa-thumbs-up"></i></button>
+						<button style="font-size:14px">' . $idea->Dislikes . '<i class="fa fa-thumbs-down"></i></button>
+					</div>
+                </div>';
             }
         }
         
@@ -125,14 +124,13 @@ $db = new Database();
             foreach ($commentList as $comment) {
                 echo '
                 <div class="Jumbotroncentral">
-                <div class="jumbotron">
-                <p style="float: right;">Posted on: ' . ((new DateTime($comment->DatePosted))->format('jS M Y H:m')) . ' </p>
-                <h3 class="display-9"> From Idea: ' . $comment->IdeaTitle . ' </h3>
-                <p class="display-9">  ' . $comment->UserName . ' </p>
-                <p class="lead">Comment: ' . $comment->CommentText . ' </p>
-                </div>
-                </div>
-                ';
+					<div class="jumbotron">
+						<p style="float: right;">Posted on: ' . ((new DateTime($comment->DatePosted))->format('jS M Y H:m')) . ' </p>
+						<h3 class="display-9"> From Idea: ' . $comment->IdeaTitle . ' </h3>
+						<p class="display-9">  ' . $comment->UserName . ' </p>
+						<p class="lead">Comment: ' . $comment->CommentText . ' </p>
+					</div>
+                </div>';
                 $comment->IdeaDatePosted; // Other variable
             }
         }
